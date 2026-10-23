@@ -41,6 +41,9 @@ h1 em{font-style:normal;background:linear-gradient(90deg,var(--acc),var(--acc2))
 .step:before{content:"0" counter(s);display:block;font-size:13px;font-weight:800;color:var(--acc);margin-bottom:8px;letter-spacing:1px}
 .step b{display:block;font-size:16px;margin-bottom:4px}
 .step span{color:var(--muted);font-size:14px}
+.cta{display:inline-flex;align-items:center;gap:10px;margin-top:30px;background:var(--acc);color:#0c0f14;font-weight:800;padding:14px 22px;border-radius:14px;text-decoration:none;font-size:15px;transition:.2s;box-shadow:0 10px 30px -10px rgba(198,243,107,.6)}
+.cta:hover{transform:translateY(-2px)}
+.mail{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
 footer{border-top:1px solid var(--line);padding:24px 0 36px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;color:var(--muted);font-size:13px}
 .fade{opacity:0;transform:translateY(14px);animation:f .8s forwards}
 .d1{animation-delay:.1s}.d2{animation-delay:.2s}.d3{animation-delay:.3s}
@@ -59,6 +62,7 @@ footer{border-top:1px solid var(--line);padding:24px 0 36px;display:flex;justify
     <div class="kicker fade d1"><i></i>Soluciones digitales para pymes</div>
     <h1 class="fade d2">Menos tareas manuales.<br><em>Más clientes atendidos.</em></h1>
     <p class="lead fade d3">Creamos páginas web, automatizaciones y asistentes inteligentes a la medida de cada negocio, para que vendas y atiendas aunque tu equipo no esté conectado.</p>
+    <a class="cta fade d3" href="mailto:carlos.sanchez.devhorse@gmail.com?subject=Quiero%20una%20demo">Escríbenos <span aria-hidden="true">→</span></a>
   </header>
 
   <section class="cards">
@@ -78,7 +82,7 @@ footer{border-top:1px solid var(--line);padding:24px 0 36px;display:flex;justify
 
   <footer>
     <span>© <span id="y"></span> DevHorse</span>
-    <span>Páginas web · Automatizaciones · Asistentes</span>
+    <a class="mail" href="mailto:carlos.sanchez.devhorse@gmail.com">carlos.sanchez.devhorse@gmail.com</a>
   </footer>
 </div>
 <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
