@@ -1,0 +1,774 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Suchipakari · Reserva tu programa (demo)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#10221b;--muted:#5f7068;--line:#e3e8e2;--bg:#f5f2ea;--card:#fff;--jungle:#0f3d2e;--jungle2:#1f6f4a;--leaf:#3fa36b;--sun:#e9a23b;--sun2:#f07d3a;--river:#2b7a8c;--ok:#1e9a5b;--danger:#d64545;--r:22px;--sh:0 14px 36px -18px rgba(15,61,46,.35)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.45;padding-bottom:40px;overflow-x:hidden}
+h1,h2,.serif{font-family:Fraunces,Georgia,serif;font-weight:700}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+input{font:inherit;color:inherit}
+[hidden]{display:none!important}
+.demobar{background:#0a1f18;color:#cfe3d8;font-size:11.5px;padding:7px 14px;text-align:center;display:flex;gap:8px;justify-content:center;align-items:center;line-height:1.35}
+.demobar .dot{width:7px;height:7px;border-radius:50%;background:var(--sun);flex:none;animation:pulse 1.8s infinite}
+@keyframes pulse{50%{opacity:.35}}
+header.top{position:sticky;top:0;z-index:30;background:rgba(245,242,234,.84);backdrop-filter:saturate(1.6) blur(14px);-webkit-backdrop-filter:saturate(1.6) blur(14px);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px;padding:10px 14px}
+.brand{display:flex;align-items:center;gap:10px;margin-right:auto;min-width:0}
+.brand svg{width:34px;height:34px;flex:none}
+.brand b{display:block;font-size:15px;letter-spacing:-.2px;white-space:nowrap}
+.brand small{display:block;font-size:11px;color:var(--muted);margin-top:-2px}
+.seg{position:relative;display:flex;background:#e7e6dc;border-radius:999px;padding:3px}
+.seg button{padding:7px 14px;border-radius:999px;font-size:13px;font-weight:600;color:var(--muted);transition:.2s;white-space:nowrap}
+.seg button.on{background:#fff;color:var(--ink);box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.badge{position:absolute;top:-5px;right:-4px;background:var(--danger);color:#fff;font-style:normal;font-size:10.5px;font-weight:700;min-width:18px;height:18px;border-radius:9px;display:grid;place-items:center;padding:0 5px;animation:pop .4s}
+@keyframes pop{from{transform:scale(0)}}
+.lang{white-space:nowrap;background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 12px;font-size:12px;font-weight:700}
+.lang span{opacity:.4}.lang span.on{opacity:1;color:var(--jungle2)}
+@media(max-width:520px){.brand small{display:none}.seg button{padding:7px 10px}.lang{padding:7px 9px}.brand b{font-size:14px}}
+.wrap{max-width:1100px;margin:0 auto;padding:0 14px}
+/* hero */
+.hero{position:relative;margin:14px auto 0;max-width:1100px;border-radius:30px;overflow:hidden;color:#fff;min-height:380px;display:flex;align-items:flex-end;box-shadow:var(--sh)}
+@media(max-width:1128px){.hero{margin:14px 14px 0}}
+.heroart{position:absolute;inset:0;width:100%;height:100%}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,31,24,.05) 20%,rgba(10,31,24,.86) 100%)}
+.hero .in{position:relative;z-index:2;padding:26px 22px 24px;width:100%}
+.eyebrow{display:inline-flex;gap:7px;align-items:center;font-size:11.5px;letter-spacing:1.3px;text-transform:uppercase;background:rgba(255,255,255,.14);backdrop-filter:blur(8px);padding:6px 12px;border-radius:999px;font-weight:600}
+.hero h1{max-width:760px;font-size:clamp(32px,7vw,58px);line-height:1.02;letter-spacing:-1px;margin:12px 0 8px}
+.hero h1 em{font-style:italic;color:#ffd391}
+.hero p{max-width:580px;opacity:.92;font-size:15px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}
+.chip{font-size:12.5px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.22);padding:6px 11px;border-radius:999px;backdrop-filter:blur(6px)}
+.heroRow{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.price small{display:block;font-size:11px;opacity:.8;text-transform:uppercase;letter-spacing:1px}
+.price b{font-size:32px;letter-spacing:-1px}.price span{opacity:.85;font-size:13px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,var(--sun),var(--sun2));color:#2a1300;font-weight:800;padding:14px 22px;border-radius:16px;font-size:15px;box-shadow:0 10px 22px -8px rgba(240,125,58,.7);transition:.2s;text-decoration:none}
+.btn:hover{transform:translateY(-2px)}
+.btn.sec{background:#fff;color:var(--ink);box-shadow:0 2px 10px rgba(0,0,0,.08);border:1px solid var(--line)}
+.btn.pri{background:linear-gradient(135deg,var(--jungle),var(--jungle2));color:#fff;box-shadow:0 10px 22px -10px rgba(15,61,46,.8)}
+.btn[disabled]{opacity:.45;pointer-events:none}
+.ff circle{fill:#ffe9a8;animation:fly 6s ease-in-out infinite}
+@keyframes fly{0%,100%{opacity:.1;transform:translate(0,0)}50%{opacity:1;transform:translate(8px,-10px)}}
+.mist{animation:mist 14s ease-in-out infinite alternate}@keyframes mist{to{transform:translateX(40px)}}
+/* complement strip */
+.fit{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin:16px 0 0}
+.fit div{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;display:flex;gap:11px;align-items:flex-start}
+.fit i{font-style:normal;font-size:20px;width:38px;height:38px;border-radius:12px;background:#eef5ef;display:grid;place-items:center;flex:none}
+.fit b{display:block;font-size:14px}.fit small{color:var(--muted);font-size:12.5px}
+/* layout */
+.grid{display:grid;gap:16px;margin-top:16px;grid-template-columns:minmax(0,1fr)}
+.grid>*,.two>*,.details>*{min-width:0}
+@media(min-width:920px){.grid{grid-template-columns:minmax(0,1fr) 350px;align-items:start}.sticky{position:sticky;top:76px}}
+.card{background:var(--card);border-radius:var(--r);box-shadow:var(--sh);border:1px solid var(--line);padding:20px}
+.stepper{display:flex;gap:5px;margin-bottom:18px}
+.stp{flex:1;display:flex;flex-direction:column;gap:6px;font-size:11px;font-weight:700;color:var(--muted);min-width:0}
+.stp span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.stp .bar{height:5px;border-radius:5px;background:#ebe9df;overflow:hidden}
+.stp .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--jungle2),var(--leaf));transition:.4s}
+.stp.on{color:var(--ink)}.stp.on .bar i,.stp.done .bar i{width:100%}.stp.done{color:var(--jungle2)}
+@media(max-width:520px){.stp span{font-size:0}.stp.on span{font-size:11px}}
+h2.t{font-size:23px;letter-spacing:-.3px;margin-bottom:4px}
+p.sub{color:var(--muted);font-size:13.5px;margin-bottom:14px}
+/* programs */
+.prog{display:grid;gap:10px}
+.pc{display:flex;gap:14px;align-items:center;text-align:left;width:100%;border:1.5px solid var(--line);border-radius:18px;padding:14px;transition:.2s;background:#fff}
+.pc:hover{border-color:var(--leaf)}
+.pc.on{border-color:var(--jungle2);background:#f0f8f2;box-shadow:0 0 0 4px rgba(63,163,107,.12)}
+.pc .n{width:58px;height:58px;border-radius:16px;background:linear-gradient(135deg,var(--jungle),var(--river));color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;flex:none;font-weight:800;line-height:1}
+.pc .n b{font-size:20px}.pc .n small{font-size:10px;opacity:.8;margin-top:3px;font-weight:600}
+.pc .tx{flex:1;min-width:0}.pc .tx b{display:block;font-size:15px}.pc .tx small{color:var(--muted);font-size:12.5px}
+.pc .pr{text-align:right;font-weight:800;font-size:16px}.pc .pr small{display:block;color:var(--muted);font-weight:600;font-size:11px}
+.pop{display:inline-block;font-size:10px;font-weight:800;background:var(--sun);color:#2a1300;padding:2px 7px;border-radius:7px;margin-left:6px;vertical-align:2px;letter-spacing:.3px}
+.room{display:flex;gap:12px;align-items:center;background:#f7f5ee;border-radius:16px;padding:12px;margin-top:12px;font-size:13px}
+.room i{font-style:normal;font-size:22px}
+.room b{display:block;font-size:13.5px}
+.room small{color:var(--muted)}
+/* calendar */
+.cal .head{display:flex;align-items:center;justify-content:space-between;margin:6px 0 10px}
+.cal .head b{font-size:15px}
+.nav{width:36px;height:36px;border-radius:12px;background:#efede4;font-size:18px;font-weight:700}
+.nav[disabled]{opacity:.3;pointer-events:none}
+.dow,.days{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
+.dow{font-size:11px;color:var(--muted);text-align:center;margin-bottom:5px;font-weight:600}
+.day{aspect-ratio:1/1;border-radius:13px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:700;font-size:14px;background:#eef5ef;color:var(--jungle);transition:.15s;position:relative}
+.day small{font-size:8.5px;font-weight:700;opacity:.75;margin-top:1px}
+.day.low{background:#fff1d6;color:#8a5a00}
+.day.full,.day.off{background:#f1f0ea;color:#b7bcb6;text-decoration:line-through;pointer-events:none}
+.day.off{background:transparent;text-decoration:none}
+.day.rng{background:#cfe9d8;border-radius:8px}
+.day.sel{background:linear-gradient(135deg,var(--jungle),var(--jungle2));color:#fff;transform:scale(1.06);box-shadow:0 8px 18px -8px var(--jungle)}
+.day.hol:after{content:"";position:absolute;top:5px;right:6px;width:5px;height:5px;border-radius:50%;background:var(--sun2)}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:11.5px;color:var(--muted);margin:12px 0}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:4px;margin-right:5px;vertical-align:-1px}
+.range{display:flex;align-items:center;gap:10px;background:#f7f5ee;border-radius:16px;padding:12px 14px;margin-top:6px;font-size:13px}
+.range b{display:block;font-size:14px}.range small{color:var(--muted);font-size:11.5px;text-transform:uppercase;letter-spacing:.6px}
+.range .ar{color:var(--muted);font-size:18px}
+/* rows */
+.row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 0;border-bottom:1px solid var(--line)}
+.row b{display:block;font-size:15px}.row small{color:var(--muted);font-size:12.5px}
+.ctr{display:flex;align-items:center;gap:12px}
+.ctr button{width:38px;height:38px;border-radius:12px;background:#efede4;font-size:20px;font-weight:700;transition:.15s}
+.ctr button:active{transform:scale(.9)}
+.ctr button[disabled]{opacity:.35;pointer-events:none}
+.ctr span{min-width:22px;text-align:center;font-weight:800;font-size:17px}
+.hint{display:flex;gap:10px;align-items:center;background:#eef5ef;border-radius:14px;padding:12px;font-size:13px;margin-top:14px}
+.hint button{color:var(--jungle2);font-weight:700;text-decoration:underline}
+/* arrival options */
+.opt{display:flex;align-items:center;gap:12px;padding:13px;border:1.5px solid var(--line);border-radius:16px;margin-bottom:10px;transition:.2s;width:100%;text-align:left;background:#fff}
+.opt.on{border-color:var(--jungle2);background:#f0f8f2}
+.opt .ic{width:42px;height:42px;border-radius:12px;background:#efede4;display:grid;place-items:center;font-size:20px;flex:none}
+.opt .tx{flex:1;min-width:0}.opt b{display:block;font-size:14.5px}.opt small{color:var(--muted);font-size:12.5px}
+.opt .pr{font-weight:800;font-size:14px;white-space:nowrap}
+.radio{width:22px;height:22px;border-radius:50%;border:2px solid #c9cfc6;flex:none;position:relative}
+.opt.on .radio{border-color:var(--jungle2)}.opt.on .radio:after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--jungle2)}
+/* fields */
+.fld{margin-bottom:12px}
+.fld label{display:block;font-size:12px;font-weight:700;color:var(--muted);margin-bottom:5px}
+.fld input{width:100%;padding:13px 14px;border-radius:14px;border:1.5px solid var(--line);background:#fbfaf6;font-size:15px;outline:0;transition:.2s}
+.fld input:focus{border-color:var(--jungle2);background:#fff;box-shadow:0 0 0 4px rgba(31,111,74,.12)}
+.fld.err input{border-color:var(--danger)}.fld .em{color:var(--danger);font-size:12px;margin-top:4px}
+.tog{display:flex;background:#efede4;border-radius:14px;padding:4px}
+.tog button{flex:1;padding:10px;border-radius:11px;font-weight:700;font-size:13.5px;color:var(--muted)}
+.tog button.on{background:#fff;color:var(--ink);box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.link{color:var(--river);font-size:13px;font-weight:700;text-decoration:underline;margin:2px 0 12px;display:inline-block}
+.actions{display:flex;gap:10px;margin-top:18px}.actions .btn{flex:1}.actions .btn.sec{flex:0 0 auto}
+.mock{border-radius:18px;padding:18px;color:#fff;background:linear-gradient(135deg,#0f3d2e,#1f6f4a 55%,#2b7a8c);margin:12px 0;position:relative;overflow:hidden}
+.mock:after{content:"";position:absolute;right:-30px;top:-30px;width:130px;height:130px;border-radius:50%;background:rgba(255,255,255,.12)}
+.mock small{opacity:.8;font-size:11px;letter-spacing:1px;text-transform:uppercase}.mock b{display:block;font-size:19px;letter-spacing:2px;margin-top:10px}
+.note{font-size:12px;color:var(--muted);display:flex;gap:6px;margin-top:8px}
+.spin{width:18px;height:18px;border:3px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:sp .7s linear infinite}@keyframes sp{to{transform:rotate(360deg)}}
+/* summary */
+.sum h3{font-size:16px;margin-bottom:10px}
+.sum .pic{height:96px;border-radius:16px;overflow:hidden;margin-bottom:12px}
+.sum .ln{display:flex;justify-content:space-between;gap:10px;font-size:13.5px;padding:5px 0;color:var(--muted)}.sum .ln b{color:var(--ink);text-align:right}
+.sum .tot{border-top:1px dashed var(--line);margin-top:8px;padding-top:10px}
+.sum .tot .ln{font-size:15px;color:var(--ink);font-weight:800}
+.sum .dep{background:#f0f8f2;border-radius:14px;padding:12px;margin-top:10px}.sum .dep .ln{color:var(--jungle2);font-weight:800;font-size:15px}.sum .dep .ln.s{color:var(--muted);font-weight:600;font-size:13px}
+.sum .pol{font-size:12px;color:var(--muted);margin-top:10px;display:flex;gap:6px}
+/* done */
+.ok{width:76px;height:76px;margin:0 auto 10px;display:block}
+.ok circle{stroke-dasharray:220;stroke-dashoffset:220;animation:dr .7s .1s forwards}.ok path{stroke-dasharray:60;stroke-dashoffset:60;animation:dr .5s .6s forwards}@keyframes dr{to{stroke-dashoffset:0}}
+.center{text-align:center}
+.voucher{display:flex;gap:14px;align-items:center;background:linear-gradient(135deg,#0a1f18,#1f6f4a);color:#fff;border-radius:20px;padding:16px;margin:16px 0}
+.voucher .qr{background:#fff;border-radius:12px;padding:6px;flex:none}
+.voucher h4{font-family:Fraunces,Georgia,serif;font-size:18px}.voucher p{font-size:12.5px;opacity:.9;margin-top:2px}
+.voucher .code{display:inline-block;background:rgba(255,255,255,.16);padding:3px 10px;border-radius:8px;font-weight:800;letter-spacing:1.5px;margin-bottom:6px;font-size:13px}
+.journey{display:flex;gap:8px;overflow:auto;padding:4px 2px 10px;margin:6px 0 4px;scrollbar-width:none}
+.journey::-webkit-scrollbar{display:none}
+.jn{flex:none;min-width:132px;text-align:left;border:1.5px solid var(--line);border-radius:16px;padding:10px 12px;background:#fff;transition:.2s}
+.jn small{display:block;font-size:10.5px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.6px}
+.jn b{display:block;font-size:13.5px;margin-top:2px}
+.jn.on{border-color:var(--jungle2);background:#0f3d2e;color:#fff}.jn.on small{color:#9fd1b4}
+.tabs{display:flex;gap:6px;margin:8px 0 12px}
+.tabs button{padding:9px 14px;border-radius:999px;background:#efede4;font-size:13px;font-weight:700;color:var(--muted);white-space:nowrap}
+.tabs button.on{background:var(--jungle);color:#fff}
+/* phone */
+.phone{background:#e9e1d3;border-radius:26px;overflow:hidden;border:1px solid var(--line);max-width:420px;margin:0 auto;box-shadow:var(--sh)}
+.wah{background:#0f3d2e;color:#fff;display:flex;gap:10px;align-items:center;padding:10px 14px}
+.wah .av{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--leaf),var(--river));display:grid;place-items:center;font-weight:800;font-family:Fraunces,serif}
+.wah b{font-size:14.5px;display:block}.wah small{opacity:.75;font-size:11.5px}
+.chat{padding:12px;min-height:300px;display:flex;flex-direction:column;gap:7px;background-image:radial-gradient(rgba(0,0,0,.035) 1px,transparent 1px);background-size:14px 14px}
+.dsep{align-self:center;background:rgba(255,255,255,.85);color:#5d6b66;font-size:11px;font-weight:700;padding:4px 10px;border-radius:8px;margin:4px 0;text-transform:uppercase;letter-spacing:.4px}
+.msg{max-width:86%;padding:8px 11px 6px;border-radius:14px;font-size:13.5px;line-height:1.42;box-shadow:0 1px 1px rgba(0,0,0,.1);animation:in .35s;word-wrap:break-word}
+.msg.biz{background:#fff;border-top-left-radius:4px;align-self:flex-start}
+.msg.usr{background:#d9fdd3;border-top-right-radius:4px;align-self:flex-end}
+.msg .tm{display:block;text-align:right;font-size:10.5px;color:#7a8a8f;margin-top:2px}
+.msg.loc{padding:4px;width:250px}
+.msg.loc .map{height:110px;border-radius:10px;overflow:hidden;position:relative;background:#cfe6d4}
+.msg.loc .cap{padding:6px 7px 2px;font-size:13px}.msg.loc .cap b{display:block}.msg.loc .cap small{color:#6b7a75}
+.qbtns{display:flex;flex-direction:column;gap:4px;align-self:flex-start;width:min(86%,300px);animation:in .35s}
+.qbtns span{background:#fff;color:#1f7aa8;text-align:center;font-weight:600;font-size:13px;padding:8px;border-radius:10px;box-shadow:0 1px 1px rgba(0,0,0,.1)}
+.typing{align-self:flex-start;background:#fff;border-radius:14px;padding:10px 13px;display:flex;gap:4px}
+.typing i{width:6px;height:6px;border-radius:50%;background:#9aa;animation:bl 1s infinite}.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes bl{50%{transform:translateY(-4px);opacity:.5}}@keyframes in{from{opacity:0;transform:translateY(8px) scale(.97)}}
+.wafoot{background:#f0f0f0;padding:9px 12px;color:#8a979c;font-size:12.5px;display:flex;justify-content:space-between}
+.mail{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff;max-width:560px;margin:0 auto;box-shadow:var(--sh)}
+.mail .mh{padding:12px 16px;background:#f7f5ee;border-bottom:1px solid var(--line);font-size:12.5px;color:var(--muted)}.mail .mh b{display:block;color:var(--ink);font-size:14.5px;margin-bottom:3px}
+.mail .banner{height:90px;overflow:hidden}
+.mail .mb{padding:18px 18px 8px;font-size:14px}.mail .mb h3{font-family:Fraunces,Georgia,serif;font-size:21px;margin-bottom:8px}
+.mail table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px}.mail td{padding:8px 0;border-bottom:1px solid var(--line);vertical-align:top}.mail td:last-child{text-align:right;font-weight:700}
+.mail h4{font-size:14px;margin:14px 0 6px}
+.mail ul{padding-left:18px;font-size:13.5px}
+.mail .cta{display:block;text-align:center;background:var(--jungle2);color:#fff;border-radius:12px;padding:12px;font-weight:700;margin:14px 0}
+.mail .ft{font-size:11.5px;color:var(--muted);padding:0 18px 16px}
+/* details */
+.details{display:grid;gap:16px;margin-top:16px}@media(min-width:760px){.details{grid-template-columns:1fr 1fr}}
+.details h3,.card h3{font-size:16px;margin-bottom:10px}
+.ck{list-style:none}.ck li{font-size:13.5px;padding:4px 0 4px 24px;position:relative}.ck li:before{content:"✓";position:absolute;left:0;color:var(--ok);font-weight:800}.ck.no li:before{content:"✕";color:var(--danger)}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:13.5px}.kv span{color:var(--muted)}
+/* admin */
+.kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:14px 0}
+@media(min-width:760px){.kpis{grid-template-columns:repeat(4,1fr)}}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;box-shadow:var(--sh)}
+.kpi small{color:var(--muted);font-size:12px;font-weight:600}.kpi b{display:block;font-size:26px;letter-spacing:-.8px;margin-top:3px}.kpi em{font-style:normal;font-size:11.5px;color:var(--ok);font-weight:700}
+.two{display:grid;gap:16px;grid-template-columns:minmax(0,1fr)}@media(min-width:920px){.two{grid-template-columns:1.45fr 1fr;align-items:start}}
+.bk{display:flex;gap:12px;align-items:center;padding:12px;border-radius:16px;border:1px solid var(--line);margin-bottom:9px;width:100%;text-align:left;background:#fff;transition:.2s}
+.bk:hover{border-color:var(--leaf);transform:translateY(-1px)}
+.bk.new{background:#f0f8f2;border-color:var(--leaf);animation:glow 1.6s 2}
+@keyframes glow{50%{box-shadow:0 0 0 5px rgba(63,163,107,.2)}}
+.av2{width:44px;height:44px;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:800;color:#fff;flex:none;background:linear-gradient(135deg,var(--jungle),var(--river));line-height:1}
+.av2 b{font-size:16px}.av2 small{font-size:9.5px;color:#cfe9dc;text-transform:uppercase;margin-top:2px}
+.bk .m{flex:1;min-width:0}.bk .nm{font-size:14.5px;font-weight:700;display:flex;gap:6px;align-items:center;flex-wrap:wrap}.bk small{color:var(--muted);font-size:12.5px}
+.bk .am{text-align:right;font-size:13px}.bk .am b{display:block}
+.tag{font-size:10px;font-weight:800;padding:2px 7px;border-radius:7px;letter-spacing:.4px;text-transform:uppercase}
+.tag.ex{background:#efede4;color:#6f766f}.tag.nw{background:var(--ok);color:#fff}
+.tr{display:inline-flex;gap:4px;align-items:center;font-size:11px;font-weight:700;padding:2px 8px;border-radius:8px;margin-top:3px}
+.tr.q{background:#fff1d6;color:#8a5a00}.tr.b{background:#e6f1f4;color:#245f6d}.tr.s{background:#efede4;color:#5f7068}
+.arr{list-style:none}.arr li{display:flex;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line);font-size:13px}.arr li:last-child{border:0}
+.arr .dt{width:46px;text-align:center;flex:none;background:#f7f5ee;border-radius:12px;padding:6px 0;line-height:1.1}.arr .dt b{display:block;font-size:17px}.arr .dt small{font-size:10px;color:var(--muted);text-transform:uppercase;font-weight:700}
+.arr .m{flex:1;min-width:0}.arr .m b{display:block;font-size:13.5px}.arr .m small{color:var(--muted)}
+.sched{list-style:none}.sched li{display:flex;gap:10px;font-size:13px;padding:9px 0;border-bottom:1px solid var(--line)}.sched li:last-child{border:0}
+.sched .ic{width:28px;height:28px;border-radius:9px;background:#eef5ef;display:grid;place-items:center;flex:none;font-size:14px}
+.sched small{color:var(--muted);display:block;font-size:11.5px}
+.sched .st{margin-left:auto;font-size:11px;font-weight:700;white-space:nowrap;align-self:center}.sched .st.sent{color:var(--ok)}.sched .st.prog{color:var(--river)}
+h3.sec{font-size:16px;margin:2px 0 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}h3.sec small{font-size:12px;color:var(--muted);font-weight:600;text-align:right}
+.howfit{background:linear-gradient(135deg,#0f3d2e,#1f6f4a);color:#fff;border:0}
+.howfit h3{font-family:Fraunces,Georgia,serif;font-size:18px}
+.howfit ol{padding-left:18px;font-size:13.5px;display:grid;gap:8px;opacity:.95}
+.howfit b{color:#ffd391}
+.ov{position:fixed;inset:0;background:rgba(6,20,16,.6);backdrop-filter:blur(4px);z-index:60;display:flex;align-items:flex-end;justify-content:center;animation:fd .25s}
+@keyframes fd{from{opacity:0}}
+.sheet{background:#fff;width:100%;max-width:560px;max-height:92vh;overflow:auto;border-radius:26px 26px 0 0;padding:18px;animation:up .3s}
+@media(min-width:700px){.ov{align-items:center}.sheet{border-radius:26px}}
+@keyframes up{from{transform:translateY(40px);opacity:0}}
+.sheet .x{float:right;width:34px;height:34px;border-radius:50%;background:#efede4;font-size:16px}
+.foot{text-align:center;font-size:12px;color:var(--muted);padding:22px 14px 8px;max-width:760px;margin:0 auto}
+</style>
+</head>
+<body>
+<div class="demobar"><span class="dot"></span><span data-i="demobar"></span></div>
+<header class="top">
+  <div class="brand">
+    <svg viewBox="0 0 32 32"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1f6f4a"/><stop offset="1" stop-color="#0f3d2e"/></linearGradient></defs><rect width="32" height="32" rx="10" fill="url(#lg)"/><path d="M16 25V13M16 13c-1-4-5-6-9-5 2 3 5 5 9 5zM16 13c1-4 5-6 9-5-2 3-5 5-9 5zM16 18c-2-2-5-3-7-2 1 2 4 3 7 2z" stroke="#ffd391" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>
+    <div><b>Suchipakari</b><small data-i="brandsub"></small></div>
+  </div>
+  <div class="seg"><button data-view="client" class="on" data-i="tabC"></button><button data-view="admin" data-i="tabA"></button><i class="badge" id="badge" hidden></i></div>
+  <button class="lang" id="langBtn"><span id="lES">ES</span> · <span id="lEN">EN</span></button>
+</header>
+
+<!-- =================== VIAJERO =================== -->
+<div id="vClient">
+  <section class="hero">
+    <svg class="heroart" viewBox="0 0 900 420" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e9a23b"/><stop offset=".35" stop-color="#c76b3a"/><stop offset=".7" stop-color="#2d5b4a"/><stop offset="1" stop-color="#0f3d2e"/></linearGradient>
+        <linearGradient id="riv" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#7cc3c9" stop-opacity=".2"/><stop offset=".5" stop-color="#ffd391" stop-opacity=".55"/><stop offset="1" stop-color="#7cc3c9" stop-opacity=".2"/></linearGradient>
+      </defs>
+      <rect width="900" height="420" fill="url(#sky)"/>
+      <circle cx="800" cy="95" r="40" fill="#ffd391" opacity=".7"/>
+      <g class="mist" opacity=".35"><ellipse cx="300" cy="200" rx="260" ry="22" fill="#fff"/><ellipse cx="720" cy="230" rx="200" ry="16" fill="#fff"/></g>
+      <path d="M0 230 C80 190 140 215 210 185 C290 150 340 205 420 180 C520 150 560 200 650 175 C740 150 820 195 900 170 V420 H0Z" fill="#1d4b3b" opacity=".85"/>
+      <path d="M0 290 C120 250 200 280 300 255 C420 225 520 275 640 250 C760 228 830 260 900 245 V420 H0Z" fill="#163f31"/>
+      <path d="M0 330 C200 312 330 345 470 325 C620 304 760 338 900 320 V360 C760 372 620 342 470 360 C330 378 200 348 0 366Z" fill="url(#riv)"/>
+      <path d="M0 360 C150 350 260 380 420 368 C600 354 760 386 900 372 V420 H0Z" fill="#0b2a20"/>
+      <g fill="#071d16">
+        <path d="M60 372 q-30-70 -50-80 q40 10 50 40 q5-50 30-70 q-10 50 -10 110z"/>
+        <path d="M800 380 q-20-80 -60-95 q50 5 62 50 q8-60 40-80 q-18 55 -16 125z"/>
+        <rect x="90" y="250" width="6" height="125"/><path d="M93 250 q-40 -10 -60 10 q30 -2 60 -10zM93 250 q40 -10 60 10 q-30 -2 -60 -10zM93 250 q-20 -30 -50 -30 q25 10 50 30zM93 250 q20 -30 50 -30 q-25 10 -50 30z"/>
+        <rect x="740" y="235" width="6" height="140"/><path d="M743 235 q-45 -8 -64 14 q32 -4 64 -14zM743 235 q45 -8 64 14 q-32 -4 -64 -14zM743 235 q-22 -32 -52 -30 q26 10 52 30zM743 235 q22 -32 52 -30 q-26 10 -52 30z"/>
+      </g>
+      <g class="ff"><circle cx="210" cy="300" r="2.4"/><circle cx="330" cy="270" r="2" style="animation-delay:1s"/><circle cx="520" cy="290" r="2.6" style="animation-delay:2.2s"/><circle cx="640" cy="310" r="2" style="animation-delay:3s"/><circle cx="430" cy="250" r="1.8" style="animation-delay:4s"/></g>
+    </svg>
+    <div class="in">
+      <span class="eyebrow">🌿 <span data-i="eyebrow"></span></span>
+      <h1 data-ih="h1"></h1>
+      <p data-i="heroP"></p>
+      <div class="chips"><span class="chip">🛶 <span data-i="c1"></span></span><span class="chip">🍽️ <span data-i="c2"></span></span><span class="chip">🧭 <span data-i="c3"></span></span><span class="chip">💬 <span data-i="c4"></span></span></div>
+      <div class="heroRow">
+        <div class="price"><small data-i="from"></small><b>$379.50</b> <span data-i="pn"></span></div>
+        <a class="btn" href="#book" data-i="cta"></a>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="fit">
+      <div><i>🗺️</i><span><b data-i="f1t"></b><small data-i="f1s"></small></span></div>
+      <div><i>💬</i><span><b data-i="f2t"></b><small data-i="f2s"></small></span></div>
+      <div><i>🚐</i><span><b data-i="f3t"></b><small data-i="f3s"></small></span></div>
+    </div>
+
+    <div class="grid" id="book">
+      <section class="card"><div class="stepper" id="stepper"></div><div id="stepBody"></div></section>
+      <aside class="card sum sticky" id="summary"></aside>
+    </div>
+
+    <div class="details">
+      <section class="card"><h3 data-i="incl"></h3><ul class="ck" id="incl"></ul><h3 style="margin-top:16px" data-i="notIncl"></h3><ul class="ck no" id="notIncl"></ul></section>
+      <section class="card"><h3 data-i="good"></h3><div class="kv" id="kv"></div><h3 style="margin-top:16px" data-i="bring"></h3><p style="font-size:13.5px" data-i="bringT"></p></section>
+    </div>
+  </div>
+</div>
+
+<!-- =================== LODGE =================== -->
+<div id="vAdmin" hidden>
+  <div class="wrap" style="padding-top:18px">
+    <h2 class="t" data-i="aT"></h2><p class="sub" data-i="aS"></p>
+    <div class="kpis" id="kpis"></div>
+    <div class="two">
+      <div style="display:grid;gap:16px">
+        <section class="card"><h3 class="sec"><span data-i="aRes"></span><small data-i="aTap"></small></h3><div id="bkList"></div></section>
+        <section class="card howfit"><h3 data-i="hfT"></h3><ol id="hf"></ol></section>
+      </div>
+      <div style="display:grid;gap:16px">
+        <section class="card"><h3 class="sec"><span data-i="aArr"></span><small data-i="aArrS"></small></h3><ul class="arr" id="arr"></ul></section>
+        <section class="card"><h3 class="sec"><span data-i="aSched"></span></h3><ul class="sched" id="sched"></ul></section>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p class="foot" data-i="foot"></p>
+<div id="modal"></div>
+
+<script>
+/* ===== DATOS (tomados de suchipakari.com; referenciales) ===== */
+const RATE=379.50;          // Private Cabin Deluxe con jacuzzi, Discovery Program incluido, 2 adultos, por noche (consultado en su web)
+const TR={quito:140,banos:140,own:0}; // transporte privado one-way 1-3 pax
+const HOL=30;              // recargo 24 y 31 dic por adulto (FAQ)
+const CABS=6;              // cabañas de ejemplo para disponibilidad
+
+const T={
+es:{
+demobar:"Demo de DevHorse para Suchipakari · Complementa su motor de reservas actual · Precios de referencia de su web · Pagos y mensajes simulados · Huéspedes de ejemplo",
+brandsub:"Amazon Lodge · reserva tu programa",tabC:"Viajero",tabA:"Lodge",
+eyebrow:"Amazonía alta · Misahuallí, Napo",h1:"Tu programa en la selva, <em>reservado en 2 minutos</em>",
+heroP:"Elige tu programa, tus noches y cómo llegas. Te confirmamos al instante y te acompañamos por WhatsApp hasta que llegues al lodge.",
+c1:"Excursiones guiadas",c2:"Todas las comidas",c3:"Guías bilingües",c4:"Asistencia por WhatsApp",
+from:"Desde",pn:"por noche · 2 adultos",cta:"Reservar mi programa",
+f1t:"Reserva por programa",f1s:"El viajero ve el programa completo y el total, no solo una habitación.",
+f2t:"Confirmación por WhatsApp",f2s:"Con instrucciones de llegada, qué llevar y recordatorios automáticos.",
+f3t:"Llegada coordinada",f3s:"Traslado desde Quito o Baños, o indicaciones si llegan por su cuenta.",
+st1:"Programa",st2:"Fechas",st3:"Huéspedes",st4:"Llegada",st5:"Datos",st6:"Pago",
+pT:"Elige tu programa",pS:"Discovery Program: hospedaje, todas las comidas y actividades guiadas cada día.",
+nights:"{n} noche",nightsP:"{n} noches",days:"{d}D/{n}N",dLbl:"días",
+p1:"Escapada de 2 días",p1s:"Llegas, almuerzas y sales a tu primera excursión.",
+p2:"Discovery 3 días",p2s:"El más elegido: más tiempo para selva, río y comunidad.",
+p3:"Discovery 4 días",p3s:"Para desconectarte de verdad y vivir la selva sin prisa.",
+popular:"MÁS ELEGIDO",perCab:"por cabaña",
+room:"Private Cabin Deluxe con jacuzzi",roomS:"All inclusive · Discovery Program incluido · Cancelación flexible",
+dT:"¿Cuándo llegas?",dS:"Elige tu fecha de llegada. Disponibilidad de ejemplo.",
+lgOk:"Disponible",lgLow:"Últimas cabañas",lgFull:"Lleno",lgHol:"Cena festiva",
+arrive:"Llegada",leave:"Salida",chk:"Check-in 1:00 pm · Check-out 11:00 am",
+gT:"¿Quiénes viajan?",gS:"Cada cabaña es para 2 adultos.",cabins:"Cabañas",cabinsS:"Private Cabin Deluxe con jacuzzi",adults:"Adultos",adultsS:"Hasta 2 por cabaña",
+kidsH:"¿Viajas con niños o en grupo grande?",kidsB:"Escríbenos por WhatsApp",
+kidsMsg:"Para familias y grupos el lodge te arma una tarifa a medida (niños de 5 a 11 años tienen 50 % de descuento). En la versión real, este botón abre el chat directo con el lodge.",
+aT:"¿Cómo llegas al lodge?",aS:"El viaje desde Quito toma unas 4 horas. Te enviamos todo por WhatsApp.",
+o1:"Traslado privado desde Quito",o1s:"Te recogemos en el aeropuerto o en tu hotel · 1 a 3 personas · solo ida",
+o2:"Traslado privado desde Baños",o2s:"Desde Baños de Agua Santa · 1 a 3 personas · solo ida",
+o3:"Llego por mi cuenta",o3s:"En bus, taxi compartido o auto. Te mandamos la ubicación y cómo llegar.",
+free:"Incluido",
+yT:"Tus datos",yS:"Aquí te llegará la confirmación y el acompañamiento por WhatsApp.",name:"Nombre completo",email:"Correo electrónico",phone:"WhatsApp",confLang:"Idioma de los mensajes",autofill:"Rellenar con datos de ejemplo",
+errName:"Escribe tu nombre.",errEmail:"Revisa el correo.",errPhone:"Escribe tu WhatsApp.",
+payT:"Asegura tu programa",payS:"Pagas el 50 % hoy y tu reserva queda confirmada. El saldo se paga antes de tu llegada.",card:"Tarjeta",transfer:"Transferencia",
+simNote:"Pago simulado: no se cobra nada. En la versión real se usa la pasarela que el lodge ya tiene.",pay:"Pagar anticipo {a}",processing:"Confirmando…",next:"Continuar",
+sumT:"Tu viaje",none:"Elige tus fechas",
+liStay:"Discovery · {c} cabaña(s) × {n} noche(s)",liTr:"Traslado privado",liHol:"Cena festiva × {a} adultos",
+total:"Total",taxes:"Impuestos incluidos",deposit:"Anticipo hoy (50 %)",balance:"Saldo antes de la llegada",policy:"Cancelación sin costo hasta 15 días antes de la llegada.",
+adultW:["adulto","adultos"],cabW:["cabaña","cabañas"],
+done:"¡Tu programa está confirmado!",doneS:"Ya te escribimos por WhatsApp y te enviamos el correo. Así acompañamos al viajero hasta su llegada:",
+vT:"Discovery Program",
+j0:"Hoy",j0b:"Confirmación",j1:"3 días antes",j1b:"Qué llevar",j2:"1 día antes",j2b:"Cómo llegar",j3:"Día de llegada",j3b:"Bienvenida",
+tWa:"WhatsApp",tMail:"Correo",
+seeAdmin:"Ver cómo lo recibe el lodge →",another:"Nueva reserva",
+incl:"El Discovery Program incluye",notIncl:"No incluye",good:"Bueno saber",bring:"Qué llevar",
+inc:["Cabaña con baño privado y agua caliente","Tres comidas al día y cóctel de bienvenida","Excursiones guiadas con traslados en auto o canoa","Entradas a los sitios visitados","Botas de caucho, chalecos salvavidas y bastones","Guías bilingües en español o inglés","Piscina, playa privada de río, tubos y hamacas","Agua purificada ilimitada, primeros auxilios e impuestos"],
+noinc:["Gastos personales y souvenirs","Propinas","Bebidas alcohólicas y gaseosas","Deportes de aventura (rappel en cascada, rafting, kayak, bicicleta)"],
+kv:[["Llegada ideal","12:30, a tiempo para el almuerzo"],["Check-in / out","1:00 pm / 11:00 am"],["Desde Quito","Unas 4 horas por carretera"],["Niños 5–11 años","50 % de descuento"],["24 y 31 de diciembre","Recargo de $30 por adulto (cena festiva)"]],
+bringT:"Pasaporte, gorra, camisas de manga larga de secado rápido, chompa ligera para lluvia, pantalón de secado rápido, zapatos cómodos, medias largas, zapatos de agua antideslizantes, traje de baño, protector solar, linterna y bolsas Ziploc.",
+aT2:"Panel del lodge",aS:"Lo que ve el equipo de reservas. Las filas “Ejemplo” son inventadas; las “Nueva” vienen de la demo que acabas de hacer.",
+aRes:"Reservas de programas",aTap:"Toca una para ver sus mensajes",aArr:"Próximas llegadas",aArrS:"Cómo llega cada huésped",aSched:"Mensajes automáticos",
+kRes:"Reservas",kDep:"Anticipos cobrados",kTr:"Traslados por coordinar",kMsg:"Mensajes enviados",kNew:"+{n} nueva(s)",
+ex:"Ejemplo",nw:"Nueva",trQ:"🚐 Traslado Quito",trB:"🚐 Traslado Baños",trS:"🚌 Por su cuenta",bal:"saldo",
+sc0:"Confirmación",sc1:"Qué llevar",sc2:"Cómo llegar + ubicación",sc3:"Bienvenida",sent:"Enviado",prog:"Programado",
+hfT:"Cómo encaja con lo que ya tienen",
+hf:["Su <b>motor de reservas actual</b> sigue igual para habitaciones y tarifas.","Esta página suma la <b>reserva por programa</b>, pensada para el celular y en dos idiomas.","Cada reserva activa el <b>acompañamiento por WhatsApp</b>: confirmación, qué llevar, cómo llegar y bienvenida.","El equipo ve en un solo lugar <b>quién llega, cuándo y cómo</b>, y qué traslados coordinar."],
+foot:"Demo creada por DevHorse como propuesta para Suchipakari. Tarifa, traslados e información del programa tomados de la web pública del lodge (tarifa de referencia; puede variar según la fecha). Disponibilidad, huéspedes y reservas son ejemplos.",
+wa0a:"¡Hola {first}! 🌿 Bienvenido/a a Suchipakari. Tu reserva está *confirmada* ✅\n\n🎟️ *{code}*\n🛖 Discovery Program · {stay}\n📅 Llegada: *{in}*\n📅 Salida: {out}\n👥 {ppl}\n💳 Anticipo recibido: *{dep}*\n💵 Saldo antes de tu llegada: *{bal}*",
+wa0q:"🚐 Tu *traslado privado desde Quito* está reservado. ¿Nos compartes la dirección de recogida (o tu número de vuelo)? Te confirmamos la hora por aquí.",
+wa0b:"🚐 Tu *traslado privado desde Baños* está reservado. ¿Nos compartes la dirección de tu hotel en Baños? Te confirmamos la hora por aquí.",
+wa0s:"🗺️ Unos días antes te enviamos la ubicación y cómo llegar. Lo ideal es llegar hacia las 12:30 para almorzar y salir a la excursión de la tarde.",
+u0q:"Aeropuerto de Quito, vuelo de la mañana 🙌",u0b:"Hotel en el centro de Baños 🙌",u0s:"¡Perfecto, gracias! 🙌",
+b0:"¡Anotado! Te escribimos con la hora exacta de recogida 👌",
+wa1:"¡Hola {first}! En 3 días te esperamos en la selva 🌿\n\n🎒 *Qué llevar:*\n• Pasaporte\n• Gorra y protector solar\n• Camisas de manga larga y pantalón de secado rápido\n• Chompa ligera para lluvia\n• Zapatos cómodos, medias largas y zapatos de agua\n• Traje de baño y linterna\n\nNosotros te damos botas de caucho, chalecos y bastones 🥾",
+u1:"¡Genial! ¿Hace frío en la noche?",b1:"Es clima cálido y húmedo 🌡️ Por la noche refresca un poco; con una chompa ligera estás perfecto/a.",
+wa2q:"¡Mañana es el día! 🚐 Tu conductor te recoge en *{pick}* a la hora que acordamos. El viaje toma unas 4 horas y llegarás a tiempo para el almuerzo.",
+wa2b:"¡Mañana es el día! 🚐 Tu conductor te recoge en *{pick}* a la hora que acordamos. Llegarás a tiempo para el almuerzo.",
+wa2s:"¡Mañana es el día! 🗺️ Desde Quito son unas 4 horas en bus, taxi compartido o auto. Te esperamos hacia las *12:30* para almorzar.\n\nAquí tienes nuestra ubicación 👇",
+locT:"Suchipakari Amazon Lodge",locS:"Misahuallí · Tena · Napo",
+wa3:"¡Bienvenido/a, {first}! 🌿 Te esperamos con el cóctel de bienvenida y el almuerzo. Tu guía te contará el plan de la tarde. Cualquier cosa, escríbenos por aquí.",u3:"¡Ya casi llegamos! 😍",
+mSubj:"Reserva confirmada · Discovery Program · {code}",mH:"¡Te esperamos en la selva, {first}!",mP:"Gracias por reservar en Suchipakari. Este es tu comprobante:",
+mProg:"Programa",mIn:"Llegada",mOut:"Salida",mPpl:"Huéspedes",mArr:"Cómo llegas",mDep:"Anticipo pagado",mBal:"Saldo antes de la llegada",
+mHow:"Tu llegada",mHowQ:"Traslado privado desde Quito. Responde a nuestro WhatsApp con tu dirección o vuelo y te confirmamos la hora.",mHowB:"Traslado privado desde Baños. Responde a nuestro WhatsApp con tu hotel y te confirmamos la hora.",mHowS:"Llegas por tu cuenta: desde Quito son unas 4 horas. Lo ideal es llegar hacia las 12:30.",
+mBtn:"Ver mi reserva",mFt:"Correo automático · Check-in 1:00 pm · Check-out 11:00 am · Cancelación sin costo hasta 15 días antes.",mFrom:"De",mTo:"Para",
+wahSub:"Cuenta de empresa · en línea",wafoot:"Mensajes automáticos ✓✓",arrQ:"Traslado privado desde Quito",arrB:"Traslado privado desde Baños",arrS:"Llega por su cuenta",
+pickQ:"el aeropuerto de Quito",pickB:"tu hotel en Baños"
+},
+en:{
+demobar:"DevHorse demo for Suchipakari · Works alongside your current booking engine · Reference prices from your website · Simulated payments & messages · Sample guests",
+brandsub:"Amazon Lodge · book your program",tabC:"Traveler",tabA:"Lodge",
+eyebrow:"Upper Amazon · Misahuallí, Napo",h1:"Your jungle program, <em>booked in 2 minutes</em>",
+heroP:"Pick your program, your nights and how you'll get here. Instant confirmation, and we stay with you on WhatsApp until you arrive at the lodge.",
+c1:"Guided excursions",c2:"All meals",c3:"Bilingual guides",c4:"WhatsApp assistance",
+from:"From",pn:"per night · 2 adults",cta:"Book my program",
+f1t:"Book by program",f1s:"Travelers see the whole program and the total, not just a room.",
+f2t:"WhatsApp confirmation",f2s:"With arrival instructions, packing list and automatic reminders.",
+f3t:"Coordinated arrival",f3s:"Transfer from Quito or Baños, or directions if they travel on their own.",
+st1:"Program",st2:"Dates",st3:"Guests",st4:"Arrival",st5:"Details",st6:"Payment",
+pT:"Choose your program",pS:"Discovery Program: lodging, all meals and guided activities every day.",
+nights:"{n} night",nightsP:"{n} nights",days:"{d}D/{n}N",dLbl:"days",
+p1:"2-day getaway",p1s:"Arrive, have lunch and head out on your first excursion.",
+p2:"Discovery 3 days",p2s:"Most popular: more time for jungle, river and community.",
+p3:"Discovery 4 days",p3s:"To truly disconnect and enjoy the jungle at your own pace.",
+popular:"MOST POPULAR",perCab:"per cabin",
+room:"Private Cabin Deluxe with jacuzzi",roomS:"All inclusive · Discovery Program included · Flexible cancellation",
+dT:"When do you arrive?",dS:"Pick your arrival date. Sample availability.",
+lgOk:"Available",lgLow:"Last cabins",lgFull:"Full",lgHol:"Holiday dinner",
+arrive:"Arrival",leave:"Departure",chk:"Check-in 1:00 pm · Check-out 11:00 am",
+gT:"Who's traveling?",gS:"Each cabin is for 2 adults.",cabins:"Cabins",cabinsS:"Private Cabin Deluxe with jacuzzi",adults:"Adults",adultsS:"Up to 2 per cabin",
+kidsH:"Traveling with kids or a large group?",kidsB:"Message us on WhatsApp",
+kidsMsg:"For families and groups the lodge prepares a custom rate (children 5 to 11 get 50 % off). In the real version, this button opens a chat straight with the lodge.",
+aT:"How are you getting to the lodge?",aS:"The trip from Quito takes about 4 hours. We'll send you everything on WhatsApp.",
+o1:"Private transfer from Quito",o1s:"Pick-up at the airport or your hotel · 1 to 3 people · one way",
+o2:"Private transfer from Baños",o2s:"From Baños de Agua Santa · 1 to 3 people · one way",
+o3:"I'll get there on my own",o3s:"By bus, shared taxi or car. We'll send you the location and directions.",
+free:"Included",
+yT:"Your details",yS:"This is where you'll get your confirmation and WhatsApp updates.",name:"Full name",email:"Email",phone:"WhatsApp",confLang:"Message language",autofill:"Fill with sample data",
+errName:"Please enter your name.",errEmail:"Check your email.",errPhone:"Please enter your WhatsApp.",
+payT:"Secure your program",payS:"Pay 50 % today and your booking is confirmed. The balance is paid before you arrive.",card:"Card",transfer:"Bank transfer",
+simNote:"Simulated payment: nothing is charged. The real version uses the payment gateway the lodge already has.",pay:"Pay deposit {a}",processing:"Confirming…",next:"Continue",
+sumT:"Your trip",none:"Choose your dates",
+liStay:"Discovery · {c} cabin(s) × {n} night(s)",liTr:"Private transfer",liHol:"Holiday dinner × {a} adults",
+total:"Total",taxes:"Taxes included",deposit:"Deposit today (50 %)",balance:"Balance before arrival",policy:"Free cancellation up to 15 days before arrival.",
+adultW:["adult","adults"],cabW:["cabin","cabins"],
+done:"Your program is confirmed!",doneS:"We've messaged you on WhatsApp and sent the email. This is how we stay with the traveler until arrival:",
+vT:"Discovery Program",
+j0:"Today",j0b:"Confirmation",j1:"3 days before",j1b:"What to pack",j2:"1 day before",j2b:"Getting here",j3:"Arrival day",j3b:"Welcome",
+tWa:"WhatsApp",tMail:"Email",
+seeAdmin:"See what the lodge receives →",another:"New booking",
+incl:"The Discovery Program includes",notIncl:"Not included",good:"Good to know",bring:"What to bring",
+inc:["Cabin with private bathroom and hot water","Three meals a day and a welcome cocktail","Guided excursions with car or canoe transfers","Entrance fees","Rubber boots, life jackets and walking sticks","Bilingual English or Spanish guides","Pool, private river beach, tubes and hammocks","Unlimited purified water, first aid and taxes"],
+noinc:["Personal expenses and souvenirs","Tips","Alcoholic drinks and soft drinks","Adventure sports (waterfall rappelling, rafting, kayaking, biking)"],
+kv:[["Best arrival time","12:30, in time for lunch"],["Check-in / out","1:00 pm / 11:00 am"],["From Quito","About 4 hours by road"],["Kids 5–11","50 % off"],["Dec 24 & 31","$30 per adult surcharge (holiday dinner)"]],
+bringT:"Passport, hat, quick-dry long-sleeve shirts, light rain jacket, quick-dry pants, comfortable shoes, long socks, non-slip water shoes, swimsuit, sunscreen, flashlight and Ziploc bags.",
+aT2:"Lodge dashboard",aS:"What the reservations team sees. Rows tagged “Sample” are made up; “New” ones come from the booking you just made in this demo.",
+aRes:"Program bookings",aTap:"Tap one to see its messages",aArr:"Upcoming arrivals",aArrS:"How each guest arrives",aSched:"Automatic messages",
+kRes:"Bookings",kDep:"Deposits collected",kTr:"Transfers to arrange",kMsg:"Messages sent",kNew:"+{n} new",
+ex:"Sample",nw:"New",trQ:"🚐 Quito transfer",trB:"🚐 Baños transfer",trS:"🚌 On their own",bal:"balance",
+sc0:"Confirmation",sc1:"What to pack",sc2:"Directions + location",sc3:"Welcome",sent:"Sent",prog:"Scheduled",
+hfT:"How it fits what you already have",
+hf:["Your <b>current booking engine</b> stays as it is for rooms and rates.","This page adds <b>booking by program</b>, mobile-first and in two languages.","Each booking triggers <b>WhatsApp follow-up</b>: confirmation, packing list, directions and welcome.","The team sees in one place <b>who arrives, when and how</b>, and which transfers to arrange."],
+foot:"Demo created by DevHorse as a proposal for Suchipakari. Rate, transfers and program info taken from the lodge's public website (reference rate; may vary by date). Availability, guests and bookings are samples.",
+wa0a:"Hi {first}! 🌿 Welcome to Suchipakari. Your booking is *confirmed* ✅\n\n🎟️ *{code}*\n🛖 Discovery Program · {stay}\n📅 Arrival: *{in}*\n📅 Departure: {out}\n👥 {ppl}\n💳 Deposit received: *{dep}*\n💵 Balance before arrival: *{bal}*",
+wa0q:"🚐 Your *private transfer from Quito* is booked. Could you share your pick-up address (or flight number)? We'll confirm the time right here.",
+wa0b:"🚐 Your *private transfer from Baños* is booked. Could you share your hotel address in Baños? We'll confirm the time right here.",
+wa0s:"🗺️ A few days before, we'll send you our location and directions. Ideally arrive around 12:30 for lunch and the afternoon excursion.",
+u0q:"Quito airport, morning flight 🙌",u0b:"Hotel in downtown Baños 🙌",u0s:"Perfect, thanks! 🙌",
+b0:"Noted! We'll message you with the exact pick-up time 👌",
+wa1:"Hi {first}! We'll see you in the jungle in 3 days 🌿\n\n🎒 *What to pack:*\n• Passport\n• Hat and sunscreen\n• Quick-dry long sleeves and pants\n• Light rain jacket\n• Comfortable shoes, long socks and water shoes\n• Swimsuit and flashlight\n\nWe provide rubber boots, life jackets and walking sticks 🥾",
+u1:"Great! Is it cold at night?",b1:"It's warm and humid 🌡️ It cools down a bit at night; a light sweater is all you need.",
+wa2q:"Tomorrow's the day! 🚐 Your driver picks you up at *{pick}* at the agreed time. The trip takes about 4 hours and you'll arrive in time for lunch.",
+wa2b:"Tomorrow's the day! 🚐 Your driver picks you up at *{pick}* at the agreed time. You'll arrive in time for lunch.",
+wa2s:"Tomorrow's the day! 🗺️ From Quito it's about 4 hours by bus, shared taxi or car. We expect you around *12:30* for lunch.\n\nHere's our location 👇",
+locT:"Suchipakari Amazon Lodge",locS:"Misahuallí · Tena · Napo",
+wa3:"Welcome, {first}! 🌿 Your welcome cocktail and lunch are waiting. Your guide will walk you through the afternoon plan. Anything you need, just message us here.",u3:"Almost there! 😍",
+mSubj:"Booking confirmed · Discovery Program · {code}",mH:"See you in the jungle, {first}!",mP:"Thank you for booking with Suchipakari. Here is your receipt:",
+mProg:"Program",mIn:"Arrival",mOut:"Departure",mPpl:"Guests",mArr:"Getting here",mDep:"Deposit paid",mBal:"Balance before arrival",
+mHow:"Your arrival",mHowQ:"Private transfer from Quito. Reply to our WhatsApp with your address or flight and we'll confirm the time.",mHowB:"Private transfer from Baños. Reply to our WhatsApp with your hotel and we'll confirm the time.",mHowS:"You're traveling on your own: about 4 hours from Quito. Ideally arrive around 12:30.",
+mBtn:"View my booking",mFt:"Automatic email · Check-in 1:00 pm · Check-out 11:00 am · Free cancellation up to 15 days before.",mFrom:"From",mTo:"To",
+wahSub:"Business account · online",wafoot:"Automatic messages ✓✓",arrQ:"Private transfer from Quito",arrB:"Private transfer from Baños",arrS:"Arriving on their own",
+pickQ:"Quito airport",pickB:"your hotel in Baños"
+}};
+
+/* ===== ESTADO ===== */
+const S={lang:'es',view:'client',step:1,nights:2,date:null,cabins:1,adults:2,arr:'quito',name:'',email:'',phone:'',clang:null,pay:'card',month:null,done:null,paying:false,newCount:0,errs:{},kidsInfo:false};
+const B=[];
+const $=s=>document.querySelector(s);
+const tr=(l,k,v={})=>{let s=T[l][k]??T.es[k]??k;if(typeof s!=='string')return s;for(const x in v)s=s.split('{'+x+'}').join(v[x]);return s};
+const t=(k,v)=>tr(S.lang,k,v);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const money=n=>'$'+(Math.round(n*100)/100).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+
+/* fechas */
+const d0=new Date();d0.setHours(0,0,0,0);
+const addD=(d,n)=>{const x=new Date(d);x.setDate(x.getDate()+n);return x};
+const key=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+const parse=k=>{const [y,m,d]=k.split('-').map(Number);return new Date(y,m-1,d)};
+const loc=l=>(l||S.lang)==='es'?'es-EC':'en-US';
+const cap=s=>s.charAt(0).toUpperCase()+s.slice(1);
+const fd=(k,o,l)=>cap(new Intl.DateTimeFormat(loc(l),o).format(parse(k)));
+const dLong=(k,l)=>fd(k,{weekday:'long',day:'numeric',month:'long'},l);
+const dShort=(k,l)=>fd(k,{weekday:'short',day:'numeric',month:'short'},l);
+const outK=(k,n)=>key(addD(parse(k),n));
+const maxD=addD(d0,180);
+const isHolNight=k=>{const d=parse(k);return d.getMonth()===11&&(d.getDate()===24||d.getDate()===31)};
+
+/* disponibilidad de ejemplo */
+const hash=s=>{let h=0;for(const c of s)h=(h*31+c.charCodeAt(0))>>>0;return h};
+const baseUsed=k=>{const h=hash('s'+k)%11;return h>=10?CABS:h>=7?h-3:h%4};
+const usedN=k=>Math.min(CABS,baseUsed(k)+B.filter(b=>{const a=parse(b.date),o=addD(a,b.nights),d=parse(k);return d>=a&&d<o}).reduce((s,b)=>s+b.cabins,0));
+const freeN=k=>CABS-usedN(k);
+const freeRange=(k,n)=>{let m=CABS;for(let i=0;i<n;i++)m=Math.min(m,freeN(key(addD(parse(k),i))));return m};
+
+/* precios */
+function calc(o){
+  const lines=[];
+  const stay=RATE*o.cabins*o.nights;
+  lines.push([tr(S.lang,'liStay',{c:o.cabins,n:o.nights}),stay]);
+  if(TR[o.arr])lines.push([tr(S.lang,'liTr')+' · '+(o.arr==='quito'?'Quito':'Baños'),TR[o.arr]]);
+  if(o.date){let h=0;for(let i=0;i<o.nights;i++)if(isHolNight(key(addD(parse(o.date),i))))h++;if(h)lines.push([tr(S.lang,'liHol',{a:o.adults*h}),HOL*o.adults*h])}
+  const total=lines.reduce((a,l)=>a+l[1],0),dep=Math.round(total/2*100)/100;
+  return{lines,total,dep,bal:Math.round((total-dep)*100)/100};
+}
+const pplText=(b,l)=>{const w=T[l||S.lang];return b.adults+' '+w.adultW[b.adults===1?0:1]+' · '+b.cabins+' '+w.cabW[b.cabins===1?0:1]};
+const nText=(n,l)=>tr(l||S.lang,n===1?'nights':'nightsP',{n});
+
+/* ===== EJEMPLOS ===== */
+(function seed(){
+  const rows=[['Gabriela M.','gabriela.ejemplo@correo.com',2,2,1,2,'quito','es'],
+              ['Daniel & Emma','daniel.sample@mail.com',4,3,1,2,'banos','en'],
+              ['Familia Pérez','perez.ejemplo@correo.com',6,1,2,4,'own','es'],
+              ['Lukas B.','lukas.sample@mail.com',9,2,1,2,'quito','en']];
+  rows.forEach((r,i)=>{
+    let off=r[2],k=key(addD(d0,off));while(baseUsed(k)>=CABS-1){off++;k=key(addD(d0,off))}
+    const o={date:k,nights:r[3],cabins:r[4],adults:r[5],arr:r[6]},c=calc(o);
+    B.push({id:i,code:'SP-'+(4120+i*53),name:r[0],email:r[1],phone:'+593 99 000 000'+(i+1),...o,total:c.total,dep:c.dep,bal:c.bal,lang:r[7],example:true,bookedAt:key(addD(d0,-(i+2)))});
+  });
+})();
+
+/* ===== I18N / VISTAS ===== */
+function applyI18n(){
+  document.documentElement.lang=S.lang;
+  document.querySelectorAll('[data-i]').forEach(e=>e.textContent=t(e.dataset.i));
+  document.querySelectorAll('[data-ih]').forEach(e=>e.innerHTML=t(e.dataset.ih));
+  $('#lES').className=S.lang==='es'?'on':'';$('#lEN').className=S.lang==='en'?'on':'';
+  $('#incl').innerHTML=t('inc').map(x=>`<li>${esc(x)}</li>`).join('');
+  $('#notIncl').innerHTML=t('noinc').map(x=>`<li>${esc(x)}</li>`).join('');
+  $('#kv').innerHTML=t('kv').map(x=>`<span>${esc(x[0])}</span><b>${esc(x[1])}</b>`).join('');
+  $('#hf').innerHTML=t('hf').map(x=>`<li>${x}</li>`).join('');
+  document.querySelector('#vAdmin h2').textContent=t('aT2');
+}
+function setView(v){
+  S.view=v;$('#vClient').hidden=v!=='client';$('#vAdmin').hidden=v!=='admin';
+  document.querySelectorAll('.seg button').forEach(b=>b.classList.toggle('on',b.dataset.view===v));
+  if(v==='admin'){S.newCount=0;renderAdmin()}
+  updateBadge();window.scrollTo({top:0,behavior:'smooth'});
+}
+function updateBadge(){const b=$('#badge');b.hidden=!S.newCount||S.view==='admin';b.textContent=S.newCount}
+document.querySelectorAll('.seg button').forEach(b=>b.onclick=()=>setView(b.dataset.view));
+$('#langBtn').onclick=()=>{S.lang=S.lang==='es'?'en':'es';applyI18n();renderClient();if(S.view==='admin')renderAdmin()};
+
+/* ===== VIAJERO ===== */
+function renderClient(){renderStepper();renderBody();renderSummary()}
+function renderStepper(){
+  if(S.done){$('#stepper').innerHTML='';return}
+  $('#stepper').innerHTML=[1,2,3,4,5,6].map(i=>`<div class="stp ${S.step===i?'on':''} ${S.step>i?'done':''}"><div class="bar"><i></i></div><span>${i}. ${t('st'+i)}</span></div>`).join('');
+}
+function renderBody(){
+  const el=$('#stepBody');
+  if(S.done)return renderDone(el);
+  el.innerHTML=[null,step1,step2,step3,step4,step5,step6][S.step]();
+}
+function step1(){
+  const P=[[1,'p1','p1s'],[2,'p2','p2s'],[3,'p3','p3s']];
+  return `<h2 class="t">${t('pT')}</h2><p class="sub">${t('pS')}</p>
+  <div class="prog">${P.map(p=>`<button class="pc ${S.nights===p[0]?'on':''}" onclick="setN(${p[0]})"><span class="n"><b>${p[0]+1}D</b><small>${p[0]}N</small></span><span class="tx"><b>${t(p[1])}${p[0]===2?`<span class="pop">${t('popular')}</span>`:''}</b><small>${t(p[2])}</small></span><span class="pr">${money(RATE*p[0])}<small>${t('perCab')}</small></span></button>`).join('')}</div>
+  <div class="room"><i>🛖</i><div><b>${t('room')}</b><small>${t('roomS')}</small></div></div>
+  <div class="actions"><button class="btn pri" onclick="go(2)">${t('next')} →</button></div>`;
+}
+function step2(){
+  if(!S.month){const f=addD(d0,2);S.month=new Date(f.getFullYear(),f.getMonth(),1)}
+  const m=S.month,first=new Date(m.getFullYear(),m.getMonth(),1),off=(first.getDay()+6)%7,nd=new Date(m.getFullYear(),m.getMonth()+1,0).getDate();
+  const mon=new Date(2024,0,1);
+  const dow=[...Array(7)].map((_,i)=>`<div>${cap(new Intl.DateTimeFormat(loc(),{weekday:'short'}).format(addD(mon,i)))}</div>`).join('');
+  let cells='';for(let i=0;i<off;i++)cells+='<div></div>';
+  const inR=d=>S.date&&d>parse(S.date)&&d<addD(parse(S.date),S.nights+1);
+  for(let d=1;d<=nd;d++){
+    const dt=new Date(m.getFullYear(),m.getMonth(),d),k=key(dt);
+    if(dt<=addD(d0,1)||dt>maxD){cells+=`<div class="day off">${d}</div>`;continue}
+    const f=freeRange(k,S.nights),cls=f<=0?'full':f<=2?'low':'';
+    const hol=[...Array(S.nights)].some((_,i)=>isHolNight(key(addD(dt,i))))?'hol':'';
+    cells+=`<button class="day ${cls} ${hol} ${S.date===k?'sel':inR(dt)?'rng':''}" onclick="pickDate('${k}')">${d}${f>0&&f<=2?`<small>${f}</small>`:''}</button>`;
+  }
+  const prevOff=m<=new Date(d0.getFullYear(),d0.getMonth(),1),nextOff=m>=new Date(maxD.getFullYear(),maxD.getMonth(),1);
+  const rng=S.date?`<div class="range"><div style="flex:1"><small>${t('arrive')}</small><b>${dShort(S.date)}</b></div><span class="ar">→</span><div style="flex:1"><small>${t('leave')}</small><b>${dShort(outK(S.date,S.nights))}</b></div></div><p class="note">🕐 ${t('chk')}</p>`:'';
+  return `<h2 class="t">${t('dT')}</h2><p class="sub">${t('dS')}</p>
+  <div class="cal"><div class="head"><button class="nav" ${prevOff?'disabled':''} onclick="moveMonth(-1)">‹</button><b>${cap(new Intl.DateTimeFormat(loc(),{month:'long',year:'numeric'}).format(m))}</b><button class="nav" ${nextOff?'disabled':''} onclick="moveMonth(1)">›</button></div>
+  <div class="dow">${dow}</div><div class="days">${cells}</div></div>
+  <div class="legend"><span><i style="background:#d5ead9"></i>${t('lgOk')}</span><span><i style="background:#ffe2a6"></i>${t('lgLow')}</span><span><i style="background:#e4e3dc"></i>${t('lgFull')}</span><span><i style="background:var(--sun2);border-radius:50%;width:7px;height:7px"></i>${t('lgHol')}</span></div>${rng}
+  <div class="actions"><button class="btn sec" onclick="go(1)">←</button><button class="btn pri" ${S.date?'':'disabled'} onclick="go(3)">${t('next')} →</button></div>`;
+}
+function step3(){
+  const f=freeRange(S.date,S.nights);
+  S.cabins=Math.min(S.cabins,Math.max(1,f));S.adults=Math.min(Math.max(S.adults,1),S.cabins*2);
+  const ctr=(k,v,mn,mx)=>`<div class="ctr"><button ${v<=mn?'disabled':''} onclick="chg('${k}',-1)">−</button><span>${v}</span><button ${v>=mx?'disabled':''} onclick="chg('${k}',1)">+</button></div>`;
+  return `<h2 class="t">${t('gT')}</h2><p class="sub">${t('gS')}</p>
+  <div class="row"><div><b>${t('cabins')}</b><small>${t('cabinsS')}</small></div>${ctr('cabins',S.cabins,1,Math.min(f,4))}</div>
+  <div class="row" style="border:0"><div><b>${t('adults')}</b><small>${t('adultsS')}</small></div>${ctr('adults',S.adults,S.cabins,S.cabins*2)}</div>
+  <div class="hint"><span style="font-size:20px">👨‍👩‍👧</span><div><b style="display:block">${t('kidsH')}</b><button onclick="S.kidsInfo=!S.kidsInfo;renderBody()">${t('kidsB')}</button>${S.kidsInfo?`<p style="margin-top:6px;color:var(--muted)">${t('kidsMsg')}</p>`:''}</div></div>
+  <div class="actions"><button class="btn sec" onclick="go(2)">←</button><button class="btn pri" onclick="go(4)">${t('next')} →</button></div>`;
+}
+function step4(){
+  const O=[['quito','🛫','o1','o1s'],['banos','⛰️','o2','o2s'],['own','🚌','o3','o3s']];
+  return `<h2 class="t">${t('aT')}</h2><p class="sub">${t('aS')}</p>
+  ${O.map(o=>`<button class="opt ${S.arr===o[0]?'on':''}" onclick="S.arr='${o[0]}';renderClient()"><span class="radio"></span><span class="ic">${o[1]}</span><span class="tx"><b>${t(o[2])}</b><small>${t(o[3])}</small></span><span class="pr">${TR[o[0]]?money(TR[o[0]]):''}</span></button>`).join('')}
+  <div class="actions"><button class="btn sec" onclick="go(3)">←</button><button class="btn pri" onclick="go(5)">${t('next')} →</button></div>`;
+}
+function step5(){
+  if(!S.clang)S.clang=S.lang;
+  const f=(id,label,type,ph,val)=>`<div class="fld ${S.errs[id]?'err':''}"><label>${label}</label><input type="${type}" value="${esc(val)}" placeholder="${ph}" oninput="S.${id}=this.value" autocomplete="off">${S.errs[id]?`<div class="em">${S.errs[id]}</div>`:''}</div>`;
+  return `<h2 class="t">${t('yT')}</h2><p class="sub">${t('yS')}</p>
+  <button class="link" onclick="autofill()">${t('autofill')}</button>
+  ${f('name',t('name'),'text','Ej. Andrea Torres',S.name)}${f('email',t('email'),'email','nombre@correo.com',S.email)}${f('phone',t('phone'),'tel','+593 99 123 4567',S.phone)}
+  <div class="fld"><label>${t('confLang')}</label><div class="tog"><button class="${S.clang==='es'?'on':''}" onclick="S.clang='es';renderBody()">Español</button><button class="${S.clang==='en'?'on':''}" onclick="S.clang='en';renderBody()">English</button></div></div>
+  <div class="actions"><button class="btn sec" onclick="go(4)">←</button><button class="btn pri" onclick="validate()">${t('next')} →</button></div>`;
+}
+function step6(){
+  const c=calc(S);
+  return `<h2 class="t">${t('payT')}</h2><p class="sub">${t('payS')}</p>
+  <div class="tog" style="margin-bottom:6px"><button class="${S.pay==='card'?'on':''}" onclick="S.pay='card';renderBody()">💳 ${t('card')}</button><button class="${S.pay==='bank'?'on':''}" onclick="S.pay='bank';renderBody()">🏦 ${t('transfer')}</button></div>
+  <div class="mock"><small>${S.pay==='card'?t('card'):t('transfer')} · demo</small><b>•••• •••• •••• 4242</b></div>
+  <div class="note">🔒 ${t('simNote')}</div>
+  <div class="actions"><button class="btn sec" onclick="go(5)" ${S.paying?'disabled':''}>←</button><button class="btn pri" onclick="doPay()" ${S.paying?'disabled':''}>${S.paying?`<span class="spin"></span> ${t('processing')}`:t('pay',{a:money(c.dep)})}</button></div>`;
+}
+const miniArt=`<svg viewBox="0 0 300 100" preserveAspectRatio="xMidYMid slice" width="100%" height="100%"><rect width="300" height="100" fill="#c76b3a"/><rect y="40" width="300" height="60" fill="#2d5b4a"/><circle cx="210" cy="34" r="16" fill="#ffd391" opacity=".8"/><path d="M0 60 C60 45 110 62 170 50 C230 40 260 58 300 50 V100 H0Z" fill="#1d4b3b"/><path d="M0 78 C80 70 160 86 300 74 V86 C160 96 80 82 0 90Z" fill="#7cc3c9" opacity=".45"/><path d="M0 88 C100 82 200 96 300 88 V100 H0Z" fill="#0b2a20"/></svg>`;
+function renderSummary(){
+  const c=calc(S);
+  $('#summary').innerHTML=`<div class="pic">${miniArt}</div><h3 class="serif" style="font-size:19px">${t('sumT')}</h3>
+  <div class="ln"><span>${t('st1')}</span><b>Discovery ${t('days',{d:S.nights+1,n:S.nights})}</b></div>
+  <div class="ln"><span>${t('st2')}</span><b>${S.date?dShort(S.date)+' → '+dShort(outK(S.date,S.nights)):t('none')}</b></div>
+  <div class="ln"><span>${t('st3')}</span><b>${pplText(S)}</b></div>
+  <div class="ln"><span>${t('st4')}</span><b>${S.arr==='quito'?t('arrQ'):S.arr==='banos'?t('arrB'):t('arrS')}</b></div>
+  <div class="tot">${c.lines.map(l=>`<div class="ln" style="font-size:13px;font-weight:500;color:var(--muted)"><span>${l[0]}</span><b>${money(l[1])}</b></div>`).join('')}<div class="ln"><span>${t('total')}</span><span>${money(c.total)}</span></div><div class="ln" style="font-size:11.5px;font-weight:500;color:var(--muted);padding:0"><span>${t('taxes')}</span></div></div>
+  <div class="dep"><div class="ln"><span>${t('deposit')}</span><span>${money(c.dep)}</span></div><div class="ln s"><span>${t('balance')}</span><span>${money(c.bal)}</span></div></div>
+  <div class="pol">✓ ${t('policy')}</div>`;
+}
+function setN(n){S.nights=n;if(S.date&&freeRange(S.date,n)<=0)S.date=null;renderClient()}
+function pickDate(k){S.date=k;renderClient()}
+function moveMonth(d){S.month=new Date(S.month.getFullYear(),S.month.getMonth()+d,1);renderBody()}
+function go(n){S.step=n;renderClient();document.getElementById('book').scrollIntoView({behavior:'smooth',block:'start'})}
+function chg(k,d){S[k]+=d;if(k==='cabins'){S.adults=Math.min(Math.max(S.adults,S.cabins),S.cabins*2);if(d>0&&S.adults<S.cabins*2)S.adults=S.cabins*2}renderClient()}
+function autofill(){S.name='Andrea Torres (ejemplo)';S.email='andrea.ejemplo@correo.com';S.phone='+593 99 123 4567';S.errs={};renderBody()}
+function validate(){
+  S.errs={};
+  if(S.name.trim().length<2)S.errs.name=t('errName');
+  if(!/^\S+@\S+\.\S+$/.test(S.email.trim()))S.errs.email=t('errEmail');
+  if(S.phone.replace(/\D/g,'').length<7)S.errs.phone=t('errPhone');
+  if(Object.keys(S.errs).length)return renderBody();
+  go(6);
+}
+function doPay(){
+  S.paying=true;renderBody();
+  setTimeout(()=>{
+    const c=calc(S);
+    const b={id:100+B.length,code:'SP-'+(5000+Math.floor(Math.random()*4999)),name:S.name.trim(),email:S.email.trim(),phone:S.phone.trim(),date:S.date,nights:S.nights,cabins:S.cabins,adults:S.adults,arr:S.arr,total:c.total,dep:c.dep,bal:c.bal,lang:S.clang||S.lang,example:false,isNew:true,bookedAt:key(d0)};
+    B.unshift(b);S.done=b;S.paying=false;S.newCount++;updateBadge();renderClient();
+    document.getElementById('book').scrollIntoView({behavior:'smooth',block:'start'});
+  },1600);
+}
+function reset(){Object.assign(S,{step:1,date:null,nights:2,cabins:1,adults:2,arr:'quito',name:'',email:'',phone:'',clang:null,done:null,errs:{},month:null,kidsInfo:false});renderClient();document.getElementById('book').scrollIntoView({behavior:'smooth'})}
+
+/* ===== CONFIRMACIÓN ===== */
+function renderDone(el){
+  const b=S.done;
+  el.innerHTML=`<div class="center"><svg class="ok" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="35" stroke="#1e9a5b" stroke-width="6"/><path d="M24 41l12 12 21-24" stroke="#1e9a5b" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <h2 class="t">${t('done')}</h2><p class="sub">${t('doneS')}</p></div>
+  <div class="voucher"><div class="qr">${qr(b.code)}</div><div><span class="code">${b.code}</span><h4>${t('vT')} · ${t('days',{d:b.nights+1,n:b.nights})}</h4><p>${dShort(b.date)} → ${dShort(outK(b.date,b.nights))}</p><p>${pplText(b)}</p></div></div>
+  <div id="msgMount"></div>
+  <div class="actions" style="flex-wrap:wrap"><button class="btn sec" onclick="reset()">${t('another')}</button><button class="btn pri" onclick="setView('admin')">${t('seeAdmin')}</button></div>`;
+  msgView(b,$('#msgMount'));
+}
+function qr(code){
+  let h=hash(code),s='';const n=9,u=5;
+  for(let y=0;y<n;y++)for(let x=0;x<n;x++){const fin=(x<3&&y<3)||(x>5&&y<3)||(x<3&&y>5);h=(h*1103515245+12345)>>>0;if(fin||(h>>16)%2)s+=`<rect x="${x*u}" y="${y*u}" width="${u}" height="${u}" rx="1"/>`}
+  return `<svg width="64" height="64" viewBox="0 0 45 45" fill="#0f3d2e">${s}</svg>`;
+}
+
+/* ===== MENSAJES ===== */
+let TOK=0;
+function msgView(b,mount,tab='wa',stage=0){
+  const J=[['j0','j0b'],['j1','j1b'],['j2','j2b'],['j3','j3b']];
+  mount.innerHTML=`<div class="tabs"><button class="${tab==='wa'?'on':''}" data-t="wa">💬 ${t('tWa')}</button><button class="${tab==='mail'?'on':''}" data-t="mail">✉️ ${t('tMail')}</button></div>
+  ${tab==='wa'?`<div class="journey">${J.map((j,i)=>`<button class="jn ${stage===i?'on':''}" data-s="${i}"><small>${t(j[0])}</small><b>${t(j[1])}</b></button>`).join('')}</div>`:''}<div class="mv"></div>`;
+  mount.querySelectorAll('.tabs button').forEach(x=>x.onclick=()=>msgView(b,mount,x.dataset.t,0));
+  mount.querySelectorAll('.jn').forEach(x=>x.onclick=()=>msgView(b,mount,'wa',+x.dataset.s));
+  const mv=mount.querySelector('.mv');
+  if(tab==='mail')mv.innerHTML=emailHTML(b);else showChat(mv,b,stage);
+}
+function vars(b){const L=b.lang;return{first:b.name.split(/[\s(]/)[0],code:b.code,stay:tr(L,'days',{d:b.nights+1,n:b.nights}),in:dLong(b.date,L),out:dLong(outK(b.date,b.nights),L),ppl:pplText(b,L),dep:money(b.dep),bal:money(b.bal),pick:b.arr==='quito'?tr(L,'pickQ'):tr(L,'pickB')}}
+const wa=s=>esc(s).replace(/\*(.+?)\*/g,'<b>$1</b>').replace(/\n/g,'<br>');
+function script(b,stage){
+  const L=b.lang,v=vars(b),x=k=>tr(L,k,v),a=b.arr;
+  const sendDay=[b.bookedAt,key(addD(parse(b.date),-3)),key(addD(parse(b.date),-1)),b.date][stage];
+  const sep=['sep',dShort(sendDay,L)];
+  if(stage===0)return[sep,['biz',x('wa0a'),'10:42'],['biz',x(a==='quito'?'wa0q':a==='banos'?'wa0b':'wa0s'),'10:42'],['usr',x(a==='quito'?'u0q':a==='banos'?'u0b':'u0s'),'10:51'],...(a!=='own'?[['biz',x('b0'),'10:52']]:[])];
+  if(stage===1)return[sep,['biz',x('wa1'),'09:00'],['usr',x('u1'),'09:20'],['biz',x('b1'),'09:21']];
+  if(stage===2)return[sep,['biz',x(a==='quito'?'wa2q':a==='banos'?'wa2b':'wa2s'),'17:00'],...(a==='own'?[['loc','', '17:00']]:[]),['usr',x('u0s'),'17:12']];
+  return[sep,['usr',x('u3'),'12:05'],['biz',x('wa3'),'12:06']];
+}
+function showChat(mv,b,stage){
+  const L=b.lang,tok=++TOK,msgs=script(b,stage);
+  mv.innerHTML=`<div class="phone"><div class="wah"><div class="av">S</div><div><b>Suchipakari Amazon Lodge</b><small>${tr(L,'wahSub')}</small></div></div><div class="chat"></div><div class="wafoot"><span>${tr(L,'wafoot')}</span><span>🎙️</span></div></div>`;
+  const body=mv.querySelector('.chat');let i=0;
+  const add=m=>{
+    const d=document.createElement('div');
+    if(m[0]==='sep'){d.className='dsep';d.textContent=m[1]}
+    else if(m[0]==='loc'){d.className='msg biz loc';d.innerHTML=`<div class="map"><svg viewBox="0 0 250 110" width="100%" height="100%"><rect width="250" height="110" fill="#d6ead9"/><path d="M-10 70 C40 50 90 85 140 62 C190 40 220 70 260 55" stroke="#8cc7d0" stroke-width="12" fill="none"/><path d="M0 20 L250 95" stroke="#fff" stroke-width="5"/><path d="M60 0 L110 110" stroke="#fff" stroke-width="3"/><circle cx="150" cy="58" r="16" fill="#d64545" opacity=".2"/><path d="M150 36c-7 0-12 5-12 12 0 9 12 20 12 20s12-11 12-20c0-7-5-12-12-12z" fill="#d64545"/><circle cx="150" cy="48" r="4" fill="#fff"/></svg></div><div class="cap"><b>📍 ${esc(tr(L,'locT'))}</b><small>${esc(tr(L,'locS'))}</small></div><span class="tm">${m[2]}</span>`}
+    else{d.className='msg '+m[0];d.innerHTML=wa(m[1])+`<span class="tm">${m[2]}${m[0]==='usr'?' ✓✓':''}</span>`}
+    body.appendChild(d);
+  };
+  const next=()=>{
+    if(tok!==TOK||i>=msgs.length)return;
+    const m=msgs[i];
+    if(m[0]==='sep'){add(m);i++;return setTimeout(next,200)}
+    if(m[0]!=='usr'){const ty=document.createElement('div');ty.className='typing';ty.innerHTML='<i></i><i></i><i></i>';body.appendChild(ty);
+      setTimeout(()=>{if(tok!==TOK)return;ty.remove();add(m);i++;setTimeout(next,450)},700)}
+    else setTimeout(()=>{if(tok!==TOK)return;add(m);i++;setTimeout(next,300)},650);
+  };
+  next();
+}
+function emailHTML(b){
+  const L=b.lang,v=vars(b),w=k=>tr(L,k,v);
+  const how=b.arr==='quito'?w('mHowQ'):b.arr==='banos'?w('mHowB'):w('mHowS');
+  const arrL=b.arr==='quito'?w('arrQ'):b.arr==='banos'?w('arrB'):w('arrS');
+  return `<div class="mail"><div class="mh"><b>${esc(w('mSubj'))}</b>${w('mFrom')}: Suchipakari Amazon Lodge · ${w('mTo')}: ${esc(b.email)}</div>
+  <div class="banner">${miniArt}</div>
+  <div class="mb"><h3>${esc(w('mH'))}</h3><p>${esc(w('mP'))}</p>
+  <table><tr><td>${w('mProg')}</td><td>Discovery Program · ${esc(v.stay)}</td></tr><tr><td>${w('mIn')}</td><td>${esc(v.in)} · 1:00 pm</td></tr><tr><td>${w('mOut')}</td><td>${esc(v.out)} · 11:00 am</td></tr><tr><td>${w('mPpl')}</td><td>${esc(v.ppl)}</td></tr><tr><td>${w('mArr')}</td><td>${esc(arrL)}</td></tr><tr><td>${w('mDep')}</td><td>${v.dep}</td></tr><tr><td>${w('mBal')}</td><td>${v.bal}</td></tr></table>
+  <h4>🗺️ ${w('mHow')}</h4><p style="font-size:13.5px">${esc(how)}</p>
+  <div style="display:flex;justify-content:center;margin:12px 0 4px">${qr(b.code)}</div><p style="text-align:center;font-weight:800;letter-spacing:2px">${b.code}</p>
+  <span class="cta">${w('mBtn')}</span></div><div class="ft">${esc(w('mFt'))}</div></div>`;
+}
+
+/* ===== LODGE ===== */
+function renderAdmin(){
+  const dep=B.reduce((a,b)=>a+b.dep,0),trN=B.filter(b=>b.arr!=='own').length,nw=B.filter(b=>b.isNew).length;
+  const sent=B.reduce((a,b)=>a+1+(parse(b.date)<=addD(d0,3)?1:0)+(parse(b.date)<=addD(d0,1)?1:0),0);
+  $('#kpis').innerHTML=[['kRes',B.length,nw?t('kNew',{n:nw}):''],['kDep',money(dep),''],['kTr',trN,''],['kMsg',sent,'']].map(k=>`<div class="kpi"><small>${t(k[0])}</small><b>${k[1]}</b><em>${k[2]}</em></div>`).join('');
+  const trTag=b=>b.arr==='quito'?`<span class="tr q">${t('trQ')}</span>`:b.arr==='banos'?`<span class="tr b">${t('trB')}</span>`:`<span class="tr s">${t('trS')}</span>`;
+  const sorted=[...B].sort((a,b)=>(b.isNew?1:0)-(a.isNew?1:0)||a.date.localeCompare(b.date));
+  $('#bkList').innerHTML=sorted.map(b=>`<button class="bk ${b.isNew?'new':''}" onclick="openBk(${b.id})"><div class="av2"><b>${b.nights+1}D</b><small>${b.nights}N</small></div><div class="m"><div class="nm">${esc(b.name)}${b.example?`<span class="tag ex">${t('ex')}</span>`:''}${b.isNew?`<span class="tag nw">${t('nw')}</span>`:''}</div><small>${dShort(b.date)} → ${dShort(outK(b.date,b.nights))} · ${pplText(b)}</small><br>${trTag(b)}</div><div class="am"><b>${money(b.total)}</b><small>${money(b.bal)} ${t('bal')}</small></div></button>`).join('');
+  const up=[...B].sort((a,b)=>a.date.localeCompare(b.date)).slice(0,5);
+  $('#arr').innerHTML=up.map(b=>{const d=parse(b.date);return `<li><div class="dt"><b>${d.getDate()}</b><small>${new Intl.DateTimeFormat(loc(),{month:'short'}).format(d)}</small></div><div class="m"><b>${esc(b.name)}</b><small>${pplText(b)} · ${b.arr==='quito'?t('arrQ'):b.arr==='banos'?t('arrB'):t('arrS')}</small></div></li>`}).join('');
+  const nb=B.find(b=>b.isNew)||B[0];
+  const st=[['💬','sc0',nb.bookedAt],['🎒','sc1',key(addD(parse(nb.date),-3))],['🗺️','sc2',key(addD(parse(nb.date),-1))],['🌿','sc3',nb.date]];
+  $('#sched').innerHTML=st.map(s=>{const done=parse(s[2])<=d0;return `<li><span class="ic">${s[0]}</span><div>${t(s[1])} · ${esc(nb.name)}<small>${dShort(s[2])} · ${nb.code}</small></div><span class="st ${done?'sent':'prog'}">${done?'✓ '+t('sent'):'⏱ '+t('prog')}</span></li>`}).join('');
+}
+function openBk(id){
+  const b=B.find(x=>x.id===id);if(!b)return;
+  $('#modal').innerHTML=`<div class="ov" onclick="if(event.target===this)closeM()"><div class="sheet"><button class="x" onclick="closeM()">✕</button><h3 style="font-size:18px">${esc(b.name)} <span style="color:var(--muted);font-weight:600;font-size:13px">${b.code}</span></h3><p class="sub" style="margin:4px 0 8px">${dShort(b.date)} → ${dShort(outK(b.date,b.nights))} · ${pplText(b)} · ${money(b.total)}</p><div id="mm"></div></div></div>`;
+  msgView(b,$('#mm'));
+}
+function closeM(){TOK++;$('#modal').innerHTML=''}
+
+applyI18n();renderClient();
+</script>
+</body>
+</html>
