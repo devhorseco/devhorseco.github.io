@@ -1,0 +1,685 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Santa Rita · Pueblo del Cacao y Chocolate (demo)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,800;1,9..144,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#2a1a12;--muted:#7a675c;--line:#eadfd4;--bg:#fbf6ef;--card:#fff;--cacao:#4a2516;--cacao2:#7a3b1f;--pod:#c8742c;--gold:#e8b04a;--leaf:#3d7a4a;--leaf2:#5c9a5f;--ok:#2f8a4f;--danger:#c4453a;--r:22px;--sh:0 14px 36px -18px rgba(74,37,22,.35)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.45;padding-bottom:40px;overflow-x:hidden}
+h1,h2,h3.serif,.serif{font-family:Fraunces,Georgia,serif}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+input,select,textarea{font:inherit;color:inherit}
+[hidden]{display:none!important}
+.demobar{background:#22120b;color:#efd9c4;font-size:11.5px;padding:7px 14px;text-align:center;display:flex;gap:8px;justify-content:center;align-items:center;line-height:1.35}
+.demobar .dot{width:7px;height:7px;border-radius:50%;background:var(--gold);flex:none;animation:pulse 1.8s infinite}
+@keyframes pulse{50%{opacity:.35}}
+header.top{position:sticky;top:0;z-index:30;background:rgba(251,246,239,.85);backdrop-filter:saturate(1.6) blur(14px);-webkit-backdrop-filter:saturate(1.6) blur(14px);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px;padding:10px 14px}
+.brand{display:flex;align-items:center;gap:10px;margin-right:auto;min-width:0}
+.brand svg{width:34px;height:34px;flex:none}
+.brand b{display:block;font-size:15px;white-space:nowrap}
+.brand small{display:block;font-size:11px;color:var(--muted);margin-top:-2px}
+.seg{position:relative;display:flex;background:#f0e6da;border-radius:999px;padding:3px}
+.seg button{padding:7px 13px;border-radius:999px;font-size:13px;font-weight:600;color:var(--muted);transition:.2s;white-space:nowrap}
+.seg button.on{background:#fff;color:var(--ink);box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.badge{position:absolute;top:-5px;right:-4px;background:var(--danger);color:#fff;font-style:normal;font-size:10.5px;font-weight:700;min-width:18px;height:18px;border-radius:9px;display:grid;place-items:center;padding:0 5px;animation:pop .4s}
+@keyframes pop{from{transform:scale(0)}}
+.lang{white-space:nowrap;background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 12px;font-size:12px;font-weight:700}
+.lang span{opacity:.4}.lang span.on{opacity:1;color:var(--cacao2)}
+@media(max-width:520px){.brand small{display:none}.seg button{padding:7px 10px}.lang{padding:7px 9px}.brand b{font-size:14px}}
+@media(max-width:430px){.brand div{display:none}}
+.wrap{max-width:1100px;margin:0 auto;padding:0 14px}
+/* hero */
+.hero{position:relative;margin:14px auto 0;max-width:1100px;border-radius:30px;overflow:hidden;color:#fff;min-height:400px;display:flex;align-items:flex-end;box-shadow:var(--sh);background:#3a1d10}
+@media(max-width:1128px){.hero{margin:14px 14px 0}}
+.heroart{position:absolute;inset:0;width:100%;height:100%}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(34,18,11,0) 25%,rgba(34,18,11,.88) 100%)}
+.hero .in{position:relative;z-index:2;padding:26px 22px 24px;width:100%}
+.kw{font-family:Fraunces,serif;font-style:italic;font-size:15px;color:#ffd58a;margin-bottom:6px}
+.eyebrow{display:inline-flex;gap:7px;align-items:center;font-size:11.5px;letter-spacing:1.3px;text-transform:uppercase;background:rgba(255,255,255,.14);backdrop-filter:blur(8px);padding:6px 12px;border-radius:999px;font-weight:600}
+.hero h1{font-size:clamp(34px,7.4vw,62px);line-height:1;letter-spacing:-1px;margin:12px 0 10px;font-weight:800;max-width:780px}
+.hero h1 em{font-style:italic;font-weight:600;color:#ffd58a}
+.hero p{max-width:580px;opacity:.92;font-size:15px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}
+.chip{font-size:12.5px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.22);padding:6px 11px;border-radius:999px;backdrop-filter:blur(6px)}
+.heroRow{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,var(--gold),var(--pod));color:#2a1300;font-weight:800;padding:14px 22px;border-radius:16px;font-size:15px;box-shadow:0 10px 22px -8px rgba(200,116,44,.75);transition:.2s;text-decoration:none}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost{background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.3);box-shadow:none;backdrop-filter:blur(6px)}
+.btn.sec{background:#fff;color:var(--ink);box-shadow:0 2px 10px rgba(0,0,0,.08);border:1px solid var(--line)}
+.btn.pri{background:linear-gradient(135deg,var(--cacao),var(--cacao2));color:#fff;box-shadow:0 10px 22px -10px rgba(74,37,22,.8)}
+.btn[disabled]{opacity:.45;pointer-events:none}
+.drip{animation:drip 3.5s ease-in-out infinite}@keyframes drip{50%{transform:translateY(6px)}}
+.leafs{animation:sway 6s ease-in-out infinite alternate;transform-origin:50% 100%}@keyframes sway{to{transform:rotate(2deg)}}
+/* sections */
+.sh{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:30px 0 12px}
+.sh h2{font-size:clamp(24px,4vw,32px);letter-spacing:-.5px}
+.sh p{color:var(--muted);font-size:13.5px;max-width:520px}
+.xp{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}
+.x{background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:var(--sh);display:flex;flex-direction:column;transition:.25s}
+.x:hover{transform:translateY(-3px)}
+.x .art{height:118px;position:relative}
+.x .art svg{width:100%;height:100%;display:block}
+.x .art .tg{position:absolute;left:12px;top:12px;font-size:10.5px;font-weight:800;padding:4px 9px;border-radius:999px;letter-spacing:.4px;text-transform:uppercase}
+.tg.star{background:var(--gold);color:#2a1300}.tg.q{background:rgba(255,255,255,.9);color:var(--cacao)}
+.x .bd{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.x h3{font-family:Fraunces,serif;font-size:19px;line-height:1.15}
+.x p{color:var(--muted);font-size:13.5px;flex:1}
+.x ul{list-style:none;font-size:13px;display:grid;gap:3px;margin:4px 0}
+.x ul li:before{content:"✓ ";color:var(--ok);font-weight:800}
+.x .ft{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:6px}
+.x .pr b{font-size:22px;letter-spacing:-.5px}.x .pr small{color:var(--muted);font-size:12px;margin-left:4px}
+.x .pr.q b{font-size:14px;color:var(--muted)}
+.mini{padding:9px 14px;border-radius:12px;font-weight:700;font-size:13px;background:var(--cacao);color:#fff}
+.mini.alt{background:#f3ebe1;color:var(--cacao)}
+/* booking */
+.grid{display:grid;gap:16px;grid-template-columns:minmax(0,1fr)}
+.grid>*,.two>*{min-width:0}
+@media(min-width:920px){.grid{grid-template-columns:minmax(0,1fr) 340px;align-items:start}.sticky{position:sticky;top:76px}}
+.card{background:var(--card);border-radius:var(--r);box-shadow:var(--sh);border:1px solid var(--line);padding:20px}
+.mode{display:flex;background:#f0e6da;border-radius:16px;padding:4px;margin-bottom:18px}
+.mode button{flex:1;padding:11px 8px;border-radius:12px;font-weight:700;font-size:13.5px;color:var(--muted)}
+.mode button.on{background:#fff;color:var(--ink);box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.stepper{display:flex;gap:5px;margin-bottom:18px}
+.stp{flex:1;display:flex;flex-direction:column;gap:6px;font-size:11px;font-weight:700;color:var(--muted);min-width:0}
+.stp span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.stp .bar{height:5px;border-radius:5px;background:#efe5d9;overflow:hidden}
+.stp .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--cacao2),var(--pod));transition:.4s}
+.stp.on{color:var(--ink)}.stp.on .bar i,.stp.done .bar i{width:100%}.stp.done{color:var(--cacao2)}
+h2.t{font-size:23px;letter-spacing:-.3px;margin-bottom:4px}
+p.sub{color:var(--muted);font-size:13.5px;margin-bottom:14px}
+.cal .head{display:flex;align-items:center;justify-content:space-between;margin:6px 0 10px}
+.cal .head b{font-size:15px}
+.nav{width:36px;height:36px;border-radius:12px;background:#f3ebe1;font-size:18px;font-weight:700}
+.nav[disabled]{opacity:.3;pointer-events:none}
+.dow,.days{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
+.dow{font-size:11px;color:var(--muted);text-align:center;margin-bottom:5px;font-weight:600}
+.day{aspect-ratio:1/1;border-radius:13px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:700;font-size:14px;background:#f6efe6;color:var(--cacao);transition:.15s}
+.day small{font-size:8.5px;font-weight:700;opacity:.75;margin-top:1px}
+.day.grp{background:#fbe7c6;color:#7a4a05}
+.day.off{background:transparent;color:#cbbfb3;pointer-events:none}
+.day.sel{background:linear-gradient(135deg,var(--cacao),var(--cacao2));color:#fff;transform:scale(1.06);box-shadow:0 8px 18px -8px var(--cacao)}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:11.5px;color:var(--muted);margin:12px 0}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:4px;margin-right:5px;vertical-align:-1px}
+.slots{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:6px}
+.slot{padding:11px 4px;border-radius:12px;border:1.5px solid var(--line);font-weight:700;font-size:13.5px;background:#fff}
+.slot.on{border-color:var(--cacao2);background:#fbf1e8;color:var(--cacao)}
+.lbl{font-size:12px;font-weight:700;color:var(--muted);margin:14px 0 6px;display:block}
+.row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 0;border-bottom:1px solid var(--line)}
+.row b{display:block;font-size:15px}.row small{color:var(--muted);font-size:12.5px}
+.ctr{display:flex;align-items:center;gap:12px}
+.ctr button{width:38px;height:38px;border-radius:12px;background:#f3ebe1;font-size:20px;font-weight:700;transition:.15s}
+.ctr button:active{transform:scale(.9)}
+.ctr button[disabled]{opacity:.35;pointer-events:none}
+.ctr span{min-width:22px;text-align:center;font-weight:800;font-size:17px}
+.addon{display:flex;align-items:center;gap:12px;padding:12px;border:1.5px solid var(--line);border-radius:16px;margin-bottom:8px;width:100%;text-align:left;background:#fff;transition:.2s}
+.addon.on{border-color:var(--cacao2);background:#fbf1e8}
+.addon .ic{width:38px;height:38px;border-radius:12px;background:#f3ebe1;display:grid;place-items:center;font-size:19px;flex:none}
+.addon .tx{flex:1;min-width:0}.addon b{display:block;font-size:14px}.addon small{color:var(--muted);font-size:12px}
+.cb{width:22px;height:22px;border-radius:7px;border:2px solid #d4c4b4;flex:none;display:grid;place-items:center;color:#fff;font-size:13px;font-weight:800}
+.addon.on .cb{background:var(--cacao2);border-color:var(--cacao2)}
+.hint{display:flex;gap:10px;align-items:flex-start;background:#fbf1e8;border-radius:14px;padding:12px;font-size:13px;margin-top:10px;color:#6a4a36}
+.warn{background:#fff1ef;color:#a3352b;border-radius:12px;padding:10px 12px;font-size:13px;margin-top:10px}
+.fld{margin-bottom:12px}
+.fld label{display:block;font-size:12px;font-weight:700;color:var(--muted);margin-bottom:5px}
+.fld input,.fld select,.fld textarea{width:100%;padding:13px 14px;border-radius:14px;border:1.5px solid var(--line);background:#fffcf8;font-size:15px;outline:0;transition:.2s}
+.fld textarea{min-height:76px;resize:vertical}
+.fld input:focus,.fld select:focus,.fld textarea:focus{border-color:var(--cacao2);background:#fff;box-shadow:0 0 0 4px rgba(122,59,31,.1)}
+.fld.err input{border-color:var(--danger)}.fld .em{color:var(--danger);font-size:12px;margin-top:4px}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tog{display:flex;background:#f0e6da;border-radius:14px;padding:4px}
+.tog button{flex:1;padding:10px;border-radius:11px;font-weight:700;font-size:13.5px;color:var(--muted)}
+.tog button.on{background:#fff;color:var(--ink);box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.chipsel{display:flex;flex-wrap:wrap;gap:6px}
+.chipsel button{padding:8px 12px;border-radius:999px;border:1.5px solid var(--line);font-size:13px;font-weight:600;background:#fff}
+.chipsel button.on{background:var(--cacao);border-color:var(--cacao);color:#fff}
+.link{color:var(--cacao2);font-size:13px;font-weight:700;text-decoration:underline;margin:2px 0 12px;display:inline-block}
+.actions{display:flex;gap:10px;margin-top:18px}.actions .btn{flex:1}.actions .btn.sec{flex:0 0 auto}
+.mock{border-radius:18px;padding:18px;color:#fff;background:linear-gradient(135deg,#4a2516,#7a3b1f 55%,#c8742c);margin:12px 0;position:relative;overflow:hidden}
+.mock:after{content:"";position:absolute;right:-30px;top:-30px;width:130px;height:130px;border-radius:50%;background:rgba(255,255,255,.12)}
+.mock small{opacity:.8;font-size:11px;letter-spacing:1px;text-transform:uppercase}.mock b{display:block;font-size:18px;letter-spacing:1.5px;margin-top:10px}
+.note{font-size:12px;color:var(--muted);display:flex;gap:6px;margin-top:8px}
+.spin{width:18px;height:18px;border:3px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:sp .7s linear infinite}@keyframes sp{to{transform:rotate(360deg)}}
+.sum h3{font-family:Fraunces,serif;font-size:19px;margin-bottom:10px}
+.sum .ln{display:flex;justify-content:space-between;gap:10px;font-size:13.5px;padding:5px 0;color:var(--muted)}.sum .ln b{color:var(--ink);text-align:right}
+.sum .tot{border-top:1px dashed var(--line);margin-top:8px;padding-top:10px}
+.sum .tot .ln.big{font-size:15px;color:var(--ink);font-weight:800}
+.sum .dep{background:#fbf1e8;border-radius:14px;padding:12px;margin-top:10px}.sum .dep .ln{color:var(--cacao2);font-weight:800;font-size:15px}.sum .dep .ln.s{color:var(--muted);font-weight:600;font-size:13px}
+.sum .q{font-size:12.5px;color:#7a4a05;background:#fdf3df;border-radius:12px;padding:10px;margin-top:10px}
+.sum .imp{display:flex;gap:10px;align-items:center;background:#eef6ef;color:#2c5b36;border-radius:14px;padding:12px;margin-top:12px;font-size:12.5px}
+.sum .imp b{font-size:13.5px;display:block}
+/* done */
+.ok{width:76px;height:76px;margin:0 auto 10px;display:block}
+.ok circle{stroke-dasharray:220;stroke-dashoffset:220;animation:dr .7s .1s forwards}.ok path{stroke-dasharray:60;stroke-dashoffset:60;animation:dr .5s .6s forwards}@keyframes dr{to{stroke-dashoffset:0}}
+.center{text-align:center}
+.voucher{display:flex;gap:14px;align-items:center;background:linear-gradient(135deg,#22120b,#7a3b1f);color:#fff;border-radius:20px;padding:16px;margin:16px 0}
+.voucher .qr{background:#fff;border-radius:12px;padding:6px;flex:none}
+.voucher h4{font-family:Fraunces,serif;font-size:18px}.voucher p{font-size:12.5px;opacity:.9;margin-top:2px}
+.voucher .code{display:inline-block;background:rgba(255,255,255,.16);padding:3px 10px;border-radius:8px;font-weight:800;letter-spacing:1.5px;margin-bottom:6px;font-size:13px}
+.tabs{display:flex;gap:6px;margin:8px 0 12px;flex-wrap:wrap}
+.tabs button{padding:9px 14px;border-radius:999px;background:#f3ebe1;font-size:13px;font-weight:700;color:var(--muted);white-space:nowrap}
+.tabs button.on{background:var(--cacao);color:#fff}
+.phone{background:#ece3d6;border-radius:26px;overflow:hidden;border:1px solid var(--line);max-width:420px;margin:0 auto;box-shadow:var(--sh)}
+.wah{background:#3b1e11;color:#fff;display:flex;gap:10px;align-items:center;padding:10px 14px}
+.wah .av{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--pod),var(--leaf));display:grid;place-items:center;font-weight:800;font-family:Fraunces,serif}
+.wah b{font-size:14.5px;display:block}.wah small{opacity:.75;font-size:11.5px}
+.chat{padding:12px;min-height:300px;display:flex;flex-direction:column;gap:7px;background-image:radial-gradient(rgba(0,0,0,.035) 1px,transparent 1px);background-size:14px 14px}
+.dsep{align-self:center;background:rgba(255,255,255,.85);color:#6b5a50;font-size:11px;font-weight:700;padding:4px 10px;border-radius:8px;margin:4px 0;text-transform:uppercase;letter-spacing:.4px}
+.msg{max-width:86%;padding:8px 11px 6px;border-radius:14px;font-size:13.5px;line-height:1.42;box-shadow:0 1px 1px rgba(0,0,0,.1);animation:in .35s;word-wrap:break-word}
+.msg.biz{background:#fff;border-top-left-radius:4px;align-self:flex-start}
+.msg.usr{background:#d9fdd3;border-top-right-radius:4px;align-self:flex-end}
+.msg .tm{display:block;text-align:right;font-size:10.5px;color:#7a8a8f;margin-top:2px}
+.msg.loc{padding:4px;width:250px}
+.msg.loc .map{height:110px;border-radius:10px;overflow:hidden}
+.msg.loc .cap{padding:6px 7px 2px;font-size:13px}.msg.loc .cap b{display:block}.msg.loc .cap small{color:#6b7a75}
+.typing{align-self:flex-start;background:#fff;border-radius:14px;padding:10px 13px;display:flex;gap:4px}
+.typing i{width:6px;height:6px;border-radius:50%;background:#9aa;animation:bl 1s infinite}.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes bl{50%{transform:translateY(-4px);opacity:.5}}@keyframes in{from{opacity:0;transform:translateY(8px) scale(.97)}}
+.wafoot{background:#f0f0f0;padding:9px 12px;color:#8a979c;font-size:12.5px;display:flex;justify-content:space-between}
+/* how to get */
+.how{display:grid;gap:16px;margin-top:16px;grid-template-columns:minmax(0,1fr)}@media(min-width:820px){.how{grid-template-columns:1.1fr 1fr}}
+.how .map{border-radius:18px;overflow:hidden;min-height:220px;background:#e7efe3}
+.how ol{padding-left:20px;font-size:14px;display:grid;gap:8px}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:13.5px;margin-top:12px}.kv span{color:var(--muted)}
+/* admin */
+.kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:14px 0}
+@media(min-width:760px){.kpis{grid-template-columns:repeat(4,1fr)}}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;box-shadow:var(--sh)}
+.kpi small{color:var(--muted);font-size:12px;font-weight:600}.kpi b{display:block;font-size:26px;letter-spacing:-.8px;margin-top:3px}.kpi em{font-style:normal;font-size:11.5px;color:var(--ok);font-weight:700}
+.two{display:grid;gap:16px;grid-template-columns:minmax(0,1fr)}@media(min-width:920px){.two{grid-template-columns:1.4fr 1fr;align-items:start}}
+.bk{display:flex;gap:12px;align-items:center;padding:12px;border-radius:16px;border:1px solid var(--line);margin-bottom:9px;width:100%;text-align:left;background:#fff;transition:.2s}
+.bk:hover{border-color:var(--pod);transform:translateY(-1px)}
+.bk.new{background:#fbf1e8;border-color:var(--pod);animation:glow 1.6s 2}
+@keyframes glow{50%{box-shadow:0 0 0 5px rgba(200,116,44,.2)}}
+.av2{width:44px;height:44px;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:800;color:#fff;flex:none;background:linear-gradient(135deg,var(--cacao),var(--pod));line-height:1}
+.av2 b{font-size:17px}.av2 small{font-size:9.5px;color:#ffe2c4;text-transform:uppercase;margin-top:2px}
+.av2.g{background:linear-gradient(135deg,var(--leaf),#2c5b36)}
+.bk .m{flex:1;min-width:0}.bk .nm{font-size:14.5px;font-weight:700;display:flex;gap:6px;align-items:center;flex-wrap:wrap}.bk small{color:var(--muted);font-size:12.5px}
+.bk .am{text-align:right;font-size:13px}.bk .am b{display:block}
+.tag{font-size:10px;font-weight:800;padding:2px 7px;border-radius:7px;letter-spacing:.4px;text-transform:uppercase}
+.tag.ex{background:#f3ebe1;color:#806b5d}.tag.nw{background:var(--ok);color:#fff}.tag.ag{background:#e5efe2;color:#2c5b36}
+.st{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:8px;margin-top:3px}
+.st.paid{background:#e6f4ea;color:var(--ok)}.st.quote{background:#fdf3df;color:#7a4a05}
+.kitchen{list-style:none}.kitchen li{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:13px}.kitchen li:last-child{border:0}
+.kitchen .dt{width:46px;text-align:center;flex:none;background:#f6efe6;border-radius:12px;padding:6px 0;line-height:1.1}.kitchen .dt b{display:block;font-size:17px}.kitchen .dt small{font-size:10px;color:var(--muted);text-transform:uppercase;font-weight:700}
+.kitchen .m{flex:1;min-width:0}.kitchen .m b{display:block;font-size:13.5px}.kitchen .m small{color:var(--muted)}
+.kitchen .n{font-weight:800;font-size:18px;text-align:right}.kitchen .n small{display:block;font-size:10.5px;color:var(--muted);font-weight:600}
+h3.sec{font-size:16px;margin:2px 0 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}h3.sec small{font-size:12px;color:var(--muted);font-weight:600;text-align:right}
+.eco{background:linear-gradient(135deg,#2c5b36,#3d7a4a);color:#fff;border:0}
+.eco h3{font-family:Fraunces,serif;font-size:19px;margin-bottom:6px}
+.eco p{font-size:13.5px;opacity:.92}
+.eco .big{font-family:Fraunces,serif;font-size:40px;font-weight:800;letter-spacing:-1px;margin:6px 0 2px;color:#ffe2a6}
+.ov{position:fixed;inset:0;background:rgba(34,18,11,.6);backdrop-filter:blur(4px);z-index:60;display:flex;align-items:flex-end;justify-content:center;animation:fd .25s}
+@keyframes fd{from{opacity:0}}
+.sheet{background:#fff;width:100%;max-width:560px;max-height:92vh;overflow:auto;border-radius:26px 26px 0 0;padding:18px;animation:up .3s}
+@media(min-width:700px){.ov{align-items:center}.sheet{border-radius:26px}}
+@keyframes up{from{transform:translateY(40px);opacity:0}}
+.sheet .x{float:right;width:34px;height:34px;border-radius:50%;background:#f3ebe1;font-size:16px}
+.foot{text-align:center;font-size:12px;color:var(--muted);padding:22px 14px 8px;max-width:760px;margin:0 auto}
+</style>
+</head>
+<body>
+<div class="demobar"><span class="dot"></span><span data-i="demobar"></span></div>
+<header class="top">
+  <div class="brand">
+    <svg viewBox="0 0 32 32"><rect width="32" height="32" rx="10" fill="#4a2516"/><path d="M16 5c-5 3-7 7-7 11s2 8 7 11c5-3 7-7 7-11s-2-8-7-11z" fill="#c8742c"/><path d="M16 6v20M12.5 9.5c-1 4-1 9 0 13M19.5 9.5c1 4 1 9 0 13" stroke="#4a2516" stroke-width="1.3" fill="none" opacity=".55"/></svg>
+    <div><b>CTC Santa Rita</b><small data-i="brandsub"></small></div>
+  </div>
+  <div class="seg"><button data-view="client" class="on" data-i="tabC"></button><button data-view="admin" data-i="tabA"></button><i class="badge" id="badge" hidden></i></div>
+  <button class="lang" id="langBtn"><span id="lES">ES</span> · <span id="lEN">EN</span></button>
+</header>
+
+<!-- ============ VISITANTE ============ -->
+<div id="vClient">
+  <section class="hero">
+    <svg class="heroart" viewBox="0 0 900 420" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7a3b1f"/><stop offset=".55" stop-color="#4a2516"/><stop offset="1" stop-color="#22120b"/></linearGradient>
+        <linearGradient id="pod" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f0b35a"/><stop offset=".6" stop-color="#c8742c"/><stop offset="1" stop-color="#8a3e17"/></linearGradient>
+        <linearGradient id="pod2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e2834a"/><stop offset="1" stop-color="#8f2f1e"/></linearGradient>
+      </defs>
+      <rect width="900" height="420" fill="url(#bg)"/>
+      <circle cx="720" cy="120" r="170" fill="#c8742c" opacity=".15"/>
+      <g class="leafs" fill="#3d7a4a" opacity=".85">
+        <path d="M520 0 C560 60 600 80 690 70 C640 40 600 10 520 0z"/>
+        <path d="M900 40 C830 70 790 120 780 190 C830 150 880 120 900 40z" fill="#2c5b36"/>
+        <path d="M560 30 C620 120 700 150 800 130 C730 90 660 40 560 30z" fill="#5c9a5f" opacity=".7"/>
+      </g>
+      <path d="M700 40 C705 80 705 110 700 140" stroke="#5a3a20" stroke-width="5" fill="none"/>
+      <g transform="translate(640 130) rotate(-12)">
+        <ellipse cx="60" cy="90" rx="58" ry="100" fill="url(#pod)"/>
+        <path d="M60 -6 V186 M30 6 C20 60 20 120 30 176 M90 6 C100 60 100 120 90 176" stroke="#8a3e17" stroke-width="3" fill="none" opacity=".45"/>
+      </g>
+      <g transform="translate(770 190) rotate(18)">
+        <ellipse cx="40" cy="70" rx="40" ry="74" fill="url(#pod2)"/>
+        <path d="M40 0 V140 M20 10 C12 50 12 95 20 132 M60 10 C68 50 68 95 60 132" stroke="#5e1d12" stroke-width="2.5" fill="none" opacity=".45"/>
+      </g>
+      <g class="drip" fill="#2a140b">
+        <path d="M0 0 H900 V22 C860 22 850 60 830 60 C810 60 810 26 770 26 C740 26 735 48 715 48 C695 48 690 24 650 24 H0Z" opacity=".55"/>
+      </g>
+      <g fill="#fff" opacity=".08"><circle cx="120" cy="90" r="2"/><circle cx="240" cy="160" r="1.6"/><circle cx="380" cy="80" r="2.2"/><circle cx="460" cy="190" r="1.5"/></g>
+    </svg>
+    <div class="in">
+      <div class="kw">Alli shamushka</div>
+      <span class="eyebrow">🍫 <span data-i="eyebrow"></span></span>
+      <h1 data-ih="h1"></h1>
+      <p data-i="heroP"></p>
+      <div class="chips"><span class="chip">🕗 <span data-i="c1"></span></span><span class="chip">📍 <span data-i="c2"></span></span><span class="chip">🌿 <span data-i="c3"></span></span></div>
+      <div class="heroRow"><a class="btn" href="#book" data-i="cta"></a><button class="btn ghost" onclick="goGroups()" data-i="ctaG"></button></div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="sh"><h2 data-i="xpT"></h2><p data-i="xpS"></p></div>
+    <div class="xp" id="xp"></div>
+
+    <div class="sh" id="book"><h2 data-i="bkT"></h2><p data-i="bkS"></p></div>
+    <div class="grid">
+      <section class="card"><div class="mode" id="mode"></div><div class="stepper" id="stepper"></div><div id="stepBody"></div></section>
+      <aside class="card sum sticky" id="summary"></aside>
+    </div>
+
+    <div class="sh"><h2 data-i="hwT"></h2><p></p></div>
+    <div class="how">
+      <div class="card"><ol id="howList"></ol><div class="kv" id="kv"></div></div>
+      <div class="map card" style="padding:0">
+        <svg viewBox="0 0 400 240" width="100%" height="100%" preserveAspectRatio="xMidYMid slice"><rect width="400" height="240" fill="#e7efe3"/><path d="M-10 190 C80 160 120 210 200 180 S330 150 410 170" stroke="#9cc9d0" stroke-width="14" fill="none"/><path d="M60 -10 L90 250" stroke="#fff" stroke-width="9"/><circle cx="76" cy="120" r="13" fill="#fff" stroke="#c8742c" stroke-width="4"/><path d="M89 120 C150 112 210 90 300 70" stroke="#fff" stroke-width="7" fill="none" stroke-dasharray="1 0"/><path d="M89 120 C150 112 210 90 300 70" stroke="#c8742c" stroke-width="3" fill="none" stroke-dasharray="8 7"/><path d="M300 42c-9 0-16 7-16 16 0 12 16 26 16 26s16-14 16-26c0-9-7-16-16-16z" fill="#4a2516"/><circle cx="300" cy="58" r="6" fill="#ffd58a"/><text x="100" y="160" font-family="Inter,sans-serif" font-size="12" fill="#5c4a3f" font-weight="700">Archidona</text><text x="100" y="175" font-family="Inter,sans-serif" font-size="10.5" fill="#7a675c">Rotonda Gasolinera</text><text x="240" y="104" font-family="Inter,sans-serif" font-size="11" fill="#7a3b1f" font-weight="800">7 km</text><text x="250" y="30" font-family="Fraunces,serif" font-size="14" fill="#4a2516" font-weight="800">Santa Rita</text><text x="40" y="20" font-family="Inter,sans-serif" font-size="10" fill="#7a675c">↑ Quito</text><text x="40" y="232" font-family="Inter,sans-serif" font-size="10" fill="#7a675c">↓ Tena</text></svg>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ COMUNIDAD ============ -->
+<div id="vAdmin" hidden>
+  <div class="wrap" style="padding-top:18px">
+    <h2 class="t" data-i="aT"></h2><p class="sub" data-i="aS"></p>
+    <div class="kpis" id="kpis"></div>
+    <div class="two">
+      <section class="card"><h3 class="sec"><span data-i="aRes"></span><small data-i="aTap"></small></h3><div id="bkList"></div></section>
+      <div style="display:grid;gap:16px">
+        <section class="card"><h3 class="sec"><span data-i="aKit"></span><small data-i="aKitS"></small></h3><ul class="kitchen" id="kitchen"></ul></section>
+        <section class="card eco" id="eco"></section>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p class="foot" data-i="foot"></p>
+<div id="modal"></div>
+
+<script>
+/* ===== DATOS REALES (perfil público GoEcuador / Ruta Chakra) ===== */
+const PRICE=15; // Tour del Chocolate Ancestral con almuerzo típico, por persona
+const XP=[
+ {id:'choco',ic:'🍫',star:true,price:PRICE,art:0},
+ {id:'shaman',ic:'🌿',art:1},
+ {id:'senderos',ic:'🪨',art:2},
+ {id:'siembra',ic:'🌱',art:3},
+ {id:'gastro',ic:'🍲',art:4},
+ {id:'danza',ic:'🥁',art:5}
+];
+const T={
+es:{
+demobar:"Demo de DevHorse para el CTC Santa Rita · Experiencias y datos de su perfil público · Pagos y mensajes simulados · Visitantes y grupos de ejemplo",
+brandsub:"Pueblo del Cacao y Chocolate",tabC:"Visitante",tabA:"Comunidad",
+eyebrow:"Comunidad kichwa · Archidona, Napo",h1:"Del árbol de cacao <em>a tu taza de chocolate</em>",
+heroP:"Vive la experiencia del chocolate ancestral con nuestras familias: visita una chakra, prepara chocolate a mano y almuerza comida típica hecha con lo que cultivamos.",
+c1:"Todos los días, 8:00 – 17:00",c2:"A 7 km de Archidona",c3:"Guías de la comunidad",
+cta:"Reservar mi visita",ctaG:"Soy agencia o grupo",
+xpT:"Nuestras experiencias",xpS:"Elige la experiencia principal y súmale lo que quieras vivir. Precios por persona desde $15 hasta $65.",
+x_choco:"Tour del Chocolate Ancestral",x_chocoD:"Del fruto al chocolate, con una familia de la comunidad.",
+x_chocoL:["Visita a una chakra familiar","Elaboración de chocolate ancestral","Tilapia cocinada en maito","Almuerzo típico: sancocho de pollo, filete de tilapia, mousse de chocolate y guayusa"],
+x_shaman:"Shamanismo",x_shamanD:"Conoce la sabiduría y las prácticas ancestrales de nuestra cultura.",
+x_senderos:"Senderos de la Memoria",x_senderosD:"Caminata por senderos con petroglifos, esteros y miradores.",
+x_siembra:"Ritual Siembra Ancestral",x_siembraD:"Participa en un ritual tradicional de siembra en la chakra.",
+x_gastro:"Gastronomía Típica",x_gastroD:"Platos con productos de la comunidad: maitos, mazamorra, chicha y más.",
+x_danza:"Danza y Música Ancestral",x_danzaD:"Música y danza kichwa compartidas por la comunidad.",
+star:"Experiencia principal",quote:"Precio a confirmar",pp:"por persona",book:"Reservar",add:"Agregar",added:"Agregada ✓",
+bkT:"Reserva tu visita",bkS:"Elige el día, la hora y cuántas personas vienen. Pagas un anticipo y te confirmamos por WhatsApp.",
+mV:"🎒 Visitantes",mG:"🚌 Agencias y grupos",
+st1:"Fecha",st2:"Personas",st3:"Datos",st4:"Anticipo",
+dT:"¿Qué día nos visitas?",dS:"Abrimos todos los días. Los días marcados ya tienen un grupo reservado (ejemplo).",lgOk:"Disponible",lgGrp:"Con grupo reservado",
+hour:"Hora de llegada",
+pT:"¿Cuántas personas vienen?",pS:"Tour del Chocolate Ancestral con almuerzo típico · $15 por persona.",people:"Personas",peopleS:"Desde 1 persona",
+addT:"¿Quieres sumar algo más? (opcional)",addS:"Te enviamos el precio por WhatsApp antes de tu visita.",
+bigG:"¿Son más de 15 personas? Usa la opción “Agencias y grupos” para recibir una tarifa especial.",
+yT:"Tus datos",yS:"Te enviaremos la confirmación y cómo llegar por WhatsApp.",name:"Nombre completo",phone:"WhatsApp",email:"Correo (opcional)",confLang:"Idioma de los mensajes",autofill:"Rellenar con datos de ejemplo",
+errName:"Escribe tu nombre.",errPhone:"Escribe tu WhatsApp.",
+payT:"Asegura tu visita",payS:"Pagas el 50 % hoy y el resto al llegar a la comunidad.",card:"Tarjeta",transfer:"Transferencia",
+simNote:"Pago simulado: no se cobra nada. En la versión real puede ser transferencia o un enlace de pago.",pay:"Pagar anticipo {a}",processing:"Confirmando…",next:"Continuar",
+sumT:"Tu visita",sDate:"Fecha",sTime:"Llegada",sPpl:"Personas",none:"Por elegir",liBase:"Tour del Chocolate × {n}",total:"Total",deposit:"Anticipo hoy (50 %)",balance:"Pagas al llegar",
+toQuote:"A cotizar por WhatsApp: {l}",impT:"Tu visita apoya a la comunidad",impS:"Lo que pagas queda en las familias de Santa Rita.",
+done:"¡Tu visita está confirmada!",doneS:"Te escribimos por WhatsApp. Así le llegan los mensajes al visitante:",
+j0:"Confirmación",j1:"Día antes · cómo llegar",
+seeAdmin:"Ver cómo lo recibe la comunidad →",another:"Nueva reserva",
+gT:"Agencias, colegios y grupos",gS:"Cuéntanos de tu grupo y te enviamos una propuesta por WhatsApp en el día.",
+gType:"Tipo de grupo",gTypes:["Agencia / operador","Colegio / universidad","Empresa","Familia / amigos"],gOrg:"Nombre de la agencia o grupo",gSize:"Número de personas",gDate:"Fecha tentativa",gInt:"¿Qué les interesa?",gNote:"Comentarios (opcional)",gNoteP:"Ej. traemos guía propio, necesitamos menú vegetariano…",
+gSend:"Enviar solicitud",gErr:"Completa nombre, WhatsApp, número de personas y fecha.",
+gDone:"¡Solicitud enviada!",gDoneS:"La comunidad recibe tu pedido al instante. Así sigue la conversación:",
+hwT:"Cómo llegar",
+how:["Llega a Archidona por la vía Quito – Tena.","En la rotonda de la Gasolinera Archidona, toma el desvío: a la izquierda si vienes de Tena, a la derecha si vienes de Quito.","Avanza 7 km hasta la comunidad de Santa Rita. ¡Te esperamos!"],
+kv:[["Horario","Todos los días, 8:00 – 17:00"],["WhatsApp","098 470 8840"],["Teléfono","098 319 0920"],["Correo","ctcsantarita@gmail.com"]],
+aT:"Panel de la comunidad",aS:"Lo que ve el equipo del CTC. Las filas “Ejemplo” son inventadas; las “Nueva” vienen de la demo que acabas de hacer.",
+aRes:"Reservas y solicitudes",aTap:"Toca una para ver sus mensajes",aKit:"Almuerzos por preparar",aKitS:"Próximos 7 días",
+kRes:"Reservas",kPpl:"Visitantes esta semana",kDep:"Anticipos recibidos",kGrp:"Grupos por cotizar",kNew:"+{n} nueva(s)",
+ex:"Ejemplo",nw:"Nueva",ag:"Grupo",stPaid:"Anticipo pagado",stQuote:"Por cotizar",lunches:"almuerzos",pplW:["persona","personas"],
+ecoT:"Ingresos para la comunidad",ecoS:"Reservas pagadas en el panel (ejemplo + nuevas). Con reservas en línea, cada visita queda registrada y el pago llega antes de que el grupo salga de casa.",
+foot:"Demo creada por DevHorse como propuesta para el Centro de Turismo Comunitario Santa Rita. Experiencias, precio del tour con almuerzo, horario y cómo llegar tomados de su perfil público. Los precios de las demás experiencias están por confirmar. Visitantes, grupos y pagos son ejemplos.",
+w_ok:"¡Alli shamushka, {first}! 🍫 Tu visita a Santa Rita está *confirmada* ✅\n\n🎟️ *{code}*\n🌿 Tour del Chocolate Ancestral + almuerzo típico\n📅 {date} · llegada {time}\n👥 {ppl}\n💳 Anticipo recibido: *{dep}*\n💵 Pagas al llegar: *{bal}*",
+w_q:"Sobre lo que quieres sumar ({list}): te enviamos el precio por aquí antes de tu visita 🙌",
+w_u0:"¡Gracias! Vamos con muchas ganas 😊",
+w_dir:"¡Hola {first}! Mañana te esperamos en Santa Rita 🍫\n\n🚗 *Cómo llegar:* en Archidona, en la rotonda de la Gasolinera Archidona, toma el desvío (izquierda si vienes de Tena, derecha si vienes de Quito) y avanza *7 km*.\n\nAquí tienes la ubicación 👇",
+w_u1:"¡Perfecto, ahí estaremos! 🙌",w_b1:"¡Te esperamos! Cualquier cosa escríbenos por aquí 🌿",
+locT:"CTC Santa Rita",locS:"Comunidad Santa Rita · Archidona, Napo",
+g0:"Hola, somos *{org}* 🚌\n👥 {size} personas\n📅 {date}\n🌿 Interés: {list}",
+g1:"¡Alli shamushka! Gracias por escribirnos 🍫 Recibimos su solicitud para *{size} personas* el *{date}*.\n\nEn breve le enviamos la propuesta con precio por persona e itinerario para su grupo.",
+g2:"*Propuesta para {org}*\n• Tour del Chocolate Ancestral + almuerzo típico\n• {extra}\n💰 Precio por persona: *por confirmar*\n\n¿Les parece bien? Con el anticipo reservamos la fecha ✅",
+g2x:"Experiencias adicionales que pidieron",
+g3:"¡Perfecto, reservemos! 🙌",
+wahSub:"Cuenta de empresa · en línea",wafoot:"Mensajes automáticos ✓✓",
+seeAdminG:"Ver cómo lo recibe la comunidad →"
+},
+en:{
+demobar:"DevHorse demo for CTC Santa Rita · Experiences and info from their public profile · Simulated payments & messages · Sample visitors and groups",
+brandsub:"Cacao & Chocolate Village",tabC:"Visitor",tabA:"Community",
+eyebrow:"Kichwa community · Archidona, Napo",h1:"From the cacao tree <em>to your cup of chocolate</em>",
+heroP:"Live the ancestral chocolate experience with our families: visit a chakra, make chocolate by hand and enjoy a traditional lunch made with what we grow.",
+c1:"Every day, 8:00 am – 5:00 pm",c2:"7 km from Archidona",c3:"Community guides",
+cta:"Book my visit",ctaG:"I'm an agency or group",
+xpT:"Our experiences",xpS:"Choose the main experience and add whatever else you'd like to live. Prices per person from $15 to $65.",
+x_choco:"Ancestral Chocolate Tour",x_chocoD:"From the pod to chocolate, with a community family.",
+x_chocoL:["Visit to a family chakra (cacao garden)","Ancestral chocolate making","Tilapia cooked in maito (leaf-wrapped)","Traditional lunch: chicken sancocho, tilapia fillet, chocolate mousse and guayusa"],
+x_shaman:"Shamanism",x_shamanD:"Learn about the ancestral wisdom and practices of our culture.",
+x_senderos:"Trails of Memory",x_senderosD:"Walk trails with petroglyphs, streams and viewpoints.",
+x_siembra:"Ancestral Planting Ritual",x_siembraD:"Take part in a traditional planting ritual in the chakra.",
+x_gastro:"Traditional Food",x_gastroD:"Dishes made with community produce: maitos, mazamorra, chicha and more.",
+x_danza:"Ancestral Music & Dance",x_danzaD:"Kichwa music and dance shared by the community.",
+star:"Main experience",quote:"Price to be confirmed",pp:"per person",book:"Book",add:"Add",added:"Added ✓",
+bkT:"Book your visit",bkS:"Pick the day, time and how many people are coming. Pay a deposit and we confirm on WhatsApp.",
+mV:"🎒 Visitors",mG:"🚌 Agencies & groups",
+st1:"Date",st2:"Guests",st3:"Details",st4:"Deposit",
+dT:"Which day are you visiting?",dS:"We're open every day. Marked days already have a group booked (sample).",lgOk:"Available",lgGrp:"Group booked",
+hour:"Arrival time",
+pT:"How many people are coming?",pS:"Ancestral Chocolate Tour with traditional lunch · $15 per person.",people:"People",peopleS:"From 1 person",
+addT:"Want to add something else? (optional)",addS:"We'll send you the price on WhatsApp before your visit.",
+bigG:"More than 15 people? Use “Agencies & groups” to get a special rate.",
+yT:"Your details",yS:"We'll send your confirmation and directions on WhatsApp.",name:"Full name",phone:"WhatsApp",email:"Email (optional)",confLang:"Message language",autofill:"Fill with sample data",
+errName:"Please enter your name.",errPhone:"Please enter your WhatsApp.",
+payT:"Secure your visit",payS:"Pay 50 % today and the rest when you arrive at the community.",card:"Card",transfer:"Bank transfer",
+simNote:"Simulated payment: nothing is charged. The real version can use a bank transfer or a payment link.",pay:"Pay deposit {a}",processing:"Confirming…",next:"Continue",
+sumT:"Your visit",sDate:"Date",sTime:"Arrival",sPpl:"Guests",none:"To choose",liBase:"Chocolate Tour × {n}",total:"Total",deposit:"Deposit today (50 %)",balance:"Pay on arrival",
+toQuote:"To be quoted on WhatsApp: {l}",impT:"Your visit supports the community",impS:"What you pay stays with the families of Santa Rita.",
+done:"Your visit is confirmed!",doneS:"We've messaged you on WhatsApp. This is what the visitor receives:",
+j0:"Confirmation",j1:"Day before · directions",
+seeAdmin:"See what the community receives →",another:"New booking",
+gT:"Agencies, schools and groups",gS:"Tell us about your group and we'll send you a proposal on WhatsApp the same day.",
+gType:"Group type",gTypes:["Agency / tour operator","School / university","Company","Family / friends"],gOrg:"Agency or group name",gSize:"Number of people",gDate:"Tentative date",gInt:"What are you interested in?",gNote:"Comments (optional)",gNoteP:"E.g. we bring our own guide, we need a vegetarian menu…",
+gSend:"Send request",gErr:"Please fill in name, WhatsApp, group size and date.",
+gDone:"Request sent!",gDoneS:"The community gets your request instantly. This is how the conversation continues:",
+hwT:"Getting here",
+how:["Get to Archidona on the Quito – Tena road.","At the Gasolinera Archidona roundabout, take the turn-off: left if you come from Tena, right if you come from Quito.","Drive 7 km to the Santa Rita community. We'll be waiting!"],
+kv:[["Hours","Every day, 8:00 am – 5:00 pm"],["WhatsApp","+593 98 470 8840"],["Phone","+593 98 319 0920"],["Email","ctcsantarita@gmail.com"]],
+aT:"Community dashboard",aS:"What the CTC team sees. Rows tagged “Sample” are made up; “New” ones come from the booking you just made in this demo.",
+aRes:"Bookings and requests",aTap:"Tap one to see its messages",aKit:"Lunches to prepare",aKitS:"Next 7 days",
+kRes:"Bookings",kPpl:"Visitors this week",kDep:"Deposits received",kGrp:"Groups to quote",kNew:"+{n} new",
+ex:"Sample",nw:"New",ag:"Group",stPaid:"Deposit paid",stQuote:"To quote",lunches:"lunches",pplW:["person","people"],
+ecoT:"Income for the community",ecoS:"Paid bookings in the dashboard (sample + new). With online bookings, every visit is recorded and the payment arrives before the group leaves home.",
+foot:"Demo created by DevHorse as a proposal for the Santa Rita Community Tourism Center. Experiences, tour-with-lunch price, hours and directions taken from their public profile. Prices for the other experiences are to be confirmed. Visitors, groups and payments are samples.",
+w_ok:"Alli shamushka, {first}! 🍫 Your visit to Santa Rita is *confirmed* ✅\n\n🎟️ *{code}*\n🌿 Ancestral Chocolate Tour + traditional lunch\n📅 {date} · arrival {time}\n👥 {ppl}\n💳 Deposit received: *{dep}*\n💵 Pay on arrival: *{bal}*",
+w_q:"About the extras you'd like ({list}): we'll send you the price here before your visit 🙌",
+w_u0:"Thank you! We're really looking forward to it 😊",
+w_dir:"Hi {first}! We'll see you tomorrow in Santa Rita 🍫\n\n🚗 *Getting here:* in Archidona, at the Gasolinera Archidona roundabout, take the turn-off (left from Tena, right from Quito) and drive *7 km*.\n\nHere's the location 👇",
+w_u1:"Perfect, see you there! 🙌",w_b1:"We'll be waiting! Message us here if you need anything 🌿",
+locT:"CTC Santa Rita",locS:"Santa Rita community · Archidona, Napo",
+g0:"Hi, we are *{org}* 🚌\n👥 {size} people\n📅 {date}\n🌿 Interested in: {list}",
+g1:"Alli shamushka! Thank you for reaching out 🍫 We received your request for *{size} people* on *{date}*.\n\nWe'll send you a proposal with the price per person and an itinerary for your group shortly.",
+g2:"*Proposal for {org}*\n• Ancestral Chocolate Tour + traditional lunch\n• {extra}\n💰 Price per person: *to be confirmed*\n\nDoes that work for you? With the deposit we lock in the date ✅",
+g2x:"Additional experiences requested",
+g3:"Perfect, let's book it! 🙌",
+wahSub:"Business account · online",wafoot:"Automatic messages ✓✓",
+seeAdminG:"See what the community receives →"
+}};
+
+/* ===== ESTADO ===== */
+const S={lang:'es',view:'client',mode:'v',step:1,date:null,time:'10:00',ppl:4,adds:[],name:'',phone:'',email:'',clang:null,pay:'bank',month:null,done:null,paying:false,errs:{},newCount:0,
+  g:{type:0,org:'',name:'',phone:'',size:'',date:'',ints:['choco'],note:'',done:null,err:false}};
+const B=[];
+const $=s=>document.querySelector(s);
+const tr=(l,k,v={})=>{let s=T[l][k]??T.es[k]??k;if(typeof s!=='string')return s;for(const x in v)s=s.split('{'+x+'}').join(v[x]);return s};
+const t=(k,v)=>tr(S.lang,k,v);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const money=n=>'$'+(Math.round(n*100)/100).toFixed(2);
+const d0=new Date();d0.setHours(0,0,0,0);
+const addD=(d,n)=>{const x=new Date(d);x.setDate(x.getDate()+n);return x};
+const key=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+const parse=k=>{const [y,m,d]=k.split('-').map(Number);return new Date(y,m-1,d)};
+const loc=l=>(l||S.lang)==='es'?'es-EC':'en-US';
+const cap=s=>s.charAt(0).toUpperCase()+s.slice(1);
+const fd=(k,o,l)=>cap(new Intl.DateTimeFormat(loc(l),o).format(parse(k)));
+const dLong=(k,l)=>fd(k,{weekday:'long',day:'numeric',month:'long'},l);
+const dShort=(k,l)=>fd(k,{weekday:'short',day:'numeric',month:'short'},l);
+const maxD=addD(d0,150);
+const hash=s=>{let h=0;for(const c of s)h=(h*31+c.charCodeAt(0))>>>0;return h};
+const xpName=(id,l)=>tr(l||S.lang,'x_'+id);
+const pplW=(n,l)=>n+' '+T[l||S.lang].pplW[n===1?0:1];
+
+/* ===== EJEMPLOS ===== */
+(function(){
+  const rows=[['María C.',1,'10:00',3,['danza'],'es','v'],['Colegio San José',2,'09:00',28,['senderos','danza'],'es','g'],['Tom & Sara',3,'11:00',2,[],'en','v'],['Andes Trek Tours',4,'09:00',12,['shaman'],'en','g'],['Familia Grefa',6,'12:00',5,['gastro'],'es','v']];
+  rows.forEach((r,i)=>{const k=key(addD(d0,r[1])),tot=r[6]==='v'?r[3]*PRICE:0;
+    B.push({id:i,code:(r[6]==='v'?'SR-':'GR-')+(310+i*17),kind:r[6],name:r[0],date:k,time:r[2],ppl:r[3],adds:r[4],lang:r[5],total:tot,dep:tot/2,bal:tot/2,example:true,phone:'+593 98 000 000'+i,bookedAt:key(addD(d0,-2))})});
+})();
+const grpDay=k=>B.some(b=>b.kind==='g'&&b.date===k)||hash('g'+k)%9===0;
+
+/* ===== VISTAS ===== */
+function applyI18n(){
+  document.documentElement.lang=S.lang;
+  document.querySelectorAll('[data-i]').forEach(e=>e.textContent=t(e.dataset.i));
+  document.querySelectorAll('[data-ih]').forEach(e=>e.innerHTML=t(e.dataset.ih));
+  $('#lES').className=S.lang==='es'?'on':'';$('#lEN').className=S.lang==='en'?'on':'';
+  $('#howList').innerHTML=t('how').map(x=>`<li>${esc(x)}</li>`).join('');
+  $('#kv').innerHTML=t('kv').map(x=>`<span>${esc(x[0])}</span><b>${esc(x[1])}</b>`).join('');
+  renderXP();
+}
+function setView(v){S.view=v;$('#vClient').hidden=v!=='client';$('#vAdmin').hidden=v!=='admin';
+  document.querySelectorAll('.seg button').forEach(b=>b.classList.toggle('on',b.dataset.view===v));
+  if(v==='admin'){S.newCount=0;renderAdmin()}updateBadge();window.scrollTo({top:0,behavior:'smooth'})}
+function updateBadge(){const b=$('#badge');b.hidden=!S.newCount||S.view==='admin';b.textContent=S.newCount}
+document.querySelectorAll('.seg button').forEach(b=>b.onclick=()=>setView(b.dataset.view));
+$('#langBtn').onclick=()=>{S.lang=S.lang==='es'?'en':'es';applyI18n();renderClient();if(S.view==='admin')renderAdmin()};
+
+/* arte de tarjetas */
+function art(i){
+  const P=[['#7a3b1f','#c8742c','#f0b35a'],['#2c3b2a','#3d7a4a','#a7c98a'],['#4a5a4c','#7d8f78','#d8d2b8'],['#3d5a2a','#5c9a5f','#c9e2a3'],['#7a3b1f','#b5562a','#f2c37a'],['#3a1d3a','#7a3b5f','#e8b04a']][i];
+  const motif=[
+   `<g transform="translate(205 6) rotate(15)"><ellipse cx="30" cy="55" rx="30" ry="52" fill="${P[2]}"/><path d="M30 5V105M15 10C10 40 10 75 15 100M45 10C50 40 50 75 45 100" stroke="${P[0]}" stroke-width="2" fill="none" opacity=".4"/></g>`,
+   `<g fill="${P[2]}" opacity=".85"><path d="M240 110C220 70 230 40 260 20C262 55 255 85 240 110z"/><path d="M240 110C255 75 280 60 300 62C285 85 265 100 240 110z"/><circle cx="215" cy="35" r="5"/><circle cx="198" cy="55" r="3"/></g>`,
+   `<g fill="none" stroke="${P[2]}" stroke-width="3" opacity=".9"><path d="M200 90c10-30 40-30 50 0"/><circle cx="225" cy="55" r="12"/><path d="M262 40l10 10M262 50l10-10"/><path d="M180 30c8 0 8 12 16 12s8-12 16-12"/></g>`,
+   `<g fill="${P[2]}"><path d="M240 110V70"/><path d="M240 112c-2-25 0-45 0-45M240 70c-18-6-28-20-28-36 16 4 26 16 28 36zM240 76c18-6 28-20 28-36-16 4-26 16-28 36z"/><ellipse cx="240" cy="112" rx="40" ry="8" opacity=".5"/></g>`,
+   `<g><ellipse cx="240" cy="78" rx="50" ry="16" fill="${P[2]}"/><path d="M190 78c0 22 22 34 50 34s50-12 50-34" fill="${P[1]}"/><path d="M220 50c-6-10 6-14 0-24M240 48c-6-10 6-14 0-24M260 50c-6-10 6-14 0-24" stroke="${P[2]}" stroke-width="3" fill="none" stroke-linecap="round"/></g>`,
+   `<g><ellipse cx="240" cy="70" rx="34" ry="12" fill="${P[2]}"/><rect x="206" y="70" width="68" height="34" fill="${P[1]}"/><ellipse cx="240" cy="104" rx="34" ry="12" fill="${P[1]}"/><path d="M206 74l68 26M274 74l-68 26" stroke="${P[2]}" stroke-width="2" opacity=".6"/><path d="M180 30l18 22M300 30l-18 22" stroke="${P[2]}" stroke-width="4" stroke-linecap="round"/></g>`][i];
+  return `<svg viewBox="0 0 320 118" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="ag${i}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${P[0]}"/><stop offset="1" stop-color="${P[1]}"/></linearGradient></defs><rect width="320" height="118" fill="url(#ag${i})"/><circle cx="60" cy="100" r="70" fill="#fff" opacity=".06"/>${motif}</svg>`;
+}
+function renderXP(){
+  $('#xp').innerHTML=XP.map(x=>{
+    const name=xpName(x.id),desc=t('x_'+x.id+'D');
+    if(x.star)return `<article class="x"><div class="art">${art(x.art)}<span class="tg star">★ ${t('star')}</span></div><div class="bd"><h3>${x.ic} ${name}</h3><p>${desc}</p><ul>${t('x_chocoL').map(l=>`<li>${esc(l)}</li>`).join('')}</ul><div class="ft"><div class="pr"><b>$${PRICE}</b><small>${t('pp')}</small></div><button class="mini" onclick="startBook()">${t('book')}</button></div></div></article>`;
+    const on=S.adds.includes(x.id);
+    return `<article class="x"><div class="art">${art(x.art)}<span class="tg q">${t('quote')}</span></div><div class="bd"><h3>${x.ic} ${name}</h3><p>${desc}</p><div class="ft"><div class="pr q"><b>${t('quote')}</b></div><button class="mini alt" onclick="togAdd('${x.id}',true)">${on?t('added'):t('add')}</button></div></div></article>`;
+  }).join('');
+}
+function startBook(){S.mode='v';if(S.done)reset(true);document.getElementById('book').scrollIntoView({behavior:'smooth'});renderClient()}
+function goGroups(){S.mode='g';renderClient();document.getElementById('book').scrollIntoView({behavior:'smooth'})}
+function togAdd(id,fromCard){const i=S.adds.indexOf(id);i>=0?S.adds.splice(i,1):S.adds.push(id);renderXP();renderClient()}
+
+/* ===== RESERVA VISITANTE ===== */
+function renderClient(){
+  $('#mode').innerHTML=`<button class="${S.mode==='v'?'on':''}" onclick="S.mode='v';renderClient()">${t('mV')}</button><button class="${S.mode==='g'?'on':''}" onclick="S.mode='g';renderClient()">${t('mG')}</button>`;
+  if(S.mode==='g'){$('#stepper').innerHTML='';renderGroup();renderSummary();return}
+  if(S.done)$('#stepper').innerHTML='';
+  else $('#stepper').innerHTML=[1,2,3,4].map(i=>`<div class="stp ${S.step===i?'on':''} ${S.step>i?'done':''}"><div class="bar"><i></i></div><span>${i}. ${t('st'+i)}</span></div>`).join('');
+  const el=$('#stepBody');
+  if(S.done)renderDone(el);else el.innerHTML=[null,v1,v2,v3,v4][S.step]();
+  renderSummary();
+}
+function v1(){
+  if(!S.month)S.month=new Date(addD(d0,1).getFullYear(),addD(d0,1).getMonth(),1);
+  const m=S.month,first=new Date(m.getFullYear(),m.getMonth(),1),off=(first.getDay()+6)%7,nd=new Date(m.getFullYear(),m.getMonth()+1,0).getDate(),mon=new Date(2024,0,1);
+  const dow=[...Array(7)].map((_,i)=>`<div>${cap(new Intl.DateTimeFormat(loc(),{weekday:'short'}).format(addD(mon,i)))}</div>`).join('');
+  let c='';for(let i=0;i<off;i++)c+='<div></div>';
+  for(let d=1;d<=nd;d++){const dt=new Date(m.getFullYear(),m.getMonth(),d),k=key(dt);
+    if(dt<=d0||dt>maxD){c+=`<div class="day off">${d}</div>`;continue}
+    c+=`<button class="day ${grpDay(k)?'grp':''} ${S.date===k?'sel':''}" onclick="S.date='${k}';renderClient()">${d}</button>`}
+  const prevOff=m<=new Date(d0.getFullYear(),d0.getMonth(),1),nextOff=m>=new Date(maxD.getFullYear(),maxD.getMonth(),1);
+  const H=['08:00','09:00','10:00','11:00','12:00','13:00','14:00','15:00'];
+  return `<h2 class="t">${t('dT')}</h2><p class="sub">${t('dS')}</p>
+  <div class="cal"><div class="head"><button class="nav" ${prevOff?'disabled':''} onclick="mv(-1)">‹</button><b>${cap(new Intl.DateTimeFormat(loc(),{month:'long',year:'numeric'}).format(m))}</b><button class="nav" ${nextOff?'disabled':''} onclick="mv(1)">›</button></div><div class="dow">${dow}</div><div class="days">${c}</div></div>
+  <div class="legend"><span><i style="background:#f6efe6;border:1px solid #e3d5c5"></i>${t('lgOk')}</span><span><i style="background:#fbe7c6"></i>${t('lgGrp')}</span></div>
+  ${S.date?`<span class="lbl">${t('hour')} · ${dLong(S.date)}</span><div class="slots">${H.map(h=>`<button class="slot ${S.time===h?'on':''}" onclick="S.time='${h}';renderClient()">${h}</button>`).join('')}</div>`:''}
+  <div class="actions"><button class="btn pri" ${S.date?'':'disabled'} onclick="go(2)">${t('next')} →</button></div>`;
+}
+function v2(){
+  const extra=XP.filter(x=>!x.star);
+  return `<h2 class="t">${t('pT')}</h2><p class="sub">${t('pS')}</p>
+  <div class="row"><div><b>${t('people')}</b><small>${t('peopleS')}</small></div><div class="ctr"><button ${S.ppl<=1?'disabled':''} onclick="S.ppl--;renderClient()">−</button><span>${S.ppl}</span><button ${S.ppl>=15?'disabled':''} onclick="S.ppl++;renderClient()">+</button></div></div>
+  ${S.ppl>=15?`<div class="warn">${t('bigG')} <button class="link" style="margin:0" onclick="goGroups()">${t('mG')} →</button></div>`:''}
+  <span class="lbl" style="margin-top:18px">${t('addT')}</span><p class="sub" style="margin-bottom:8px">${t('addS')}</p>
+  ${extra.map(x=>`<button class="addon ${S.adds.includes(x.id)?'on':''}" onclick="togAdd('${x.id}')"><span class="ic">${x.ic}</span><span class="tx"><b>${xpName(x.id)}</b><small>${t('quote')}</small></span><span class="cb">${S.adds.includes(x.id)?'✓':''}</span></button>`).join('')}
+  <div class="actions"><button class="btn sec" onclick="go(1)">←</button><button class="btn pri" onclick="go(3)">${t('next')} →</button></div>`;
+}
+function v3(){
+  if(!S.clang)S.clang=S.lang;
+  const f=(id,label,type,ph)=>`<div class="fld ${S.errs[id]?'err':''}"><label>${label}</label><input type="${type}" value="${esc(S[id])}" placeholder="${ph}" oninput="S.${id}=this.value" autocomplete="off">${S.errs[id]?`<div class="em">${S.errs[id]}</div>`:''}</div>`;
+  return `<h2 class="t">${t('yT')}</h2><p class="sub">${t('yS')}</p><button class="link" onclick="autofill()">${t('autofill')}</button>
+  ${f('name',t('name'),'text','Ej. Carla Andi')}${f('phone',t('phone'),'tel','+593 99 123 4567')}${f('email',t('email'),'email','nombre@correo.com')}
+  <div class="fld"><label>${t('confLang')}</label><div class="tog"><button class="${S.clang==='es'?'on':''}" onclick="S.clang='es';renderClient()">Español</button><button class="${S.clang==='en'?'on':''}" onclick="S.clang='en';renderClient()">English</button></div></div>
+  <div class="actions"><button class="btn sec" onclick="go(2)">←</button><button class="btn pri" onclick="validate()">${t('next')} →</button></div>`;
+}
+function v4(){
+  const c=calc();
+  return `<h2 class="t">${t('payT')}</h2><p class="sub">${t('payS')}</p>
+  <div class="tog" style="margin-bottom:6px"><button class="${S.pay==='bank'?'on':''}" onclick="S.pay='bank';renderClient()">🏦 ${t('transfer')}</button><button class="${S.pay==='card'?'on':''}" onclick="S.pay='card';renderClient()">💳 ${t('card')}</button></div>
+  <div class="mock"><small>${S.pay==='card'?t('card'):t('transfer')} · demo</small><b>${S.pay==='card'?'•••• •••• •••• 4242':'CTC Santa Rita · •••• 1234'}</b></div>
+  <div class="note">🔒 ${t('simNote')}</div>
+  <div class="actions"><button class="btn sec" onclick="go(3)" ${S.paying?'disabled':''}>←</button><button class="btn pri" onclick="doPay()" ${S.paying?'disabled':''}>${S.paying?`<span class="spin"></span> ${t('processing')}`:t('pay',{a:money(c.dep)})}</button></div>`;
+}
+const calc=()=>{const total=S.ppl*PRICE,dep=total/2;return{total,dep,bal:total-dep}};
+function renderSummary(){
+  if(S.mode==='g'){
+    $('#summary').innerHTML=`<h3>${t('gT')}</h3><p class="sub" style="margin:0">${t('gS')}</p>
+    <div class="ln" style="margin-top:10px"><span>${t('x_choco')}</span><b>$${PRICE} ${t('pp')}</b></div>
+    <div class="imp"><span style="font-size:22px">🤝</span><span><b>${t('impT')}</b>${t('impS')}</span></div>`;return}
+  const c=calc(),q=S.adds.map(a=>xpName(a)).join(', ');
+  $('#summary').innerHTML=`<h3>${t('sumT')}</h3>
+  <div class="ln"><span>${t('sDate')}</span><b>${S.date?dShort(S.date):t('none')}</b></div>
+  <div class="ln"><span>${t('sTime')}</span><b>${S.date?S.time:t('none')}</b></div>
+  <div class="ln"><span>${t('sPpl')}</span><b>${pplW(S.ppl)}</b></div>
+  <div class="tot"><div class="ln"><span>${t('liBase',{n:S.ppl})}</span><b>${money(c.total)}</b></div><div class="ln big"><span>${t('total')}</span><span>${money(c.total)}</span></div></div>
+  <div class="dep"><div class="ln"><span>${t('deposit')}</span><span>${money(c.dep)}</span></div><div class="ln s"><span>${t('balance')}</span><span>${money(c.bal)}</span></div></div>
+  ${q?`<div class="q">⏳ ${t('toQuote',{l:esc(q)})}</div>`:''}
+  <div class="imp"><span style="font-size:22px">🤝</span><span><b>${t('impT')}</b>${t('impS')}</span></div>`;
+}
+function mv(d){S.month=new Date(S.month.getFullYear(),S.month.getMonth()+d,1);renderClient()}
+function go(n){S.step=n;renderClient();document.getElementById('book').scrollIntoView({behavior:'smooth',block:'start'})}
+function autofill(){S.name='Carla Andi (ejemplo)';S.phone='+593 99 123 4567';S.email='carla.ejemplo@correo.com';S.errs={};renderClient()}
+function validate(){S.errs={};if(S.name.trim().length<2)S.errs.name=t('errName');if(S.phone.replace(/\D/g,'').length<7)S.errs.phone=t('errPhone');if(Object.keys(S.errs).length)return renderClient();go(4)}
+function doPay(){S.paying=true;renderClient();setTimeout(()=>{const c=calc();
+  const b={id:100+B.length,code:'SR-'+(4000+Math.floor(Math.random()*5999)),kind:'v',name:S.name.trim(),phone:S.phone,date:S.date,time:S.time,ppl:S.ppl,adds:[...S.adds],lang:S.clang||S.lang,total:c.total,dep:c.dep,bal:c.bal,example:false,isNew:true,bookedAt:key(d0)};
+  B.unshift(b);S.done=b;S.paying=false;S.newCount++;updateBadge();renderClient();document.getElementById('book').scrollIntoView({behavior:'smooth',block:'start'})},1500)}
+function reset(silent){Object.assign(S,{step:1,date:null,time:'10:00',ppl:4,adds:[],name:'',phone:'',email:'',clang:null,done:null,errs:{},month:null});if(!silent){renderXP();renderClient();document.getElementById('book').scrollIntoView({behavior:'smooth'})}else renderXP()}
+function renderDone(el){
+  const b=S.done;
+  el.innerHTML=`<div class="center"><svg class="ok" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="35" stroke="#2f8a4f" stroke-width="6"/><path d="M24 41l12 12 21-24" stroke="#2f8a4f" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg><h2 class="t">${t('done')}</h2><p class="sub">${t('doneS')}</p></div>
+  <div class="voucher"><div class="qr">${qr(b.code)}</div><div><span class="code">${b.code}</span><h4>${t('x_choco')}</h4><p>${dShort(b.date)} · ${b.time}</p><p>${pplW(b.ppl)}</p></div></div>
+  <div id="msgMount"></div>
+  <div class="actions" style="flex-wrap:wrap"><button class="btn sec" onclick="reset()">${t('another')}</button><button class="btn pri" onclick="setView('admin')">${t('seeAdmin')}</button></div>`;
+  msgView(b,$('#msgMount'));
+}
+function qr(code){let h=hash(code),s='';for(let y=0;y<9;y++)for(let x=0;x<9;x++){const fin=(x<3&&y<3)||(x>5&&y<3)||(x<3&&y>5);h=(h*1103515245+12345)>>>0;if(fin||(h>>16)%2)s+=`<rect x="${x*5}" y="${y*5}" width="5" height="5" rx="1"/>`}return `<svg width="64" height="64" viewBox="0 0 45 45" fill="#4a2516">${s}</svg>`}
+
+/* ===== AGENCIAS Y GRUPOS ===== */
+function renderGroup(){
+  const g=S.g,el=$('#stepBody');
+  if(g.done){const b=g.done;
+    el.innerHTML=`<div class="center"><svg class="ok" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="35" stroke="#2f8a4f" stroke-width="6"/><path d="M24 41l12 12 21-24" stroke="#2f8a4f" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg><h2 class="t">${t('gDone')}</h2><p class="sub">${t('gDoneS')}</p></div><div id="msgMount"></div>
+    <div class="actions" style="flex-wrap:wrap"><button class="btn sec" onclick="S.g.done=null;renderClient()">←</button><button class="btn pri" onclick="setView('admin')">${t('seeAdminG')}</button></div>`;
+    msgView(b,$('#msgMount'));return}
+  const types=t('gTypes');
+  el.innerHTML=`<h2 class="t">${t('gT')}</h2><p class="sub">${t('gS')}</p>
+  <div class="fld"><label>${t('gType')}</label><div class="chipsel">${types.map((x,i)=>`<button class="${g.type===i?'on':''}" onclick="S.g.type=${i};renderGroup()">${x}</button>`).join('')}</div></div>
+  <div class="fld"><label>${t('gOrg')}</label><input value="${esc(g.org)}" oninput="S.g.org=this.value" placeholder="Ej. Amazonía Viajes"></div>
+  <div class="f2"><div class="fld"><label>${t('name')}</label><input value="${esc(g.name)}" oninput="S.g.name=this.value"></div><div class="fld"><label>${t('phone')}</label><input type="tel" value="${esc(g.phone)}" oninput="S.g.phone=this.value" placeholder="+593…"></div></div>
+  <div class="f2"><div class="fld"><label>${t('gSize')}</label><input type="number" min="1" value="${esc(g.size)}" oninput="S.g.size=this.value" placeholder="25"></div><div class="fld"><label>${t('gDate')}</label><input type="date" value="${esc(g.date)}" min="${key(addD(d0,1))}" oninput="S.g.date=this.value"></div></div>
+  <div class="fld"><label>${t('gInt')}</label><div class="chipsel">${XP.map(x=>`<button class="${g.ints.includes(x.id)?'on':''}" onclick="togInt('${x.id}')">${x.ic} ${xpName(x.id)}</button>`).join('')}</div></div>
+  <div class="fld"><label>${t('gNote')}</label><textarea oninput="S.g.note=this.value" placeholder="${t('gNoteP')}">${esc(g.note)}</textarea></div>
+  <button class="link" onclick="gFill()">${t('autofill')}</button>
+  ${g.err?`<div class="warn">${t('gErr')}</div>`:''}
+  <div class="actions"><button class="btn pri" onclick="gSend()">${t('gSend')} →</button></div>`;
+}
+function togInt(id){const a=S.g.ints,i=a.indexOf(id);i>=0?a.splice(i,1):a.push(id);renderGroup()}
+function gFill(){Object.assign(S.g,{org:'Amazonía Viajes (ejemplo)',name:'Jorge Tapuy',phone:'+593 98 765 4321',size:'25',date:key(addD(d0,12)),err:false});if(S.g.ints.length<2)S.g.ints=['choco','senderos','danza'];renderGroup()}
+function gSend(){const g=S.g;if(!g.name.trim()||!g.org.trim()||g.phone.replace(/\D/g,'').length<7||!(+g.size>0)||!g.date){g.err=true;return renderGroup()}
+  g.err=false;const b={id:200+B.length,code:'GR-'+(500+Math.floor(Math.random()*499)),kind:'g',name:g.org.trim(),contact:g.name.trim(),phone:g.phone,date:g.date,time:'—',ppl:+g.size,adds:g.ints.filter(x=>x!=='choco'),lang:S.lang,total:0,dep:0,bal:0,example:false,isNew:true,bookedAt:key(d0),gtype:g.type};
+  B.unshift(b);g.done=b;S.newCount++;updateBadge();renderGroup();document.getElementById('book').scrollIntoView({behavior:'smooth',block:'start'})}
+
+/* ===== MENSAJES ===== */
+let TOK=0;
+function msgView(b,mount,stage=0){
+  if(b.kind==='g'){mount.innerHTML='<div class="mv"></div>';return showChat(mount.querySelector('.mv'),b,'g')}
+  mount.innerHTML=`<div class="tabs"><button class="${stage===0?'on':''}" data-s="0">💬 ${t('j0')}</button><button class="${stage===1?'on':''}" data-s="1">🗺️ ${t('j1')}</button></div><div class="mv"></div>`;
+  mount.querySelectorAll('.tabs button').forEach(x=>x.onclick=()=>msgView(b,mount,+x.dataset.s));
+  showChat(mount.querySelector('.mv'),b,stage);
+}
+const wa=s=>esc(s).replace(/\*(.+?)\*/g,'<b>$1</b>').replace(/\n/g,'<br>');
+function script(b,stage){
+  const L=b.lang,first=b.name.split(/[\s(&]/)[0],list=b.adds.map(a=>xpName(a,L)).join(', ');
+  if(stage==='g'){const v={org:b.name,size:b.ppl,date:dLong(b.date,L),list:[xpName('choco',L),...b.adds.map(a=>xpName(a,L))].join(', '),extra:b.adds.length?b.adds.map(a=>xpName(a,L)).join(' · '):tr(L,'g2x')};
+    return[['sep',dShort(b.bookedAt,L)],['usr',tr(L,'g0',v),'09:10'],['biz',tr(L,'g1',v),'09:10'],['biz',tr(L,'g2',v),'09:42'],['usr',tr(L,'g3',v),'09:55']]}
+  const v={first,code:b.code,date:dLong(b.date,L),time:b.time,ppl:pplW(b.ppl,L),dep:money(b.dep),bal:money(b.bal),list};
+  if(stage===0)return[['sep',dShort(b.bookedAt,L)],['biz',tr(L,'w_ok',v),'10:20'],...(b.adds.length?[['biz',tr(L,'w_q',v),'10:20']]:[]),['usr',tr(L,'w_u0',v),'10:31']];
+  return[['sep',dShort(key(addD(parse(b.date),-1)),L)],['biz',tr(L,'w_dir',v),'17:00'],['loc','','17:00'],['usr',tr(L,'w_u1',v),'17:15'],['biz',tr(L,'w_b1',v),'17:16']];
+}
+function showChat(mv,b,stage){
+  const L=b.lang,tok=++TOK,msgs=script(b,stage);
+  mv.innerHTML=`<div class="phone"><div class="wah"><div class="av">SR</div><div><b>CTC Santa Rita</b><small>${tr(L,'wahSub')}</small></div></div><div class="chat"></div><div class="wafoot"><span>${tr(L,'wafoot')}</span><span>🎙️</span></div></div>`;
+  const body=mv.querySelector('.chat');let i=0;
+  const add=m=>{const d=document.createElement('div');
+    if(m[0]==='sep'){d.className='dsep';d.textContent=m[1]}
+    else if(m[0]==='loc'){d.className='msg biz loc';d.innerHTML=`<div class="map"><svg viewBox="0 0 250 110" width="100%" height="100%"><rect width="250" height="110" fill="#e7efe3"/><path d="M40 -5L60 115" stroke="#fff" stroke-width="7"/><path d="M55 60C110 55 150 40 190 30" stroke="#c8742c" stroke-width="3" stroke-dasharray="6 5" fill="none"/><path d="M190 10c-7 0-12 5-12 12 0 9 12 20 12 20s12-11 12-20c0-7-5-12-12-12z" fill="#c4453a"/><circle cx="190" cy="22" r="4" fill="#fff"/></svg></div><div class="cap"><b>📍 ${esc(tr(L,'locT'))}</b><small>${esc(tr(L,'locS'))}</small></div><span class="tm">${m[2]}</span>`}
+    else{d.className='msg '+m[0];d.innerHTML=wa(m[1])+`<span class="tm">${m[2]}${m[0]==='usr'?' ✓✓':''}</span>`}
+    body.appendChild(d)};
+  const next=()=>{if(tok!==TOK||i>=msgs.length)return;const m=msgs[i];
+    if(m[0]==='sep'){add(m);i++;return setTimeout(next,200)}
+    if(m[0]!=='usr'){const ty=document.createElement('div');ty.className='typing';ty.innerHTML='<i></i><i></i><i></i>';body.appendChild(ty);setTimeout(()=>{if(tok!==TOK)return;ty.remove();add(m);i++;setTimeout(next,450)},700)}
+    else setTimeout(()=>{if(tok!==TOK)return;add(m);i++;setTimeout(next,300)},650)};
+  next();
+}
+
+/* ===== COMUNIDAD ===== */
+function renderAdmin(){
+  const wk=addD(d0,8),inWk=b=>parse(b.date)>d0&&parse(b.date)<wk;
+  const dep=B.reduce((a,b)=>a+b.dep,0),ppl=B.filter(inWk).reduce((a,b)=>a+b.ppl,0),gq=B.filter(b=>b.kind==='g').length,nw=B.filter(b=>b.isNew).length;
+  $('#kpis').innerHTML=[['kRes',B.length,nw?t('kNew',{n:nw}):''],['kPpl',ppl,''],['kDep',money(dep),''],['kGrp',gq,'']].map(k=>`<div class="kpi"><small>${t(k[0])}</small><b>${k[1]}</b><em>${k[2]}</em></div>`).join('');
+  const sorted=[...B].sort((a,b)=>(b.isNew?1:0)-(a.isNew?1:0)||a.date.localeCompare(b.date));
+  $('#bkList').innerHTML=sorted.map(b=>{const g=b.kind==='g';const ad=b.adds.length?' · + '+b.adds.map(a=>xpName(a)).join(', '):'';
+    return `<button class="bk ${b.isNew?'new':''}" onclick="openBk(${b.id})"><div class="av2 ${g?'g':''}"><b>${b.ppl}</b><small>pax</small></div><div class="m"><div class="nm">${esc(b.name)}${g?`<span class="tag ag">${t('ag')}</span>`:''}${b.example?`<span class="tag ex">${t('ex')}</span>`:''}${b.isNew?`<span class="tag nw">${t('nw')}</span>`:''}</div><small>${dShort(b.date)}${b.time!=='—'?' · '+b.time:''}${esc(ad)}</small><br><span class="st ${g?'quote':'paid'}">${g?'⏳ '+t('stQuote'):'✓ '+t('stPaid')}</span></div><div class="am">${g?'':`<b>${money(b.total)}</b><small>${money(b.dep)}</small>`}</div></button>`}).join('');
+  const days=[...Array(7)].map((_,i)=>key(addD(d0,i+1)));
+  $('#kitchen').innerHTML=days.map(k=>{const L=B.filter(b=>b.date===k);const n=L.reduce((a,b)=>a+b.ppl,0);const d=parse(k);
+    return `<li><div class="dt"><b>${d.getDate()}</b><small>${new Intl.DateTimeFormat(loc(),{weekday:'short'}).format(d)}</small></div><div class="m"><b>${L.length?L.map(b=>esc(b.name)).join(', '):'—'}</b><small>${L.length?L.map(b=>b.time!=='—'?b.time:t('ag')).join(' · '):''}</small></div><div class="n">${n}<small>${t('lunches')}</small></div></li>`}).join('');
+  $('#eco').innerHTML=`<h3>${t('ecoT')}</h3><div class="big">${money(B.reduce((a,b)=>a+b.total,0))}</div><p>${t('ecoS')}</p>`;
+}
+function openBk(id){const b=B.find(x=>x.id===id);if(!b)return;
+  $('#modal').innerHTML=`<div class="ov" onclick="if(event.target===this)closeM()"><div class="sheet"><button class="x" onclick="closeM()">✕</button><h3 style="font-size:18px">${esc(b.name)} <span style="color:var(--muted);font-weight:600;font-size:13px">${b.code}</span></h3><p class="sub" style="margin:4px 0 8px">${dShort(b.date)}${b.time!=='—'?' · '+b.time:''} · ${pplW(b.ppl)}${b.total?' · '+money(b.total):''}</p><div id="mm"></div></div></div>`;
+  msgView(b,$('#mm'))}
+function closeM(){TOK++;$('#modal').innerHTML=''}
+
+applyI18n();renderClient();
+</script>
+</body>
+</html>
