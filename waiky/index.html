@@ -76,7 +76,7 @@ header.top{position:sticky;top:0;z-index:30;background:rgba(251,247,243,.86);bac
 .pc .img svg{width:100%;height:100%;display:block;transition:.4s}
 .pc:hover .img svg{transform:scale(1.05)}
 .pc .ex{position:absolute;left:8px;top:8px;font-size:9.5px;font-weight:800;padding:3px 7px;border-radius:7px;background:rgba(255,255,255,.92);color:var(--muted);text-transform:uppercase;letter-spacing:.3px}
-.pc .hot{position:absolute;right:8px;top:8px;font-size:9.5px;font-weight:800;padding:3px 7px;border-radius:7px;background:var(--saf);color:#2a1700;text-transform:uppercase}
+.pc .hot{position:absolute;left:8px;bottom:8px;font-size:9.5px;font-weight:800;padding:3px 7px;border-radius:7px;background:var(--saf);color:#2a1700;text-transform:uppercase}
 .pc .bd{padding:10px 12px 12px;display:flex;flex-direction:column;gap:4px;flex:1}
 .pc h3{font-size:14px;line-height:1.2;font-weight:700}
 .pc small{color:var(--muted);font-size:11.5px}
@@ -207,6 +207,29 @@ h3.sec{font-size:16px;margin:2px 0 12px;display:flex;justify-content:space-betwe
 .top5 li{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--line);font-size:13px;list-style:none}.top5 li:last-child{border:0}
 .top5 .th{width:36px;height:36px;border-radius:10px;overflow:hidden;flex:none}.top5 .th svg{width:100%;height:100%}
 .top5 .bar{flex:1;height:8px;border-radius:5px;background:#f0e8ee;overflow:hidden}.top5 .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--mag),var(--saf))}
+.pc .img img,.qv .img img,.ci .th img,.top5 .th img,.heroArt img{width:100%;height:100%;object-fit:cover;display:block;transition:.4s}
+.pc:hover .img img{transform:scale(1.05)}
+.pc .new{position:absolute;left:8px;bottom:8px;font-size:9.5px;font-weight:800;padding:3px 7px;border-radius:7px;background:var(--mag2);color:#fff;text-transform:uppercase}
+.news{margin-top:22px;border-radius:24px;padding:22px;background:#fff;border:1px solid var(--line);box-shadow:var(--sh);display:grid;gap:14px;align-items:center}
+@media(min-width:760px){.news{grid-template-columns:1.2fr 1fr}}
+.news h2{font-size:26px}.news p{color:var(--muted);font-size:14px;margin-top:4px}
+.news .wa{display:inline-flex;align-items:center;gap:8px;background:#25d366;color:#05300f;font-weight:800;padding:13px 18px;border-radius:16px;font-size:15px;box-shadow:0 10px 22px -10px rgba(37,211,102,.8)}
+.news .pv{background:#e9e1d6;border-radius:18px;padding:12px}
+.chk{display:flex;gap:10px;align-items:flex-start;background:#effaf3;border:1px solid #c9ecd5;border-radius:14px;padding:11px 12px;font-size:13px;margin-top:6px;width:100%;text-align:left}
+.chk .bx{width:20px;height:20px;border-radius:6px;border:2px solid #25a35a;flex:none;display:grid;place-items:center;color:#fff;font-weight:800;font-size:12px}
+.chk.on .bx{background:#25a35a}
+.promo{display:grid;gap:10px}
+.promo select,.promo textarea{width:100%;padding:11px 12px;border-radius:13px;border:1.5px solid var(--line);background:#fdfafc;font-size:14px}
+.promo .sent{background:#e6f6ef;color:var(--ok);border-radius:12px;padding:10px;font-size:13px;font-weight:700}
+.pcard{background:#fff;border-radius:12px;overflow:hidden;width:min(88%,260px);align-self:flex-start;box-shadow:0 1px 1px rgba(0,0,0,.1);animation:in .35s}
+.pcard img{width:100%;height:150px;object-fit:cover;display:block}
+.pcard div{padding:8px 10px;font-size:13px}.pcard b{display:block}
+.pcard a{display:block;text-align:center;color:#1f7aa8;font-weight:600;border-top:1px solid #eee;padding:8px;font-size:13px}
+.photoBand{margin-top:22px;border-radius:24px;overflow:hidden;position:relative;min-height:220px;display:flex;align-items:flex-end;color:#fff}
+.photoBand img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.photoBand:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(29,20,36,.85))}
+.photoBand div{position:relative;z-index:2;padding:18px}
+.photoBand b{font-family:"Bricolage Grotesque",sans-serif;font-size:22px;display:block}
 .foot{text-align:center;font-size:12px;color:var(--muted);padding:22px 14px 8px;max-width:760px;margin:0 auto}
 </style>
 </head>
@@ -246,6 +269,13 @@ h3.sec{font-size:16px;margin:2px 0 12px;display:flex;justify-content:space-betwe
     <div class="filters" id="filters"></div>
     <div class="grid" id="grid"></div>
 
+    <div class="photoBand"><img src="img/puesto.jpg" alt=""><div><b data-i="band"></b><small data-i="bandS"></small></div></div>
+
+    <section class="news" id="news">
+      <div><h2 class="disp" data-i="nwT"></h2><p data-i="nwS"></p><div class="heroRow"><button class="wa" onclick="openNews()">💬 <span data-i="nwBtn"></span></button></div></div>
+      <div class="pv" id="newsPv"></div>
+    </section>
+
     <section class="whole" id="mayor">
       <div><h2 class="disp" data-i="wT"></h2><p data-i="wS"></p><div class="heroRow"><button class="btn" onclick="openWholesale()" data-i="wBtn"></button></div></div>
       <div class="tiers" id="tiers"></div>
@@ -264,7 +294,7 @@ h3.sec{font-size:16px;margin:2px 0 12px;display:flex;justify-content:space-betwe
     <div class="kpis" id="kpis"></div>
     <div class="two">
       <section class="card"><h3 class="sec"><span data-i="aOrd"></span><small data-i="aTap"></small></h3><div id="orders"></div></section>
-      <section class="card"><h3 class="sec"><span data-i="aTop"></span></h3><ul class="top5" id="top5"></ul></section>
+      <div style="display:grid;gap:16px;min-width:0"><section class="card"><h3 class="sec"><span data-i="aNews"></span><small id="subsL"></small></h3><div class="promo" id="promo"></div></section><section class="card"><h3 class="sec"><span data-i="aTop"></span></h3><ul class="top5" id="top5"></ul></section></div>
     </div>
   </div>
 </div>
@@ -276,25 +306,28 @@ h3.sec{font-size:16px;margin:2px 0 12px;display:flex;justify-content:space-betwe
 <script>
 /* ===== PRODUCTOS DE EJEMPLO (precios de ejemplo; Waiky publica "desde $1") ===== */
 const P=[
- {id:'pm',cat:'pul',price:1,art:'beads',c:['#c2185b','#0f9b9b','#f2a516'],hot:true},
- {id:'pt',cat:'pul',price:3,art:'weave',c:['#3b2a8f','#c2185b','#1e9a5b']},
- {id:'cs',cat:'col',price:8,art:'necklace',c:['#7a3b1f','#f2a516']},
- {id:'cm',cat:'col',price:12,art:'necklace2',c:['#c2185b','#0f9b9b']},
- {id:'af',cat:'are',price:6,art:'earring',c:['#9aa3ad','#f2a516']},
- {id:'at',cat:'are',price:4,art:'earring2',c:['#e2457a','#3b2a8f','#0f9b9b']},
- {id:'an',cat:'ani',price:4,art:'ring',c:['#9aa3ad','#f2a516']},
- {id:'bt',cat:'bol',price:18,art:'bag',c:['#c2185b','#3b2a8f','#f2a516'],hot:true}
+ {id:'roja',cat:'pul',price:1,img:'roja',c:['#d32f2f','#222222','#e91e63'],hot:true},
+ {id:'ar',cat:'are',price:3,img:'aretes',c:['#d4a531']},
+ {id:'ar2',cat:'are',price:3,img:'aretes2',c:['#d4a531','#b9c0c8']},
+ {id:'arg',cat:'are',price:4,img:'argollas',c:['#d4a531','#b9c0c8']},
+ {id:'cub',cat:'cad',price:15,img:'cubana',c:['#d4a531','#b9c0c8'],nuevo:true},
+ {id:'cad',cat:'cad',price:8,img:'cadplata',c:['#b9c0c8','#d4a531']},
+ {id:'dij',cat:'dij',price:5,img:'dijes',c:['#b9c0c8','#d4a531']},
+ {id:'ani',cat:'ani',price:5,img:'anillos',c:['#d4a531','#b9c0c8']},
+ {id:'rel',cat:'rel',price:20,img:'relojes',c:['#222222','#b9c0c8','#d4a531'],hot:true},
+ {id:'pie',cat:'pie',price:3,img:'piercing',c:['#b9c0c8','#222222']}
 ];
+const pic=p=>`<img src="img/${p.img}.jpg" alt="">`;
 const SHIP={store:0,ec:5,intl:25};
 const T={
 es:{
-demobar:"Demo de DevHorse para Waiky · Productos, fotos y precios de ejemplo · Pagos y mensajes simulados · Pedidos de ejemplo",
+demobar:"Demo de DevHorse para Waiky · Fotos reales del puesto · Precios, envíos y pedidos de ejemplo · Pagos y mensajes simulados",
 brandsub:"Tienda artesanal · Quito",tabC:"Tienda",tabA:"Mi negocio",
-eyebrow:"Hecho a mano en Quito",h1:"Accesorios con <em>historia</em>, ahora a un clic",
-heroP:"Pulseras, collares, aretes, anillos y bolsos artesanales que llevan los valores culturales de los pueblos indígenas. Compra desde cualquier parte del mundo.",
+eyebrow:"Desde Quito, Ecuador",h1:"Accesorios exclusivos <em>para toda ocasión</em>",
+heroP:"Aretes, argollas, cadenas, dijes, anillos, relojes, piercings y nuestras pulseras rojas de hilo hechas a mano. Compra desde cualquier lugar y recíbelo donde estés.",
 cta:"Ver la tienda",ctaW:"Para tiendas y hoteles",
 p1:"Envíos a todo Ecuador",p1s:"O retira gratis en la tienda en Quito",p2:"Envíos al exterior",p2s:"Lleva Ecuador contigo, estés donde estés",p3:"Tu pedido llega al WhatsApp",p3s:"Te confirmamos y te avisamos del envío",
-shT:"Nuestras piezas",shS:"Cada pieza es única y hecha a mano. Precios desde $1.",
+shT:"Nuestros accesorios",shS:"Fotos reales de nuestro puesto. Cada modelo tiene muchas variantes: pregúntanos por WhatsApp. Precios desde $1.",
 f_all:"Todo",f_pul:"Pulseras",f_col:"Collares",f_are:"Aretes",f_ani:"Anillos",f_bol:"Bolsos",
 n_pm:"Pulsera de mullos",d_pm:"Pulsera delgada de mullos de colores, ajustable. Perfecta para regalar.",
 n_pt:"Pulsera tejida a mano",d_pt:"Tejida a mano con hilos de colores y diseños geométricos andinos.",
@@ -304,7 +337,7 @@ n_af:"Aretes de filigrana",d_af:"Aretes trabajados a mano en filigrana, ligeros 
 n_at:"Aretes tejidos",d_at:"Aretes tejidos con mullos en forma de rombo.",
 n_an:"Anillo artesanal",d_an:"Anillo ajustable trabajado a mano.",
 n_bt:"Bolso tejido en telar",d_bt:"Bolso amplio tejido en telar, con correa ajustable. Ideal para el día a día.",
-exL:"Ejemplo",hot:"Favorito",color:"Color",qty:"Cantidad",addCart:"Agregar · {p}",handmade:"Hecho a mano",unique:"Pieza única",quito:"Desde Quito",
+exL:"Ejemplo",hot:"Favorito",color:"Acabado",qty:"Cantidad",addCart:"Agregar · {p}",handmade:"Hecho en Quito",unique:"Muchos modelos",quito:"Desde Quito",
 cartT:"Tu bolsa",empty:"Tu bolsa está vacía",checkout:"Continuar",items:"{n} producto(s)",
 st1:"Bolsa",st2:"Entrega",st3:"Pago",
 shipT:"¿Cómo lo recibes?",s_store:"Retiro en la tienda",s_storeS:"Línea Férrea, La Tola, Quito · gratis",s_ec:"Envío a todo Ecuador",s_ecS:"2 a 4 días hábiles · costo de ejemplo",s_intl:"Envío internacional",s_intlS:"Según el país · costo de ejemplo",free:"Gratis",
@@ -320,20 +353,20 @@ aboutT:"Sobre Waiky",aboutP:"Elaboramos y comercializamos accesorios artesanales
 aT:"Panel de Waiky",aS:"Lo que ve Jesús en el celular. Los pedidos marcados “Ejemplo” son inventados; los “Nuevo” vienen de la demo.",
 aOrd:"Pedidos",aTap:"Toca uno para ver el mensaje",aTop:"Más vendidos (ejemplo)",
 kOrd:"Pedidos",kSales:"Ventas",kShip:"Por enviar",kWh:"Mayoristas",kNew:"+{n} nuevo(s)",ex:"Ejemplo",nw:"Nuevo",wh:"Mayorista",stPaid:"Pagado",stShip:"Por enviar",stQ:"Por cotizar",
-foot:"Demo creada por DevHorse como propuesta para Waiky tienda artesanal. Productos, fotos, precios, costos de envío y descuentos son de ejemplo, para reemplazar con los reales. Dirección, horario y contacto tomados de su ficha pública.",
+foot:"Demo creada por DevHorse como propuesta para Waiky tienda artesanal. Fotos enviadas por Waiky; precios, costos de envío, descuentos, pedidos y suscriptores son de ejemplo. Dirección, horario y contacto tomados de su ficha pública.",
 o_new:"🛍️ *Nuevo pedido {code}*\n\n{lines}\n\n🚚 {ship}\n💳 Pagado: *{tot}* ({pay})\n👤 {name} · {phone}\n📍 {addr}",o_btn1:"Marcar como enviado",o_btn2:"Escribir al cliente",
 c_ok:"¡Hola {first}! 🌸 Gracias por tu compra en *Waiky*.\n\nTu pedido *{code}* está confirmado:\n{lines}\n\n💳 Total pagado: *{tot}*\n🚚 {ship}",c_ship:"📦 ¡Tu pedido ya va en camino! Te avisamos cuando llegue. Gracias por llevar un pedacito de nuestra cultura contigo ✨",c_store:"🏪 Tu pedido te espera en la tienda (Línea Férrea, La Tola). Horario: lun a sáb 8:00–18:00 y dom 8:00–16:00.",c_u:"¡Muchas gracias! 😍",
 w_in:"🏨 *Solicitud al por mayor*\n\n🏷️ {biz} ({type})\n📦 {prod}\n👤 {name} · {phone}",w_rep:"¡Hola {first}! Gracias por escribir a Waiky 🙌 Con gusto le preparamos la cotización por volumen. ¿Para qué fecha necesita el pedido?",
-wahSub:"Cuenta de empresa",wafoot:"Mensajes automáticos ✓✓",shipStore:"Retiro en la tienda",shipEc:"Envío a todo Ecuador",shipIntl:"Envío internacional"
+wahSub:"Cuenta de empresa",wafoot:"Mensajes automáticos ✓✓",shipStore:"Retiro en la tienda",shipEc:"Envío a todo Ecuador",shipIntl:"Envío internacional",f_cad:"Cadenas",f_dij:"Dijes",f_rel:"Relojes",f_pie:"Piercings",n_roja:"Pulsera roja de hilo con dije",d_roja:"Hecha a mano con hilo rojo y dije. Un clásico para regalar y para la buena suerte.",n_ar:"Aretes dorados colgantes",d_ar:"Aretes largos con detalles y piedras de colores. Muchos diseños disponibles.",n_ar2:"Aretes con piedras",d_ar2:"Aretes pequeños y medianos con piedras de colores.",n_arg:"Argollas",d_arg:"Argollas redondas, de corazón y de formas geométricas, en dorado y plateado.",n_cub:"Cadena cubana",d_cub:"Cadena gruesa estilo cubano, dorada o plateada. Lo nuevo del puesto.",n_cad:"Cadenas con dije",d_cad:"Cadenas plateadas y doradas con dijes: cruces, medallas, iniciales y más.",n_dij:"Dijes y medallas",d_dij:"Cruces, medallas de la Virgen, letras y figuras para tu cadena.",n_ani:"Anillos",d_ani:"Anillos dorados y plateados de varios estilos.",n_rel:"Relojes",d_rel:"Relojes de hombre y mujer, deportivos y elegantes.",n_pie:"Piercings",d_pie:"Piercings y aretes pequeños en acero, dorados y negros.",exPrice:"Precio de ejemplo",nuevo:"Nuevo",nwT:"Entérate primero de lo nuevo",nwS:"Recibe por WhatsApp los productos nuevos y las promociones de Waiky. Sin spam: solo novedades, y te puedes salir cuando quieras.",nwBtn:"Recibir novedades por WhatsApp",nwFormT:"Novedades por WhatsApp",nwJoin:"Suscribirme",nwDone:"¡Listo! Ya estás en la lista",nwDoneS:"Así te llega el mensaje de bienvenida:",optin:"Quiero recibir novedades y promociones por WhatsApp",nw_wel:"¡Hola {first}! 🌸 Ya estás en la lista de novedades de *Waiky*. Te avisaremos cuando lleguen productos nuevos o haya promociones. Para salir, responde SALIR.",aNews:"Novedades y promociones",subsL:"{n} clientes reciben novedades",prProd:"Producto",prText:"Mensaje",prDef:"¡Llegó algo nuevo a Waiky! ✨ Este fin de semana 10 % de descuento en {prod}. (promoción de ejemplo)",prSend:"Enviar a {n} clientes",prSent:"✓ Enviada a {n} clientes. Así le llega a cada uno:",prSee:"Ver en la tienda",kSubs:"Suscriptores",band:"Nuestro puesto en Quito",bandS:"Lo que ves en la tienda en línea es lo mismo que encuentras en el puesto."
 },
 en:{
-demobar:"DevHorse demo for Waiky · Sample products, photos and prices · Simulated payments & messages · Sample orders",
+demobar:"DevHorse demo for Waiky · Real stand photos · Sample prices, shipping and orders · Simulated payments & messages",
 brandsub:"Artisan shop · Quito",tabC:"Shop",tabA:"My business",
-eyebrow:"Handmade in Quito",h1:"Accessories with a <em>story</em>, one click away",
-heroP:"Handmade bracelets, necklaces, earrings, rings and bags carrying the cultural values of Indigenous peoples. Shop from anywhere in the world.",
+eyebrow:"From Quito, Ecuador",h1:"Exclusive accessories <em>for every occasion</em>",
+heroP:"Earrings, hoops, chains, pendants, rings, watches, piercings and our handmade red string bracelets. Shop from anywhere and get it wherever you are.",
 cta:"Shop now",ctaW:"For shops & hotels",
 p1:"Shipping across Ecuador",p1s:"Or free pick-up at our Quito store",p2:"International shipping",p2s:"Take Ecuador with you, wherever you are",p3:"Order updates on WhatsApp",p3s:"We confirm and let you know when it ships",
-shT:"Our pieces",shS:"Every piece is unique and handmade. Prices from $1.",
+shT:"Our accessories",shS:"Real photos from our stand. Each style comes in many variants: ask us on WhatsApp. Prices from $1.",
 f_all:"All",f_pul:"Bracelets",f_col:"Necklaces",f_are:"Earrings",f_ani:"Rings",f_bol:"Bags",
 n_pm:"Beaded bracelet",d_pm:"Thin, adjustable bracelet with colorful beads. Perfect as a gift.",
 n_pt:"Hand-woven bracelet",d_pt:"Hand-woven with colorful threads and Andean geometric designs.",
@@ -343,7 +376,7 @@ n_af:"Filigree earrings",d_af:"Hand-crafted filigree earrings, light and elegant
 n_at:"Woven earrings",d_at:"Diamond-shaped beaded earrings.",
 n_an:"Handmade ring",d_an:"Adjustable handmade ring.",
 n_bt:"Loom-woven bag",d_bt:"Roomy loom-woven bag with adjustable strap. Great for everyday.",
-exL:"Sample",hot:"Favorite",color:"Color",qty:"Quantity",addCart:"Add · {p}",handmade:"Handmade",unique:"One of a kind",quito:"From Quito",
+exL:"Sample",hot:"Favorite",color:"Finish",qty:"Quantity",addCart:"Add · {p}",handmade:"From Quito",unique:"Many styles",quito:"From Quito",
 cartT:"Your bag",empty:"Your bag is empty",checkout:"Continue",items:"{n} item(s)",
 st1:"Bag",st2:"Delivery",st3:"Payment",
 shipT:"How do you want it?",s_store:"Store pick-up",s_storeS:"Línea Férrea, La Tola, Quito · free",s_ec:"Shipping across Ecuador",s_ecS:"2–4 business days · sample cost",s_intl:"International shipping",s_intlS:"Depends on country · sample cost",free:"Free",
@@ -359,24 +392,24 @@ aboutT:"About Waiky",aboutP:"We make and sell handmade personal accessories to s
 aT:"Waiky dashboard",aS:"What Jesús sees on his phone. Orders tagged “Sample” are made up; “New” ones come from this demo.",
 aOrd:"Orders",aTap:"Tap one to see the message",aTop:"Best sellers (sample)",
 kOrd:"Orders",kSales:"Sales",kShip:"To ship",kWh:"Wholesale",kNew:"+{n} new",ex:"Sample",nw:"New",wh:"Wholesale",stPaid:"Paid",stShip:"To ship",stQ:"To quote",
-foot:"Demo created by DevHorse as a proposal for Waiky artisan shop. Products, photos, prices, shipping costs and discounts are samples, to be replaced with real ones. Address, hours and contact taken from their public listing.",
+foot:"Demo created by DevHorse as a proposal for Waiky. Photos provided by Waiky; prices, shipping, discounts, orders and subscribers are samples. Address, hours and contact from their public listing.",
 o_new:"🛍️ *New order {code}*\n\n{lines}\n\n🚚 {ship}\n💳 Paid: *{tot}* ({pay})\n👤 {name} · {phone}\n📍 {addr}",o_btn1:"Mark as shipped",o_btn2:"Message customer",
 c_ok:"Hi {first}! 🌸 Thank you for shopping at *Waiky*.\n\nYour order *{code}* is confirmed:\n{lines}\n\n💳 Total paid: *{tot}*\n🚚 {ship}",c_ship:"📦 Your order is on its way! We'll let you know when it arrives. Thank you for taking a piece of our culture with you ✨",c_store:"🏪 Your order is waiting at the store (Línea Férrea, La Tola). Hours: Mon–Sat 8:00–18:00, Sun 8:00–16:00.",c_u:"Thank you so much! 😍",
 w_in:"🏨 *Wholesale request*\n\n🏷️ {biz} ({type})\n📦 {prod}\n👤 {name} · {phone}",w_rep:"Hi {first}! Thanks for contacting Waiky 🙌 We'll gladly prepare a volume quote. When do you need the order?",
-wahSub:"Business account",wafoot:"Automatic messages ✓✓",shipStore:"Store pick-up",shipEc:"Shipping across Ecuador",shipIntl:"International shipping"
+wahSub:"Business account",wafoot:"Automatic messages ✓✓",shipStore:"Store pick-up",shipEc:"Shipping across Ecuador",shipIntl:"International shipping",f_cad:"Chains",f_dij:"Pendants",f_rel:"Watches",f_pie:"Piercings",n_roja:"Red string bracelet with charm",d_roja:"Handmade with red string and a charm. A classic gift for good luck.",n_ar:"Gold-tone drop earrings",d_ar:"Long earrings with details and colored stones. Many designs available.",n_ar2:"Stone earrings",d_ar2:"Small and medium earrings with colored stones.",n_arg:"Hoop earrings",d_arg:"Round, heart and geometric hoops in gold and silver tones.",n_cub:"Cuban chain",d_cub:"Chunky Cuban-style chain in gold or silver tone. New in.",n_cad:"Chains with pendant",d_cad:"Silver and gold-tone chains with pendants: crosses, medals, initials and more.",n_dij:"Pendants & medals",d_dij:"Crosses, Virgin medals, letters and charms for your chain.",n_ani:"Rings",d_ani:"Gold and silver-tone rings in many styles.",n_rel:"Watches",d_rel:"Men's and women's watches, sporty and elegant.",n_pie:"Piercings",d_pie:"Steel piercings and small studs in silver, gold and black.",exPrice:"Sample price",nuevo:"New",nwT:"Be the first to know what's new",nwS:"Get Waiky's new arrivals and promotions on WhatsApp. No spam: only news, and you can leave anytime.",nwBtn:"Get updates on WhatsApp",nwFormT:"Updates on WhatsApp",nwJoin:"Subscribe",nwDone:"Done! You're on the list",nwDoneS:"This is your welcome message:",optin:"I want to get new arrivals and promotions on WhatsApp",nw_wel:"Hi {first}! 🌸 You're now on *Waiky*'s updates list. We'll let you know about new arrivals and promotions. Reply STOP to leave.",aNews:"New arrivals & promotions",subsL:"{n} customers get updates",prProd:"Product",prText:"Message",prDef:"Something new at Waiky! ✨ This weekend 10% off {prod}. (sample promotion)",prSend:"Send to {n} customers",prSent:"✓ Sent to {n} customers. This is what each one gets:",prSee:"See in the shop",kSubs:"Subscribers",band:"Our stand in Quito",bandS:"What you see online is what you find at the stand."
 }};
 
 /* ===== ESTADO ===== */
-const S={lang:'es',view:'client',filter:'all',cart:[],step:1,ship:'ec',pay:'card',name:'',phone:'',email:'',addr:'',city:'',country:'Ecuador',errs:{},done:null,paying:false,newCount:0,wh:{type:0,biz:'',name:'',phone:'',prod:'',done:null,err:false}};
-const O=[];
+const S={optin:true,lang:'es',view:'client',filter:'all',cart:[],step:1,ship:'ec',pay:'card',name:'',phone:'',email:'',addr:'',city:'',country:'Ecuador',errs:{},done:null,paying:false,newCount:0,wh:{type:0,biz:'',name:'',phone:'',prod:'',done:null,err:false}};
+const O=[];let SUBS=128;let PROMO={prod:'cub',text:null,sent:false};
 const $=s=>document.querySelector(s);
 const tr=(l,k,v={})=>{let s=T[l][k]??T.es[k]??k;if(typeof s!=='string')return s;for(const x in v)s=s.split('{'+x+'}').join(v[x]);return s};
 const t=(k,v)=>tr(S.lang,k,v);
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const money=n=>'$'+(Math.round(n*100)/100).toFixed(2);
 const PR=id=>P.find(x=>x.id===id);
-const cname={'#c2185b':'Fucsia','#0f9b9b':'Turquesa','#f2a516':'Amarillo','#3b2a8f':'Índigo','#1e9a5b':'Verde','#7a3b1f':'Natural','#9aa3ad':'Plata','#e2457a':'Rosa'};
-const cnameEn={'#c2185b':'Fuchsia','#0f9b9b':'Turquoise','#f2a516':'Yellow','#3b2a8f':'Indigo','#1e9a5b':'Green','#7a3b1f':'Natural','#9aa3ad':'Silver','#e2457a':'Pink'};
+const cname={'#d4a531':'Dorado','#b9c0c8':'Plateado','#d32f2f':'Rojo','#222222':'Negro','#e91e63':'Rosado','#c2185b':'Fucsia','#0f9b9b':'Turquesa','#f2a516':'Amarillo','#3b2a8f':'Índigo','#1e9a5b':'Verde','#7a3b1f':'Natural','#9aa3ad':'Plata','#e2457a':'Rosa'};
+const cnameEn={'#d4a531':'Gold','#b9c0c8':'Silver','#d32f2f':'Red','#222222':'Black','#e91e63':'Pink','#c2185b':'Fuchsia','#0f9b9b':'Turquoise','#f2a516':'Yellow','#3b2a8f':'Indigo','#1e9a5b':'Green','#7a3b1f':'Natural','#9aa3ad':'Silver','#e2457a':'Pink'};
 const cn=(c,l)=>((l||S.lang)==='es'?cname:cnameEn)[c]||c;
 
 /* ===== ARTE SVG (ilustraciones de ejemplo) ===== */
@@ -396,10 +429,10 @@ function art(kind,c,bg){
 /* ===== EJEMPLOS ===== */
 (function(){
   const ago=n=>{const d=new Date();d.setHours(d.getHours()-n);return d};
-  O.push({id:1,code:'WK-1042',kind:'o',name:'Emily R.',phone:'+1 555 010 0042',addr:'Portland, USA',ship:'intl',pay:'paypal',lines:[['bt',1,'#c2185b'],['pm',3,'#0f9b9b']],example:true,status:'ship',at:ago(5)});
-  O.push({id:2,code:'WK-1041',kind:'o',name:'María José P.',phone:'+593 99 000 0041',addr:'Cuenca, Ecuador',ship:'ec',pay:'card',lines:[['cm',1,'#c2185b'],['af',1,'#9aa3ad']],example:true,status:'ship',at:ago(9)});
-  O.push({id:3,code:'WH-208',kind:'w',name:'Hotel Casa Andina (ejemplo)',phone:'+593 2 000 0000',prod:'60 pulseras de mullos, 30 collares de semillas',type:1,example:true,status:'q',at:ago(20)});
-  O.push({id:4,code:'WK-1039',kind:'o',name:'Lukas M.',phone:'+49 151 000 0039',addr:'Quito (retiro)',ship:'store',pay:'card',lines:[['pt',2,'#3b2a8f']],example:true,status:'paid',at:ago(28)});
+  O.push({id:1,code:'WK-1042',kind:'o',name:'Emily R.',phone:'+1 555 010 0042',addr:'Portland, USA',ship:'intl',pay:'paypal',lines:[['rel',1,'#222222'],['roja',3,'#d32f2f']],example:true,status:'ship',at:ago(5)});
+  O.push({id:2,code:'WK-1041',kind:'o',name:'María José P.',phone:'+593 99 000 0041',addr:'Cuenca, Ecuador',ship:'ec',pay:'card',lines:[['cub',1,'#d4a531'],['arg',1,'#d4a531']],example:true,status:'ship',at:ago(9)});
+  O.push({id:3,code:'WH-208',kind:'w',name:'Hotel Casa Andina (ejemplo)',phone:'+593 2 000 0000',prod:'60 pulseras rojas de hilo, 30 cadenas con dije',type:1,example:true,status:'q',at:ago(20)});
+  O.push({id:4,code:'WK-1039',kind:'o',name:'Lukas M.',phone:'+49 151 000 0039',addr:'Quito (retiro)',ship:'store',pay:'card',lines:[['ar',2,'#d4a531']],example:true,status:'paid',at:ago(28)});
   O.forEach(o=>{if(o.kind==='o'){o.sub=o.lines.reduce((a,l)=>a+PR(l[0]).price*l[1],0);o.tot=o.sub+SHIP[o.ship]}else o.tot=0});
 })();
 
@@ -411,8 +444,8 @@ function applyI18n(){
   $('#lES').className=S.lang==='es'?'on':'';$('#lEN').className=S.lang==='en'?'on':'';
   $('#kv').innerHTML=t('kv').map(x=>`<span>${esc(x[0])}</span><b>${esc(x[1])}</b>`).join('');
   $('#tiers').innerHTML=t('tiers').map(x=>`<div><span>${x[0]}</span><b>${x[1]}</b></div>`).join('')+`<small style="opacity:.8;font-size:11.5px">* ${t('tierNote')}</small>`;
-  $('#heroArt').innerHTML=['pm','cm','at','bt'].map(id=>{const p=PR(id);return `<div>${art(p.art,p.c,'transparent')}</div>`}).join('');
-  renderGrid();renderFab();
+  $('#heroArt').innerHTML=['roja','cubana','aretes','relojes'].map(i=>`<div><img src="img/${i}.jpg" alt=""></div>`).join('');
+  renderGrid();renderFab();renderNewsPv();
 }
 function setView(v){S.view=v;$('#vClient').hidden=v!=='client';$('#vAdmin').hidden=v!=='admin';
   document.querySelectorAll('.seg button').forEach(b=>b.classList.toggle('on',b.dataset.view===v));
@@ -422,9 +455,9 @@ document.querySelectorAll('.seg button').forEach(b=>b.onclick=()=>{closeM();setV
 $('#langBtn').onclick=()=>{S.lang=S.lang==='es'?'en':'es';applyI18n();if(S.view==='admin')renderAdmin();if($('#modal').innerHTML&&S._sheet)S._sheet()};
 
 function renderGrid(){
-  const F=['all','pul','col','are','ani','bol'];
+  const F=['all','pul','are','cad','dij','ani','rel','pie'];
   $('#filters').innerHTML=F.map(f=>`<button class="${S.filter===f?'on':''}" onclick="S.filter='${f}';renderGrid()">${t('f_'+f)}</button>`).join('');
-  $('#grid').innerHTML=P.filter(p=>S.filter==='all'||p.cat===S.filter).map(p=>`<div class="pc"><button class="img" onclick="quick('${p.id}')" aria-label="${esc(t('n_'+p.id))}">${art(p.art,p.c)}<span class="ex">${t('exL')}</span>${p.hot?`<span class="hot">★ ${t('hot')}</span>`:''}</button><div class="bd"><h3>${t('n_'+p.id)}</h3><div class="dots">${p.c.map(c=>`<i style="background:${c}"></i>`).join('')}</div><div class="row"><span class="pr">${money(p.price)}</span><button class="add" onclick="addCart('${p.id}','${p.c[0]}',1)" aria-label="+">+</button></div></div></div>`).join('');
+  $('#grid').innerHTML=P.filter(p=>S.filter==='all'||p.cat===S.filter).map(p=>`<div class="pc"><button class="img" onclick="quick('${p.id}')" aria-label="${esc(t('n_'+p.id))}">${pic(p)}<span class="ex">${t('exPrice')}</span>${p.nuevo?`<span class="new">${t('nuevo')}</span>`:p.hot?`<span class="hot">★ ${t('hot')}</span>`:''}</button><div class="bd"><h3>${t('n_'+p.id)}</h3><div class="dots">${p.c.map(c=>`<i style="background:${c}"></i>`).join('')}</div><div class="row"><span class="pr">${money(p.price)}</span><button class="add" onclick="addCart('${p.id}','${p.c[0]}',1)" aria-label="+">+</button></div></div></div>`).join('');
 }
 function cartCount(){return S.cart.reduce((a,l)=>a+l.q,0)}
 function cartSub(){return S.cart.reduce((a,l)=>a+PR(l.id).price*l.q,0)}
@@ -437,7 +470,7 @@ function addCart(id,c,q){const ex=S.cart.find(l=>l.id===id&&l.c===c);ex?ex.q+=q:
 /* ===== QUICK VIEW ===== */
 function quick(id){
   const p=PR(id);let c=p.c[0],q=1;
-  const draw=()=>{sheet(`<div class="qv"><div class="img">${art(p.art,[c,...p.c.filter(x=>x!==c)])}</div><span class="tag ex">${t('exL')}</span><h2 class="disp" style="margin-top:6px">${t('n_'+id)}</h2><p>${t('d_'+id)}</p><div class="tagline"><span>✋ ${t('handmade')}</span><span>✨ ${t('unique')}</span><span>📍 ${t('quito')}</span></div>
+  const draw=()=>{sheet(`<div class="qv"><div class="img">${pic(p)}</div><span class="tag ex">${t('exL')}</span><h2 class="disp" style="margin-top:6px">${t('n_'+id)}</h2><p>${t('d_'+id)}</p><div class="tagline"><span>✋ ${t('handmade')}</span><span>✨ ${t('unique')}</span><span>📍 ${t('quito')}</span></div>
     <span class="lbl">${t('color')}</span><div class="colors">${p.c.map(x=>`<button class="${x===c?'on':''}" data-c="${x}"><i style="background:${x}"></i>${cn(x)}</button>`).join('')}</div>
     <div class="qrow"><div class="ctr"><button id="qm" ${q<=1?'disabled':''}>−</button><span>${q}</span><button id="qp">+</button></div><button class="btn pri" style="flex:1" id="qa">${t('addCart',{p:money(p.price*q)})}</button></div></div>`);
     $('#modal').querySelectorAll('.colors button').forEach(b=>b.onclick=()=>{c=b.dataset.c;draw()});
@@ -457,14 +490,14 @@ function drawCart(){
   if(S.done)return drawDone();
   if(!S.cart.length){sheet(`<h2 class="t">${t('cartT')}</h2><p class="sub" style="margin-top:20px">${t('empty')}</p>`);return}
   let body='';
-  if(S.step===1){body=`<h2 class="t">${t('cartT')}</h2><p class="sub">${t('items',{n:cartCount()})}</p>${S.cart.map((l,i)=>{const p=PR(l.id);return `<div class="ci"><div class="th">${art(p.art,[l.c,...p.c])}</div><div class="m"><b>${t('n_'+l.id)}</b><small>${cn(l.c)} · ${money(p.price)}</small></div><div class="ctr"><button onclick="cq(${i},-1)">−</button><span>${l.q}</span><button onclick="cq(${i},1)">+</button></div><div class="p">${money(p.price*l.q)}</div></div>`}).join('')}${totals()}<div class="actions"><button class="btn pri" onclick="S.step=2;drawCart()">${t('checkout')} →</button></div>`}
+  if(S.step===1){body=`<h2 class="t">${t('cartT')}</h2><p class="sub">${t('items',{n:cartCount()})}</p>${S.cart.map((l,i)=>{const p=PR(l.id);return `<div class="ci"><div class="th">${pic(p)}</div><div class="m"><b>${t('n_'+l.id)}</b><small>${cn(l.c)} · ${money(p.price)}</small></div><div class="ctr"><button onclick="cq(${i},-1)">−</button><span>${l.q}</span><button onclick="cq(${i},1)">+</button></div><div class="p">${money(p.price*l.q)}</div></div>`}).join('')}${totals()}<div class="actions"><button class="btn pri" onclick="S.step=2;drawCart()">${t('checkout')} →</button></div>`}
   if(S.step===2){const O2=[['store','🏪','s_store','s_storeS'],['ec','🇪🇨','s_ec','s_ecS'],['intl','✈️','s_intl','s_intlS']];
     const f=(id,label,type,ph)=>`<div class="fld ${S.errs[id]?'err':''}"><label>${label}</label><input type="${type}" value="${esc(S[id])}" placeholder="${ph}" oninput="S.${id}=this.value">${S.errs[id]?`<div class="em">${S.errs[id]}</div>`:''}</div>`;
     body=`<h2 class="t">${t('shipT')}</h2>${O2.map(o=>`<button class="opt ${S.ship===o[0]?'on':''}" onclick="S.ship='${o[0]}';if(S.ship==='intl'&&S.country==='Ecuador')S.country='';if(S.ship!=='intl')S.country='Ecuador';drawCart()"><span class="radio"></span><span class="ic">${o[1]}</span><span class="tx"><b>${t(o[2])}</b><small>${t(o[3])}</small></span><span class="pr">${SHIP[o[0]]?money(SHIP[o[0]]):t('free')}</span></button>`).join('')}
     <button class="link" onclick="fill()">${t('autofill')}</button>
     ${f('name',t('name'),'text','Ej. Ana Torres')}${f('phone',t('phone'),'tel','+593 99 123 4567')}
     ${S.ship!=='store'?`${f('addr',t('address'),'text','')}<div class="f2">${f('city',t('city'),'text','')}${f('country',t('country'),'text','')}</div>`:''}
-    ${totals()}<div class="actions"><button class="btn sec" onclick="S.step=1;drawCart()">←</button><button class="btn pri" onclick="val()">${t('next')} →</button></div>`}
+    <button class="chk ${S.optin?'on':''}" onclick="S.optin=!S.optin;drawCart()"><span class="bx">${S.optin?'✓':''}</span><span>💬 ${t('optin')}</span></button>${totals()}<div class="actions"><button class="btn sec" onclick="S.step=1;drawCart()">←</button><button class="btn pri" onclick="val()">${t('next')} →</button></div>`}
   if(S.step===3){const tot=cartSub()+SHIP[S.ship];
     body=`<h2 class="t">${t('payT')}</h2><div class="tog"><button class="${S.pay==='card'?'on':''}" onclick="S.pay='card';drawCart()">💳 ${t('card')}</button><button class="${S.pay==='paypal'?'on':''}" onclick="S.pay='paypal';drawCart()">🅿️ ${t('paypal')}</button><button class="${S.pay==='bank'?'on':''}" onclick="S.pay='bank';drawCart()">🏦 ${t('transfer')}</button></div>
     <div class="mock"><small>${S.pay==='card'?t('card'):S.pay==='paypal'?'PayPal':t('transfer')} · demo</small><b>${S.pay==='card'?'•••• •••• •••• 4242':S.pay==='paypal'?'cliente@email.com':'Waiky · •••• 1234'}</b></div><p class="note">🔒 ${t('simNote')}</p>
@@ -476,7 +509,7 @@ function fill(){S.name='Ana Torres (ejemplo)';S.phone='+593 99 123 4567';if(S.sh
 function val(){S.errs={};if(S.name.trim().length<2)S.errs.name=t('errName');if(S.phone.replace(/\D/g,'').length<7)S.errs.phone=t('errPhone');if(S.ship!=='store'&&S.addr.trim().length<4)S.errs.addr=t('errAddr');if(Object.keys(S.errs).length)return drawCart();S.step=3;drawCart()}
 function pay(){S.paying=true;drawCart();setTimeout(()=>{
   const sub=cartSub(),o={id:100+O.length,code:'WK-'+(1043+O.filter(x=>!x.example).length),kind:'o',name:S.name.trim(),phone:S.phone,addr:S.ship==='store'?'Quito (retiro)':`${S.addr}, ${S.city}, ${S.country}`,ship:S.ship,pay:S.pay,lines:S.cart.map(l=>[l.id,l.q,l.c]),sub,tot:sub+SHIP[S.ship],example:false,isNew:true,status:S.ship==='store'?'paid':'ship',at:new Date(),lang:S.lang};
-  O.unshift(o);S.done=o;S.paying=false;S.cart=[];S.newCount++;updateBadge();drawCart()},1500)}
+  O.unshift(o);if(S.optin)SUBS++;S.done=o;S.paying=false;S.cart=[];S.newCount++;updateBadge();drawCart()},1500)}
 function drawDone(){
   const o=S.done;
   sheet(`<div class="center"><svg class="okmark" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="35" stroke="#1e9a5b" stroke-width="6"/><path d="M24 41l12 12 21-24" stroke="#1e9a5b" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg><h2 class="t">${t('done')}</h2><p class="sub">${o.code} · ${money(o.tot)}<br>${t('doneS')}</p></div><div id="mm"></div><div class="actions" style="flex-wrap:wrap"><button class="btn sec" onclick="S.done=null;closeM()">${t('keep')}</button><button class="btn pri" onclick="S.done=null;closeM();setView('admin')">${t('seeAdmin')}</button></div>`);
@@ -493,7 +526,7 @@ function drawWh(){
   <div class="fld"><label>${t('whBiz')}</label><input value="${esc(w.biz)}" oninput="S.wh.biz=this.value"></div>
   <div class="f2"><div class="fld"><label>${t('name')}</label><input value="${esc(w.name)}" oninput="S.wh.name=this.value"></div><div class="fld"><label>${t('phone')}</label><input type="tel" value="${esc(w.phone)}" oninput="S.wh.phone=this.value"></div></div>
   <div class="fld"><label>${t('whProd')}</label><textarea rows="3" oninput="S.wh.prod=this.value" placeholder="${t('whProdP')}">${esc(w.prod)}</textarea></div>
-  <button class="link" onclick="Object.assign(S.wh,{biz:'Hostal Los Andes (ejemplo)',name:'Paola Vega',phone:'+593 98 765 4321',prod:'40 pulseras de mullos, 15 bolsos tejidos',err:false,type:1});drawWh()">${t('autofill')}</button>
+  <button class="link" onclick="Object.assign(S.wh,{biz:'Hostal Los Andes (ejemplo)',name:'Paola Vega',phone:'+593 98 765 4321',prod:'40 pulseras rojas de hilo, 20 pares de argollas',err:false,type:1});drawWh()">${t('autofill')}</button>
   ${w.err?`<p class="note" style="color:var(--danger)">${t('whErr')}</p>`:''}
   <div class="actions"><button class="btn pri" onclick="whSend()">${t('whSend')} →</button></div>`);
 }
@@ -528,16 +561,34 @@ function chat(mv,o,mode){
   next();
 }
 
+/* ===== NOVEDADES ===== */
+let NW={name:'',phone:'',done:false};
+function openNews(){S._sheet=drawNews;drawNews()}
+function drawNews(){
+  if(NW.done){sheet(`<div class="center"><svg class="okmark" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="35" stroke="#1e9a5b" stroke-width="6"/><path d="M24 41l12 12 21-24" stroke="#1e9a5b" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg><h2 class="t">${t('nwDone')}</h2><p class="sub">${t('nwDoneS')}</p></div><div id="mm"></div>`);
+    const tok=++TOK;const mv=$('#mm');mv.innerHTML=`<div class="phone"><div class="wah"><div class="av">W</div><div><b>Waiky</b><small>${t('wahSub')}</small></div></div><div class="chat"></div><div class="wafoot">${t('wafoot')}</div></div>`;
+    setTimeout(()=>{if(tok!==TOK)return;const d=document.createElement('div');d.className='msg biz';d.innerHTML=wa(t('nw_wel',{first:NW.name.split(' ')[0]||'👋'}))+`<span class="tm">${hm(new Date())}</span>`;mv.querySelector('.chat').appendChild(d)},500);return}
+  sheet(`<h2 class="t">${t('nwFormT')}</h2><p class="sub">${t('nwS')}</p><div class="fld"><label>${t('name')}</label><input value="${esc(NW.name)}" oninput="NW.name=this.value"></div><div class="fld"><label>${t('phone')}</label><input type="tel" value="${esc(NW.phone)}" oninput="NW.phone=this.value" placeholder="+593 99 123 4567"></div><button class="link" onclick="NW.name='Daniela (ejemplo)';NW.phone='+593 98 111 2233';drawNews()">${t('autofill')}</button><div class="actions"><button class="btn pri" onclick="if(NW.phone.replace(/\D/g,'').length>6){NW.done=true;SUBS++;S.newCount++;updateBadge();drawNews()}">${t('nwJoin')} →</button></div>`);
+}
+function renderNewsPv(){const p=PR('cub');$('#newsPv').innerHTML=`<div class="pcard" style="width:100%"><img src="img/${p.img}.jpg" alt=""><div><b>✨ ${t('n_cub')}</b>${t('prDef',{prod:t('n_cub').toLowerCase()})}</div><a>${t('prSee')}</a></div>`}
+function renderPromo(){
+  $('#subsL').textContent=t('subsL',{n:SUBS});
+  const p=PR(PROMO.prod),txt=PROMO.text??t('prDef',{prod:t('n_'+p.id).toLowerCase()});
+  $('#promo').innerHTML=`<label class="lbl" style="margin:0">${t('prProd')}</label><select onchange="PROMO.prod=this.value;PROMO.text=null;PROMO.sent=false;renderPromo()">${P.map(x=>`<option value="${x.id}" ${x.id===PROMO.prod?'selected':''}>${t('n_'+x.id)}</option>`).join('')}</select>
+  <label class="lbl" style="margin:0">${t('prText')}</label><textarea rows="3" oninput="PROMO.text=this.value">${esc(txt)}</textarea>
+  ${PROMO.sent?`<div class="sent">${t('prSent',{n:SUBS})}</div><div class="phone"><div class="wah"><div class="av">W</div><div><b>Waiky</b><small>${t('wahSub')}</small></div></div><div class="chat" style="min-height:0"><div class="pcard"><img src="img/${p.img}.jpg" alt=""><div><b>✨ ${t('n_'+p.id)}</b>${esc(txt)}</div><a>${t('prSee')}</a></div></div></div>`:`<button class="btn pri" onclick="PROMO.sent=true;renderPromo()">📣 ${t('prSend',{n:SUBS})}</button>`}`;
+}
+
 /* ===== PANEL ===== */
 function renderAdmin(){
   const ord=O.filter(o=>o.kind==='o'),nw=O.filter(o=>o.isNew).length;
-  $('#kpis').innerHTML=[['kOrd',ord.length,nw?t('kNew',{n:nw}):''],['kSales',money(ord.reduce((a,o)=>a+o.tot,0)),''],['kShip',ord.filter(o=>o.status==='ship').length,''],['kWh',O.filter(o=>o.kind==='w').length,'']].map(k=>`<div class="kpi"><small>${t(k[0])}</small><b>${k[1]}</b><em>${k[2]}</em></div>`).join('');
+  $('#kpis').innerHTML=[['kOrd',ord.length,nw?t('kNew',{n:nw}):''],['kSales',money(ord.reduce((a,o)=>a+o.tot,0)),''],['kShip',ord.filter(o=>o.status==='ship').length,''],['kSubs',SUBS,'']].map(k=>`<div class="kpi"><small>${t(k[0])}</small><b>${k[1]}</b><em>${k[2]}</em></div>`).join('');
   $('#orders').innerHTML=O.map(o=>{const w=o.kind==='w';const it=w?esc(o.prod):o.lines.map(l=>`${l[1]}× ${t('n_'+l[0])}`).join(', ');
     return `<button class="od ${o.isNew?'new':''}" onclick="openOrder(${o.id})"><span class="av2">${w?'🏨':o.ship==='intl'?'✈️':o.ship==='store'?'🏪':'📦'}</span><span class="m"><span class="nm">${esc(o.name)} <small>${o.code}</small>${w?`<span class="tag wh">${t('wh')}</span>`:''}${o.example?`<span class="tag ex">${t('ex')}</span>`:''}${o.isNew?`<span class="tag nw">${t('nw')}</span>`:''}</span><small>${it}</small><br><span class="st ${o.status==='q'?'q':o.status==='ship'?'ship':'pay'}">${o.status==='q'?'⏳ '+t('stQ'):o.status==='ship'?'📦 '+t('stShip'):'✓ '+t('stPaid')}</span></span><span class="am">${w?'':money(o.tot)}</span></button>`}).join('');
   const cnt={};O.filter(o=>o.kind==='o').forEach(o=>o.lines.forEach(l=>cnt[l[0]]=(cnt[l[0]]||0)+l[1]));
-  const base={pm:42,pt:31,cm:18,bt:12,af:15};Object.keys(base).forEach(k=>cnt[k]=(cnt[k]||0)+base[k]);
+  const base={roja:48,ar:31,cub:18,rel:12,arg:15};Object.keys(base).forEach(k=>cnt[k]=(cnt[k]||0)+base[k]);
   const top=Object.entries(cnt).sort((a,b)=>b[1]-a[1]).slice(0,5),mx=top[0][1];
-  $('#top5').innerHTML=top.map(([id,n])=>{const p=PR(id);return `<li><span class="th">${art(p.art,p.c)}</span><span style="width:120px">${t('n_'+id)}</span><span class="bar"><i style="width:${n/mx*100}%"></i></span><b>${n}</b></li>`}).join('');
+  renderPromo();$('#top5').innerHTML=top.map(([id,n])=>{const p=PR(id);return `<li><span class="th">${pic(p)}</span><span style="width:120px">${t('n_'+id)}</span><span class="bar"><i style="width:${n/mx*100}%"></i></span><b>${n}</b></li>`}).join('');
 }
 function openOrder(id){const o=O.find(x=>x.id===id);if(!o)return;S._sheet=null;sheet(`<h3 style="font-size:18px">${esc(o.name)} <span style="color:var(--muted);font-size:13px">${o.code}</span></h3><div id="mm"></div>`);orderMsgs(o,$('#mm'),'own')}
 
