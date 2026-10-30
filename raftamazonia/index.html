@@ -146,6 +146,7 @@ p.sub{color:var(--muted);font-size:13.5px;margin-bottom:14px}
 .mock{border-radius:18px;padding:18px;color:#fff;background:linear-gradient(135deg,#06303c,#0b5d73 55%,#0f8aa6);margin:12px 0;position:relative;overflow:hidden}
 .mock:after{content:"";position:absolute;right:-30px;top:-30px;width:130px;height:130px;border-radius:50%;background:rgba(255,255,255,.12)}
 .mock small{opacity:.8;font-size:11px;letter-spacing:1px;text-transform:uppercase}.mock b{display:block;font-size:18px;letter-spacing:1.5px;margin-top:10px}
+.feebox{border-radius:14px;background:#f4f8f9;padding:12px;margin-top:4px;font-size:13.5px}.feebox div{display:flex;justify-content:space-between;padding:3px 0}.feebox span{color:var(--muted)}.feebox .tt{border-top:1px dashed var(--line);margin-top:4px;padding-top:7px;font-weight:800}.feebox .tt span{color:var(--ink)}.feebox p{font-size:12px;color:var(--muted);margin-top:6px}.feebox.ok{background:#e6f6ef}.feebox.ok p{color:var(--ok);margin:0;font-weight:600}
 .note{font-size:12px;color:var(--muted);display:flex;gap:6px;margin-top:8px}
 .spin{width:18px;height:18px;border:3px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:sp .7s linear infinite}@keyframes sp{to{transform:rotate(360deg)}}
 .sum h3{font-family:Archivo,Inter,sans-serif;font-stretch:108%;font-weight:900;font-size:19px;margin-bottom:10px;text-transform:uppercase}
@@ -311,7 +312,7 @@ const TOURS=[
  {id:'mis',cat:'jungle',ic:'🌿',price:65,min:2,age:0,lvl:'J',art:3},
  {id:'combo',cat:'combo',ic:'🏕️',price:235,min:2,age:12,lvl:'3D',art:4}
 ];
-const DEP=0.5;
+const DEP=0.5, CARD=0.0575; // comisión referencial de pasarela (≈5 % + IVA)
 const T={
 es:{
 demobar:"Demo de DevHorse para Raft Amazonia · Tours y precios de su web · Pagos y mensajes simulados · Clientes y salidas de ejemplo",
@@ -340,7 +341,7 @@ optJoin:"Ver días con grupo abierto",
 yT:"Tus datos",yS:"Tu ticket llega por WhatsApp.",name:"Nombre completo",phone:"WhatsApp",email:"Correo",
 pickT:"¿Dónde te recogemos?",pk1:"En mi hostal / hotel en Tena",pk2:"Nos vemos en la oficina",pk2s:"Guayaquil y Machala, Tena",hostel:"Nombre del hostal",veg:"Vegetariano o alergias (opcional)",
 confLang:"Idioma del ticket",autofill:"Rellenar con datos de ejemplo",errName:"Escribe tu nombre.",errPhone:"Escribe tu WhatsApp.",
-payT:"Paga tu anticipo",payS:"Pagas el 50 % ahora y el resto el día del tour.",card:"Tarjeta",transfer:"Transferencia",
+payT:"Paga tu anticipo",payS:"Pagas el 50 % ahora y el resto el día del tour.",feeL:"Recargo por pago con tarjeta",payNow:"Pagas ahora",feeNote:"El recargo cubre la comisión del banco, así Raft Amazonia recibe el valor completo. Con transferencia no hay recargo.",noFee:"Con transferencia no hay recargo.",card:"Tarjeta",transfer:"Transferencia",
 simNote:"Pago simulado: no se cobra nada. En la versión real usa la pasarela o transferencia que ustedes elijan.",pay:"Pagar {a} y recibir ticket",processing:"Generando tu ticket…",next:"Continuar",
 sumT:"Tu reserva",sTour:"Tour",sDate:"Fecha",sPpl:"Personas",none:"Por elegir",extra:"Cupo extra × {n}",total:"Total",deposit:"Anticipo hoy (50 %)",balance:"El día del tour",
 pol:"Cancelación hasta 24 h antes del tour.",
@@ -396,7 +397,7 @@ optJoin:"See days with open groups",
 yT:"Your details",yS:"Your ticket arrives on WhatsApp.",name:"Full name",phone:"WhatsApp",email:"Email",
 pickT:"Where do we pick you up?",pk1:"At my hostel / hotel in Tena",pk2:"Meet at the office",pk2s:"Guayaquil y Machala, Tena",hostel:"Hostel name",veg:"Vegetarian or allergies (optional)",
 confLang:"Ticket language",autofill:"Fill with sample data",errName:"Please enter your name.",errPhone:"Please enter your WhatsApp.",
-payT:"Pay your deposit",payS:"Pay 50 % now and the rest on the day of the tour.",card:"Card",transfer:"Bank transfer",
+payT:"Pay your deposit",payS:"Pay 50 % now and the rest on the day of the tour.",feeL:"Card payment surcharge",payNow:"You pay now",feeNote:"The surcharge covers the bank fee, so Raft Amazonia receives the full amount. No surcharge for bank transfer.",noFee:"No surcharge for bank transfer.",card:"Card",transfer:"Bank transfer",
 simNote:"Simulated payment: nothing is charged. The real version uses the gateway or transfer you choose.",pay:"Pay {a} and get ticket",processing:"Generating your ticket…",next:"Continue",
 sumT:"Your booking",sTour:"Tour",sDate:"Date",sPpl:"Guests",none:"To choose",extra:"Extra spot × {n}",total:"Total",deposit:"Deposit today (50 %)",balance:"On tour day",
 pol:"Cancellation up to 24 h before the tour.",
@@ -543,9 +544,10 @@ function s4(){const c=calc();
   return `<h2 class="t">${t('payT')}</h2><p class="sub">${t('payS')}</p>
   <div class="tog" style="margin-bottom:6px"><button class="${S.pay==='card'?'on':''}" onclick="S.pay='card';renderClient()">💳 ${t('card')}</button><button class="${S.pay==='bank'?'on':''}" onclick="S.pay='bank';renderClient()">🏦 ${t('transfer')}</button></div>
   <div class="mock"><small>${S.pay==='card'?t('card'):t('transfer')} · demo</small><b>${S.pay==='card'?'•••• •••• •••• 4242':'Raft Amazonia · •••• 5678'}</b></div>
+  ${S.pay==='card'?`<div class="feebox"><div><span>${t('deposit')}</span><b>${money(c.dep)}</b></div><div><span>${t('feeL')}</span><b>+ ${money(c.fee)}</b></div><div class="tt"><span>${t('payNow')}</span><b>${money(c.now)}</b></div><p>💡 ${t('feeNote')}</p></div>`:`<div class="feebox ok"><p>✅ ${t('noFee')}</p></div>`}
   <div class="note">🔒 ${t('simNote')}</div>
-  <div class="actions"><button class="btn sec" onclick="go(3)" ${S.paying?'disabled':''}>←</button><button class="btn" onclick="doPay()" ${S.paying?'disabled':''}>${S.paying?`<span class="spin"></span> ${t('processing')}`:t('pay',{a:money(c.dep)})}</button></div>`}
-function calc(){if(!S.tour)return{total:0,dep:0,bal:0,extra:0};const x=TR(S.tour);let extra=0;if(S.date){const g=grp();if(g.miss&&S.opt==='pay')extra=g.miss}const total=x.price*(S.ppl+extra),dep=total*DEP;return{total,dep,bal:total-dep,extra}}
+  <div class="actions"><button class="btn sec" onclick="go(3)" ${S.paying?'disabled':''}>←</button><button class="btn" onclick="doPay()" ${S.paying?'disabled':''}>${S.paying?`<span class="spin"></span> ${t('processing')}`:t('pay',{a:money(c.now)})}</button></div>`}
+function calc(){if(!S.tour)return{total:0,dep:0,bal:0,extra:0,fee:0,now:0};const x=TR(S.tour);let extra=0;if(S.date){const g=grp();if(g.miss&&S.opt==='pay')extra=g.miss}const total=x.price*(S.ppl+extra),dep=total*DEP;const fee=S.pay==='card'?Math.round((dep/(1-CARD)-dep)*100)/100:0;return{total,dep,bal:total-dep,extra,fee,now:dep+fee}}
 function renderSummary(){
   const c=calc(),x=S.tour&&TR(S.tour);let flag='';
   if(x&&S.date&&!S.done){const g=grp();flag=g.miss&&S.opt!=='pay'?`<div class="flag short">${t('minShort',{n:g.miss,m:x.min,f:g.miss===1?'Falta':'Faltan'})}</div>`:`<div class="flag ok">${t('minOk')}</div>`}
@@ -554,7 +556,7 @@ function renderSummary(){
   <div class="ln"><span>${t('sDate')}</span><b>${S.date?dShort(S.date)+' · 9:00':t('none')}</b></div>
   <div class="ln"><span>${t('sPpl')}</span><b>${pW(S.ppl)}</b></div>
   <div class="tot">${x?`<div class="ln"><span>$${x.price} × ${S.ppl}</span><b>${money(x.price*S.ppl)}</b></div>`:''}${c.extra?`<div class="ln"><span>${t('extra',{n:c.extra})}</span><b>${money(x.price*c.extra)}</b></div>`:''}<div class="ln big"><span>${t('total')}</span><span>${money(c.total)}</span></div></div>
-  <div class="dep"><div class="ln"><span>${t('deposit')}</span><span>${money(c.dep)}</span></div><div class="ln s"><span>${t('balance')}</span><span>${money(c.bal)}</span></div></div>${flag}
+  <div class="dep"><div class="ln"><span>${t('deposit')}</span><span>${money(c.dep)}</span></div>${(S.step===4&&!S.done&&c.fee)?`<div class="ln s"><span>${t('feeL')}</span><span>+ ${money(c.fee)}</span></div>`:''}<div class="ln s"><span>${t('balance')}</span><span>${money(c.bal)}</span></div></div>${flag}
   <p class="pol">✓ ${t('pol')}</p>`;
 }
 function mv(d){S.month=new Date(S.month.getFullYear(),S.month.getMonth()+d,1);renderClient()}
