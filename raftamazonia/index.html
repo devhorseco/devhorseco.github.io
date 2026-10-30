@@ -307,6 +307,7 @@ h3.sec{font-size:16px;margin:2px 0 12px;display:flex;justify-content:space-betwe
 /* ===== TOURS (raftamazonia.com) ===== */
 const TOURS=[
  {id:'r3',cat:'raft',ic:'🌊',price:65,min:2,age:12,lvl:'III',art:0,hot:true},
+ {id:'r3h',cat:'raft',ic:'🌊',price:45,min:4,age:12,lvl:'III',art:0,half:true},
  {id:'r4',cat:'raft',ic:'⚡',price:75,min:3,age:12,lvl:'IV',art:1},
  {id:'kay',cat:'kayak',ic:'🛶',price:65,min:2,age:12,lvl:'K',art:2},
  {id:'mis',cat:'jungle',ic:'🌿',price:65,min:2,age:0,lvl:'J',art:3},
@@ -324,7 +325,7 @@ tr1:"272 opiniones en TripAdvisor",tr2:"#1 de 23 actividades en Tena",tr3:"Empre
 tT:"Elige tu aventura",tS:"Precios por persona. Cada tour sale con un mínimo de personas; si vas solo o en pareja, te unes a un grupo.",
 f_all:"Todos",f_raft:"Rafting",f_kayak:"Kayak",f_jungle:"Selva",f_combo:"Combinado",
 n_r3:"Rafting Clase III para todos",d_r3:"Río Napo (Jatun Yacu): el rápido Pimpilala, un cañón escondido y paredes de agua blanca.",
-n_r4:"Rafting Clase IV técnico",d_r4:"Ríos Jondachi y Hollín, para quienes ya tienen experiencia. Temporada sep – ene.",
+n_r3h:"Rafting Clase III · medio día",d_r3h:"El mismo río Napo en versión corta: rápidos Clase III, ideal si tienes poco tiempo.",meta_half:"Medio día",n_r4:"Rafting Clase IV técnico",d_r4:"Ríos Jondachi y Hollín, para quienes ya tienen experiencia. Temporada sep – ene.",
 n_kay:"Tour guiado en kayak",d_kay:"Un día de kayak en río con instructor y kayakista de seguridad.",
 n_mis:"Misahuallí: caminata, canoa y comunidades",d_mis:"Selva, canoa y visita a comunidades locales con guía nativo.",
 n_combo:"Rafting + selva · 3 días",d_combo:"Dos días de selva en cabañas y un día completo de rafting Clase III.",
@@ -380,7 +381,7 @@ tr1:"272 TripAdvisor reviews",tr2:"#1 of 23 activities in Tena",tr3:"Run by the 
 tT:"Pick your adventure",tS:"Prices per person. Each tour has a minimum group size; if you're solo or a couple, you join a group.",
 f_all:"All",f_raft:"Rafting",f_kayak:"Kayak",f_jungle:"Jungle",f_combo:"Combo",
 n_r3:"Rafting Class III for everyone",d_r3:"Napo River (Jatun Yacu): Pimpilala rapid, a hidden canyon and whitewater walls.",
-n_r4:"Rafting Class IV technical",d_r4:"Jondachi and Hollín rivers, for experienced rafters. Season Sep – Jan.",
+n_r3h:"Rafting Class III · half day",d_r3h:"The same Napo River, short version: Class III rapids, perfect if you're short on time.",meta_half:"Half day",n_r4:"Rafting Class IV technical",d_r4:"Jondachi and Hollín rivers, for experienced rafters. Season Sep – Jan.",
 n_kay:"Guided kayaking tour",d_kay:"A full day of river kayaking with an instructor and safety kayaker.",
 n_mis:"Misahuallí hiking, canoeing & communities",d_mis:"Jungle, canoe and local communities with a native guide.",
 n_combo:"Rafting + jungle · 3 days",d_combo:"Two jungle days in cabins and a full day of Class III rafting.",
@@ -486,7 +487,7 @@ function renderTours(){
   $('#filters').innerHTML=F.map(f=>`<button class="${S.filter===f?'on':''}" onclick="S.filter='${f}';renderTours()">${t('f_'+f)}</button>`).join('');
   $('#tourList').innerHTML=TOURS.filter(x=>S.filter==='all'||x.cat===S.filter).map(x=>{
     const lv=x.lvl==='III'||x.lvl==='IV'?`<span>${S.lang==='es'?'Clase':'Class'} ${x.lvl}</span>`:'';
-    return `<button class="tc ${S.tour===x.id?'on':''}" onclick="pickTour('${x.id}')"><div class="art">${art(x.art)}<div class="lvl">${x.hot?`<span class="hot">🔥 ${t('popular')}</span>`:''}${lv}</div></div><div class="bd"><h3>${x.ic} ${t('n_'+x.id)}</h3><p>${t('d_'+x.id)}</p><div class="meta"><span>⏱ ${x.id==='combo'?t('meta_3d'):t('meta_day')}</span><span>👥 ${t('minP',{n:x.min})}</span>${x.age?`<span>🎂 ${t('age',{n:x.age})}</span>`:''}</div><div class="ft"><div class="pr"><b>$${x.price}</b><small>${t('pp')}</small></div><span class="sel">${S.tour===x.id?t('chosen'):t('choose')}</span></div></div></button>`}).join('');
+    return `<button class="tc ${S.tour===x.id?'on':''}" onclick="pickTour('${x.id}')"><div class="art">${art(x.art)}<div class="lvl">${x.hot?`<span class="hot">🔥 ${t('popular')}</span>`:''}${lv}</div></div><div class="bd"><h3>${x.ic} ${t('n_'+x.id)}</h3><p>${t('d_'+x.id)}</p><div class="meta"><span>⏱ ${x.id==='combo'?t('meta_3d'):x.half?t('meta_half'):t('meta_day')}</span><span>👥 ${t('minP',{n:x.min})}</span>${x.age?`<span>🎂 ${t('age',{n:x.age})}</span>`:''}</div><div class="ft"><div class="pr"><b>$${x.price}</b><small>${t('pp')}</small></div><span class="sel">${S.tour===x.id?t('chosen'):t('choose')}</span></div></div></button>`}).join('');
 }
 function pickTour(id){S.tour=id;S.done=null;if(S.step<1)S.step=1;S.step=S.date?Math.min(S.step,2):1;renderTours();renderClient();setTimeout(()=>document.getElementById('book').scrollIntoView({behavior:'smooth',block:'start'}),50)}
 
