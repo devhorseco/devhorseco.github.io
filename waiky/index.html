@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Waiky · Tienda artesanal (demo)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1d1424;--muted:#6f6475;--line:#ece4ea;--bg:#fbf7f3;--card:#fff;--mag:#c2185b;--mag2:#e2457a;--saf:#f2a516;--tur:#0f9b9b;--ind:#3b2a8f;--ok:#1e9a5b;--danger:#d64545;--r:22px;--sh:0 14px 36px -18px rgba(59,42,143,.3)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.45;padding-bottom:90px;overflow-x:hidden}
+.disp{font-family:"Bricolage Grotesque",Inter,sans-serif;font-weight:800;letter-spacing:-.5px}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+input,select,textarea{font:inherit;color:inherit}
+[hidden]{display:none!important}
+.demobar{background:#1d1424;color:#eadcf0;font-size:11.5px;padding:7px 14px;text-align:center;display:flex;gap:8px;justify-content:center;align-items:center;line-height:1.35}
+.demobar .dot{width:7px;height:7px;border-radius:50%;background:var(--saf);flex:none;animation:pulse 1.8s infinite}
+@keyframes pulse{50%{opacity:.35}}
+header.top{position:sticky;top:0;z-index:30;background:rgba(251,247,243,.86);backdrop-filter:saturate(1.6) blur(14px);-webkit-backdrop-filter:saturate(1.6) blur(14px);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px;padding:10px 14px}
+.brand{display:flex;align-items:center;gap:10px;margin-right:auto;min-width:0}
+.brand svg{width:34px;height:34px;flex:none}
+.brand b{display:block;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:19px;letter-spacing:-.3px;line-height:1}
+.brand small{display:block;font-size:11px;color:var(--muted)}
+.seg{position:relative;display:flex;background:#f0e8ee;border-radius:999px;padding:3px}
+.seg button{padding:7px 13px;border-radius:999px;font-size:13px;font-weight:600;color:var(--muted);white-space:nowrap}
+.seg button.on{background:#fff;color:var(--ink);box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.badge{position:absolute;top:-5px;right:-4px;background:var(--danger);color:#fff;font-style:normal;font-size:10.5px;font-weight:700;min-width:18px;height:18px;border-radius:9px;display:grid;place-items:center;padding:0 5px;animation:pop .4s}
+@keyframes pop{from{transform:scale(0)}}
+.lang{white-space:nowrap;background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 12px;font-size:12px;font-weight:700}
+.lang span{opacity:.4}.lang span.on{opacity:1;color:var(--mag)}
+@media(max-width:520px){.brand small{display:none}.seg button{padding:7px 10px}.lang{padding:7px 9px}}
+.wrap{max-width:1100px;margin:0 auto;padding:0 14px}
+/* hero */
+.hero{position:relative;margin:14px auto 0;max-width:1100px;border-radius:30px;overflow:hidden;color:#fff;background:linear-gradient(135deg,#3b2a8f,#c2185b 65%,#f2a516);box-shadow:var(--sh)}
+@media(max-width:1128px){.hero{margin:14px 14px 0}}
+.hero .weave{position:absolute;inset:0;opacity:.18}
+.hero .in{position:relative;padding:28px 22px 24px;display:grid;gap:16px}
+@media(min-width:820px){.hero .in{grid-template-columns:1.2fr 1fr;align-items:center;padding:38px 34px}}
+.eyebrow{display:inline-flex;gap:7px;align-items:center;font-size:11.5px;letter-spacing:1.3px;text-transform:uppercase;background:rgba(255,255,255,.16);padding:6px 12px;border-radius:999px;font-weight:700;width:max-content}
+.hero h1{font-size:clamp(34px,7.4vw,60px);line-height:.98;margin:12px 0 10px}
+.hero h1 em{font-style:normal;color:#ffe08a}
+.hero p{opacity:.94;font-size:15px;max-width:520px}
+.heroRow{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#fff;color:var(--ink);font-weight:800;padding:13px 20px;border-radius:16px;font-size:15px;transition:.2s;text-decoration:none;box-shadow:0 10px 22px -10px rgba(0,0,0,.35)}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost{background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.35);box-shadow:none}
+.btn.pri{background:linear-gradient(135deg,var(--mag),var(--mag2));color:#fff;box-shadow:0 10px 22px -10px rgba(194,24,91,.8)}
+.btn.sec{background:#fff;border:1px solid var(--line);box-shadow:none}
+.btn[disabled]{opacity:.45;pointer-events:none}
+.heroArt{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.heroArt div{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);border-radius:20px;aspect-ratio:1/1;overflow:hidden;backdrop-filter:blur(4px);animation:fl 6s ease-in-out infinite}
+.heroArt div:nth-child(2){animation-delay:1.5s}.heroArt div:nth-child(3){animation-delay:3s}.heroArt div:nth-child(4){animation-delay:4.5s}
+@keyframes fl{50%{transform:translateY(-6px)}}
+.heroArt svg{width:100%;height:100%}
+.perks{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-top:14px}
+.perks div{background:#fff;border:1px solid var(--line);border-radius:18px;padding:12px 14px;display:flex;gap:10px;align-items:center;font-size:13px}
+.perks i{font-style:normal;font-size:20px;width:38px;height:38px;border-radius:12px;background:#fbeef3;display:grid;place-items:center;flex:none}
+.perks b{display:block;font-size:13.5px}.perks small{color:var(--muted)}
+/* catalog */
+.sh{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:26px 0 12px;flex-wrap:wrap}
+.sh h2{font-size:clamp(26px,4.4vw,36px)}
+.sh p{color:var(--muted);font-size:13.5px;max-width:480px}
+.filters{display:flex;gap:6px;overflow:auto;scrollbar-width:none;margin-bottom:12px}
+.filters::-webkit-scrollbar{display:none}
+.filters button{padding:9px 15px;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:13px;font-weight:700;color:var(--muted);white-space:nowrap}
+.filters button.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media(min-width:760px){.grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}}
+.pc{background:#fff;border-radius:20px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--sh);display:flex;flex-direction:column;text-align:left;transition:.2s;position:relative}
+.pc:hover{transform:translateY(-3px)}
+.pc .img{aspect-ratio:1/1;position:relative;overflow:hidden;display:block;width:100%}
+.pc .img svg{width:100%;height:100%;display:block;transition:.4s}
+.pc:hover .img svg{transform:scale(1.05)}
+.pc .ex{position:absolute;left:8px;top:8px;font-size:9.5px;font-weight:800;padding:3px 7px;border-radius:7px;background:rgba(255,255,255,.92);color:var(--muted);text-transform:uppercase;letter-spacing:.3px}
+.pc .hot{position:absolute;right:8px;top:8px;font-size:9.5px;font-weight:800;padding:3px 7px;border-radius:7px;background:var(--saf);color:#2a1700;text-transform:uppercase}
+.pc .bd{padding:10px 12px 12px;display:flex;flex-direction:column;gap:4px;flex:1}
+.pc h3{font-size:14px;line-height:1.2;font-weight:700}
+.pc small{color:var(--muted);font-size:11.5px}
+.pc .row{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:6px}
+.pc .pr{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:19px}
+.add{width:38px;height:38px;border-radius:12px;background:var(--ink);color:#fff;font-size:20px;font-weight:700;display:grid;place-items:center;transition:.15s}
+.add:active{transform:scale(.9)}
+.dots{display:flex;gap:4px}.dots i{width:12px;height:12px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px var(--line)}
+/* wholesale band */
+.whole{margin-top:22px;border-radius:24px;padding:22px;background:linear-gradient(135deg,#0f9b9b,#3b2a8f);color:#fff;display:grid;gap:14px;position:relative;overflow:hidden}
+@media(min-width:760px){.whole{grid-template-columns:1.3fr 1fr;align-items:center}}
+.whole h2{font-size:26px}
+.whole p{opacity:.92;font-size:14px}
+.tiers{display:grid;gap:8px}
+.tiers div{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);border-radius:14px;padding:10px 12px;display:flex;justify-content:space-between;font-size:13.5px}
+.tiers b{color:#ffe08a}
+.visit{margin-top:22px;display:grid;gap:14px}
+@media(min-width:760px){.visit{grid-template-columns:1fr 1fr}}
+.card{background:#fff;border-radius:var(--r);box-shadow:var(--sh);border:1px solid var(--line);padding:20px}
+.card h3{font-size:17px;margin-bottom:10px}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:13.5px}.kv span{color:var(--muted)}
+/* floating cart */
+.fab{position:fixed;left:50%;transform:translateX(-50%);bottom:16px;z-index:40;display:flex;align-items:center;gap:12px;background:var(--ink);color:#fff;border-radius:18px;padding:12px 16px 12px 14px;box-shadow:0 16px 36px -12px rgba(29,20,36,.6);min-width:min(92vw,420px);justify-content:space-between;animation:up .3s}
+.fab .c{background:var(--mag2);border-radius:10px;min-width:28px;height:28px;display:grid;place-items:center;font-weight:800;font-size:14px}
+.fab b{font-size:15px}
+.fab .go{font-weight:800;background:#fff;color:var(--ink);padding:9px 14px;border-radius:12px;font-size:14px}
+.bump{animation:bump .4s}@keyframes bump{40%{transform:translateX(-50%) scale(1.06)}}
+/* sheets */
+.ov{position:fixed;inset:0;background:rgba(20,10,25,.55);backdrop-filter:blur(4px);z-index:60;display:flex;align-items:flex-end;justify-content:center;animation:fd .25s}
+@keyframes fd{from{opacity:0}}
+.sheet{background:#fff;width:100%;max-width:560px;max-height:94vh;overflow:auto;border-radius:26px 26px 0 0;padding:18px;animation:up .3s}
+@media(min-width:700px){.ov{align-items:center}.sheet{border-radius:26px}}
+@keyframes up{from{transform:translateY(40px);opacity:0}}
+.sheet .x{float:right;width:34px;height:34px;border-radius:50%;background:#f3edf1;font-size:16px}
+.qv .img{border-radius:18px;overflow:hidden;aspect-ratio:4/3;margin:6px 0 12px}
+.qv .img svg{width:100%;height:100%}
+.qv h2{font-size:24px}
+.qv p{color:var(--muted);font-size:14px;margin:6px 0 10px}
+.lbl{display:block;font-size:12px;font-weight:700;color:var(--muted);margin:12px 0 6px}
+.colors{display:flex;gap:8px;flex-wrap:wrap}
+.colors button{display:flex;align-items:center;gap:6px;padding:7px 11px;border-radius:999px;border:1.5px solid var(--line);font-size:13px;font-weight:600}
+.colors button i{width:14px;height:14px;border-radius:50%}
+.colors button.on{border-color:var(--ink);background:#f7f2f5}
+.ctr{display:flex;align-items:center;gap:12px}
+.ctr button{width:38px;height:38px;border-radius:12px;background:#f3edf1;font-size:20px;font-weight:700}
+.ctr button[disabled]{opacity:.35;pointer-events:none}
+.ctr span{min-width:22px;text-align:center;font-weight:800;font-size:17px}
+.qrow{display:flex;justify-content:space-between;align-items:center;margin-top:16px;gap:12px}
+.tagline{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.tagline span{font-size:11.5px;font-weight:700;padding:4px 9px;border-radius:999px;background:#fbeef3;color:var(--mag)}
+/* cart / checkout */
+.stepper{display:flex;gap:5px;margin:4px 0 16px}
+.stp{flex:1;display:flex;flex-direction:column;gap:6px;font-size:11px;font-weight:700;color:var(--muted)}
+.stp .bar{height:5px;border-radius:5px;background:#f0e8ee;overflow:hidden}
+.stp .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--mag),var(--saf));transition:.4s}
+.stp.on{color:var(--ink)}.stp.on .bar i,.stp.done .bar i{width:100%}.stp.done{color:var(--mag)}
+h2.t{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:23px;margin-bottom:4px}
+p.sub{color:var(--muted);font-size:13.5px;margin-bottom:12px}
+.ci{display:flex;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+.ci .th{width:56px;height:56px;border-radius:12px;overflow:hidden;flex:none}.ci .th svg{width:100%;height:100%}
+.ci .m{flex:1;min-width:0}.ci .m b{display:block;font-size:13.5px}.ci .m small{color:var(--muted);font-size:12px}
+.ci .p{font-weight:800;font-size:14px;text-align:right}
+.ci .ctr button{width:30px;height:30px;font-size:16px;border-radius:9px}.ci .ctr span{font-size:14px;min-width:16px}
+.opt{display:flex;align-items:center;gap:12px;padding:12px;border:1.5px solid var(--line);border-radius:16px;margin-bottom:8px;width:100%;text-align:left;background:#fff}
+.opt.on{border-color:var(--mag);background:#fdf3f7}
+.opt .ic{width:40px;height:40px;border-radius:12px;background:#f3edf1;display:grid;place-items:center;font-size:19px;flex:none}
+.opt .tx{flex:1;min-width:0}.opt b{display:block;font-size:14px}.opt small{color:var(--muted);font-size:12px}
+.opt .pr{font-weight:800;font-size:13.5px;white-space:nowrap}
+.radio{width:20px;height:20px;border-radius:50%;border:2px solid #d5c9d2;flex:none;position:relative}
+.opt.on .radio{border-color:var(--mag)}.opt.on .radio:after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--mag)}
+.fld{margin-bottom:10px}
+.fld label{display:block;font-size:12px;font-weight:700;color:var(--muted);margin-bottom:5px}
+.fld input,.fld select,.fld textarea{width:100%;padding:12px 13px;border-radius:13px;border:1.5px solid var(--line);background:#fdfafc;font-size:15px;outline:0}
+.fld input:focus,.fld select:focus,.fld textarea:focus{border-color:var(--mag);background:#fff;box-shadow:0 0 0 4px rgba(194,24,91,.1)}
+.fld.err input{border-color:var(--danger)}.fld .em{color:var(--danger);font-size:12px;margin-top:3px}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tog{display:flex;background:#f0e8ee;border-radius:14px;padding:4px}
+.tog button{flex:1;padding:10px 6px;border-radius:11px;font-weight:700;font-size:13px;color:var(--muted)}
+.tog button.on{background:#fff;color:var(--ink);box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.link{color:var(--mag);font-size:13px;font-weight:700;text-decoration:underline;margin:2px 0 10px;display:inline-block}
+.tot{background:#faf6f9;border-radius:16px;padding:12px;margin-top:12px;font-size:13.5px}
+.tot div{display:flex;justify-content:space-between;padding:3px 0;color:var(--muted)}
+.tot .big{color:var(--ink);font-weight:800;font-size:16px;border-top:1px dashed var(--line);margin-top:4px;padding-top:8px}
+.note{font-size:12px;color:var(--muted);margin-top:8px}
+.actions{display:flex;gap:10px;margin-top:14px}.actions .btn{flex:1}.actions .btn.sec{flex:0 0 auto}
+.mock{border-radius:16px;padding:16px;color:#fff;background:linear-gradient(135deg,#3b2a8f,#c2185b);margin:10px 0}
+.mock small{opacity:.8;font-size:11px;letter-spacing:1px;text-transform:uppercase}.mock b{display:block;font-size:17px;letter-spacing:1.5px;margin-top:8px}
+.spin{width:18px;height:18px;border:3px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:sp .7s linear infinite}@keyframes sp{to{transform:rotate(360deg)}}
+.okmark{width:72px;height:72px;margin:0 auto 8px;display:block}
+.okmark circle{stroke-dasharray:220;stroke-dashoffset:220;animation:dr .7s .1s forwards}.okmark path{stroke-dasharray:60;stroke-dashoffset:60;animation:dr .5s .6s forwards}@keyframes dr{to{stroke-dashoffset:0}}
+.center{text-align:center}
+.tabs{display:flex;gap:6px;margin:10px 0 12px;flex-wrap:wrap}
+.tabs button{padding:9px 14px;border-radius:999px;background:#f3edf1;font-size:13px;font-weight:700;color:var(--muted)}
+.tabs button.on{background:var(--ink);color:#fff}
+.phone{background:#e9e1d6;border-radius:24px;overflow:hidden;border:1px solid var(--line);max-width:420px;margin:0 auto}
+.wah{background:#1d1424;color:#fff;display:flex;gap:10px;align-items:center;padding:10px 14px}
+.wah .av{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--mag),var(--saf));display:grid;place-items:center;font-weight:800;font-family:"Bricolage Grotesque",sans-serif}
+.wah b{font-size:14.5px;display:block}.wah small{opacity:.75;font-size:11.5px}
+.chat{padding:12px;min-height:260px;display:flex;flex-direction:column;gap:7px;background-image:radial-gradient(rgba(0,0,0,.035) 1px,transparent 1px);background-size:14px 14px}
+.msg{max-width:88%;padding:8px 11px 6px;border-radius:14px;font-size:13.5px;line-height:1.42;box-shadow:0 1px 1px rgba(0,0,0,.1);animation:in .35s;word-wrap:break-word}
+.msg.biz{background:#fff;border-top-left-radius:4px;align-self:flex-start}
+.msg.usr{background:#d9fdd3;border-top-right-radius:4px;align-self:flex-end}
+.msg .tm{display:block;text-align:right;font-size:10.5px;color:#7a8a8f;margin-top:2px}
+.qbt{display:flex;flex-direction:column;gap:4px;align-self:flex-start;width:min(88%,300px);animation:in .35s}
+.qbt span{background:#fff;color:#1f7aa8;text-align:center;font-weight:600;font-size:13px;padding:8px;border-radius:10px;box-shadow:0 1px 1px rgba(0,0,0,.1)}
+.typing{align-self:flex-start;background:#fff;border-radius:14px;padding:10px 13px;display:flex;gap:4px}
+.typing i{width:6px;height:6px;border-radius:50%;background:#9aa;animation:bl 1s infinite}.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes bl{50%{transform:translateY(-4px);opacity:.5}}@keyframes in{from{opacity:0;transform:translateY(8px) scale(.97)}}
+.wafoot{background:#f0f0f0;padding:9px 12px;color:#8a979c;font-size:12.5px}
+/* admin */
+.kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:14px 0}
+@media(min-width:760px){.kpis{grid-template-columns:repeat(4,1fr)}}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;box-shadow:var(--sh)}
+.kpi small{color:var(--muted);font-size:12px;font-weight:600}.kpi b{display:block;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:27px;margin-top:3px}.kpi em{font-style:normal;font-size:11.5px;color:var(--ok);font-weight:700}
+.two{display:grid;gap:16px;grid-template-columns:minmax(0,1fr)}@media(min-width:920px){.two{grid-template-columns:1.4fr 1fr;align-items:start}}
+.two>*{min-width:0}
+h3.sec{font-size:16px;margin:2px 0 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}h3.sec small{font-size:12px;color:var(--muted);font-weight:600}
+.od{display:flex;gap:12px;align-items:center;padding:12px;border-radius:16px;border:1px solid var(--line);margin-bottom:9px;width:100%;text-align:left;background:#fff}
+.od.new{background:#fdf3f7;border-color:var(--mag2);animation:glow 1.6s 2}
+@keyframes glow{50%{box-shadow:0 0 0 5px rgba(226,69,122,.2)}}
+.od .av2{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;font-size:20px;flex:none;background:#f3edf1}
+.od .m{flex:1;min-width:0}.od .nm{font-size:14px;font-weight:700;display:flex;gap:6px;flex-wrap:wrap;align-items:center}.od small{color:var(--muted);font-size:12px}
+.od .am{text-align:right;font-weight:800}
+.tag{font-size:9.5px;font-weight:800;padding:2px 6px;border-radius:6px;letter-spacing:.3px;text-transform:uppercase}
+.tag.ex{background:#f0e8ee;color:#7b6c78}.tag.nw{background:var(--ok);color:#fff}.tag.wh{background:#dff3f3;color:#0b7070}
+.st{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:8px;margin-top:3px}
+.st.pay{background:#e6f6ef;color:var(--ok)}.st.ship{background:#fff3df;color:#9a5c00}.st.q{background:#e5f3f3;color:#0b7070}
+.top5 li{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--line);font-size:13px;list-style:none}.top5 li:last-child{border:0}
+.top5 .th{width:36px;height:36px;border-radius:10px;overflow:hidden;flex:none}.top5 .th svg{width:100%;height:100%}
+.top5 .bar{flex:1;height:8px;border-radius:5px;background:#f0e8ee;overflow:hidden}.top5 .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--mag),var(--saf))}
+.foot{text-align:center;font-size:12px;color:var(--muted);padding:22px 14px 8px;max-width:760px;margin:0 auto}
+</style>
+</head>
+<body>
+<div class="demobar"><span class="dot"></span><span data-i="demobar"></span></div>
+<header class="top">
+  <div class="brand">
+    <svg viewBox="0 0 32 32"><rect width="32" height="32" rx="10" fill="#1d1424"/><path d="M6 11l5 10 5-10 5 10 5-10" stroke="#f2a516" stroke-width="2.6" fill="none" stroke-linejoin="round" stroke-linecap="round"/><circle cx="16" cy="25" r="1.8" fill="#e2457a"/><circle cx="11" cy="25" r="1.4" fill="#0f9b9b"/><circle cx="21" cy="25" r="1.4" fill="#0f9b9b"/></svg>
+    <div><b>Waiky</b><small data-i="brandsub"></small></div>
+  </div>
+  <div class="seg"><button data-view="client" class="on" data-i="tabC"></button><button data-view="admin" data-i="tabA"></button><i class="badge" id="badge" hidden></i></div>
+  <button class="lang" id="langBtn"><span id="lES">ES</span> · <span id="lEN">EN</span></button>
+</header>
+
+<div id="vClient">
+  <section class="hero">
+    <svg class="weave" viewBox="0 0 200 200" preserveAspectRatio="none" aria-hidden="true"><defs><pattern id="wv" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M0 20 L10 10 L20 20 L30 10 L40 20 M0 40 L10 30 L20 40 L30 30 L40 40" stroke="#fff" stroke-width="2.4" fill="none"/><rect x="17" y="0" width="6" height="6" fill="#fff"/></pattern></defs><rect width="200" height="200" fill="url(#wv)"/></svg>
+    <div class="in">
+      <div>
+        <span class="eyebrow">✋ <span data-i="eyebrow"></span></span>
+        <h1 class="disp" data-ih="h1"></h1>
+        <p data-i="heroP"></p>
+        <div class="heroRow"><a class="btn" href="#shop" data-i="cta"></a><a class="btn ghost" href="#mayor" data-i="ctaW"></a></div>
+      </div>
+      <div class="heroArt" id="heroArt"></div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="perks">
+      <div><i>🇪🇨</i><span><b data-i="p1"></b><small data-i="p1s"></small></span></div>
+      <div><i>✈️</i><span><b data-i="p2"></b><small data-i="p2s"></small></span></div>
+      <div><i>💬</i><span><b data-i="p3"></b><small data-i="p3s"></small></span></div>
+    </div>
+
+    <div class="sh" id="shop"><h2 class="disp" data-i="shT"></h2><p data-i="shS"></p></div>
+    <div class="filters" id="filters"></div>
+    <div class="grid" id="grid"></div>
+
+    <section class="whole" id="mayor">
+      <div><h2 class="disp" data-i="wT"></h2><p data-i="wS"></p><div class="heroRow"><button class="btn" onclick="openWholesale()" data-i="wBtn"></button></div></div>
+      <div class="tiers" id="tiers"></div>
+    </section>
+
+    <div class="visit">
+      <section class="card"><h3 data-i="vT"></h3><div class="kv" id="kv"></div></section>
+      <section class="card"><h3 data-i="aboutT"></h3><p style="font-size:14px;color:var(--muted)" data-i="aboutP"></p></section>
+    </div>
+  </div>
+</div>
+
+<div id="vAdmin" hidden>
+  <div class="wrap" style="padding-top:18px">
+    <h2 class="t" data-i="aT"></h2><p class="sub" data-i="aS"></p>
+    <div class="kpis" id="kpis"></div>
+    <div class="two">
+      <section class="card"><h3 class="sec"><span data-i="aOrd"></span><small data-i="aTap"></small></h3><div id="orders"></div></section>
+      <section class="card"><h3 class="sec"><span data-i="aTop"></span></h3><ul class="top5" id="top5"></ul></section>
+    </div>
+  </div>
+</div>
+
+<p class="foot" data-i="foot"></p>
+<div id="fabMount"></div>
+<div id="modal"></div>
+
+<script>
+/* ===== PRODUCTOS DE EJEMPLO (precios de ejemplo; Waiky publica "desde $1") ===== */
+const P=[
+ {id:'pm',cat:'pul',price:1,art:'beads',c:['#c2185b','#0f9b9b','#f2a516'],hot:true},
+ {id:'pt',cat:'pul',price:3,art:'weave',c:['#3b2a8f','#c2185b','#1e9a5b']},
+ {id:'cs',cat:'col',price:8,art:'necklace',c:['#7a3b1f','#f2a516']},
+ {id:'cm',cat:'col',price:12,art:'necklace2',c:['#c2185b','#0f9b9b']},
+ {id:'af',cat:'are',price:6,art:'earring',c:['#9aa3ad','#f2a516']},
+ {id:'at',cat:'are',price:4,art:'earring2',c:['#e2457a','#3b2a8f','#0f9b9b']},
+ {id:'an',cat:'ani',price:4,art:'ring',c:['#9aa3ad','#f2a516']},
+ {id:'bt',cat:'bol',price:18,art:'bag',c:['#c2185b','#3b2a8f','#f2a516'],hot:true}
+];
+const SHIP={store:0,ec:5,intl:25};
+const T={
+es:{
+demobar:"Demo de DevHorse para Waiky · Productos, fotos y precios de ejemplo · Pagos y mensajes simulados · Pedidos de ejemplo",
+brandsub:"Tienda artesanal · Quito",tabC:"Tienda",tabA:"Mi negocio",
+eyebrow:"Hecho a mano en Quito",h1:"Accesorios con <em>historia</em>, ahora a un clic",
+heroP:"Pulseras, collares, aretes, anillos y bolsos artesanales que llevan los valores culturales de los pueblos indígenas. Compra desde cualquier parte del mundo.",
+cta:"Ver la tienda",ctaW:"Para tiendas y hoteles",
+p1:"Envíos a todo Ecuador",p1s:"O retira gratis en la tienda en Quito",p2:"Envíos al exterior",p2s:"Lleva Ecuador contigo, estés donde estés",p3:"Tu pedido llega al WhatsApp",p3s:"Te confirmamos y te avisamos del envío",
+shT:"Nuestras piezas",shS:"Cada pieza es única y hecha a mano. Precios desde $1.",
+f_all:"Todo",f_pul:"Pulseras",f_col:"Collares",f_are:"Aretes",f_ani:"Anillos",f_bol:"Bolsos",
+n_pm:"Pulsera de mullos",d_pm:"Pulsera delgada de mullos de colores, ajustable. Perfecta para regalar.",
+n_pt:"Pulsera tejida a mano",d_pt:"Tejida a mano con hilos de colores y diseños geométricos andinos.",
+n_cs:"Collar de semillas",d_cs:"Collar con semillas naturales, ligero y con un estilo único.",
+n_cm:"Collar de mullos multicolor",d_cm:"Collar de varias vueltas de mullos, inspirado en los colores tradicionales.",
+n_af:"Aretes de filigrana",d_af:"Aretes trabajados a mano en filigrana, ligeros y elegantes.",
+n_at:"Aretes tejidos",d_at:"Aretes tejidos con mullos en forma de rombo.",
+n_an:"Anillo artesanal",d_an:"Anillo ajustable trabajado a mano.",
+n_bt:"Bolso tejido en telar",d_bt:"Bolso amplio tejido en telar, con correa ajustable. Ideal para el día a día.",
+exL:"Ejemplo",hot:"Favorito",color:"Color",qty:"Cantidad",addCart:"Agregar · {p}",handmade:"Hecho a mano",unique:"Pieza única",quito:"Desde Quito",
+cartT:"Tu bolsa",empty:"Tu bolsa está vacía",checkout:"Continuar",items:"{n} producto(s)",
+st1:"Bolsa",st2:"Entrega",st3:"Pago",
+shipT:"¿Cómo lo recibes?",s_store:"Retiro en la tienda",s_storeS:"Línea Férrea, La Tola, Quito · gratis",s_ec:"Envío a todo Ecuador",s_ecS:"2 a 4 días hábiles · costo de ejemplo",s_intl:"Envío internacional",s_intlS:"Según el país · costo de ejemplo",free:"Gratis",
+name:"Nombre completo",phone:"WhatsApp",email:"Correo",address:"Dirección",city:"Ciudad",country:"País",autofill:"Rellenar con datos de ejemplo",errName:"Escribe tu nombre.",errPhone:"Escribe tu WhatsApp.",errAddr:"Escribe la dirección.",
+payT:"Paga tu pedido",card:"Tarjeta",transfer:"Transferencia",paypal:"PayPal",simNote:"Pago simulado: no se cobra nada.",pay:"Pagar {a}",processing:"Confirmando…",
+sub:"Subtotal",shipping:"Envío",total:"Total",next:"Continuar",
+done:"¡Gracias por tu compra!",doneS:"Así llega el pedido a cada lado:",tabCli:"Tu WhatsApp",tabOwn:"WhatsApp de Waiky",seeAdmin:"Ver el panel de Waiky →",keep:"Seguir comprando",
+wT:"¿Tienes una tienda u hotel?",wS:"Vende piezas Waiky en tu negocio. Pide al por mayor y recibe precios especiales por volumen.",wBtn:"Pedir cotización al por mayor",
+tiers:[["Desde 12 piezas","-10 %"],["Desde 50 piezas","-20 %"],["Desde 100 piezas","Precio especial"]],tierNote:"Descuentos de ejemplo",
+whT:"Pedido al por mayor",whS:"Cuéntanos qué necesitas y te enviamos la cotización por WhatsApp.",whType:"Tipo de negocio",whTypes:["Tienda","Hotel","Agencia / souvenirs","Otro"],whBiz:"Nombre del negocio",whProd:"¿Qué productos y cuántos?",whProdP:"Ej. 50 pulseras de mullos, 20 collares de semillas",whSend:"Enviar solicitud",whErr:"Completa el negocio, tu WhatsApp y los productos.",whDone:"¡Solicitud enviada!",whDoneS:"Así le llega a Waiky y así responde:",
+vT:"Visítanos",kv:[["Dirección","Línea Férrea, La Tola, Checa · Quito"],["Horario","Lun a sáb 8:00–18:00 · Dom 8:00–16:00"],["WhatsApp","098 350 4830"],["Instagram","@waikytienda"]],
+aboutT:"Sobre Waiky",aboutP:"Elaboramos y comercializamos accesorios artesanales de uso personal, con el propósito de compartir los valores culturales de los pueblos indígenas. Accesorios exclusivos para toda ocasión.",
+aT:"Panel de Waiky",aS:"Lo que ve Jesús en el celular. Los pedidos marcados “Ejemplo” son inventados; los “Nuevo” vienen de la demo.",
+aOrd:"Pedidos",aTap:"Toca uno para ver el mensaje",aTop:"Más vendidos (ejemplo)",
+kOrd:"Pedidos",kSales:"Ventas",kShip:"Por enviar",kWh:"Mayoristas",kNew:"+{n} nuevo(s)",ex:"Ejemplo",nw:"Nuevo",wh:"Mayorista",stPaid:"Pagado",stShip:"Por enviar",stQ:"Por cotizar",
+foot:"Demo creada por DevHorse como propuesta para Waiky tienda artesanal. Productos, fotos, precios, costos de envío y descuentos son de ejemplo, para reemplazar con los reales. Dirección, horario y contacto tomados de su ficha pública.",
+o_new:"🛍️ *Nuevo pedido {code}*\n\n{lines}\n\n🚚 {ship}\n💳 Pagado: *{tot}* ({pay})\n👤 {name} · {phone}\n📍 {addr}",o_btn1:"Marcar como enviado",o_btn2:"Escribir al cliente",
+c_ok:"¡Hola {first}! 🌸 Gracias por tu compra en *Waiky*.\n\nTu pedido *{code}* está confirmado:\n{lines}\n\n💳 Total pagado: *{tot}*\n🚚 {ship}",c_ship:"📦 ¡Tu pedido ya va en camino! Te avisamos cuando llegue. Gracias por llevar un pedacito de nuestra cultura contigo ✨",c_store:"🏪 Tu pedido te espera en la tienda (Línea Férrea, La Tola). Horario: lun a sáb 8:00–18:00 y dom 8:00–16:00.",c_u:"¡Muchas gracias! 😍",
+w_in:"🏨 *Solicitud al por mayor*\n\n🏷️ {biz} ({type})\n📦 {prod}\n👤 {name} · {phone}",w_rep:"¡Hola {first}! Gracias por escribir a Waiky 🙌 Con gusto le preparamos la cotización por volumen. ¿Para qué fecha necesita el pedido?",
+wahSub:"Cuenta de empresa",wafoot:"Mensajes automáticos ✓✓",shipStore:"Retiro en la tienda",shipEc:"Envío a todo Ecuador",shipIntl:"Envío internacional"
+},
+en:{
+demobar:"DevHorse demo for Waiky · Sample products, photos and prices · Simulated payments & messages · Sample orders",
+brandsub:"Artisan shop · Quito",tabC:"Shop",tabA:"My business",
+eyebrow:"Handmade in Quito",h1:"Accessories with a <em>story</em>, one click away",
+heroP:"Handmade bracelets, necklaces, earrings, rings and bags carrying the cultural values of Indigenous peoples. Shop from anywhere in the world.",
+cta:"Shop now",ctaW:"For shops & hotels",
+p1:"Shipping across Ecuador",p1s:"Or free pick-up at our Quito store",p2:"International shipping",p2s:"Take Ecuador with you, wherever you are",p3:"Order updates on WhatsApp",p3s:"We confirm and let you know when it ships",
+shT:"Our pieces",shS:"Every piece is unique and handmade. Prices from $1.",
+f_all:"All",f_pul:"Bracelets",f_col:"Necklaces",f_are:"Earrings",f_ani:"Rings",f_bol:"Bags",
+n_pm:"Beaded bracelet",d_pm:"Thin, adjustable bracelet with colorful beads. Perfect as a gift.",
+n_pt:"Hand-woven bracelet",d_pt:"Hand-woven with colorful threads and Andean geometric designs.",
+n_cs:"Seed necklace",d_cs:"Necklace with natural seeds, light and one of a kind.",
+n_cm:"Multicolor bead necklace",d_cm:"Multi-strand bead necklace inspired by traditional colors.",
+n_af:"Filigree earrings",d_af:"Hand-crafted filigree earrings, light and elegant.",
+n_at:"Woven earrings",d_at:"Diamond-shaped beaded earrings.",
+n_an:"Handmade ring",d_an:"Adjustable handmade ring.",
+n_bt:"Loom-woven bag",d_bt:"Roomy loom-woven bag with adjustable strap. Great for everyday.",
+exL:"Sample",hot:"Favorite",color:"Color",qty:"Quantity",addCart:"Add · {p}",handmade:"Handmade",unique:"One of a kind",quito:"From Quito",
+cartT:"Your bag",empty:"Your bag is empty",checkout:"Continue",items:"{n} item(s)",
+st1:"Bag",st2:"Delivery",st3:"Payment",
+shipT:"How do you want it?",s_store:"Store pick-up",s_storeS:"Línea Férrea, La Tola, Quito · free",s_ec:"Shipping across Ecuador",s_ecS:"2–4 business days · sample cost",s_intl:"International shipping",s_intlS:"Depends on country · sample cost",free:"Free",
+name:"Full name",phone:"WhatsApp",email:"Email",address:"Address",city:"City",country:"Country",autofill:"Fill with sample data",errName:"Please enter your name.",errPhone:"Please enter your WhatsApp.",errAddr:"Please enter the address.",
+payT:"Pay for your order",card:"Card",transfer:"Transfer",paypal:"PayPal",simNote:"Simulated payment: nothing is charged.",pay:"Pay {a}",processing:"Confirming…",
+sub:"Subtotal",shipping:"Shipping",total:"Total",next:"Continue",
+done:"Thank you for your purchase!",doneS:"This is how the order arrives on each side:",tabCli:"Your WhatsApp",tabOwn:"Waiky's WhatsApp",seeAdmin:"See Waiky's dashboard →",keep:"Keep shopping",
+wT:"Do you run a shop or hotel?",wS:"Sell Waiky pieces in your business. Order wholesale and get volume pricing.",wBtn:"Request a wholesale quote",
+tiers:[["From 12 pieces","-10 %"],["From 50 pieces","-20 %"],["From 100 pieces","Special price"]],tierNote:"Sample discounts",
+whT:"Wholesale order",whS:"Tell us what you need and we'll send the quote on WhatsApp.",whType:"Business type",whTypes:["Shop","Hotel","Agency / souvenirs","Other"],whBiz:"Business name",whProd:"Which products and how many?",whProdP:"E.g. 50 beaded bracelets, 20 seed necklaces",whSend:"Send request",whErr:"Please fill in business, WhatsApp and products.",whDone:"Request sent!",whDoneS:"This is how Waiky gets it and replies:",
+vT:"Visit us",kv:[["Address","Línea Férrea, La Tola, Checa · Quito"],["Hours","Mon–Sat 8:00–18:00 · Sun 8:00–16:00"],["WhatsApp","+593 98 350 4830"],["Instagram","@waikytienda"]],
+aboutT:"About Waiky",aboutP:"We make and sell handmade personal accessories to share the cultural values of Indigenous peoples. Exclusive accessories for every occasion.",
+aT:"Waiky dashboard",aS:"What Jesús sees on his phone. Orders tagged “Sample” are made up; “New” ones come from this demo.",
+aOrd:"Orders",aTap:"Tap one to see the message",aTop:"Best sellers (sample)",
+kOrd:"Orders",kSales:"Sales",kShip:"To ship",kWh:"Wholesale",kNew:"+{n} new",ex:"Sample",nw:"New",wh:"Wholesale",stPaid:"Paid",stShip:"To ship",stQ:"To quote",
+foot:"Demo created by DevHorse as a proposal for Waiky artisan shop. Products, photos, prices, shipping costs and discounts are samples, to be replaced with real ones. Address, hours and contact taken from their public listing.",
+o_new:"🛍️ *New order {code}*\n\n{lines}\n\n🚚 {ship}\n💳 Paid: *{tot}* ({pay})\n👤 {name} · {phone}\n📍 {addr}",o_btn1:"Mark as shipped",o_btn2:"Message customer",
+c_ok:"Hi {first}! 🌸 Thank you for shopping at *Waiky*.\n\nYour order *{code}* is confirmed:\n{lines}\n\n💳 Total paid: *{tot}*\n🚚 {ship}",c_ship:"📦 Your order is on its way! We'll let you know when it arrives. Thank you for taking a piece of our culture with you ✨",c_store:"🏪 Your order is waiting at the store (Línea Férrea, La Tola). Hours: Mon–Sat 8:00–18:00, Sun 8:00–16:00.",c_u:"Thank you so much! 😍",
+w_in:"🏨 *Wholesale request*\n\n🏷️ {biz} ({type})\n📦 {prod}\n👤 {name} · {phone}",w_rep:"Hi {first}! Thanks for contacting Waiky 🙌 We'll gladly prepare a volume quote. When do you need the order?",
+wahSub:"Business account",wafoot:"Automatic messages ✓✓",shipStore:"Store pick-up",shipEc:"Shipping across Ecuador",shipIntl:"International shipping"
+}};
+
+/* ===== ESTADO ===== */
+const S={lang:'es',view:'client',filter:'all',cart:[],step:1,ship:'ec',pay:'card',name:'',phone:'',email:'',addr:'',city:'',country:'Ecuador',errs:{},done:null,paying:false,newCount:0,wh:{type:0,biz:'',name:'',phone:'',prod:'',done:null,err:false}};
+const O=[];
+const $=s=>document.querySelector(s);
+const tr=(l,k,v={})=>{let s=T[l][k]??T.es[k]??k;if(typeof s!=='string')return s;for(const x in v)s=s.split('{'+x+'}').join(v[x]);return s};
+const t=(k,v)=>tr(S.lang,k,v);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const money=n=>'$'+(Math.round(n*100)/100).toFixed(2);
+const PR=id=>P.find(x=>x.id===id);
+const cname={'#c2185b':'Fucsia','#0f9b9b':'Turquesa','#f2a516':'Amarillo','#3b2a8f':'Índigo','#1e9a5b':'Verde','#7a3b1f':'Natural','#9aa3ad':'Plata','#e2457a':'Rosa'};
+const cnameEn={'#c2185b':'Fuchsia','#0f9b9b':'Turquoise','#f2a516':'Yellow','#3b2a8f':'Indigo','#1e9a5b':'Green','#7a3b1f':'Natural','#9aa3ad':'Silver','#e2457a':'Pink'};
+const cn=(c,l)=>((l||S.lang)==='es'?cname:cnameEn)[c]||c;
+
+/* ===== ARTE SVG (ilustraciones de ejemplo) ===== */
+function art(kind,c,bg){
+  const B=bg||'#f7efe8';const a=c[0],b=c[1]||c[0],d=c[2]||a;let g='';
+  if(kind==='beads'){for(let i=0;i<22;i++){const ang=i/22*Math.PI*2,x=100+Math.cos(ang)*52,y=100+Math.sin(ang)*40;g+=`<circle cx="${x}" cy="${y}" r="7" fill="${[a,b,d][i%3]}"/>`}g+=`<ellipse cx="100" cy="100" rx="52" ry="40" fill="none" stroke="#00000014"/>`}
+  if(kind==='weave'){g+=`<rect x="28" y="80" width="144" height="40" rx="12" fill="${a}"/>`;for(let i=0;i<9;i++){g+=`<path d="M${36+i*15} 100 l7 -12 l7 12 l-7 12z" fill="${i%2?b:d}"/>`}g+=`<path d="M28 100 h-18 M172 100 h18" stroke="#7a5a3a" stroke-width="3"/>`}
+  if(kind==='necklace'){g+=`<path d="M40 40 Q100 170 160 40" fill="none" stroke="#7a5a3a" stroke-width="2"/>`;for(let i=0;i<=14;i++){const tt=i/14,x=(1-tt)*(1-tt)*40+2*(1-tt)*tt*100+tt*tt*160,y=(1-tt)*(1-tt)*40+2*(1-tt)*tt*170+tt*tt*40;g+=`<ellipse cx="${x}" cy="${y}" rx="6" ry="8" fill="${i%2?a:b}"/>`}}
+  if(kind==='necklace2'){[0,14,28].forEach((o,j)=>{g+=`<path d="M40 ${40} Q100 ${150+o} 160 40" fill="none" stroke="${[a,b,'#f2a516'][j]}" stroke-width="7" stroke-dasharray="2 4" stroke-linecap="round"/>`})}
+  if(kind==='earring'){[70,130].forEach(x=>{g+=`<circle cx="${x}" cy="54" r="5" fill="none" stroke="${a}" stroke-width="3"/><path d="M${x} 59 v10" stroke="${a}" stroke-width="2"/><path d="M${x} 70 c-22 18 -22 52 0 66 c22 -14 22 -48 0 -66z" fill="none" stroke="${a}" stroke-width="3"/><path d="M${x} 82 c-10 10 -10 30 0 40 c10 -10 10 -30 0 -40z" fill="none" stroke="${b}" stroke-width="2.5"/><circle cx="${x}" cy="140" r="5" fill="${b}"/>`})}
+  if(kind==='earring2'){[70,130].forEach(x=>{g+=`<path d="M${x} 50 v14" stroke="#9aa3ad" stroke-width="2"/><path d="M${x} 64 l24 32 l-24 32 l-24 -32z" fill="${a}"/><path d="M${x} 78 l13 18 l-13 18 l-13 -18z" fill="${b}"/><path d="M${x} 90 l5 6 l-5 6 l-5 -6z" fill="${d}"/>`})}
+  if(kind==='ring'){g+=`<ellipse cx="100" cy="112" rx="46" ry="40" fill="none" stroke="${a}" stroke-width="12"/><path d="M78 74 q22 -26 44 0 q-22 14 -44 0z" fill="${b}"/><circle cx="100" cy="72" r="7" fill="#fff" opacity=".6"/>`}
+  if(kind==='bag'){g+=`<path d="M62 70 q38 -60 76 0" fill="none" stroke="#7a5a3a" stroke-width="6"/><rect x="40" y="70" width="120" height="96" rx="16" fill="${a}"/>`;for(let r=0;r<3;r++){for(let i=0;i<6;i++){g+=`<path d="M${50+i*18} ${92+r*24} l9 -9 l9 9 l-9 9z" fill="${r%2?b:d}"/>`}}}
+  return `<svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice"><rect width="200" height="200" fill="${B}"/><circle cx="160" cy="40" r="50" fill="${a}" opacity=".07"/>${g}</svg>`;
+}
+
+/* ===== EJEMPLOS ===== */
+(function(){
+  const ago=n=>{const d=new Date();d.setHours(d.getHours()-n);return d};
+  O.push({id:1,code:'WK-1042',kind:'o',name:'Emily R.',phone:'+1 555 010 0042',addr:'Portland, USA',ship:'intl',pay:'paypal',lines:[['bt',1,'#c2185b'],['pm',3,'#0f9b9b']],example:true,status:'ship',at:ago(5)});
+  O.push({id:2,code:'WK-1041',kind:'o',name:'María José P.',phone:'+593 99 000 0041',addr:'Cuenca, Ecuador',ship:'ec',pay:'card',lines:[['cm',1,'#c2185b'],['af',1,'#9aa3ad']],example:true,status:'ship',at:ago(9)});
+  O.push({id:3,code:'WH-208',kind:'w',name:'Hotel Casa Andina (ejemplo)',phone:'+593 2 000 0000',prod:'60 pulseras de mullos, 30 collares de semillas',type:1,example:true,status:'q',at:ago(20)});
+  O.push({id:4,code:'WK-1039',kind:'o',name:'Lukas M.',phone:'+49 151 000 0039',addr:'Quito (retiro)',ship:'store',pay:'card',lines:[['pt',2,'#3b2a8f']],example:true,status:'paid',at:ago(28)});
+  O.forEach(o=>{if(o.kind==='o'){o.sub=o.lines.reduce((a,l)=>a+PR(l[0]).price*l[1],0);o.tot=o.sub+SHIP[o.ship]}else o.tot=0});
+})();
+
+/* ===== VISTAS ===== */
+function applyI18n(){
+  document.documentElement.lang=S.lang;
+  document.querySelectorAll('[data-i]').forEach(e=>e.textContent=t(e.dataset.i));
+  document.querySelectorAll('[data-ih]').forEach(e=>e.innerHTML=t(e.dataset.ih));
+  $('#lES').className=S.lang==='es'?'on':'';$('#lEN').className=S.lang==='en'?'on':'';
+  $('#kv').innerHTML=t('kv').map(x=>`<span>${esc(x[0])}</span><b>${esc(x[1])}</b>`).join('');
+  $('#tiers').innerHTML=t('tiers').map(x=>`<div><span>${x[0]}</span><b>${x[1]}</b></div>`).join('')+`<small style="opacity:.8;font-size:11.5px">* ${t('tierNote')}</small>`;
+  $('#heroArt').innerHTML=['pm','cm','at','bt'].map(id=>{const p=PR(id);return `<div>${art(p.art,p.c,'transparent')}</div>`}).join('');
+  renderGrid();renderFab();
+}
+function setView(v){S.view=v;$('#vClient').hidden=v!=='client';$('#vAdmin').hidden=v!=='admin';
+  document.querySelectorAll('.seg button').forEach(b=>b.classList.toggle('on',b.dataset.view===v));
+  if(v==='admin'){S.newCount=0;renderAdmin()}updateBadge();renderFab();window.scrollTo({top:0,behavior:'smooth'})}
+function updateBadge(){const b=$('#badge');b.hidden=!S.newCount||S.view==='admin';b.textContent=S.newCount}
+document.querySelectorAll('.seg button').forEach(b=>b.onclick=()=>{closeM();setView(b.dataset.view)});
+$('#langBtn').onclick=()=>{S.lang=S.lang==='es'?'en':'es';applyI18n();if(S.view==='admin')renderAdmin();if($('#modal').innerHTML&&S._sheet)S._sheet()};
+
+function renderGrid(){
+  const F=['all','pul','col','are','ani','bol'];
+  $('#filters').innerHTML=F.map(f=>`<button class="${S.filter===f?'on':''}" onclick="S.filter='${f}';renderGrid()">${t('f_'+f)}</button>`).join('');
+  $('#grid').innerHTML=P.filter(p=>S.filter==='all'||p.cat===S.filter).map(p=>`<div class="pc"><button class="img" onclick="quick('${p.id}')" aria-label="${esc(t('n_'+p.id))}">${art(p.art,p.c)}<span class="ex">${t('exL')}</span>${p.hot?`<span class="hot">★ ${t('hot')}</span>`:''}</button><div class="bd"><h3>${t('n_'+p.id)}</h3><div class="dots">${p.c.map(c=>`<i style="background:${c}"></i>`).join('')}</div><div class="row"><span class="pr">${money(p.price)}</span><button class="add" onclick="addCart('${p.id}','${p.c[0]}',1)" aria-label="+">+</button></div></div></div>`).join('');
+}
+function cartCount(){return S.cart.reduce((a,l)=>a+l.q,0)}
+function cartSub(){return S.cart.reduce((a,l)=>a+PR(l.id).price*l.q,0)}
+function renderFab(){
+  const n=cartCount();
+  $('#fabMount').innerHTML=n&&S.view==='client'&&!$('#modal').innerHTML?`<button class="fab" id="fab" onclick="openCart()"><span style="display:flex;gap:10px;align-items:center"><span class="c">${n}</span><span><small style="display:block;opacity:.7;font-size:11px">${t('cartT')}</small><b>${money(cartSub())}</b></span></span><span class="go">${t('checkout')} →</span></button>`:'';
+}
+function addCart(id,c,q){const ex=S.cart.find(l=>l.id===id&&l.c===c);ex?ex.q+=q:S.cart.push({id,c,q});renderFab();const f=$('#fab');if(f){f.classList.remove('bump');void f.offsetWidth;f.classList.add('bump')}}
+
+/* ===== QUICK VIEW ===== */
+function quick(id){
+  const p=PR(id);let c=p.c[0],q=1;
+  const draw=()=>{sheet(`<div class="qv"><div class="img">${art(p.art,[c,...p.c.filter(x=>x!==c)])}</div><span class="tag ex">${t('exL')}</span><h2 class="disp" style="margin-top:6px">${t('n_'+id)}</h2><p>${t('d_'+id)}</p><div class="tagline"><span>✋ ${t('handmade')}</span><span>✨ ${t('unique')}</span><span>📍 ${t('quito')}</span></div>
+    <span class="lbl">${t('color')}</span><div class="colors">${p.c.map(x=>`<button class="${x===c?'on':''}" data-c="${x}"><i style="background:${x}"></i>${cn(x)}</button>`).join('')}</div>
+    <div class="qrow"><div class="ctr"><button id="qm" ${q<=1?'disabled':''}>−</button><span>${q}</span><button id="qp">+</button></div><button class="btn pri" style="flex:1" id="qa">${t('addCart',{p:money(p.price*q)})}</button></div></div>`);
+    $('#modal').querySelectorAll('.colors button').forEach(b=>b.onclick=()=>{c=b.dataset.c;draw()});
+    $('#qm').onclick=()=>{q--;draw()};$('#qp').onclick=()=>{q++;draw()};
+    $('#qa').onclick=()=>{addCart(id,c,q);closeM()};};
+  S._sheet=draw;draw();
+}
+function sheet(html){$('#modal').innerHTML=`<div class="ov" onclick="if(event.target===this)closeM()"><div class="sheet"><button class="x" onclick="closeM()">✕</button>${html}</div></div>`;renderFab()}
+let TOK=0;
+function closeM(){TOK++;$('#modal').innerHTML='';S._sheet=null;renderFab()}
+
+/* ===== CHECKOUT ===== */
+function openCart(){S.step=1;S._sheet=drawCart;drawCart()}
+function stepper(){return `<div class="stepper">${[1,2,3].map(i=>`<div class="stp ${S.step===i?'on':''} ${S.step>i?'done':''}"><div class="bar"><i></i></div>${i}. ${t('st'+i)}</div>`).join('')}</div>`}
+function totals(){const sub=cartSub(),sh=SHIP[S.ship];return `<div class="tot"><div><span>${t('sub')}</span><b>${money(sub)}</b></div>${S.step>1?`<div><span>${t('shipping')}</span><b>${sh?money(sh):t('free')}</b></div>`:''}<div class="big"><span>${t('total')}</span><span>${money(sub+(S.step>1?sh:0))}</span></div></div>`}
+function drawCart(){
+  if(S.done)return drawDone();
+  if(!S.cart.length){sheet(`<h2 class="t">${t('cartT')}</h2><p class="sub" style="margin-top:20px">${t('empty')}</p>`);return}
+  let body='';
+  if(S.step===1){body=`<h2 class="t">${t('cartT')}</h2><p class="sub">${t('items',{n:cartCount()})}</p>${S.cart.map((l,i)=>{const p=PR(l.id);return `<div class="ci"><div class="th">${art(p.art,[l.c,...p.c])}</div><div class="m"><b>${t('n_'+l.id)}</b><small>${cn(l.c)} · ${money(p.price)}</small></div><div class="ctr"><button onclick="cq(${i},-1)">−</button><span>${l.q}</span><button onclick="cq(${i},1)">+</button></div><div class="p">${money(p.price*l.q)}</div></div>`}).join('')}${totals()}<div class="actions"><button class="btn pri" onclick="S.step=2;drawCart()">${t('checkout')} →</button></div>`}
+  if(S.step===2){const O2=[['store','🏪','s_store','s_storeS'],['ec','🇪🇨','s_ec','s_ecS'],['intl','✈️','s_intl','s_intlS']];
+    const f=(id,label,type,ph)=>`<div class="fld ${S.errs[id]?'err':''}"><label>${label}</label><input type="${type}" value="${esc(S[id])}" placeholder="${ph}" oninput="S.${id}=this.value">${S.errs[id]?`<div class="em">${S.errs[id]}</div>`:''}</div>`;
+    body=`<h2 class="t">${t('shipT')}</h2>${O2.map(o=>`<button class="opt ${S.ship===o[0]?'on':''}" onclick="S.ship='${o[0]}';if(S.ship==='intl'&&S.country==='Ecuador')S.country='';if(S.ship!=='intl')S.country='Ecuador';drawCart()"><span class="radio"></span><span class="ic">${o[1]}</span><span class="tx"><b>${t(o[2])}</b><small>${t(o[3])}</small></span><span class="pr">${SHIP[o[0]]?money(SHIP[o[0]]):t('free')}</span></button>`).join('')}
+    <button class="link" onclick="fill()">${t('autofill')}</button>
+    ${f('name',t('name'),'text','Ej. Ana Torres')}${f('phone',t('phone'),'tel','+593 99 123 4567')}
+    ${S.ship!=='store'?`${f('addr',t('address'),'text','')}<div class="f2">${f('city',t('city'),'text','')}${f('country',t('country'),'text','')}</div>`:''}
+    ${totals()}<div class="actions"><button class="btn sec" onclick="S.step=1;drawCart()">←</button><button class="btn pri" onclick="val()">${t('next')} →</button></div>`}
+  if(S.step===3){const tot=cartSub()+SHIP[S.ship];
+    body=`<h2 class="t">${t('payT')}</h2><div class="tog"><button class="${S.pay==='card'?'on':''}" onclick="S.pay='card';drawCart()">💳 ${t('card')}</button><button class="${S.pay==='paypal'?'on':''}" onclick="S.pay='paypal';drawCart()">🅿️ ${t('paypal')}</button><button class="${S.pay==='bank'?'on':''}" onclick="S.pay='bank';drawCart()">🏦 ${t('transfer')}</button></div>
+    <div class="mock"><small>${S.pay==='card'?t('card'):S.pay==='paypal'?'PayPal':t('transfer')} · demo</small><b>${S.pay==='card'?'•••• •••• •••• 4242':S.pay==='paypal'?'cliente@email.com':'Waiky · •••• 1234'}</b></div><p class="note">🔒 ${t('simNote')}</p>
+    ${totals()}<div class="actions"><button class="btn sec" onclick="S.step=2;drawCart()" ${S.paying?'disabled':''}>←</button><button class="btn pri" onclick="pay()" ${S.paying?'disabled':''}>${S.paying?`<span class="spin"></span> ${t('processing')}`:t('pay',{a:money(tot)})}</button></div>`}
+  sheet(stepper()+body);
+}
+function cq(i,d){S.cart[i].q+=d;if(S.cart[i].q<=0)S.cart.splice(i,1);drawCart()}
+function fill(){S.name='Ana Torres (ejemplo)';S.phone='+593 99 123 4567';if(S.ship==='intl'){S.addr='12 Rue des Fleurs';S.city='Lyon';S.country='Francia'}else{S.addr='Av. Remigio Crespo 2-45';S.city='Cuenca';S.country='Ecuador'}S.errs={};drawCart()}
+function val(){S.errs={};if(S.name.trim().length<2)S.errs.name=t('errName');if(S.phone.replace(/\D/g,'').length<7)S.errs.phone=t('errPhone');if(S.ship!=='store'&&S.addr.trim().length<4)S.errs.addr=t('errAddr');if(Object.keys(S.errs).length)return drawCart();S.step=3;drawCart()}
+function pay(){S.paying=true;drawCart();setTimeout(()=>{
+  const sub=cartSub(),o={id:100+O.length,code:'WK-'+(1043+O.filter(x=>!x.example).length),kind:'o',name:S.name.trim(),phone:S.phone,addr:S.ship==='store'?'Quito (retiro)':`${S.addr}, ${S.city}, ${S.country}`,ship:S.ship,pay:S.pay,lines:S.cart.map(l=>[l.id,l.q,l.c]),sub,tot:sub+SHIP[S.ship],example:false,isNew:true,status:S.ship==='store'?'paid':'ship',at:new Date(),lang:S.lang};
+  O.unshift(o);S.done=o;S.paying=false;S.cart=[];S.newCount++;updateBadge();drawCart()},1500)}
+function drawDone(){
+  const o=S.done;
+  sheet(`<div class="center"><svg class="okmark" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="35" stroke="#1e9a5b" stroke-width="6"/><path d="M24 41l12 12 21-24" stroke="#1e9a5b" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg><h2 class="t">${t('done')}</h2><p class="sub">${o.code} · ${money(o.tot)}<br>${t('doneS')}</p></div><div id="mm"></div><div class="actions" style="flex-wrap:wrap"><button class="btn sec" onclick="S.done=null;closeM()">${t('keep')}</button><button class="btn pri" onclick="S.done=null;closeM();setView('admin')">${t('seeAdmin')}</button></div>`);
+  orderMsgs(o,$('#mm'),'own');
+}
+
+/* ===== MAYORISTAS ===== */
+function openWholesale(){S._sheet=drawWh;drawWh()}
+function drawWh(){
+  const w=S.wh;
+  if(w.done){sheet(`<div class="center"><svg class="okmark" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="35" stroke="#1e9a5b" stroke-width="6"/><path d="M24 41l12 12 21-24" stroke="#1e9a5b" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg><h2 class="t">${t('whDone')}</h2><p class="sub">${t('whDoneS')}</p></div><div id="mm"></div><div class="actions"><button class="btn sec" onclick="S.wh.done=null;closeM()">✕</button><button class="btn pri" onclick="S.wh.done=null;closeM();setView('admin')">${t('seeAdmin')}</button></div>`);orderMsgs(w.done,$('#mm'),'own');return}
+  sheet(`<h2 class="t">${t('whT')}</h2><p class="sub">${t('whS')}</p>
+  <div class="fld"><label>${t('whType')}</label><div class="tog" style="flex-wrap:wrap">${t('whTypes').map((x,i)=>`<button class="${w.type===i?'on':''}" onclick="S.wh.type=${i};drawWh()">${x}</button>`).join('')}</div></div>
+  <div class="fld"><label>${t('whBiz')}</label><input value="${esc(w.biz)}" oninput="S.wh.biz=this.value"></div>
+  <div class="f2"><div class="fld"><label>${t('name')}</label><input value="${esc(w.name)}" oninput="S.wh.name=this.value"></div><div class="fld"><label>${t('phone')}</label><input type="tel" value="${esc(w.phone)}" oninput="S.wh.phone=this.value"></div></div>
+  <div class="fld"><label>${t('whProd')}</label><textarea rows="3" oninput="S.wh.prod=this.value" placeholder="${t('whProdP')}">${esc(w.prod)}</textarea></div>
+  <button class="link" onclick="Object.assign(S.wh,{biz:'Hostal Los Andes (ejemplo)',name:'Paola Vega',phone:'+593 98 765 4321',prod:'40 pulseras de mullos, 15 bolsos tejidos',err:false,type:1});drawWh()">${t('autofill')}</button>
+  ${w.err?`<p class="note" style="color:var(--danger)">${t('whErr')}</p>`:''}
+  <div class="actions"><button class="btn pri" onclick="whSend()">${t('whSend')} →</button></div>`);
+}
+function whSend(){const w=S.wh;if(!w.biz.trim()||w.phone.replace(/\D/g,'').length<7||!w.prod.trim()){w.err=true;return drawWh()}
+  const o={id:200+O.length,code:'WH-'+(209+O.filter(x=>x.kind==='w'&&!x.example).length),kind:'w',name:w.biz.trim(),contact:w.name.trim()||w.biz.trim(),phone:w.phone,prod:w.prod.trim(),type:w.type,example:false,isNew:true,status:'q',at:new Date(),lang:S.lang};
+  O.unshift(o);w.done=o;w.err=false;S.newCount++;updateBadge();drawWh()}
+
+/* ===== MENSAJES ===== */
+const wa=s=>esc(s).replace(/\*(.+?)\*/g,'<b>$1</b>').replace(/\n/g,'<br>');
+const hm=d=>d.toLocaleTimeString(S.lang==='es'?'es-EC':'en-US',{hour:'2-digit',minute:'2-digit'});
+function orderMsgs(o,mount,tab){
+  if(o.kind==='w'){mount.innerHTML='<div class="mv"></div>';return chat(mount.querySelector('.mv'),o,'w')}
+  mount.innerHTML=`<div class="tabs"><button class="${tab==='own'?'on':''}" data-t="own">📲 ${t('tabOwn')}</button><button class="${tab==='cli'?'on':''}" data-t="cli">💬 ${t('tabCli')}</button></div><div class="mv"></div>`;
+  mount.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>orderMsgs(o,mount,b.dataset.t));
+  chat(mount.querySelector('.mv'),o,tab);
+}
+function vars(o,L){const lines=o.lines?o.lines.map(l=>`• ${l[1]} × ${tr(L,'n_'+l[0])} (${cn(l[2],L)}) — ${money(PR(l[0]).price*l[1])}`).join('\n'):'';
+  const ship=o.ship==='store'?tr(L,'shipStore'):o.ship==='ec'?tr(L,'shipEc'):tr(L,'shipIntl');
+  return{code:o.code,lines,ship,tot:money(o.tot||0),pay:o.pay==='card'?tr(L,'card'):o.pay==='paypal'?'PayPal':tr(L,'transfer'),name:o.name,first:(o.contact||o.name).split(/[\s(]/)[0],phone:o.phone,addr:o.addr||'',biz:o.name,type:T[L].whTypes[o.type||0],prod:o.prod||''}}
+function chat(mv,o,mode){
+  const L=S.lang,v=vars(o,L),tok=++TOK,now=hm(o.at||new Date());
+  let head,msgs;
+  if(mode==='own'){head=['W','Waiky · '+(L==='es'?'notificaciones':'notifications')];msgs=[['biz',tr(L,'o_new',v),now],['btn',[tr(L,'o_btn1'),tr(L,'o_btn2')]]]}
+  else if(mode==='cli'){head=['W','Waiky'];msgs=[['biz',tr(L,'c_ok',v),now],['biz',o.ship==='store'?tr(L,'c_store',v):tr(L,'c_ship',v),now],['usr',tr(L,'c_u',v),now]]}
+  else{head=['W','Waiky · '+(L==='es'?'mayoristas':'wholesale')];msgs=[['biz',tr(L,'w_in',v),now],['usr',tr(L,'w_rep',v),now]]}
+  mv.innerHTML=`<div class="phone"><div class="wah"><div class="av">${head[0]}</div><div><b>${head[1]}</b><small>${tr(L,'wahSub')}</small></div></div><div class="chat"></div><div class="wafoot">${tr(L,'wafoot')}</div></div>`;
+  const body=mv.querySelector('.chat');let i=0;
+  const add=m=>{const d=document.createElement('div');if(m[0]==='btn'){d.className='qbt';d.innerHTML=m[1].map(x=>`<span>${esc(x)}</span>`).join('')}else{d.className='msg '+m[0];d.innerHTML=wa(m[1])+`<span class="tm">${m[2]}${m[0]==='usr'?' ✓✓':''}</span>`}body.appendChild(d)};
+  const next=()=>{if(tok!==TOK||i>=msgs.length)return;const m=msgs[i];
+    if(m[0]==='biz'){const ty=document.createElement('div');ty.className='typing';ty.innerHTML='<i></i><i></i><i></i>';body.appendChild(ty);setTimeout(()=>{if(tok!==TOK)return;ty.remove();add(m);i++;setTimeout(next,400)},700)}
+    else setTimeout(()=>{if(tok!==TOK)return;add(m);i++;setTimeout(next,300)},500)};
+  next();
+}
+
+/* ===== PANEL ===== */
+function renderAdmin(){
+  const ord=O.filter(o=>o.kind==='o'),nw=O.filter(o=>o.isNew).length;
+  $('#kpis').innerHTML=[['kOrd',ord.length,nw?t('kNew',{n:nw}):''],['kSales',money(ord.reduce((a,o)=>a+o.tot,0)),''],['kShip',ord.filter(o=>o.status==='ship').length,''],['kWh',O.filter(o=>o.kind==='w').length,'']].map(k=>`<div class="kpi"><small>${t(k[0])}</small><b>${k[1]}</b><em>${k[2]}</em></div>`).join('');
+  $('#orders').innerHTML=O.map(o=>{const w=o.kind==='w';const it=w?esc(o.prod):o.lines.map(l=>`${l[1]}× ${t('n_'+l[0])}`).join(', ');
+    return `<button class="od ${o.isNew?'new':''}" onclick="openOrder(${o.id})"><span class="av2">${w?'🏨':o.ship==='intl'?'✈️':o.ship==='store'?'🏪':'📦'}</span><span class="m"><span class="nm">${esc(o.name)} <small>${o.code}</small>${w?`<span class="tag wh">${t('wh')}</span>`:''}${o.example?`<span class="tag ex">${t('ex')}</span>`:''}${o.isNew?`<span class="tag nw">${t('nw')}</span>`:''}</span><small>${it}</small><br><span class="st ${o.status==='q'?'q':o.status==='ship'?'ship':'pay'}">${o.status==='q'?'⏳ '+t('stQ'):o.status==='ship'?'📦 '+t('stShip'):'✓ '+t('stPaid')}</span></span><span class="am">${w?'':money(o.tot)}</span></button>`}).join('');
+  const cnt={};O.filter(o=>o.kind==='o').forEach(o=>o.lines.forEach(l=>cnt[l[0]]=(cnt[l[0]]||0)+l[1]));
+  const base={pm:42,pt:31,cm:18,bt:12,af:15};Object.keys(base).forEach(k=>cnt[k]=(cnt[k]||0)+base[k]);
+  const top=Object.entries(cnt).sort((a,b)=>b[1]-a[1]).slice(0,5),mx=top[0][1];
+  $('#top5').innerHTML=top.map(([id,n])=>{const p=PR(id);return `<li><span class="th">${art(p.art,p.c)}</span><span style="width:120px">${t('n_'+id)}</span><span class="bar"><i style="width:${n/mx*100}%"></i></span><b>${n}</b></li>`}).join('');
+}
+function openOrder(id){const o=O.find(x=>x.id===id);if(!o)return;S._sheet=null;sheet(`<h3 style="font-size:18px">${esc(o.name)} <span style="color:var(--muted);font-size:13px">${o.code}</span></h3><div id="mm"></div>`);orderMsgs(o,$('#mm'),'own')}
+
+applyI18n();
+</script>
+</body>
+</html>
