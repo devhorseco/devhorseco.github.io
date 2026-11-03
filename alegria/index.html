@@ -1,0 +1,643 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Hacienda La Alegría · Cotiza tu cabalgata (demo)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#2a1f17;--muted:#75665a;--line:#e8dfd0;--bg:#f7f1e6;--card:#fff;--terra:#b5532c;--terra2:#d9774a;--green:#2f5d46;--green2:#3f7a5c;--gold:#c99a3b;--ok:#2e8b57;--danger:#c0392b;--r:22px;--sh:0 16px 38px -20px rgba(80,45,20,.38)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.45;padding-bottom:40px;overflow-x:hidden}
+.serif{font-family:Fraunces,Georgia,serif}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+input,select{font:inherit;color:inherit}
+[hidden]{display:none!important}
+.demobar{background:#2a1f17;color:#efe1c8;font-size:11.5px;padding:7px 14px;text-align:center;display:flex;gap:8px;justify-content:center;align-items:center;line-height:1.35}
+.demobar .dot{width:7px;height:7px;border-radius:50%;background:var(--gold);flex:none;animation:pulse 1.8s infinite}
+@keyframes pulse{50%{opacity:.35}}
+header.top{position:sticky;top:0;z-index:30;background:rgba(247,241,230,.88);backdrop-filter:saturate(1.5) blur(14px);-webkit-backdrop-filter:saturate(1.5) blur(14px);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px;padding:10px 14px}
+.brand{display:flex;align-items:center;gap:10px;margin-right:auto;min-width:0}
+.brand svg{width:36px;height:36px;flex:none}
+.brand b{display:block;font-family:Fraunces,serif;font-weight:600;font-size:19px;line-height:1.05;white-space:nowrap}
+.brand small{display:block;font-size:11px;color:var(--muted)}
+.seg{position:relative;display:flex;background:#ece2d1;border-radius:999px;padding:3px}
+.seg button{position:relative;padding:7px 13px;border-radius:999px;font-size:13px;font-weight:600;color:var(--muted);white-space:nowrap}
+.seg button.on{background:#fff;color:var(--ink);box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.badge{position:absolute;top:-5px;right:-4px;background:var(--danger);color:#fff;font-style:normal;font-size:10.5px;font-weight:700;min-width:18px;height:18px;border-radius:9px;display:grid;place-items:center;padding:0 5px;animation:pop .4s}
+@keyframes pop{from{transform:scale(0)}}
+.lang{white-space:nowrap;background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 12px;font-size:12px;font-weight:700}
+.lang span{opacity:.4}.lang span.on{opacity:1;color:var(--terra)}
+@media(max-width:520px){.brand small{display:none}.seg button{padding:7px 10px}.lang{padding:7px 9px}}
+@media(max-width:420px){.brand div{display:none}}
+.wrap{max-width:1100px;margin:0 auto;padding:0 14px}
+/* hero */
+.hero{position:relative;margin:14px auto 0;max-width:1100px;border-radius:30px;overflow:hidden;color:#fff;min-height:460px;display:flex;align-items:flex-end;box-shadow:var(--sh);background:#3f7a5c}
+@media(max-width:1128px){.hero{margin:14px 14px 0}}
+.heroart{position:absolute;inset:0;width:100%;height:100%}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(30,20,12,0) 30%,rgba(30,20,12,.82) 100%)}
+.hero .in{position:relative;z-index:2;padding:56px 22px 24px;width:100%}
+.eyebrow{font-family:Fraunces,serif;font-style:italic;font-size:16px;color:#ffe2b0}
+.hero h1{font-family:Fraunces,serif;font-weight:600;font-size:clamp(36px,7.6vw,64px);line-height:1.02;margin:8px 0 10px;max-width:780px;letter-spacing:-.5px}
+.hero p{max-width:580px;opacity:.95;font-size:15px}
+.hero h1,.hero p{text-shadow:0 2px 14px rgba(20,12,6,.55)}
+.phl{position:absolute;top:14px;right:14px;z-index:3;font-size:10px;font-weight:800;padding:4px 9px;border-radius:999px;background:rgba(255,255,255,.88);color:var(--muted);text-transform:uppercase;letter-spacing:.3px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}
+.chip{font-size:12.5px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);padding:6px 11px;border-radius:999px;backdrop-filter:blur(6px)}
+.heroRow{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,var(--terra),var(--terra2));color:#fff;font-weight:800;padding:14px 22px;border-radius:16px;font-size:15px;transition:.2s;text-decoration:none;box-shadow:0 10px 22px -8px rgba(181,83,44,.7)}
+.btn:hover{transform:translateY(-2px)}
+.btn.sec{background:rgba(255,255,255,.95);color:var(--ink);box-shadow:none}
+.btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--line);box-shadow:none}
+.btn.gr{background:linear-gradient(135deg,var(--green),var(--green2));box-shadow:0 10px 22px -10px rgba(47,93,70,.8)}
+.btn[disabled]{opacity:.45;pointer-events:none}
+.walk{animation:wk 14s linear infinite}@keyframes wk{from{transform:translateX(-80px)}to{transform:translateX(120px)}}
+.cloud{animation:cl 40s linear infinite alternate}@keyframes cl{to{transform:translateX(60px)}}
+/* trust */
+.trust{margin-top:14px;display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.trust div{background:#fff;border:1px solid var(--line);border-radius:18px;padding:13px 14px;display:flex;gap:11px;align-items:center;font-size:13px}
+.trust i{font-style:normal;font-size:20px;width:40px;height:40px;border-radius:12px;background:#f3e6d6;display:grid;place-items:center;flex:none}
+.trust b{display:block;font-size:14px}.trust small{color:var(--muted)}
+/* programs */
+.sh{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:30px 0 12px;flex-wrap:wrap}
+.sh h2{font-family:Fraunces,serif;font-weight:600;font-size:clamp(27px,4.4vw,36px);letter-spacing:-.3px}
+.sh p{color:var(--muted);font-size:13.5px;max-width:520px}
+.progs{display:flex;gap:12px;overflow-x:auto;padding:4px 2px 14px;scroll-snap-type:x mandatory;scrollbar-width:thin}
+.pc{flex:0 0 240px;scroll-snap-align:start;background:#fff;border:2px solid transparent;border-radius:20px;overflow:hidden;box-shadow:var(--sh);text-align:left;display:flex;flex-direction:column;transition:.2s}
+.pc:hover{transform:translateY(-3px)}
+.pc.on{border-color:var(--terra)}
+.pc .art{height:118px;position:relative}.pc .art svg{display:block;width:100%;height:100%}
+.pc .ph{position:absolute;left:8px;bottom:8px;font-size:9.5px;font-weight:800;padding:3px 7px;border-radius:999px;background:rgba(255,255,255,.9);color:var(--muted);text-transform:uppercase}
+.pc .dur{position:absolute;right:8px;top:8px;font-size:11px;font-weight:800;padding:4px 9px;border-radius:999px;background:rgba(42,31,23,.78);color:#fff}
+.pc .bd{padding:12px 14px 14px;display:flex;flex-direction:column;gap:5px;flex:1}
+.pc h3{font-family:Fraunces,serif;font-weight:600;font-size:18px;line-height:1.15}
+.pc p{color:var(--muted);font-size:12.5px;flex:1}
+.pc .ft{display:flex;align-items:center;justify-content:space-between;gap:6px;margin-top:4px}
+.pc .pr{font-size:12px;color:var(--muted)}.pc .pr b{font-size:17px;color:var(--ink)}
+.lv{display:inline-flex;gap:3px;align-items:center;font-size:11px;font-weight:700;color:var(--green)}
+.lv i{width:7px;height:7px;border-radius:50%;background:#ddd2c0}.lv i.f{background:var(--green)}
+/* quote */
+.grid{display:grid;gap:16px;grid-template-columns:minmax(0,1fr);margin-top:10px}
+.grid>*,.two>*{min-width:0}
+@media(min-width:920px){.grid{grid-template-columns:minmax(0,1fr) 350px;align-items:start}.sticky{position:sticky;top:76px}}
+.card{background:var(--card);border-radius:var(--r);box-shadow:var(--sh);border:1px solid var(--line);padding:20px}
+.stepper{display:flex;gap:5px;margin-bottom:18px}
+.stp{flex:1;display:flex;flex-direction:column;gap:6px;font-size:11px;font-weight:700;color:var(--muted)}
+.stp .bar{height:5px;border-radius:5px;background:#efe6d6;overflow:hidden}
+.stp .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--terra),var(--gold));transition:.4s}
+.stp.on{color:var(--ink)}.stp.on .bar i,.stp.done .bar i{width:100%}.stp.done{color:var(--terra)}
+h2.t{font-family:Fraunces,serif;font-weight:600;font-size:25px;margin-bottom:4px;letter-spacing:-.2px}
+p.sub{color:var(--muted);font-size:13.5px;margin-bottom:14px}
+.opts{display:grid;gap:9px}
+.opt{display:flex;gap:12px;align-items:center;text-align:left;border:2px solid var(--line);border-radius:16px;padding:12px 13px;background:#fff;transition:.15s;width:100%}
+.opt:hover{border-color:#dcc8ab}
+.opt.on{border-color:var(--terra);background:#fdf5ee}
+.opt .ic{font-size:24px;width:44px;height:44px;border-radius:13px;background:#f3e6d6;display:grid;place-items:center;flex:none}
+.opt b{display:block;font-size:14.5px}.opt small{display:block;color:var(--muted);font-size:12.5px}
+.opt .r{margin-left:auto;text-align:right;font-size:12px;color:var(--muted);flex:none}
+.opt .r b{font-size:15px;color:var(--ink)}
+.opt.dis{opacity:.45;pointer-events:none}
+.opt .why{color:var(--terra);font-weight:700}
+.tip{display:flex;gap:9px;align-items:flex-start;background:#f3ece0;border-radius:14px;padding:10px 12px;font-size:12.5px;color:#5c4b3d;margin-top:12px}
+.tip.warn{background:#fdecdf;color:#8a3a17}
+.lab{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.4px;color:var(--muted);margin:16px 0 8px}
+.pills{display:flex;flex-wrap:wrap;gap:7px}
+.pill{border:2px solid var(--line);background:#fff;border-radius:999px;padding:8px 13px;font-size:13px;font-weight:700}
+.pill.on{border-color:var(--terra);background:#fdf5ee;color:var(--terra)}
+.cal .head{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.cal .head b{font-size:15px}
+.cal .head button{width:34px;height:34px;border-radius:10px;border:1px solid var(--line);background:#fff;font-weight:800}
+.cal .head button[disabled]{opacity:.3}
+.dow,.days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
+.dow span{font-size:11px;text-align:center;color:var(--muted);font-weight:700;padding:4px 0}
+.day{aspect-ratio:1;border-radius:11px;font-size:13.5px;font-weight:700;background:#f6efe3;display:grid;place-items:center;position:relative}
+.day.ok{background:#eef4ee;color:var(--green)}
+.day.ok:hover{background:#dcebdd}
+.day.x{color:#b9ab98;text-decoration:line-through;pointer-events:none;background:#f3ede4}
+.day.cl{background:repeating-linear-gradient(135deg,#f3ede4 0 5px,#ebe2d4 5px 10px);color:#b9ab98;pointer-events:none}
+.day.on{background:linear-gradient(135deg,var(--terra),var(--terra2));color:#fff}
+.day.rng{background:#f6dccb;color:var(--terra)}
+.day.e{background:none;pointer-events:none}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:11.5px;color:var(--muted);margin-top:10px}
+.legend i{display:inline-block;width:11px;height:11px;border-radius:4px;vertical-align:-1px;margin-right:4px}
+.cnt{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
+.cnt:last-child{border-bottom:0}
+.cnt b{display:block;font-size:14.5px}.cnt small{color:var(--muted);font-size:12px}
+.stepr{display:flex;align-items:center;gap:10px}
+.stepr button{width:36px;height:36px;border-radius:50%;border:1.5px solid var(--line);font-size:18px;font-weight:700;background:#fff}
+.stepr button[disabled]{opacity:.3}
+.stepr span{min-width:22px;text-align:center;font-weight:800;font-size:16px}
+.sw{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);text-align:left;width:100%}
+.sw .tg{width:42px;height:25px;border-radius:999px;background:#ddd2c0;position:relative;flex:none;transition:.2s}
+.sw .tg:after{content:"";position:absolute;top:3px;left:3px;width:19px;height:19px;border-radius:50%;background:#fff;transition:.2s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.sw.on .tg{background:var(--green)}.sw.on .tg:after{left:20px}
+.sw b{display:block;font-size:14px}.sw small{color:var(--muted);font-size:12px}
+.fld{display:flex;flex-direction:column;gap:5px;margin-bottom:11px}
+.fld label{font-size:12px;font-weight:700;color:var(--muted)}
+.fld input,.fld select{border:1.5px solid var(--line);border-radius:12px;padding:12px;background:#fff;width:100%}
+.fld input:focus,.fld select:focus{outline:none;border-color:var(--terra)}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+@media(max-width:480px){.two{grid-template-columns:minmax(0,1fr)}}
+.err{color:var(--danger);font-size:12.5px;font-weight:600;min-height:16px}
+.link{font-size:12.5px;font-weight:700;color:var(--terra);text-decoration:underline;margin-bottom:10px}
+.nav{display:flex;gap:10px;margin-top:18px}
+.nav .btn{flex:1}
+/* summary */
+.sum h3{font-family:Fraunces,serif;font-weight:600;font-size:22px;margin-bottom:4px}
+.sum .pre{display:inline-block;font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.4px;background:#f3e6d6;color:var(--terra);padding:3px 8px;border-radius:999px;margin-bottom:10px}
+.row{display:flex;justify-content:space-between;gap:10px;font-size:13.5px;padding:5px 0}
+.row span{color:var(--muted)}.row b{text-align:right}
+.hr{border-top:1px dashed var(--line);margin:9px 0}
+.tot{font-size:17px}.tot b{font-size:20px}
+.depo{background:linear-gradient(135deg,#f9eadf,#fdf4ea);border-radius:16px;padding:12px 14px;margin-top:10px}
+.depo .row b{color:var(--terra);font-size:18px}
+.note{font-size:12px;color:var(--muted);margin-top:10px}
+.empty{color:var(--muted);font-size:13.5px;padding:8px 0}
+/* done + chat */
+.doneHd{text-align:center;margin-bottom:12px}
+.doneHd .big{font-size:42px}
+.chat{background:#ece5dd url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M10 10h2v2h-2zM40 30h2v2h-2zM25 50h2v2h-2z' fill='%23d9d0c3'/%3E%3C/svg%3E");border-radius:20px;overflow:hidden;border:1px solid var(--line)}
+.chat .hd{background:#075e54;color:#fff;display:flex;gap:10px;align-items:center;padding:10px 12px}
+.chat .av{width:36px;height:36px;border-radius:50%;background:#f3e6d6;display:grid;place-items:center;font-size:18px;flex:none}
+.chat .hd b{display:block;font-size:14px}.chat .hd small{opacity:.8;font-size:11.5px}
+.msgs{padding:12px;display:flex;flex-direction:column;gap:7px;min-height:220px}
+.bub{max-width:86%;background:#fff;border-radius:12px;border-top-left-radius:3px;padding:8px 10px 6px;font-size:13.2px;white-space:pre-wrap;box-shadow:0 1px 1px rgba(0,0,0,.08);animation:pop .25s}
+.bub.me{align-self:flex-end;background:#dcf8c6;border-top-left-radius:12px;border-top-right-radius:3px}
+.bub time{display:block;text-align:right;font-size:10px;color:#8c8c8c;margin-top:2px}
+.bub .qt{background:#f6efe3;border-left:3px solid var(--terra);border-radius:8px;padding:8px 9px;margin-top:6px;font-size:12.5px}
+.bub .qt b{display:block}
+.bub .act{display:flex;gap:6px;margin-top:7px;flex-wrap:wrap}
+.bub .act span{font-size:12px;font-weight:700;color:#0a7cff;background:#f2f7ff;border-radius:8px;padding:5px 9px}
+.typing{align-self:flex-start;background:#fff;border-radius:12px;padding:9px 12px;display:flex;gap:4px}
+.typing i{width:6px;height:6px;border-radius:50%;background:#9b9b9b;animation:ty 1s infinite}
+.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes ty{50%{transform:translateY(-3px);opacity:.4}}
+.chat .ft{font-size:11px;text-align:center;color:#6d6d6d;padding:0 0 10px}
+.tabs2{display:flex;gap:6px;margin:10px 0}
+.tabs2 button{flex:1;padding:9px;border-radius:12px;border:1.5px solid var(--line);font-size:12.5px;font-weight:700;background:#fff}
+.tabs2 button.on{border-color:var(--terra);color:var(--terra);background:#fdf5ee}
+/* about */
+.two2{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));margin-top:16px}
+.list{list-style:none;display:grid;gap:9px;margin-top:10px}
+.list li{display:flex;gap:10px;font-size:13.5px}
+.list li:before{content:"🐴";flex:none}
+.kv{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 14px;font-size:13.5px;margin-top:10px}
+.kv span{color:var(--muted)}.kv b{font-weight:600}
+/* admin */
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,160px),1fr));gap:10px;margin:14px 0}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;box-shadow:var(--sh)}
+.kpi small{display:block;color:var(--muted);font-size:12px;font-weight:600}
+.kpi b{display:block;font-size:24px;font-weight:800;margin-top:4px}
+.kpi em{font-style:normal;font-size:11.5px;color:var(--ok);font-weight:700}
+.kpi.hl{background:linear-gradient(135deg,var(--terra),var(--terra2));color:#fff;border:0}.kpi.hl small{color:#ffe8d6}
+.q{display:flex;gap:12px;align-items:center;border:1px solid var(--line);border-radius:16px;padding:12px;margin-top:9px;background:#fff;text-align:left;width:100%;transition:.15s}
+.q:hover{border-color:#dcc8ab}
+.q.nw{background:#fdf1e8;border-color:#f1b892;box-shadow:0 0 0 3px #fbe1cf}
+.q .dt{width:50px;flex:none;text-align:center;border-radius:12px;background:var(--green);color:#fff;padding:6px 0;line-height:1.05}
+.q .dt b{display:block;font-size:19px}.q .dt small{font-size:10px;text-transform:uppercase;font-weight:700}
+.q .mid{flex:1;min-width:0}
+.q .mid b{font-size:14.5px}
+.q .mid small{display:block;color:var(--muted);font-size:12.5px}
+.q .rt{text-align:right;flex:none}
+.q .rt b{display:block;font-size:15px}
+.st{display:inline-block;font-size:10.5px;font-weight:800;padding:2px 8px;border-radius:999px;text-transform:uppercase;margin-top:4px}
+.st.paid{background:#e3f3e9;color:var(--ok)}.st.wait{background:#fdf0d5;color:#9a6a00}.st.conf{background:#e5ecf7;color:#2f5a9a}
+.tag{font-size:10px;font-weight:800;padding:2px 7px;border-radius:999px;background:#efe6d6;color:var(--muted);text-transform:uppercase;margin-left:6px;vertical-align:2px}
+.tag.n{background:var(--terra);color:#fff}
+.horses{display:grid;gap:9px;margin-top:10px}
+.hr2{display:flex;gap:12px;align-items:center;border:1px solid var(--line);border-radius:16px;padding:11px 12px;background:#fff}
+.hr2 .d{width:48px;text-align:center;flex:none}
+.hr2 .d b{display:block;font-size:18px}.hr2 .d small{font-size:10.5px;color:var(--muted);text-transform:uppercase;font-weight:700}
+.hr2 .m{flex:1;min-width:0;font-size:13px}.hr2 .m b{display:block;font-size:14px}
+.hr2 .h{display:flex;gap:6px;flex-wrap:wrap;margin-top:5px}
+.hr2 .h span{font-size:11.5px;font-weight:700;padding:3px 8px;border-radius:999px;background:#eef4ee;color:var(--green)}
+.hr2 .h span.b{background:#fdf0d5;color:#8a5a00}
+.modal{position:fixed;inset:0;background:rgba(30,20,12,.55);z-index:60;display:grid;place-items:end center;padding:0}
+@media(min-width:640px){.modal{place-items:center;padding:20px}}
+.modal .box{background:var(--bg);width:100%;max-width:470px;max-height:92vh;overflow:auto;border-radius:22px 22px 0 0;padding:16px}
+@media(min-width:640px){.modal .box{border-radius:22px}}
+.modal .x{float:right;width:34px;height:34px;border-radius:50%;background:#fff;border:1px solid var(--line);font-weight:800}
+footer{max-width:1100px;margin:30px auto 0;padding:0 18px;color:var(--muted);font-size:12px;text-align:center}
+</style>
+</head>
+<body>
+<div class="demobar"><span class="dot"></span><span data-t="demobar"></span></div>
+<header class="top">
+  <div class="brand">
+    <svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="12" fill="#b5532c"/><path d="M12 11c0 9 3 15 8 15s8-6 8-15" fill="none" stroke="#fff7ea" stroke-width="3.2" stroke-linecap="round"/><g fill="#fff7ea"><circle cx="12.6" cy="16" r="1.1"/><circle cx="14" cy="21" r="1.1"/><circle cx="27.4" cy="16" r="1.1"/><circle cx="26" cy="21" r="1.1"/></g><path d="M14 31h12" stroke="#f0c98a" stroke-width="2" stroke-linecap="round"/></svg>
+    <div><b>Hacienda La Alegría</b><small data-t="brandsub"></small></div>
+  </div>
+  <div class="seg"><button id="tG" class="on" onclick="view('g')" data-t="tabG"></button><button id="tA" onclick="view('a')"><span data-t="tabA"></span><i class="badge" id="bdg" hidden>1</i></button></div>
+  <button class="lang" onclick="toggleLang()"><span id="lEs" class="on">ES</span> · <span id="lEn">EN</span></button>
+</header>
+
+<main id="G">
+  <section class="hero">
+    <svg class="heroart" viewBox="0 0 1200 520" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7fb2d6"/><stop offset=".55" stop-color="#cfe0e4"/><stop offset="1" stop-color="#f3dcb8"/></linearGradient>
+        <linearGradient id="vol" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7d8794"/><stop offset="1" stop-color="#5c6b63"/></linearGradient>
+      </defs>
+      <rect width="1200" height="520" fill="url(#sky)"/>
+      <g class="cloud" opacity=".85" fill="#fff"><ellipse cx="220" cy="90" rx="90" ry="20"/><ellipse cx="270" cy="78" rx="60" ry="18"/><ellipse cx="900" cy="70" rx="110" ry="18"/></g>
+      <path d="M560 300 L760 120 Q790 100 820 120 L1030 300Z" fill="url(#vol)"/>
+      <path d="M716 160 L760 120 Q790 100 820 120 L866 162 Q846 176 826 160 Q806 182 788 162 Q768 180 746 160 Q732 172 716 160Z" fill="#fff"/>
+      <path d="M0 300 Q180 240 360 285 T720 280 T1200 270 V520 H0Z" fill="#6f9a6a"/>
+      <path d="M0 340 Q260 300 520 340 T1200 330 V520 H0Z" fill="#4f8058"/>
+      <path d="M0 400 Q300 370 600 400 T1200 395 V520 H0Z" fill="#3f6d4b"/>
+      <g stroke="#e9d9bd" stroke-width="3" opacity=".8"><path d="M0 430 L1200 418"/><path d="M0 446 L1200 434"/>
+        <g stroke-width="5"><path d="M80 452 V418"/><path d="M260 450 V416"/><path d="M440 448 V414"/><path d="M620 446 V412"/><path d="M800 444 V410"/><path d="M980 442 V408"/><path d="M1160 440 V406"/></g></g>
+      <g class="walk"><g transform="translate(700 318) scale(1.15)" fill="#2a1f17">
+        <path d="M20 60 Q18 40 34 34 L84 32 Q100 30 108 18 L112 4 Q116 -2 120 4 L124 14 Q128 22 122 30 L112 44 Q110 60 104 62 L100 92 L94 92 L96 64 L60 64 L54 92 L48 92 L50 64 Q36 64 30 70 L26 92 L20 92 Z"/>
+        <path d="M22 62 Q8 70 6 86" stroke="#2a1f17" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <path d="M64 30 Q62 8 72 0 L78 -2 Q84 6 80 30Z"/><circle cx="75" cy="-10" r="8"/><path d="M64 -14 h22 l-4 -6 h-14z"/>
+      </g></g>
+      <g transform="translate(980 300)"><rect x="-70" y="40" width="160" height="70" fill="#f1e4cc"/><path d="M-84 44 L10 -6 L104 44Z" fill="#a84a28"/><rect x="-2" y="70" width="22" height="40" fill="#6b4226"/><rect x="-52" y="60" width="26" height="22" fill="#6b4226" opacity=".8"/><rect x="44" y="60" width="26" height="22" fill="#6b4226" opacity=".8"/></g>
+    </svg>
+    <span class="phl" data-t="phL"></span>
+    <div class="in">
+      <div class="eyebrow" data-t="eyebrow"></div>
+      <h1 data-t="h1"></h1>
+      <p data-t="heroP"></p>
+      <div class="chips"><span class="chip" data-t="c1"></span><span class="chip" data-t="c2"></span><span class="chip" data-t="c3"></span><span class="chip" data-t="c4"></span></div>
+      <div class="heroRow"><a class="btn" href="#quote" data-t="cta"></a><a class="btn sec" href="#quote" onclick="pickProg('st')" data-t="cta2"></a></div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="trust">
+      <div><i>⚡</i><span><b data-t="s1"></b><small data-t="s1s"></small></span></div>
+      <div><i>💬</i><span><b data-t="s2"></b><small data-t="s2s"></small></span></div>
+      <div><i>🔒</i><span><b data-t="s3"></b><small data-t="s3s"></small></span></div>
+    </div>
+
+    <div class="sh"><h2 data-t="pT"></h2><p data-t="pS"></p></div>
+    <div class="progs" id="progs"></div>
+
+    <div class="grid" id="quote">
+      <div class="card" id="flow"></div>
+      <div class="sticky"><div class="card sum" id="sum"></div></div>
+    </div>
+
+    <div class="two2">
+      <div class="card"><h2 class="t" data-t="abT"></h2><ul class="list" id="abL"></ul></div>
+      <div class="card"><h2 class="t" data-t="infoT"></h2><div class="kv" id="kv"></div></div>
+    </div>
+  </div>
+</main>
+
+<main id="A" hidden>
+  <div class="wrap">
+    <div class="sh" style="margin-top:20px"><div><h2 data-t="aT"></h2><p data-t="aS" style="margin-top:4px"></p></div></div>
+    <div class="kpis" id="kpis"></div>
+    <div class="grid" style="margin-top:0">
+      <div class="card"><div class="sh" style="margin:0 0 4px"><h2 class="t" style="font-size:21px" data-t="aQ"></h2><p data-t="aTap"></p></div><div id="qs"></div></div>
+      <div class="card"><h2 class="t" style="font-size:21px" data-t="aH"></h2><p class="sub" data-t="aHs"></p><div class="horses" id="hz"></div></div>
+    </div>
+  </div>
+</main>
+
+<div class="modal" id="mod" hidden onclick="if(event.target===this)closeM()"><div class="box" id="modB"></div></div>
+
+<footer data-t="foot"></footer>
+
+<script>
+/* ===== DATOS: programas, alojamiento, fechas de cierre, traslado y peso según su web y fichas públicas; duraciones, precios y salidas DE EJEMPLO ===== */
+const LV=[{ic:'🌱'},{ic:'🐎'},{ic:'🏇'},{ic:'⛰️'}];
+const P=[
+ {id:'dr',art:0,days:0,price:{2:50,3:70,5:100},min:0,kids:true},
+ {id:'st',art:1,days:3,price:560,min:0,kids:true},
+ {id:'cc',art:2,days:4,price:890,min:1,fixed:true},
+ {id:'cq',art:3,days:6,price:1450,min:2,fixed:true},
+ {id:'cf',art:4,days:5,price:1150,min:1},
+ {id:'ql',art:5,days:7,price:1750,min:2},
+ {id:'wa',art:6,days:9,price:2390,min:3}
+];
+const ROOMS=['dbl','fam','su'];
+const DEPP=.3,KID=.8,NIGHT=120,SUITE=40,SGL=35,TRF=100;
+const FIXED=[[2027,6,16],[2027,6,23]]; // salidas del desfile (ejemplo)
+const T={
+es:{
+demobar:"Demo de DevHorse para Hacienda La Alegría · Programas y datos de su web y fichas públicas · Ilustraciones en lugar de fotos · Duraciones y precios de ejemplo · Pagos y mensajes simulados",
+brandsub:"Alóag · Avenida de los Volcanes",tabG:"Viajero",tabA:"Hacienda",phL:"Ilustración: aquí va su foto",
+eyebrow:"Granja de la familia Espinosa · a 45 min de Quito",h1:"Cabalga los Andes desde nuestra hacienda",
+heroP:"Caballos criados en casa, habitaciones coloniales con chimenea y el Cotopaxi de fondo. Desde un paseo de dos horas hasta expediciones de varios días, a la medida de tu nivel.",
+c1:"🐴 Todos los niveles, desde 5 años",c2:"🌋 Vista al Cotopaxi",c3:"🏡 Hasta 24 huéspedes",c4:"🥛 Granja lechera en funcionamiento",
+cta:"Cotiza tu cabalgata",cta2:"Solo hospedaje",
+s1:"Cotización al instante",s1s:"Sin esperar correos: ves el precio mientras armas tu viaje.",s2:"Todo por WhatsApp",s2s:"Gabriel confirma tu cabalgata y te acompaña hasta llegar.",s3:"Reserva con anticipo",s3s:"Aseguras tus fechas con el 30 %; el resto, al llegar.",
+pT:"Nuestras cabalgatas",pS:"Desliza para ver todas. Las duraciones y precios son de ejemplo.",
+n_dr:"Cabalgata de un día",d_dr:"Valles, la loma de Miraflores o la vuelta a La Viudita. De 2 a 5 horas.",
+n_st:"Estadía en la hacienda",d_st:"Llegada y práctica en el corral, subida a La Viudita (3.760 m) y un día por el campo.",
+n_cc:"Desfile del Chagra y Cotopaxi",d_cc:"Cabalga con los chagras en el desfile de Machachi y sube a los páramos del Cotopaxi.",
+n_cq:"Desfile del Chagra y Quilotoa",d_cq:"El desfile de Machachi y luego, a caballo, hasta la laguna del Quilotoa.",
+n_cf:"Bosque Nublado Místico",d_cf:"De los páramos al bosque nublado, entre neblina, orquídeas y senderos antiguos.",
+n_ql:"Loop del Quilotoa",d_ql:"Pueblos andinos, cañones y el cráter turquesa del Quilotoa.",
+n_wa:"Expedición Andes Salvajes",d_wa:"La más larga y exigente: páramos abiertos, volcanes y noches en haciendas.",
+hrs:"{n} h",days:"{n} días",from:"desde",pp:"por persona",
+lv0:"Nunca he montado",lv0s:"Te enseñamos en el corral antes de salir.",lv1:"Principiante",lv1s:"He montado algunas veces, al paso.",lv2:"Intermedio",lv2s:"Trote y galope con confianza.",lv3:"Experto",lv3s:"Muchas horas en silla, terreno difícil.",
+st1:"Nivel",st2:"Cabalgata",st3:"Fechas y grupo",st4:"Cotización",
+lT:"¿Qué tan bien monta el grupo?",lS:"Elige el nivel del jinete con menos experiencia: en la ruta, todos van a su ritmo.",
+prT:"Elige tu cabalgata",prS:"Te mostramos las que van con tu nivel.",needs:"Requiere nivel {l}",reco:"Recomendada",
+hoursL:"¿Cuántas horas?",
+fT:"¿Cuándo y cuántos?",fS:"Elige el día de inicio. Las fechas en gris son de ejemplo; la hacienda cierra en marzo y del 23 de diciembre al 2 de enero.",
+fixT:"Salidas con fecha fija",fixS:"Estos programas salen en las fechas del desfile del Chagra (fechas de ejemplo).",
+lgOk:"Disponible",lgFull:"Lleno",lgCl:"Hacienda cerrada",
+ad:"Adultos",ads:"Desde 13 años",ch:"Niños",chs:"De 5 a 12 años · 20 % menos",chNo:"Para expediciones, consúltanos por WhatsApp",
+xT:"Extras",nX:"Noches extra en la hacienda",nXs:"Antes o después, con pensión completa · {p} por persona",
+roomL:"Habitación",r_dbl:"Doble",r_fam:"Familiar (hasta 5)",r_su:"Suite (+{p}/noche)",
+trf:"Traslado desde el aeropuerto de Quito",trfs:"Ida y vuelta · {p} por auto (hasta 4)",
+hv:"¿Algún jinete pesa más de 95 kg?",hvs:"Por el bienestar de los caballos, Gabriel lo revisa contigo.",
+hvW:"Gabriel te escribirá para asignar un caballo adecuado antes de confirmar.",
+yT:"Tu cotización está lista",yS:"Es preliminar: Gabriel la revisa y te confirma por WhatsApp en menos de 24 horas.",
+name:"Nombre",email:"Correo",phone:"WhatsApp",country:"País",autofill:"Rellenar con datos de ejemplo",errF:"Completa nombre y WhatsApp.",
+payL:"¿Cómo pagas el anticipo?",card:"Tarjeta",paypal:"PayPal",transfer:"Transferencia",
+pay:"Pagar anticipo {a}",ask:"Solo enviar la cotización, sin pagar",processing:"Enviando…",simNote:"Pago simulado: no se cobra nada.",
+next:"Continuar",back:"Atrás",
+sumT:"Tu viaje",pre:"Cotización preliminar",sLv:"Nivel",sPr:"Cabalgata",sDt:"Inicio",sGr:"Grupo",none:"Por elegir",
+lnAd:"{n} adulto(s) × {p}",lnCh:"{n} niño(s) × {p}",lnSg:"Suplemento individual",lnN:"Noches extra ({n} × {g} pers.)",lnSu:"Suite ({n} noches)",lnT:"Traslado ({n} auto/s)",
+total:"Total estimado",deposit:"Anticipo para reservar (30 %)",balance:"Al llegar",inc:"Incluye caballo y equipo, guía, alojamiento y pensión completa en los programas con noche.",
+done:"¡Recibimos tu reserva!",doneQ:"¡Cotización enviada!",doneS:"Así llega por WhatsApp. Toca la pestaña para ver lo que recibe Gabriel.",
+tabGuest:"Lo que recibe el viajero",tabHost:"Lo que recibe Gabriel",
+another:"Armar otra cabalgata",seeAdmin:"Ver el panel de la hacienda →",
+abT:"La vida en la hacienda",ab:["Granja familiar de los Espinosa: Gabriel, Paty y sus hijas, todos jinetes","Caballos criados en casa, de sangre criolla, pura sangre y árabe: tranquilos y resistentes","Monta vaquera con rienda al cuello, y sillas chagra, inglesas y chilenas","Habitaciones coloniales con piso de ciprés y salón con chimenea","Ordeño de vacas y vida de granja para quien no monta","Rodeo semanal de los chagras y almuerzos en haciendas de montaña"],
+infoT:"Bueno saber",kv:[["Ubicación","Alóag, Mejía · a unos 45 min al sur de Quito"],["Altura","Cabalgatas hasta 3.760 m: conviene buen estado físico"],["Edad","Desde 5 años en la hacienda"],["Clima","Unos 18 °C de día y cerca de 0 °C de noche en la montaña"],["Botas","Prestamos botas hasta talla 9.5 US"],["Cerrado","Todo marzo y del 23 de diciembre al 2 de enero"]],
+aT:"Panel de la hacienda",aS:"Lo que ven Gabriel y Paty. Lo marcado “Ejemplo” es inventado; lo “Nuevo” viene de la cotización que acabas de hacer.",
+kQ:"Cotizaciones del mes",kD:"Anticipos recibidos",kR:"Jinetes próximos 60 días",kC:"Cotizaciones que pagaron",kNew:"+{n} nueva(s)",
+aQ:"Cotizaciones",aTap:"Toca una para ver el mensaje",aH:"Próximas salidas",aHs:"Caballos que hay que preparar según el nivel de cada grupo.",
+calm:"{n} tranquilo(s)",spir:"{n} con brío",heavyT:"⚖️ revisar peso",
+stPaid:"Anticipo pagado",stWait:"Esperando anticipo",stConf:"Confirmada",ex:"Ejemplo",nw:"Nuevo",
+confirmB:"Confirmar y enviar itinerario",confirmed:"✓ Confirmada y enviada",
+foot:"Demo creada por DevHorse como propuesta para Hacienda La Alegría. Programas, alojamiento, fechas de cierre, traslado, edad mínima y datos de la hacienda tomados de su web y de fichas públicas. Ilustraciones en lugar de fotos; duraciones, precios, salidas, disponibilidad y cotizaciones de ejemplo.",
+wG:"¡Hola {first}! 🐴 Gracias por elegir *Hacienda La Alegría*.\n\nEsta es tu cotización preliminar:\n🏇 {prog}\n📅 Inicio: {date}\n👥 {grp} · nivel {lvl}\n💰 Total estimado: *{tot}*\n{paid}\n\nGabriel la revisa y te confirma en menos de 24 horas.",
+wPaid:"💳 Anticipo recibido: *{dep}* ✅",wAsk:"💳 Para reservar: anticipo de *{dep}*",
+uG:"¡Genial! ¿Qué ropa llevamos?",
+wG2:"🧥 Capas: de día unos 18 °C y en la montaña cerca de 0 °C de noche.\n🥾 Si no tienen botas, les prestamos (hasta talla 9.5 US).\n🧢 Gorra y protector solar: estamos sobre los 3.000 m.\n\n¡Los esperamos! 🌋",
+wH:"🔔 *Nueva cotización* desde la web\n\n👤 {name} · {country}\n🏇 {prog}\n📅 {date}\n👥 {grp}\n📈 Nivel: {lvl}{heavy}{extras}\n💰 Total: *{tot}*\n{paidH}",
+wHp:"💳 Anticipo pagado: *{dep}* ✅",wHw:"⏳ Esperando anticipo",
+hvH:"\n⚖️ Algún jinete pasa de 95 kg",
+actA:"Confirmar",actB:"Escribir al cliente",actC:"Ajustar precio",
+wahSub:"Cuenta de empresa · en línea",wafoot:"Mensajes automáticos ✓✓",sNone:"—",
+pG:["persona","personas"],adW:["adulto","adultos"],chW:["niño","niños"]
+},
+en:{
+demobar:"DevHorse demo for Hacienda La Alegría · Programs and details from their website and public listings · Illustrations instead of photos · Sample durations & prices · Simulated payments & messages",
+brandsub:"Alóag · Avenue of the Volcanoes",tabG:"Traveler",tabA:"Hacienda",phL:"Illustration: your photo goes here",
+eyebrow:"The Espinosa family farm · 45 min from Quito",h1:"Ride the Andes from our hacienda",
+heroP:"Home-bred horses, colonial rooms with a log fire and Cotopaxi on the horizon. From a two-hour ride to multi-day expeditions, matched to your level.",
+c1:"🐴 All levels, ages 5+",c2:"🌋 Cotopaxi views",c3:"🏡 Up to 24 guests",c4:"🥛 Working dairy farm",
+cta:"Get your ride quote",cta2:"Just stay",
+s1:"Instant quote",s1s:"No waiting for emails: see the price as you plan.",s2:"All on WhatsApp",s2s:"Gabriel confirms your ride and helps you until you arrive.",s3:"Book with a deposit",s3s:"Secure your dates with 30 %; pay the rest on arrival.",
+pT:"Our rides",pS:"Swipe to see them all. Durations and prices are samples.",
+n_dr:"Day ride",d_dr:"Valleys, Miraflores hill or around La Viudita. 2 to 5 hours.",
+n_st:"Hacienda stay",d_st:"Arrival and paddock practice, a climb up La Viudita (3,760 m) and a countryside day.",
+n_cc:"Chagras Parade & Cotopaxi",d_cc:"Ride with the chagras in the Machachi parade, then up to Cotopaxi's páramo.",
+n_cq:"Chagra Parade & Quilotoa",d_cq:"The Machachi parade, then on horseback to Quilotoa lake.",
+n_cf:"Mystic Cloud Forest",d_cf:"From the páramo down to the cloud forest, through mist, orchids and old trails.",
+n_ql:"Quilotoa Loop",d_ql:"Andean villages, canyons and Quilotoa's turquoise crater.",
+n_wa:"Wild Andes Expedition",d_wa:"The longest and toughest: open páramo, volcanoes and nights at haciendas.",
+hrs:"{n} h",days:"{n} days",from:"from",pp:"per person",
+lv0:"Never ridden",lv0s:"We teach you in the paddock before heading out.",lv1:"Beginner",lv1s:"Ridden a few times, at a walk.",lv2:"Intermediate",lv2s:"Confident at trot and canter.",lv3:"Expert",lv3s:"Many hours in the saddle, rough terrain.",
+st1:"Level",st2:"Ride",st3:"Dates & group",st4:"Quote",
+lT:"How well does your group ride?",lS:"Pick the least experienced rider's level: on the trail, everyone rides at their pace.",
+prT:"Choose your ride",prS:"We show the ones that suit your level.",needs:"Needs {l} level",reco:"Recommended",
+hoursL:"How many hours?",
+fT:"When and how many?",fS:"Pick your start day. Grey dates are samples; the hacienda closes in March and from Dec 23 to Jan 2.",
+fixT:"Fixed departures",fixS:"These programs leave on the Chagra parade dates (sample dates).",
+lgOk:"Available",lgFull:"Full",lgCl:"Hacienda closed",
+ad:"Adults",ads:"13 and over",ch:"Children",chs:"Ages 5 to 12 · 20 % off",chNo:"For expeditions, ask us on WhatsApp",
+xT:"Extras",nX:"Extra nights at the hacienda",nXs:"Before or after, full board · {p} per person",
+roomL:"Room",r_dbl:"Double",r_fam:"Family (up to 5)",r_su:"Suite (+{p}/night)",
+trf:"Quito airport transfer",trfs:"Round trip · {p} per car (up to 4)",
+hv:"Is any rider over 95 kg?",hvs:"For the horses' wellbeing, Gabriel checks this with you.",
+hvW:"Gabriel will message you to match a suitable horse before confirming.",
+yT:"Your quote is ready",yS:"It's preliminary: Gabriel reviews it and confirms on WhatsApp within 24 hours.",
+name:"Name",email:"Email",phone:"WhatsApp",country:"Country",autofill:"Fill with sample data",errF:"Please add your name and WhatsApp.",
+payL:"How will you pay the deposit?",card:"Card",paypal:"PayPal",transfer:"Bank transfer",
+pay:"Pay deposit {a}",ask:"Just send the quote, no payment",processing:"Sending…",simNote:"Simulated payment: nothing is charged.",
+next:"Continue",back:"Back",
+sumT:"Your trip",pre:"Preliminary quote",sLv:"Level",sPr:"Ride",sDt:"Start",sGr:"Group",none:"To choose",
+lnAd:"{n} adult(s) × {p}",lnCh:"{n} child(ren) × {p}",lnSg:"Single supplement",lnN:"Extra nights ({n} × {g} ppl)",lnSu:"Suite ({n} nights)",lnT:"Transfer ({n} car/s)",
+total:"Estimated total",deposit:"Deposit to book (30 %)",balance:"On arrival",inc:"Includes horse and tack, guide, lodging and full board on programs with nights.",
+done:"Booking received!",doneQ:"Quote sent!",doneS:"This is how it arrives on WhatsApp. Tap the tab to see what Gabriel gets.",
+tabGuest:"What the traveler gets",tabHost:"What Gabriel gets",
+another:"Plan another ride",seeAdmin:"See the hacienda dashboard →",
+abT:"Life at the hacienda",ab:["The Espinosa family farm: Gabriel, Paty and their daughters, all riders","Home-bred Criollo, Thoroughbred and Arabian horses: calm and tough","Western riding with neck reining; Chagra, English and Chilean saddles","Colonial rooms with cypress floors and a lounge with a log fire","Cow milking and farm life for non-riders","Weekly chagra rodeo and lunches at mountain haciendas"],
+infoT:"Good to know",kv:[["Location","Alóag, Mejía · about 45 min south of Quito"],["Altitude","Rides up to 3,760 m: reasonable fitness needed"],["Age","From 5 years at the hacienda"],["Weather","About 18 °C by day, near 0 °C at night in the mountains"],["Boots","We lend boots up to US size 9.5"],["Closed","All of March and Dec 23 – Jan 2"]],
+aT:"Hacienda dashboard",aS:"What Gabriel and Paty see. Items tagged “Sample” are made up; “New” comes from the quote you just made.",
+kQ:"Quotes this month",kD:"Deposits received",kR:"Riders next 60 days",kC:"Quotes that paid",kNew:"+{n} new",
+aQ:"Quotes",aTap:"Tap one to see the message",aH:"Upcoming departures",aHs:"Horses to prepare for each group's level.",
+calm:"{n} calm",spir:"{n} spirited",heavyT:"⚖️ check weight",
+stPaid:"Deposit paid",stWait:"Awaiting deposit",stConf:"Confirmed",ex:"Sample",nw:"New",
+confirmB:"Confirm & send itinerary",confirmed:"✓ Confirmed & sent",
+foot:"Demo created by DevHorse as a proposal for Hacienda La Alegría. Programs, lodging, closing dates, transfer, minimum age and hacienda details from their website and public listings. Illustrations instead of photos; durations, prices, departures, availability and quotes are samples.",
+wG:"Hi {first}! 🐴 Thanks for choosing *Hacienda La Alegría*.\n\nHere's your preliminary quote:\n🏇 {prog}\n📅 Start: {date}\n👥 {grp} · {lvl} level\n💰 Estimated total: *{tot}*\n{paid}\n\nGabriel reviews it and confirms within 24 hours.",
+wPaid:"💳 Deposit received: *{dep}* ✅",wAsk:"💳 To book: deposit of *{dep}*",
+uG:"Great! What should we pack?",
+wG2:"🧥 Layers: about 18 °C by day and near 0 °C at night up high.\n🥾 No boots? We lend them (up to US 9.5).\n🧢 Cap and sunscreen: we're above 3,000 m.\n\nSee you soon! 🌋",
+wH:"🔔 *New quote* from the website\n\n👤 {name} · {country}\n🏇 {prog}\n📅 {date}\n👥 {grp}\n📈 Level: {lvl}{heavy}{extras}\n💰 Total: *{tot}*\n{paidH}",
+wHp:"💳 Deposit paid: *{dep}* ✅",wHw:"⏳ Awaiting deposit",
+hvH:"\n⚖️ A rider is over 95 kg",
+actA:"Confirm",actB:"Message client",actC:"Adjust price",
+wahSub:"Business account · online",wafoot:"Automated messages ✓✓",sNone:"—",
+pG:["person","people"],adW:["adult","adults"],chW:["child","children"]
+}};
+let lang='es';
+const S={v:'g',step:1,lvl:null,prog:null,hrs:3,date:null,ad:2,ch:0,nx:0,room:'dbl',trf:false,hv:false,name:'',email:'',wa:'',country:'',pay:'card',done:false,paid:false,ct:'g',mon:[2026,10],newQ:null,confirmed:{}};
+const t=(k,v)=>{let s=T[lang][k];if(s===undefined)return k;if(v)for(const x in v)s=s.split('{'+x+'}').join(v[x]);return s};
+const $=id=>document.getElementById(id);
+const money=n=>'$'+n.toLocaleString('en-US',{minimumFractionDigits:n%1?2:0,maximumFractionDigits:2});
+const loc=()=>lang==='es'?'es-EC':'en-US';
+const cap=s=>s.charAt(0).toUpperCase()+s.slice(1);
+const fmtD=d=>cap(d.toLocaleDateString(loc(),{weekday:'short',day:'numeric',month:'short',year:'numeric'}));
+const pl=(n,arr)=>n+' '+arr[n===1?0:1];
+const prog=id=>P.find(p=>p.id===id);
+const pName=p=>t('n_'+p.id)+(p.id==='dr'?' · '+t('hrs',{n:S.hrs}):'');
+const pPrice=p=>p.id==='dr'?p.price[S.hrs]:p.price;
+const kidsOK=p=>!p||p.kids;
+const grpTxt=()=>pl(S.ad,T[lang].adW)+(S.ch?' + '+pl(S.ch,T[lang].chW):'');
+
+function closed(d){const m=d.getMonth(),dd=d.getDate();return m===2||(m===11&&dd>=23)||(m===0&&dd<=2)}
+function full(d){const k=(d.getDate()*7+d.getMonth()*3)%11;return k===3||k===8}
+const TODAY=new Date(2026,10,3);
+
+/* ===== ART ===== */
+function art(i){
+ const pal=[['#a9cbe0','#86b07a','#5d8c5a','#c78b4a'],['#f2c98f','#8fb27e','#5b8a5f','#a84a28'],['#9dbad3','#7d8794','#6f9a6a','#b5532c'],['#c6d9e6','#6aa7a0','#7c9a6a','#2f8f9a'],['#c9d6d2','#7aa08a','#3f6d4b','#a7c4b5'],['#e7d2b5','#9a8a6a','#7c6a4f','#2f9a9a'],['#b8c9dc','#8c8f99','#5f6f62','#e8e8e8']][i];
+ const feat=[
+  `<path d="M150 70 q10-14 20 0" stroke="${pal[3]}" stroke-width="3" fill="none"/>`,
+  `<rect x="150" y="62" width="60" height="34" fill="#f1e4cc"/><path d="M144 64 L180 44 L216 64Z" fill="${pal[3]}"/>`,
+  `<path d="M120 90 L170 30 Q178 24 186 30 L236 90Z" fill="${pal[1]}"/><path d="M158 44 L170 30 Q178 24 186 30 L198 44 Q190 50 180 44 Q170 52 158 44Z" fill="#fff"/>`,
+  `<ellipse cx="170" cy="86" rx="46" ry="12" fill="${pal[3]}"/>`,
+  `<g fill="#fff" opacity=".7"><ellipse cx="90" cy="60" rx="70" ry="10"/><ellipse cx="200" cy="70" rx="80" ry="9"/></g>`,
+  `<ellipse cx="160" cy="82" rx="40" ry="11" fill="${pal[3]}"/><path d="M110 82 Q160 50 210 82" stroke="${pal[2]}" stroke-width="6" fill="none"/>`,
+  `<path d="M40 90 L100 36 L160 90Z" fill="${pal[1]}"/><path d="M84 50 L100 36 L116 50 Q100 56 84 50Z" fill="#fff"/><path d="M140 90 L210 24 L280 90Z" fill="${pal[2]}"/><path d="M194 40 L210 24 L226 40 Q210 48 194 40Z" fill="#fff"/>`][i];
+ return `<svg viewBox="0 0 280 120" preserveAspectRatio="xMidYMid slice"><rect width="280" height="120" fill="${pal[0]}"/>${feat}<path d="M0 92 Q70 74 140 90 T280 86 V120 H0Z" fill="${pal[1]}"/><path d="M0 104 Q90 92 180 104 T280 100 V120 H0Z" fill="${pal[2]}"/><g transform="translate(36 76) scale(.32)" fill="#2a1f17"><path d="M20 60 Q18 40 34 34 L84 32 Q100 30 108 18 L112 4 Q116 -2 120 4 L124 14 Q128 22 122 30 L112 44 Q110 60 104 62 L100 92 L94 92 L96 64 L60 64 L54 92 L48 92 L50 64 Q36 64 30 70 L26 92 L20 92 Z"/><path d="M64 30 Q62 8 72 0 L78 -2 Q84 6 80 30Z"/><circle cx="75" cy="-10" r="8"/></g></svg>`;
+}
+const lvDots=n=>`<span class="lv">${[0,1,2,3].map(i=>`<i class="${i<=n?'f':''}"></i>`).join('')}</span>`;
+
+/* ===== RENDER ===== */
+function renderStatic(){
+ document.documentElement.lang=lang;
+ document.querySelectorAll('[data-t]').forEach(e=>e.textContent=t(e.dataset.t));
+ $('lEs').className=lang==='es'?'on':'';$('lEn').className=lang==='en'?'on':'';
+ $('abL').innerHTML=T[lang].ab.map(x=>`<li>${x}</li>`).join('');
+ $('kv').innerHTML=T[lang].kv.map(([a,b])=>`<span>${a}</span><b>${b}</b>`).join('');
+ $('progs').innerHTML=P.map(p=>`<button class="pc ${S.prog===p.id?'on':''}" onclick="pickProg('${p.id}');location.hash='quote'"><div class="art">${art(p.art)}<span class="ph">${lang==='es'?'Ilustración':'Illustration'}</span><span class="dur">${p.days?t('days',{n:p.days}):'2–5 h'}</span></div><div class="bd"><h3>${t('n_'+p.id)}</h3><p>${t('d_'+p.id)}</p><div class="ft"><span class="pr">${t('from')} <b>${money(p.id==='dr'?p.price[2]:p.price)}</b></span>${lvDots(p.min)}</div></div></button>`).join('');
+}
+function stepper(){const n=['st1','st2','st3','st4'];return `<div class="stepper">${n.map((k,i)=>`<div class="stp ${S.step===i+1?'on':S.step>i+1?'done':''}"><div class="bar"><i></i></div>${i+1}. ${t(k)}</div>`).join('')}</div>`}
+
+function renderFlow(){
+ const f=$('flow');
+ if(S.done){renderDone();return}
+ let h=stepper();
+ if(S.step===1){
+  h+=`<h2 class="t">${t('lT')}</h2><p class="sub">${t('lS')}</p><div class="opts">`+LV.map((l,i)=>`<button class="opt ${S.lvl===i?'on':''}" onclick="S.lvl=${i};if(S.prog&&prog(S.prog).min>${i})S.prog=null;go(2)"><span class="ic">${l.ic}</span><span><b>${t('lv'+i)}</b><small>${t('lv'+i+'s')}</small></span><span class="r">${lvDots(i)}</span></button>`).join('')+`</div>`;
+ }
+ if(S.step===2){
+  h+=`<h2 class="t">${t('prT')}</h2><p class="sub">${t('prS')}</p><div class="opts">`+P.map(p=>{const ok=p.min<=S.lvl;const rec=ok&&p.min===S.lvl&&p.id!=='dr';return `<button class="opt ${S.prog===p.id?'on':''} ${ok?'':'dis'}" onclick="pickProg('${p.id}');${p.id==='dr'?'renderAll()':'go(3)'}"><span class="ic" style="overflow:hidden;padding:0">${art(p.art)}</span><span><b>${t('n_'+p.id)}</b><small>${ok?(rec?`<span class="why">★ ${t('reco')} · </span>`:'')+(p.days?t('days',{n:p.days}):'2–5 h'):`<span class="why">${t('needs',{l:t('lv'+p.min).toLowerCase()})}</span>`}</small></span><span class="r">${t('from')}<br><b>${money(p.id==='dr'?p.price[2]:p.price)}</b></span></button>`}).join('')+`</div>`;
+  if(S.prog==='dr')h+=`<div class="lab">${t('hoursL')}</div><div class="pills">${[2,3,5].map(x=>`<button class="pill ${S.hrs===x?'on':''}" onclick="S.hrs=${x};renderAll()">${x} h · ${money(prog('dr').price[x])}</button>`).join('')}</div>`;
+  h+=`<div class="nav"><button class="btn ghost" onclick="go(1)">← ${t('back')}</button><button class="btn" ${S.prog?'':'disabled'} onclick="go(3)">${t('next')} →</button></div>`;
+ }
+ if(S.step===3){
+  const p=prog(S.prog);
+  h+=`<h2 class="t">${t('fT')}</h2>`;
+  if(p.fixed){
+   h+=`<p class="sub">${t('fixS')}</p><div class="pills">${FIXED.map(([y,m,d])=>{const dt=new Date(y,m,d);const on=S.date&&+S.date===+dt;return `<button class="pill ${on?'on':''}" onclick="S.date=new Date(${y},${m},${d});renderAll()">📅 ${fmtD(dt)}</button>`}).join('')}</div>`;
+  } else {
+   h+=`<p class="sub">${t('fS')}</p>`+calendar();
+  }
+  h+=`<div class="lab">${t('sGr')}</div>
+  <div class="cnt"><span><b>${t('ad')}</b><small>${t('ads')}</small></span><span class="stepr"><button ${S.ad<=1?'disabled':''} onclick="S.ad--;renderAll()">−</button><span>${S.ad}</span><button ${S.ad+S.ch>=24?'disabled':''} onclick="S.ad++;renderAll()">+</button></span></div>
+  <div class="cnt"><span><b>${t('ch')}</b><small>${kidsOK(p)?t('chs'):t('chNo')}</small></span><span class="stepr"><button ${S.ch<=0?'disabled':''} onclick="S.ch--;renderAll()">−</button><span>${S.ch}</span><button ${!kidsOK(p)||S.ad+S.ch>=24?'disabled':''} onclick="S.ch++;renderAll()">+</button></span></div>
+  <div class="lab">${t('xT')}</div>
+  <div class="cnt"><span><b>${t('nX')}</b><small>${t('nXs',{p:money(NIGHT)})}</small></span><span class="stepr"><button ${S.nx<=0?'disabled':''} onclick="S.nx--;renderAll()">−</button><span>${S.nx}</span><button ${S.nx>=5?'disabled':''} onclick="S.nx++;renderAll()">+</button></span></div>
+  ${(S.nx>0||p.days)?`<div class="pills" style="margin:8px 0 4px">${ROOMS.map(r=>`<button class="pill ${S.room===r?'on':''}" onclick="S.room='${r}';renderAll()">${t('r_'+r,{p:money(SUITE)})}</button>`).join('')}</div>`:''}
+  <button class="sw ${S.trf?'on':''}" onclick="S.trf=!S.trf;renderAll()"><span class="tg"></span><span><b>${t('trf')}</b><small>${t('trfs',{p:money(TRF)})}</small></span></button>
+  <button class="sw ${S.hv?'on':''}" onclick="S.hv=!S.hv;renderAll()"><span class="tg"></span><span><b>${t('hv')}</b><small>${t('hvs')}</small></span></button>
+  ${S.hv?`<div class="tip warn">⚖️ <span>${t('hvW')}</span></div>`:''}
+  <div class="nav"><button class="btn ghost" onclick="go(2)">← ${t('back')}</button><button class="btn" ${S.date?'':'disabled'} onclick="go(4)">${t('next')} →</button></div>`;
+ }
+ if(S.step===4){
+  const q=quote();
+  h+=`<h2 class="t">${t('yT')}</h2><p class="sub">${t('yS')}</p>
+  <button class="link" onclick="fill()">${t('autofill')}</button>
+  <div class="two"><div class="fld"><label>${t('name')}</label><input id="fN" value="${S.name}" oninput="S.name=this.value"></div><div class="fld"><label>${t('country')}</label><input id="fC" value="${S.country}" oninput="S.country=this.value"></div></div>
+  <div class="two"><div class="fld"><label>${t('phone')}</label><input id="fW" inputmode="tel" value="${S.wa}" oninput="S.wa=this.value"></div><div class="fld"><label>${t('email')}</label><input id="fE" type="email" value="${S.email}" oninput="S.email=this.value"></div></div>
+  <div class="lab">${t('payL')}</div><div class="pills">${['card','paypal','transfer'].map(x=>`<button class="pill ${S.pay===x?'on':''}" onclick="S.pay='${x}';renderFlow()">${{card:'💳',paypal:'🅿️',transfer:'🏦'}[x]} ${t(x)}</button>`).join('')}</div>
+  <div class="err" id="err" style="margin-top:10px"></div>
+  <button class="btn gr" style="width:100%;margin-top:4px" id="payB" onclick="submit(true)">🔒 ${t('pay',{a:money(q.dep)})}</button>
+  <button class="btn ghost" style="width:100%;margin-top:8px" onclick="submit(false)">${t('ask')}</button>
+  <p class="note" style="text-align:center">${t('simNote')}</p>
+  <div class="nav"><button class="btn ghost" onclick="go(3)">← ${t('back')}</button></div>`;
+ }
+ f.innerHTML=h;
+}
+function calendar(){
+ const [y,m]=S.mon;const first=new Date(y,m,1);const off=(first.getDay()+6)%7;const n=new Date(y,m+1,0).getDate();
+ const dow=lang==='es'?['Lun','Mar','Mié','Jue','Vie','Sáb','Dom']:['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+ let d='';for(let i=0;i<off;i++)d+='<span class="day e"></span>';
+ for(let i=1;i<=n;i++){const dt=new Date(y,m,i);let c='ok';if(dt<=TODAY)c='x';else if(closed(dt))c='cl';else if(full(dt))c='x';
+  if(S.date&&+S.date===+dt)c='on';else if(S.date&&prog(S.prog).days>1&&dt>S.date&&dt<new Date(+S.date+(prog(S.prog).days-1)*864e5+1))c+=' rng';
+  d+=`<button class="day ${c}" onclick="S.date=new Date(${y},${m},${i});renderAll()">${i}</button>`}
+ const lbl=cap(first.toLocaleDateString(loc(),{month:'long',year:'numeric'}));
+ return `<div class="cal"><div class="head"><button ${y===2026&&m===10?'disabled':''} onclick="mv(-1)">‹</button><b>${lbl}</b><button ${y===2027&&m===11?'disabled':''} onclick="mv(1)">›</button></div><div class="dow">${dow.map(x=>`<span>${x}</span>`).join('')}</div><div class="days">${d}</div><div class="legend"><span><i style="background:#eef4ee;border:1px solid #cfe1cf"></i>${t('lgOk')}</span><span><i style="background:#f3ede4"></i>${t('lgFull')}</span><span><i style="background:repeating-linear-gradient(135deg,#f3ede4 0 3px,#ddd2c0 3px 6px)"></i>${t('lgCl')}</span></div></div>`;
+}
+function mv(k){let [y,m]=S.mon;m+=k;if(m<0){m=11;y--}if(m>11){m=0;y++}S.mon=[y,m];renderFlow()}
+
+function quote(){
+ const p=S.prog?prog(S.prog):null;const L=[];let tot=0;
+ if(!p)return{L,tot:0,dep:0};
+ const pr=pPrice(p);
+ L.push([t('lnAd',{n:S.ad,p:money(pr)}),S.ad*pr]);
+ if(S.ch)L.push([t('lnCh',{n:S.ch,p:money(pr*KID)}),S.ch*pr*KID]);
+ const nights=Math.max(0,p.days-1);
+ if(S.ad===1&&S.ch===0&&nights)L.push([t('lnSg'),SGL*nights]);
+ if(S.nx){L.push([t('lnN',{n:S.nx,g:S.ad+S.ch}),S.nx*(S.ad+S.ch)*NIGHT])}
+ const sn=(S.room==='su')?(S.nx+(p.id==='st'?nights:0)):0;
+ if(sn)L.push([t('lnSu',{n:sn}),sn*SUITE]);
+ if(S.trf){const cars=Math.ceil((S.ad+S.ch)/4);L.push([t('lnT',{n:cars}),cars*TRF])}
+ L.forEach(x=>tot+=x[1]);
+ return{L,tot,dep:Math.round(tot*DEPP*100)/100};
+}
+function renderSum(){
+ const p=S.prog?prog(S.prog):null;const q=quote();
+ let h=`<span class="pre">${t('pre')}</span><h3>${t('sumT')}</h3>
+ <div class="row"><span>${t('sLv')}</span><b>${S.lvl!==null?LV[S.lvl].ic+' '+t('lv'+S.lvl):t('none')}</b></div>
+ <div class="row"><span>${t('sPr')}</span><b>${p?pName(p):t('none')}</b></div>
+ <div class="row"><span>${t('sDt')}</span><b>${S.date?fmtD(S.date):t('none')}</b></div>
+ <div class="row"><span>${t('sGr')}</span><b>${grpTxt()}</b></div>`;
+ if(p){h+=`<div class="hr"></div>`+q.L.map(([a,b])=>`<div class="row"><span>${a}</span><b>${money(b)}</b></div>`).join('')+
+ `<div class="row tot"><span>${t('total')}</span><b>${money(q.tot)}</b></div>
+ <div class="depo"><div class="row"><span>${t('deposit')}</span><b>${money(q.dep)}</b></div><div class="row" style="padding-top:0"><span>${t('balance')}</span><b style="color:var(--muted);font-size:14px">${money(Math.round((q.tot-q.dep)*100)/100)}</b></div></div>
+ <p class="note">✓ ${t('inc')}</p>`;}
+ $('sum').innerHTML=h;
+}
+function renderAll(){renderStatic();renderFlow();renderSum();renderAdmin()}
+function go(n){S.step=n;renderFlow();renderSum();renderStatic();const q=$('quote');if(q.getBoundingClientRect().top<0)q.scrollIntoView({behavior:'smooth'})}
+function pickProg(id){S.prog=id;const p=prog(id);if(S.lvl===null||p.min>S.lvl)S.lvl=Math.max(S.lvl??0,p.min);if(!p.kids)S.ch=0;if(S.date&&p.fixed&&!FIXED.some(([y,m,d])=>+new Date(y,m,d)===+S.date))S.date=null;if(S.date&&!p.fixed&&FIXED.some(([y,m,d])=>+new Date(y,m,d)===+S.date))S.date=null;if(S.step<2)S.step=2;if(id!=='dr'&&S.step===2)S.step=3;renderAll()}
+function fill(){Object.assign(S,{name:'Anna Lindqvist',country:lang==='es'?'Suecia':'Sweden',wa:'+46 70 412 8890',email:'anna.l@example.com'});renderFlow()}
+let TOK=0;
+function submit(paid){
+ if(!S.name.trim()||!S.wa.trim()){$('err').textContent=t('errF');return}
+ const b=$('payB');b.textContent=t('processing');b.disabled=true;
+ setTimeout(()=>{S.paid=paid;S.done=true;S.ct='g';const q=quote();
+  S.newQ={name:S.name,country:S.country||'—',prog:S.prog,hrs:S.hrs,date:S.date,ad:S.ad,ch:S.ch,lvl:S.lvl,tot:q.tot,dep:q.dep,paid,hv:S.hv,nx:S.nx,trf:S.trf,room:S.room};
+  $('bdg').hidden=false;renderAll();$('quote').scrollIntoView({behavior:'smooth'})},900);
+}
+function msgG(){const n=S.newQ;const p=prog(n.prog);
+ return [{me:0,txt:t('wG',{first:n.name.split(' ')[0],prog:t('n_'+p.id)+(p.id==='dr'?' · '+n.hrs+' h':''),date:fmtD(n.date),grp:grpOf(n),lvl:t('lv'+n.lvl).toLowerCase(),tot:money(n.tot),paid:n.paid?t('wPaid',{dep:money(n.dep)}):t('wAsk',{dep:money(n.dep)})})},{me:1,txt:t('uG')},{me:0,txt:t('wG2')}]}
+function grpOf(n){return pl(n.ad,T[lang].adW)+(n.ch?' + '+pl(n.ch,T[lang].chW):'')}
+function msgH(n){const p=prog(n.prog);let ex='';if(n.nx)ex+='\n🛏️ +'+n.nx+(lang==='es'?' noche(s) · ':' night(s) · ')+t('r_'+n.room,{p:money(SUITE)});if(n.trf)ex+='\n🚐 '+t('trf');
+ return [{me:0,txt:t('wH',{name:n.name,country:n.country,prog:t('n_'+p.id)+(p.id==='dr'?' · '+n.hrs+' h':''),date:fmtD(n.date),grp:grpOf(n),lvl:LV[n.lvl].ic+' '+t('lv'+n.lvl),heavy:n.hv?t('hvH'):'',extras:ex,tot:money(n.tot),paidH:n.paid?t('wHp',{dep:money(n.dep)}):t('wHw')}),act:true}]}
+function chatBox(id,title,av){return `<div class="chat"><div class="hd"><span class="av">${av}</span><span><b>${title}</b><small>${t('wahSub')}</small></span></div><div class="msgs" id="${id}"></div><div class="ft">${t('wafoot')}</div></div>`}
+async function play(id,list){const tok=++TOK;const box=$(id);if(!box)return;box.innerHTML='';
+ for(const m of list){if(tok!==TOK)return;if(!m.me){const ty=document.createElement('div');ty.className='typing';ty.innerHTML='<i></i><i></i><i></i>';box.appendChild(ty);await new Promise(r=>setTimeout(r,700));if(tok!==TOK)return;ty.remove()}else await new Promise(r=>setTimeout(r,500));
+  if(tok!==TOK)return;const b=document.createElement('div');b.className='bub'+(m.me?' me':'');b.innerHTML=fmtW(m.txt)+(m.act?`<div class="act"><span>✅ ${t('actA')}</span><span>💬 ${t('actB')}</span><span>✏️ ${t('actC')}</span></div>`:'')+`<time>${m.me?'':'✓✓ '}${(new Date()).toLocaleTimeString(loc(),{hour:'2-digit',minute:'2-digit'})}</time>`;box.appendChild(b)}}
+const fmtW=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/\*(.+?)\*/g,'<b>$1</b>');
+function renderDone(){
+ const n=S.newQ;
+ $('flow').innerHTML=`<div class="doneHd"><div class="big">${n.paid?'🎉':'📨'}</div><h2 class="t">${n.paid?t('done'):t('doneQ')}</h2><p class="sub" style="margin:0">${t('doneS')}</p></div>
+ <div class="tabs2"><button class="${S.ct==='g'?'on':''}" onclick="S.ct='g';renderDone()">📱 ${t('tabGuest')}</button><button class="${S.ct==='h'?'on':''}" onclick="S.ct='h';renderDone()">🐴 ${t('tabHost')}</button></div>
+ ${S.ct==='g'?chatBox('cm','Hacienda La Alegría','🐴'):chatBox('cm','Hacienda La Alegría · Web','🔔')}
+ <div class="nav"><button class="btn ghost" onclick="reset()">${t('another')}</button><button class="btn" onclick="view('a')">${t('seeAdmin')}</button></div>`;
+ play('cm',S.ct==='g'?msgG():msgH(n));
+}
+function reset(){Object.assign(S,{step:1,lvl:null,prog:null,date:null,ad:2,ch:0,nx:0,room:'dbl',trf:false,hv:false,done:false});TOK++;renderAll()}
+
+/* ===== ADMIN ===== */
+const SAMPLES=[
+ {name:'Emma & Lars B.',country:'Suecia|Sweden',prog:'ql',date:new Date(2026,10,14),ad:2,ch:0,lvl:2,tot:3500,dep:1050,paid:true,st:'paid'},
+ {name:'Familia Rivera',country:'Ecuador|Ecuador',prog:'st',date:new Date(2026,10,20),ad:2,ch:2,lvl:0,tot:2016,dep:604.8,paid:false,st:'wait'},
+ {name:'Mike T.',country:'EE. UU.|USA',prog:'wa',date:new Date(2026,11,5),ad:1,ch:0,lvl:3,tot:2670,dep:801,paid:true,st:'conf',hv:true},
+ {name:'Sophie & Claire',country:'Francia|France',prog:'dr',hrs:3,date:new Date(2026,10,9),ad:2,ch:0,lvl:1,tot:140,dep:42,paid:true,st:'paid'},
+ {name:'Grupo Hiking Club',country:'Canadá|Canada',prog:'cf',date:new Date(2026,11,12),ad:6,ch:0,lvl:2,tot:6900,dep:2070,paid:false,st:'wait'}
+];
+function allQ(){const a=SAMPLES.map((x,i)=>({...x,i,country:x.country.split('|')[lang==='es'?0:1]}));if(S.newQ)a.unshift({...S.newQ,nw:true,st:S.confirmed.n?'conf':(S.newQ.paid?'paid':'wait')});return a}
+function renderAdmin(){
+ const Q=allQ();const paid=Q.filter(q=>q.paid);
+ const dep=paid.reduce((s,q)=>s+q.dep,0);
+ const lim=new Date(+TODAY+60*864e5);const riders=Q.filter(q=>q.paid&&q.date<=lim).reduce((s,q)=>s+q.ad+q.ch,0);
+ $('kpis').innerHTML=`<div class="kpi"><small>${t('kQ')}</small><b>${Q.length}</b>${S.newQ?`<em>${t('kNew',{n:1})}</em>`:''}</div><div class="kpi"><small>${t('kD')}</small><b>${money(Math.round(dep*100)/100)}</b></div><div class="kpi"><small>${t('kR')}</small><b>${riders}</b></div><div class="kpi hl"><small>${t('kC')}</small><b>${Math.round(paid.length/Q.length*100)} %</b></div>`;
+ $('qs').innerHTML=Q.map((q,k)=>{const p=prog(q.prog);const stc={paid:'paid',wait:'wait',conf:'conf'}[q.st];const stt={paid:t('stPaid'),wait:t('stWait'),conf:t('stConf')}[q.st];
+  return `<button class="q ${q.nw?'nw':''}" onclick="openQ(${k})"><span class="dt"><b>${q.date.getDate()}</b><small>${q.date.toLocaleDateString(loc(),{month:'short'}).replace('.','')}</small></span><span class="mid"><b>${q.name}</b><span class="tag ${q.nw?'n':''}">${q.nw?t('nw'):t('ex')}</span><small>${LV[q.lvl].ic} ${t('n_'+p.id)} · ${grpOf(q)} · ${q.country}</small><span class="st ${stc}">${stt}</span></span><span class="rt"><b>${money(q.tot)}</b><small style="color:var(--muted);font-size:12px">${money(q.dep)}</small></span></button>`}).join('');
+ const up=Q.filter(q=>q.st!=='wait').sort((a,b)=>a.date-b.date);
+ $('hz').innerHTML=up.map(q=>{const p=prog(q.prog);const n=q.ad+q.ch;const calm=q.lvl<=1?n:0,sp=n-calm;
+  return `<div class="hr2"><div class="d"><b>${q.date.getDate()}</b><small>${q.date.toLocaleDateString(loc(),{month:'short'}).replace('.','')}</small></div><div class="m"><b>${t('n_'+p.id)}</b>${q.name}${q.nw?` <span class="tag n">${t('nw')}</span>`:''}<div class="h">${calm?`<span>🐴 ${t('calm',{n:calm})}</span>`:''}${sp?`<span>🏇 ${t('spir',{n:sp})}</span>`:''}${q.hv?`<span class="b">${t('heavyT')}</span>`:''}</div></div></div>`}).join('');
+}
+function openQ(k){const q=allQ()[k];const isNew=!!q.nw;
+ $('modB').innerHTML=`<button class="x" onclick="closeM()">✕</button><h2 class="t" style="font-size:21px;margin:4px 0 10px">${q.name}</h2>${chatBox('cq','Hacienda La Alegría · Web','🔔')}
+ ${q.st!=='conf'||isNew?`<button class="btn gr" id="cfB" style="width:100%;margin-top:12px" onclick="confirmQ(${isNew})">${S.confirmed.n&&isNew?t('confirmed'):t('confirmB')}</button>`:''}`;
+ $('mod').hidden=false;play('cq',msgH(q));
+}
+function confirmQ(isNew){if(isNew){S.confirmed.n=true}$('cfB').textContent=t('confirmed');$('cfB').disabled=true;renderAdmin()}
+function closeM(){$('mod').hidden=true;TOK++}
+function view(v){S.v=v;$('G').hidden=v!=='g';$('A').hidden=v!=='a';$('tG').className=v==='g'?'on':'';$('tA').className=v==='a'?'on':'';if(v==='a'){$('bdg').hidden=true;renderAdmin()}window.scrollTo({top:0,behavior:'smooth'})}
+function toggleLang(){lang=lang==='es'?'en':'es';renderAll()}
+renderAll();
+</script>
+</body>
+</html>
