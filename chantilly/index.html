@@ -277,8 +277,9 @@ const FL=[
 ];
 const SZ=[{id:'s',n:'Pequeña',p:'8 a 10 porciones',price:18,h:1},{id:'m',n:'Mediana',p:'15 a 20 porciones',price:28,h:1.3},{id:'l',n:'Grande',p:'25 a 30 porciones',price:40,h:1.6},{id:'xl',n:'Dos pisos',p:'40 a 50 porciones',price:65,h:2}];
 const DS=[{id:'casa',n:'Diseño de la casa',s:'Sin costo extra',add:0},{id:'msg',n:'Con mensaje',s:'+$3',add:3},{id:'per',n:'Personalizada',s:'Con tu foto de referencia · +$12',add:12}];
+const MA=['Vainilla','Chocolate','Naranja','Marmoleada'];
 const DEP=.5,TODAY=new Date(2026,10,10);
-const S={v:'c',step:1,fl:'mar',sz:'m',ds:'per',theme:'',msg:'',ref:null,refImg:null,date:null,slot:'16:00',mode:'pick',name:'',wa:'',pay:'tr',done:false,stage:0,tab:'g',mon:[2026,10],newO:null,adm:{}};
+const S={v:'c',step:1,fl:'mar',ma:'Vainilla',sz:'m',ds:'per',theme:'',msg:'',ref:null,refImg:null,date:null,slot:'16:00',mode:'pick',name:'',wa:'',pay:'tr',done:false,stage:0,tab:'g',mon:[2026,10],newO:null,adm:{}};
 const $=id=>document.getElementById(id);
 const money=n=>'$'+(Math.round(n*100)/100).toLocaleString('en-US',{minimumFractionDigits:n%1?2:0,maximumFractionDigits:2});
 const cap=s=>s.charAt(0).toUpperCase()+s.slice(1);
@@ -311,6 +312,7 @@ function renderBody(){
  let h='';
  if(S.step===1){
   h=`<h2 class="t">¿De qué sabor?</h2><p class="sub">Todas son tortas frías. La exótica de maracuyá es la favorita de Ibarra.</p><div class="flv">${FL.map(f=>`<button class="fv ${S.fl===f.id?'on':''}" onclick="S.fl='${f.id}';renderAll()"><span class="art">${cakeSVG(f,1)}</span>${f.star?'<span class="star">★ La estrella</span>':'<span class="ex">Ejemplo</span>'}<span class="bd"><b>${f.n}</b><small>${f.d}</small></span></button>`).join('')}</div>
+  <div class="lab">Masa <span class="exl">Ejemplo</span></div><div class="pills">${MA.map(m=>`<button class="pill ${S.ma===m?'on':''}" onclick="S.ma='${m}';renderAll()">${m}</button>`).join('')}</div>
   <div class="nav"><button class="btn" onclick="go(2)">Continuar →</button></div>`;
  }
  if(S.step===2){
@@ -361,7 +363,7 @@ function upl(inp){const f=inp.files&&inp.files[0];if(!f)return;const r=new FileR
 function quote(){const s=sz(S.sz),d=ds(S.ds);const L=[[`${fl(S.fl).n} · ${s.n.toLowerCase()}`,s.price]];if(d.add)L.push([d.n,d.add]);if(S.step>=3&&S.mode==='del'&&S.date)L.push(['Entrega en Ibarra',3]);const tot=L.reduce((a,x)=>a+x[1],0);return{L,tot,dep:Math.round(tot*DEP*100)/100}}
 function renderSum(){
  const f=fl(S.fl),s=sz(S.sz),d=ds(S.ds),q=quote();
- let h=`<h3>Tu torta</h3><div class="cake"><span class="im">${cakeSVG(f,s.h,S.ds,S.msg||S.theme)}</span><span><b>${f.n}</b><small>${s.n} · ${s.p}</small><small>${d.n}${S.theme?' · '+S.theme:''}</small></span></div>
+ let h=`<h3>Tu torta</h3><div class="cake"><span class="im">${cakeSVG(f,s.h,S.ds,S.msg||S.theme)}</span><span><b>${f.n}</b><small>Masa de ${S.ma.toLowerCase()}</small><small>${s.n} · ${s.p}</small><small>${d.n}${S.theme?' · '+S.theme:''}</small></span></div>
  ${S.ds==='per'&&(S.ref||S.refImg)?`<div class="ln"><span>Referencia</span><b>📷 Adjunta</b></div>`:''}
  <div class="ln"><span>Fecha</span><b>${S.date?fD(S.date)+' · '+S.slot:'Por elegir'}</b></div>
  <div class="hr"></div>${q.L.map(([a,b])=>`<div class="ln"><span>${a}</span><b>${money(b)}</b></div>`).join('')}
@@ -376,7 +378,7 @@ function fill(){Object.assign(S,{name:'Gabriela Montalvo',wa:'098 765 4321'});re
 function submit(){
  if(!S.name.trim()||!S.wa.trim()){$('err').textContent='Completa tu nombre y WhatsApp.';return}
  const b=$('goB');b.textContent='Enviando…';b.disabled=true;
- setTimeout(()=>{const q=quote();S.newO={id:'CH-'+(1043),name:S.name,wa:S.wa,fl:S.fl,sz:S.sz,ds:S.ds,theme:S.theme,msg:S.msg,ref:S.ref,refImg:S.refImg,date:S.date,slot:S.slot,mode:S.mode,tot:q.tot,dep:q.dep,stage:0};S.done=true;S.stage=0;S.tab='g';$('bdg').hidden=false;renderAll();$('arma').scrollIntoView({behavior:'smooth'})},900);
+ setTimeout(()=>{const q=quote();S.newO={id:'CH-'+(1043),ma:S.ma,name:S.name,wa:S.wa,fl:S.fl,sz:S.sz,ds:S.ds,theme:S.theme,msg:S.msg,ref:S.ref,refImg:S.refImg,date:S.date,slot:S.slot,mode:S.mode,tot:q.tot,dep:q.dep,stage:0};S.done=true;S.stage=0;S.tab='g';$('bdg').hidden=false;renderAll();$('arma').scrollIntoView({behavior:'smooth'})},900);
 }
 /* ===== Estados y WhatsApp ===== */
 const ST=[{ic:'✅',n:'Confirmada'},{ic:'🎨',n:'Diseño aprobado'},{ic:'👩‍🍳',n:'En preparación'},{ic:'🎂',n:'Lista'}];
@@ -385,12 +387,12 @@ const fmtW=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/\*(.+?)\*/g,
 const now=()=>new Date().toLocaleTimeString('es-EC',{hour:'2-digit',minute:'2-digit'});
 const LOC=`<span class="loc"><svg viewBox="0 0 300 70" preserveAspectRatio="xMidYMid slice"><rect width="300" height="70" fill="#f3e8ea"/><path d="M0 44 H300 M110 0 V70 M210 0 V70" stroke="#fff" stroke-width="8"/><path d="M150 12 a10 10 0 0 1 10 10 c0 8 -10 18 -10 18 s-10 -10 -10 -18 a10 10 0 0 1 10 -10z" fill="#d9547a"/><circle cx="150" cy="22" r="4" fill="#fff"/></svg><span>📍 <b>Pastelería Chantilly</b> · Sánchez y Cifuentes y José Miguel Leoro</span></span>`;
 function stageMsgs(O,k){const f=O.name.split(' ')[0];const F=fl(O.fl),Z=sz(O.sz);
- if(k===0)return [{sep:'Hoy'},{biz:1,img:O.ds==='per'?'ref':null,txt:`¡Hola ${f}! 🎂 Recibimos tu pedido *${O.id}* en *Pastelería Chantilly*.\n\n🍰 ${F.n} · ${Z.n.toLowerCase()} (${Z.p})\n🎨 ${ds(O.ds).n}${O.theme?': '+O.theme:''}${O.msg?'\n✍️ Mensaje: “'+O.msg+'”':''}\n📅 ${fL(O.date)} · ${O.slot}\n${O.mode==='del'?'🛵 Entrega a domicilio':'🏪 Retiro en el local'}\n💳 Anticipo recibido: *${money(O.dep)}* ✅\n💵 Saldo: ${money(O.tot-O.dep)}\n\nTe iremos avisando por aquí en cada paso.`},{usr:1,txt:'¡Gracias! 🥰'}];
+ if(k===0)return [{sep:'Hoy'},{biz:1,img:O.ds==='per'?'ref':null,txt:`¡Hola ${f}! 🎂 Recibimos tu pedido *${O.id}* en *Pastelería Chantilly*.\n\n🍰 ${F.n} · ${Z.n.toLowerCase()} (${Z.p})\n🥚 Masa: ${O.ma||'vainilla'}\n🎨 ${ds(O.ds).n}${O.theme?': '+O.theme:''}${O.msg?'\n✍️ Mensaje: “'+O.msg+'”':''}\n📅 ${fL(O.date)} · ${O.slot}\n${O.mode==='del'?'🛵 Entrega a domicilio':'🏪 Retiro en el local'}\n💳 Anticipo recibido: *${money(O.dep)}* ✅\n💵 Saldo: ${money(O.tot-O.dep)}\n\nTe iremos avisando por aquí en cada paso.`},{usr:1,txt:'¡Gracias! 🥰'}];
  if(k===1)return [{sep:'Al día siguiente'},{biz:1,img:'sketch',txt:`🎨 ${f}, así quedará tu torta. ¿Te gusta el diseño?\n\nResponde *SÍ* para aprobarlo, o cuéntanos qué cambiar.`},{usr:1,txt:'¡SÍ! Me encanta 😍'},{biz:1,txt:'✅ ¡Diseño aprobado! Tu torta queda en nuestra agenda.'}];
  if(k===2)return [{sep:'Un día antes'},{biz:1,txt:`👩‍🍳 ${f}, ya estamos preparando tu torta de *${F.n.toLowerCase()}*. Mañana a las *${O.slot}* estará lista.`}];
  return [{sep:'El día de entrega'},{biz:1,img:'final',txt:`🎂 ¡Tu torta está lista, ${f}! ${O.mode==='del'?'Ya va en camino 🛵':'Puedes retirarla cuando quieras.'}\n\n💵 Saldo por pagar: *${money(O.tot-O.dep)}*`,loc:O.mode!=='del'},{usr:1,txt:'¡Voy para allá! 🙌'}];
 }
-function hostMsgs(O){const F=fl(O.fl),Z=sz(O.sz);return [{sep:'Hoy'},{biz:1,img:O.ds==='per'?'ref':null,act:1,txt:`🔔 *Nuevo pedido ${O.id}*\n\n👤 ${O.name} · ${O.wa}\n🍰 ${F.n} · ${Z.n.toLowerCase()}\n🎨 ${ds(O.ds).n}${O.theme?': '+O.theme:''}${O.msg?'\n✍️ “'+O.msg+'”':''}\n📅 ${fD(O.date)} · ${O.slot} · ${O.mode==='del'?'entrega':'retiro'}\n💳 Anticipo: *${money(O.dep)}* ✅`}]}
+function hostMsgs(O){const F=fl(O.fl),Z=sz(O.sz);return [{sep:'Hoy'},{biz:1,img:O.ds==='per'?'ref':null,act:1,txt:`🔔 *Nuevo pedido ${O.id}*\n\n👤 ${O.name} · ${O.wa}\n🍰 ${F.n} · ${Z.n.toLowerCase()} · masa ${(O.ma||'vainilla').toLowerCase()}\n🎨 ${ds(O.ds).n}${O.theme?': '+O.theme:''}${O.msg?'\n✍️ “'+O.msg+'”':''}\n📅 ${fD(O.date)} · ${O.slot} · ${O.mode==='del'?'entrega':'retiro'}\n💳 Anticipo: *${money(O.dep)}* ✅`}]}
 function imgFor(O,kind){if(kind==='ref')return O.refImg?`<img src="${O.refImg}">`:(REFS.find(r=>r.id===O.ref)||REFS[0]).svg;return cakeSVG(fl(O.fl),sz(O.sz).h,O.ds,O.msg||O.theme)}
 function phone(id,title){return `<div class="phone"><div class="wah"><span class="av"><svg viewBox="0 0 38 38" width="28" height="28"><rect x="9" y="20" width="20" height="10" rx="2" fill="#d9547a"/><rect x="12" y="13" width="14" height="8" rx="2" fill="#ef7d9c"/><circle cx="19" cy="10" r="2.6" fill="#f6b821"/></svg></span><span><b>${title}</b><small>Cuenta de empresa · en línea</small></span></div><div class="chat" id="${id}"></div><div class="wafoot">Avisos automáticos ✓✓</div></div>`}
 async function play(id,list,O,append){const tok=++TOK;const box=$(id);if(!box)return;if(!append)box.innerHTML='';
