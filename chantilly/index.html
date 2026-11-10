@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Pastelería Chantilly · Encarga tu torta (demo)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#3a2330;--muted:#86707a;--line:#f0e1e6;--bg:#fff8f5;--card:#fff;--rose:#d9547a;--rose2:#ef7d9c;--passion:#f6b821;--passion2:#ffd45c;--cream:#fff1e6;--mint:#2f9e83;--ok:#2e8b57;--danger:#c0392b;--r:22px;--sh:0 16px 36px -20px rgba(160,60,90,.35)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.45;padding-bottom:30px;overflow-x:hidden}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+input,textarea{font:inherit;color:inherit}
+[hidden]{display:none!important}
+.demobar{background:#3a2330;color:#f7dfe7;font-size:11.5px;padding:7px 14px;text-align:center;display:flex;gap:8px;justify-content:center;align-items:center;line-height:1.35}
+.demobar .dot{width:7px;height:7px;border-radius:50%;background:var(--passion);flex:none;animation:pulse 1.8s infinite}
+@keyframes pulse{50%{opacity:.35}}
+header.top{position:sticky;top:0;z-index:30;background:rgba(255,248,245,.9);backdrop-filter:saturate(1.5) blur(14px);-webkit-backdrop-filter:saturate(1.5) blur(14px);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px;padding:10px 14px}
+.brand{display:flex;align-items:center;gap:10px;margin-right:auto;min-width:0}
+.brand svg{width:38px;height:38px;flex:none}
+.brand b{display:block;font-family:"DM Serif Display",serif;font-weight:400;font-size:22px;line-height:1}
+.brand small{display:block;font-size:11px;color:var(--muted)}
+.seg{display:flex;background:#f6e6eb;border-radius:999px;padding:3px}
+.seg button{position:relative;padding:8px 14px;border-radius:999px;font-size:13px;font-weight:700;color:var(--muted);white-space:nowrap}
+.seg button.on{background:#fff;color:var(--ink);box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.badge{position:absolute;top:-5px;right:-4px;background:var(--rose);color:#fff;font-style:normal;font-size:10.5px;font-weight:700;min-width:18px;height:18px;border-radius:9px;display:grid;place-items:center;padding:0 5px;animation:pop .4s}
+@keyframes pop{from{transform:scale(0)}}
+@media(max-width:400px){.brand small{display:none}}
+.wrap{max-width:1100px;margin:0 auto;padding:0 14px}
+/* hero */
+.hero{position:relative;margin:14px auto 0;max-width:1100px;border-radius:30px;overflow:hidden;background:linear-gradient(140deg,#fde3ea,#fff1e6 55%,#fff6d6);box-shadow:var(--sh);display:grid;grid-template-columns:minmax(0,1fr);min-height:420px}
+@media(max-width:1128px){.hero{margin:14px 14px 0}}
+@media(min-width:820px){.hero{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)}}
+.hero .in{padding:30px 22px 26px;display:flex;flex-direction:column;justify-content:center}
+.eyebrow{display:inline-flex;align-self:flex-start;gap:6px;align-items:center;font-size:12px;font-weight:800;background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 11px;color:var(--rose)}
+.hero h1{font-family:"DM Serif Display",serif;font-weight:400;font-size:clamp(40px,8vw,64px);line-height:1;margin:14px 0 10px}
+.hero h1 em{color:var(--rose)}
+.hero p{max-width:520px;font-size:15px;color:#5e4450}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 18px}
+.chip{font-size:12.5px;font-weight:600;background:#fff;border:1px solid var(--line);padding:6px 11px;border-radius:999px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,var(--rose),var(--rose2));color:#fff;font-weight:800;padding:14px 22px;border-radius:16px;font-size:15px;transition:.2s;text-decoration:none;box-shadow:0 10px 22px -8px rgba(217,84,122,.7)}
+.btn:hover{transform:translateY(-2px)}
+.btn.ps{background:linear-gradient(135deg,var(--passion),var(--passion2));color:#4a3000;box-shadow:0 10px 22px -10px rgba(246,184,33,.8)}
+.btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--line);box-shadow:none}
+.btn.mn{background:linear-gradient(135deg,#25d366,#1ebe5b);box-shadow:0 10px 22px -10px rgba(37,211,102,.8)}
+.btn[disabled]{opacity:.45;pointer-events:none}
+.rating{font-size:13px;color:#5e4450}.rating b{color:var(--ink)}
+.hart{position:relative;min-height:300px}
+.hart svg{position:absolute;inset:0;width:100%;height:100%}
+.phl{position:absolute;right:12px;bottom:12px;font-size:10px;font-weight:800;padding:4px 9px;border-radius:999px;background:rgba(255,255,255,.92);color:var(--muted);text-transform:uppercase}
+.float{animation:fl 4s ease-in-out infinite}@keyframes fl{50%{transform:translateY(-8px)}}
+.spark{animation:sp 2s ease-in-out infinite}@keyframes sp{50%{opacity:.2}}
+/* steps */
+.sh{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:28px 0 12px;flex-wrap:wrap}
+.sh h2{font-family:"DM Serif Display",serif;font-weight:400;font-size:clamp(30px,5vw,40px);line-height:1}
+.sh p{color:var(--muted);font-size:13.5px;max-width:520px}
+.grid{display:grid;gap:16px;grid-template-columns:minmax(0,1fr)}
+.grid>*,.two>*{min-width:0}
+@media(min-width:920px){.grid{grid-template-columns:minmax(0,1fr) 340px;align-items:start}.sticky{position:sticky;top:76px}}
+.card{background:var(--card);border-radius:var(--r);box-shadow:var(--sh);border:1px solid var(--line);padding:20px}
+.stepper{display:flex;gap:5px;margin-bottom:18px}
+.stp{flex:1;display:flex;flex-direction:column;gap:6px;font-size:11px;font-weight:700;color:var(--muted)}
+.stp .bar{height:5px;border-radius:5px;background:#f6e6eb;overflow:hidden}
+.stp .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--rose),var(--passion));transition:.4s}
+.stp.on{color:var(--ink)}.stp.on .bar i,.stp.done .bar i{width:100%}.stp.done{color:var(--rose)}
+h2.t{font-family:"DM Serif Display",serif;font-weight:400;font-size:29px;line-height:1.05;margin-bottom:4px}
+p.sub{color:var(--muted);font-size:13.5px;margin-bottom:14px}
+.lab{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.4px;color:var(--muted);margin:16px 0 8px}
+.flv{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media(min-width:620px){.flv{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.fv{border:2px solid var(--line);border-radius:18px;overflow:hidden;background:#fff;text-align:left;transition:.15s;position:relative}
+.fv.on{border-color:var(--rose);box-shadow:0 0 0 3px #fbdbe4}
+.fv .art{height:96px}.fv .art svg{width:100%;height:100%;display:block}
+.fv .bd{padding:9px 11px 11px}.fv b{display:block;font-size:14px;line-height:1.2}.fv small{display:block;color:var(--muted);font-size:11.5px;margin-top:2px}
+.fv .star{position:absolute;top:8px;left:8px;font-size:10px;font-weight:800;background:var(--passion);color:#4a3000;padding:3px 8px;border-radius:999px;text-transform:uppercase}
+.fv .ex{position:absolute;top:8px;right:8px;font-size:9.5px;font-weight:800;background:rgba(255,255,255,.92);color:var(--muted);padding:3px 7px;border-radius:999px;text-transform:uppercase}
+.sizes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+@media(min-width:620px){.sizes{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.sz{border:2px solid var(--line);border-radius:16px;padding:12px 10px;background:#fff;text-align:center}
+.sz.on{border-color:var(--rose);background:#fff3f6}
+.sz svg{height:46px;display:block;margin:0 auto 6px}
+.sz b{display:block;font-size:14px}.sz small{display:block;color:var(--muted);font-size:12px}
+.sz .p{font-weight:800;color:var(--rose);font-size:14px;margin-top:3px}
+.pills{display:flex;flex-wrap:wrap;gap:7px}
+.pill{border:2px solid var(--line);background:#fff;border-radius:14px;padding:9px 13px;font-size:13.5px;font-weight:700;text-align:left}
+.pill small{display:block;font-size:11.5px;color:var(--muted);font-weight:600}
+.pill.on{border-color:var(--rose);background:#fff3f6;color:var(--rose)}.pill.on small{color:var(--rose)}
+.dz{border:2px dashed #e7c7d1;border-radius:18px;padding:16px;text-align:center;background:#fffafb;cursor:pointer;display:block}
+.dz b{display:block;font-size:14px}.dz small{color:var(--muted);font-size:12px}
+.dz input{display:none}
+.refs{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.refs button{width:76px;height:76px;border-radius:14px;overflow:hidden;border:2px solid var(--line);padding:0;background:#fff}
+.refs button.on{border-color:var(--rose)}
+.refs svg,.refs img{width:100%;height:100%;display:block;object-fit:cover}
+.prev{display:flex;gap:12px;align-items:center;margin-top:10px;background:#fff3f6;border-radius:14px;padding:10px}
+.prev .im{width:70px;height:70px;border-radius:12px;overflow:hidden;flex:none;background:#fff}
+.prev .im img,.prev .im svg{width:100%;height:100%;object-fit:cover;display:block}
+.prev b{font-size:13.5px;display:block}.prev small{color:var(--muted);font-size:12px}
+.fld{display:flex;flex-direction:column;gap:5px;margin-bottom:11px}
+.fld label{font-size:12px;font-weight:700;color:var(--muted)}
+.fld input,.fld textarea{border:1.5px solid var(--line);border-radius:12px;padding:12px;background:#fff;width:100%}
+.fld textarea{resize:vertical;min-height:64px}
+.fld input:focus,.fld textarea:focus{outline:none;border-color:var(--rose)}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+@media(max-width:480px){.two{grid-template-columns:minmax(0,1fr)}}
+.cal .head{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.cal .head b{font-size:15px}
+.cal .head button{width:34px;height:34px;border-radius:10px;border:1px solid var(--line);background:#fff;font-weight:800}
+.cal .head button[disabled]{opacity:.3}
+.dow,.days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
+.dow span{font-size:11px;text-align:center;color:var(--muted);font-weight:700;padding:4px 0}
+.day{aspect-ratio:1;border-radius:11px;font-size:13.5px;font-weight:700;background:#fdf0f3;color:var(--rose);display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1}
+.day i{font-style:normal;font-size:8.5px;font-weight:800;margin-top:2px;color:#c08a00}
+.day.x{color:#cdbcc2;text-decoration:line-through;background:#f8f1f3;pointer-events:none}
+.day.e{background:none;pointer-events:none}
+.day.on{background:linear-gradient(135deg,var(--rose),var(--rose2));color:#fff}.day.on i{color:#fff}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:11.5px;color:var(--muted);margin-top:10px}
+.legend i{display:inline-block;width:11px;height:11px;border-radius:4px;vertical-align:-1px;margin-right:4px}
+.tip{display:flex;gap:9px;align-items:flex-start;background:#fff6dd;border-radius:14px;padding:10px 12px;font-size:12.8px;color:#7a5600;margin-top:12px}
+.nav{display:flex;gap:10px;margin-top:18px}.nav .btn{flex:1}.nav .btn.ghost{flex:0 0 auto}
+.err{color:var(--danger);font-size:12.5px;font-weight:600;min-height:16px;margin-top:4px}
+.lnk{font-size:12.5px;font-weight:700;color:var(--rose);text-decoration:underline;margin-bottom:10px}
+.bank{background:#fff3f6;border-radius:14px;padding:12px;font-size:13px;margin:6px 0}
+.bank b{display:block;font-size:13.5px}
+.mock{border-radius:16px;padding:14px;color:#fff;background:linear-gradient(135deg,#3a2330,var(--rose));margin:6px 0}
+.mock small{opacity:.8;font-size:11px;letter-spacing:1px;text-transform:uppercase}.mock b{display:block;font-size:16px;letter-spacing:1.5px;margin-top:6px}
+/* summary */
+.sum h3{font-family:"DM Serif Display",serif;font-weight:400;font-size:26px;margin-bottom:8px}
+.cake{display:flex;gap:12px;align-items:center;background:var(--cream);border-radius:16px;padding:10px;margin-bottom:8px}
+.cake .im{width:64px;height:64px;border-radius:12px;overflow:hidden;flex:none;background:#fff}
+.cake .im svg,.cake .im img{width:100%;height:100%;display:block;object-fit:cover}
+.cake b{display:block;font-size:14px}.cake small{color:var(--muted);font-size:12px;display:block}
+.ln{display:flex;justify-content:space-between;gap:10px;font-size:13.5px;padding:5px 0;color:var(--muted)}.ln b{color:var(--ink);text-align:right}
+.hr{border-top:1px dashed var(--line);margin:8px 0}
+.ln.big{font-size:16px;color:var(--ink);font-weight:800}
+.dep{background:#fff3f6;border-radius:14px;padding:11px 12px;margin-top:8px}.dep .ln{color:var(--rose);font-weight:800}.dep .ln.s{color:var(--muted);font-weight:600}
+.note{font-size:12px;color:var(--muted);margin-top:10px}
+.exl{display:inline-block;font-size:10px;font-weight:800;padding:2px 7px;border-radius:6px;background:#fff1d6;color:#9a6a00;text-transform:uppercase;margin-left:4px;vertical-align:1px}
+/* done */
+.center{text-align:center}
+.track{display:flex;gap:0;margin:14px 0 6px}
+.tk{flex:1;text-align:center;font-size:11px;font-weight:700;color:var(--muted);position:relative}
+.tk i{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;margin:0 auto 5px;background:#f6e6eb;font-style:normal;font-size:16px;position:relative;z-index:1;transition:.3s}
+.tk:before{content:"";position:absolute;top:17px;left:-50%;width:100%;height:3px;background:#f6e6eb}
+.tk:first-child:before{display:none}
+.tk.on i{background:linear-gradient(135deg,var(--rose),var(--rose2));color:#fff;box-shadow:0 0 0 4px #fbdbe4}
+.tk.on{color:var(--ink)}.tk.on:before,.tk.done:before{background:var(--rose)}
+.tk.done i{background:var(--rose);color:#fff}
+.sim{display:flex;gap:8px;align-items:center;justify-content:center;flex-wrap:wrap;margin:8px 0 12px;font-size:12.5px;color:var(--muted)}
+.phone{background:#e6ddcf;border-radius:22px;overflow:hidden;border:1px solid var(--line);max-width:430px;margin:0 auto;box-shadow:var(--sh)}
+.wah{background:#075e54;color:#fff;display:flex;gap:10px;align-items:center;padding:10px 14px}
+.wah .av{width:38px;height:38px;border-radius:50%;background:#fff;display:grid;place-items:center;flex:none}
+.wah b{font-size:14.5px;display:block}.wah small{opacity:.8;font-size:11.5px}
+.chat{padding:12px;min-height:280px;display:flex;flex-direction:column;gap:7px;background-image:radial-gradient(rgba(0,0,0,.035) 1px,transparent 1px);background-size:14px 14px}
+.dsep{align-self:center;background:rgba(255,255,255,.88);color:#667;font-size:11px;font-weight:700;padding:4px 10px;border-radius:8px;margin:4px 0;text-transform:uppercase}
+.msg{max-width:88%;padding:8px 11px 6px;border-radius:14px;font-size:13.4px;line-height:1.42;box-shadow:0 1px 1px rgba(0,0,0,.1);animation:in .35s;white-space:pre-wrap;word-wrap:break-word}
+.msg.biz{background:#fff;border-top-left-radius:4px;align-self:flex-start}
+.msg.usr{background:#d9fdd3;border-top-right-radius:4px;align-self:flex-end}
+.msg .tm{display:block;text-align:right;font-size:10.5px;color:#7a8a8f;margin-top:2px}
+.msg .ph{display:block;margin:2px 0 6px;border-radius:10px;overflow:hidden;width:170px;max-width:100%;height:170px;background:#fff}
+.msg .ph img,.msg .ph svg{width:100%;height:100%;object-fit:cover;display:block}
+.msg .act{display:flex;gap:6px;margin-top:7px;flex-wrap:wrap;white-space:normal}
+.msg .act span{font-size:12px;font-weight:700;color:#0a7cff;background:#f2f7ff;border-radius:8px;padding:5px 9px}
+.msg .loc{display:block;margin-top:6px;border-radius:10px;overflow:hidden;background:#f3e8ea;white-space:normal}
+.msg .loc svg{display:block;width:100%;height:70px}
+.msg .loc span{display:block;padding:6px 9px;font-size:12px;background:#fff}
+.typing{align-self:flex-start;background:#fff;border-radius:14px;padding:10px 13px;display:flex;gap:4px}
+.typing i{width:6px;height:6px;border-radius:50%;background:#9aa;animation:bl 1s infinite}.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes bl{50%{transform:translateY(-4px);opacity:.5}}@keyframes in{from{opacity:0;transform:translateY(8px) scale(.97)}}
+.wafoot{background:#f0f0f0;padding:9px 12px;color:#8a979c;font-size:12.5px}
+.tabs{display:flex;gap:6px;margin:12px 0;flex-wrap:wrap;justify-content:center}
+.tabs button{padding:9px 13px;border-radius:999px;background:#f6e6eb;font-size:12.5px;font-weight:700;color:var(--muted)}
+.tabs button.on{background:var(--rose);color:#fff}
+/* admin */
+.kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:14px 0}
+@media(min-width:760px){.kpis{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;box-shadow:var(--sh)}
+.kpi small{color:var(--muted);font-size:12px;font-weight:600}.kpi b{display:block;font-size:25px;font-weight:800;margin-top:3px}.kpi em{font-style:normal;font-size:11.5px;color:var(--ok);font-weight:700}
+.kpi.hl{background:linear-gradient(135deg,var(--rose),var(--rose2));color:#fff;border:0}.kpi.hl small{color:#ffe1ea}
+.kan{display:grid;gap:12px;grid-template-columns:minmax(0,1fr)}
+@media(min-width:900px){.kan{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.col{background:#fff;border:1px solid var(--line);border-radius:20px;padding:12px;box-shadow:var(--sh);min-width:0}
+.col h4{font-size:13px;font-weight:800;display:flex;align-items:center;gap:6px;margin-bottom:8px}
+.col h4 span{margin-left:auto;background:#f6e6eb;color:var(--rose);border-radius:999px;padding:1px 8px;font-size:12px}
+.oc{border:1px solid var(--line);border-radius:14px;padding:10px;margin-bottom:8px;background:#fffafb;display:flex;gap:10px;align-items:flex-start}
+.oc.nw{background:#fff3f6;border-color:#f3a8bd;box-shadow:0 0 0 3px #fbdbe4}
+.oc .im{width:50px;height:50px;border-radius:10px;overflow:hidden;flex:none;background:#fff}
+.oc .im svg,.oc .im img{width:100%;height:100%;object-fit:cover;display:block}
+.oc .m{flex:1;min-width:0}.oc b{font-size:13.5px;display:block}.oc small{display:block;color:var(--muted);font-size:11.5px}
+.oc .due{font-size:11px;font-weight:800;color:var(--rose)}
+.oc .adv{margin-top:7px;font-size:12px;font-weight:800;color:#fff;background:var(--mint);border-radius:9px;padding:6px 9px;display:inline-flex;gap:5px}
+.tag{font-size:9.5px;font-weight:800;padding:2px 6px;border-radius:6px;text-transform:uppercase;margin-left:5px;vertical-align:1px}
+.tag.ex{background:#f2e7ea;color:#8a6f78}.tag.nw{background:var(--rose);color:#fff}
+.prod{display:grid;gap:8px}
+.pr{display:flex;align-items:center;gap:10px;font-size:13px;border-bottom:1px dashed var(--line);padding-bottom:7px}
+.pr b{margin-left:auto;font-size:15px}
+.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:#1f2c34;color:#fff;border-radius:14px;padding:11px 14px;font-size:13px;z-index:80;box-shadow:0 16px 30px -10px rgba(0,0,0,.5);max-width:92vw;animation:in .3s}
+.foot{text-align:center;font-size:12px;color:var(--muted);padding:22px 14px 8px;max-width:760px;margin:0 auto}
+</style>
+</head>
+<body>
+<div class="demobar"><span class="dot"></span><span>Demo de DevHorse para Pastelería Chantilly · Dirección, WhatsApp y su torta estrella según su registro · Sabores extra, tamaños, precios y fechas de ejemplo · Ilustraciones en lugar de fotos · Pagos y mensajes simulados</span></div>
+<header class="top">
+  <div class="brand">
+    <svg viewBox="0 0 38 38" aria-hidden="true"><rect width="38" height="38" rx="12" fill="#d9547a"/><rect x="9" y="20" width="20" height="10" rx="2" fill="#fff1e6"/><rect x="12" y="13" width="14" height="8" rx="2" fill="#fff"/><path d="M9 22 q2.5 3 5 0 t5 0 t5 0 t5 0" stroke="#f6b821" stroke-width="2" fill="none"/><circle cx="19" cy="10" r="2.6" fill="#f6b821"/></svg>
+    <div><b>Chantilly</b><small>Pastelería · Ibarra</small></div>
+  </div>
+  <div class="seg"><button id="tC" class="on" onclick="view('c')">Cliente</button><button id="tA" onclick="view('a')">Pastelería<i class="badge" id="bdg" hidden>1</i></button></div>
+</header>
+
+<div id="vC">
+  <section class="hero">
+    <div class="in">
+      <span class="eyebrow">⭐ 4,6 en Google · abiertos todos los días</span>
+      <h1>Tu torta, <em>tal como la soñaste</em></h1>
+      <p>Encarga tu torta fría o personalizada en un minuto: elige sabor, tamaño y diseño, envía tu foto de referencia y deja tu anticipo. Te avisamos por WhatsApp en cada paso, hasta que la retires.</p>
+      <div class="chips"><span class="chip">🥭 Exótica de maracuyá</span><span class="chip">🎂 Personalizadas</span><span class="chip">📲 Avisos por WhatsApp</span></div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center"><a class="btn" href="#arma">🎂 Encargar mi torta</a><span class="rating">📍 Sánchez y Cifuentes y José Miguel Leoro</span></div>
+    </div>
+    <div class="hart">
+      <svg viewBox="0 0 520 440" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+        <circle cx="270" cy="230" r="175" fill="#fff" opacity=".6"/>
+        <g fill="#f6b821" class="spark"><path d="M110 110 l6 14 l14 6 l-14 6 l-6 14 l-6 -14 l-14 -6 l14 -6z"/><path d="M430 140 l4 10 l10 4 l-10 4 l-4 10 l-4 -10 l-10 -4 l10 -4z"/></g>
+        <g class="float">
+          <ellipse cx="270" cy="392" rx="170" ry="18" fill="#e9c9d2"/>
+          <rect x="120" y="370" width="300" height="16" rx="8" fill="#e7bfa9"/>
+          <rect x="150" y="150" width="240" height="222" rx="14" fill="#fff6e8"/>
+          <rect x="150" y="215" width="240" height="30" fill="#ffd45c"/>
+          <rect x="150" y="290" width="240" height="30" fill="#ffd45c"/>
+          <rect x="150" y="245" width="240" height="45" fill="#fff1d6"/>
+          <rect x="150" y="320" width="240" height="52" rx="0" fill="#fff1d6"/>
+          <path d="M150 165 Q150 140 175 140 H365 Q390 140 390 165 V178 Q376 196 362 178 Q348 196 334 178 Q320 196 306 178 Q292 196 278 178 Q264 196 250 178 Q236 196 222 178 Q208 196 194 178 Q180 196 166 178 Q158 190 150 178Z" fill="#f6b821"/>
+          <ellipse cx="270" cy="142" rx="120" ry="14" fill="#f8c33b"/>
+          <g fill="#3a2330"><circle cx="220" cy="140" r="3"/><circle cx="250" cy="146" r="3"/><circle cx="290" cy="138" r="3"/><circle cx="320" cy="145" r="3"/><circle cx="240" cy="134" r="2.5"/><circle cx="305" cy="132" r="2.5"/></g>
+          <g fill="#fff"><circle cx="180" cy="128" r="14"/><circle cx="225" cy="122" r="14"/><circle cx="270" cy="120" r="14"/><circle cx="315" cy="122" r="14"/><circle cx="360" cy="128" r="14"/></g>
+          <path d="M240 112 q30 -40 60 0" fill="#f2a71a"/><path d="M262 92 q8 -14 16 0 q-8 10 -16 0z" fill="#5aa05a"/>
+        </g>
+      </svg>
+      <span class="phl">Ilustración: aquí va su foto</span>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="sh" id="arma"><h2>Arma tu torta</h2><p>Cuatro pasos y listo. Al final te llega todo por WhatsApp.</p></div>
+    <div class="grid">
+      <section class="card"><div class="stepper" id="stepper"></div><div id="body"></div></section>
+      <aside class="card sum sticky" id="sum"></aside>
+    </div>
+  </div>
+</div>
+
+<div id="vA" hidden>
+  <div class="wrap" style="padding-top:18px">
+    <h2 class="t">Pedidos de Chantilly</h2><p class="sub">Lo que ve la pastelería. Mueve un pedido al siguiente estado y el cliente recibe el aviso por WhatsApp. Lo marcado “Ejemplo” es inventado; lo “Nuevo” es tu pedido.</p>
+    <div class="kpis" id="kpis"></div>
+    <div class="kan" id="kan"></div>
+    <section class="card" style="margin-top:16px"><h3 style="font-family:'DM Serif Display',serif;font-weight:400;font-size:24px">Producción de mañana</h3><p class="sub" style="margin-bottom:8px">Lo que hay que hornear y decorar, sumado de todos los pedidos.</p><div class="prod" id="prod"></div></section>
+  </div>
+</div>
+
+<p class="foot">Demo creada por DevHorse como propuesta para Pastelería Chantilly. Dirección, WhatsApp, su torta estrella (exótica de maracuyá), horario y calificación tomados de su registro y de Google. Los demás sabores, tamaños, precios, fechas, pedidos y clientes son de ejemplo. Ilustraciones en lugar de fotos.</p>
+<div id="toast"></div>
+
+<script>
+/* ===== Exótica de maracuyá = real. Demás sabores, tamaños y PRECIOS DE EJEMPLO ===== */
+const FL=[
+ {id:'mar',n:'Exótica de maracuyá',d:'La más alta de la casa',c:['#f6b821','#fff1d6','#ffd45c'],star:true},
+ {id:'cho',n:'Chocolate',d:'Bizcocho húmedo y ganache',c:['#6b3b2a','#a8674a','#4a2418']},
+ {id:'mor',n:'Mora',d:'Crema y mora de la zona',c:['#7b2d5a','#f3d6e3','#a8457a']},
+ {id:'fru',n:'Frutilla',d:'Chantilly y frutillas frescas',c:['#e5486b','#fff0f2','#f78ca1']},
+ {id:'tre',n:'Tres leches',d:'Clásica y suave',c:['#e8c48a','#fff6e8','#d9a85f']},
+ {id:'moc',n:'Mocca',d:'Café y chocolate',c:['#8a5a3c','#e9d3bf','#6b3f27']}
+];
+const SZ=[{id:'s',n:'Pequeña',p:'8 a 10 porciones',price:18,h:1},{id:'m',n:'Mediana',p:'15 a 20 porciones',price:28,h:1.3},{id:'l',n:'Grande',p:'25 a 30 porciones',price:40,h:1.6},{id:'xl',n:'Dos pisos',p:'40 a 50 porciones',price:65,h:2}];
+const DS=[{id:'casa',n:'Diseño de la casa',s:'Sin costo extra',add:0},{id:'msg',n:'Con mensaje',s:'+$3',add:3},{id:'per',n:'Personalizada',s:'Con tu foto de referencia · +$12',add:12}];
+const DEP=.5,TODAY=new Date(2026,10,10);
+const S={v:'c',step:1,fl:'mar',sz:'m',ds:'per',theme:'',msg:'',ref:null,refImg:null,date:null,slot:'16:00',mode:'pick',name:'',wa:'',pay:'tr',done:false,stage:0,tab:'g',mon:[2026,10],newO:null,adm:{}};
+const $=id=>document.getElementById(id);
+const money=n=>'$'+(Math.round(n*100)/100).toLocaleString('en-US',{minimumFractionDigits:n%1?2:0,maximumFractionDigits:2});
+const cap=s=>s.charAt(0).toUpperCase()+s.slice(1);
+const fD=d=>cap(d.toLocaleDateString('es-EC',{weekday:'short',day:'numeric',month:'short'})).replace('.','');
+const fL=d=>cap(d.toLocaleDateString('es-EC',{weekday:'long',day:'numeric',month:'long'}));
+const fl=id=>FL.find(x=>x.id===id),sz=id=>SZ.find(x=>x.id===id),ds=id=>DS.find(x=>x.id===id);
+
+function cakeSVG(f,h=1,deco='casa',theme=''){
+ const c=f.c;const top=118-44*h;const H=170-top;
+ const t2=h>=2;
+ return `<svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice"><rect width="200" height="200" fill="#fff4f6"/><ellipse cx="100" cy="182" rx="80" ry="8" fill="#ead2d9"/><rect x="25" y="172" width="150" height="8" rx="4" fill="#e7bfa9"/>
+ ${t2?`<rect x="40" y="120" width="120" height="54" rx="6" fill="${c[1]}"/><rect x="40" y="140" width="120" height="8" fill="${c[0]}"/><rect x="62" y="70" width="76" height="52" rx="6" fill="${c[1]}"/><rect x="62" y="90" width="76" height="7" fill="${c[0]}"/><path d="M62 78 q6 8 12 0 t12 0 t12 0 t12 0 t12 0 t14 0 V70 H62Z" fill="${c[2]}"/>`:
+ `<rect x="40" y="${top}" width="120" height="${174-top}" rx="8" fill="${c[1]}"/>${[0.35,0.65].map(k=>`<rect x="40" y="${top+(174-top)*k}" width="120" height="8" fill="${c[0]}"/>`).join('')}<path d="M40 ${top+10} q7 10 14 0 t14 0 t14 0 t14 0 t14 0 t14 0 t14 0 t14 0 V${top} H40Z" fill="${c[2]}"/>`}
+ ${f.id==='mar'?`<g fill="#3a2330">${[70,90,110,130].map((x,i)=>`<circle cx="${x}" cy="${(t2?70:top)-2+i%2*3}" r="2"/>`).join('')}</g>`:''}
+ ${deco!=='casa'?`<g fill="#fff">${[55,78,100,122,145].map(x=>`<circle cx="${x}" cy="${(t2?66:top)-4}" r="6"/>`).join('')}</g>`:''}
+ ${deco==='per'?`<g transform="translate(100 ${(t2?54:top)-20})"><path d="M-14 0 h28 l-4 -20 h-20z" fill="#d9547a"/><circle cy="-26" r="7" fill="#f6b821"/><path d="M0 -36 v-6" stroke="#f6b821" stroke-width="2"/></g>`:''}
+ ${deco!=='casa'?`<text x="100" y="${t2?160:Math.min(160,top+50)}" text-anchor="middle" font-family="DM Serif Display,serif" font-size="13" fill="#d9547a">${(theme||'Feliz día').slice(0,16)}</text>`:''}
+ </svg>`;
+}
+const REFS=[
+ {id:'r1',lbl:'Unicornio',svg:`<svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#f5e9ff"/><rect x="22" y="44" width="56" height="42" rx="6" fill="#fff"/><path d="M22 50 q6 6 12 0 t12 0 t12 0 t12 0 t8 0 V44 H22Z" fill="#f7b6d2"/><path d="M50 14 l6 26 h-12z" fill="#f6b821"/><circle cx="40" cy="60" r="3" fill="#3a2330"/><circle cx="60" cy="60" r="3" fill="#3a2330"/><g fill="#c9a7f5"><circle cx="30" cy="40" r="7"/><circle cx="70" cy="40" r="7"/></g></svg>`},
+ {id:'r2',lbl:'Fútbol',svg:`<svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#e7f6ea"/><rect x="18" y="46" width="64" height="40" rx="6" fill="#4caf50"/><path d="M18 56 H82" stroke="#fff" stroke-width="2"/><circle cx="50" cy="34" r="14" fill="#fff" stroke="#333" stroke-width="2"/><path d="M50 26 l6 5 l-2 7 h-8 l-2 -7z" fill="#333"/></svg>`},
+ {id:'r3',lbl:'Flores',svg:`<svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#fff4ea"/><rect x="20" y="40" width="60" height="46" rx="6" fill="#fff"/><g>${[30,50,70].map(x=>`<circle cx="${x}" cy="38" r="9" fill="#ef7d9c"/><circle cx="${x}" cy="38" r="3" fill="#f6b821"/>`).join('')}</g><path d="M20 60 H80" stroke="#f3c7d3" stroke-width="3"/></svg>`}
+];
+
+function stepper(){const L=['Sabor','Tamaño y diseño','Fecha','Anticipo'];$('stepper').innerHTML=L.map((k,i)=>`<div class="stp ${S.step===i+1?'on':S.step>i+1?'done':''}"><div class="bar"><i></i></div>${i+1}. ${k}</div>`).join('')}
+function refThumb(){if(S.refImg)return `<img src="${S.refImg}" alt="">`;const r=REFS.find(x=>x.id===S.ref);return r?r.svg:''}
+function renderBody(){
+ stepper();if(S.done){renderDone();return}
+ let h='';
+ if(S.step===1){
+  h=`<h2 class="t">¿De qué sabor?</h2><p class="sub">Todas son tortas frías. La exótica de maracuyá es la favorita de Ibarra.</p><div class="flv">${FL.map(f=>`<button class="fv ${S.fl===f.id?'on':''}" onclick="S.fl='${f.id}';renderAll()"><span class="art">${cakeSVG(f,1)}</span>${f.star?'<span class="star">★ La estrella</span>':'<span class="ex">Ejemplo</span>'}<span class="bd"><b>${f.n}</b><small>${f.d}</small></span></button>`).join('')}</div>
+  <div class="nav"><button class="btn" onclick="go(2)">Continuar →</button></div>`;
+ }
+ if(S.step===2){
+  const f=fl(S.fl);
+  h=`<h2 class="t">Tamaño y diseño</h2><p class="sub">Precios de ejemplo; los reales los pone Chantilly.</p>
+  <div class="sizes">${SZ.map(s=>`<button class="sz ${S.sz===s.id?'on':''}" onclick="S.sz='${s.id}';renderAll()"><svg viewBox="0 0 60 50">${s.id==='xl'?`<rect x="10" y="26" width="40" height="22" rx="3" fill="${f.c[1]}" stroke="${f.c[0]}" stroke-width="2"/><rect x="18" y="6" width="24" height="20" rx="3" fill="${f.c[1]}" stroke="${f.c[0]}" stroke-width="2"/>`:`<rect x="${30-14*s.h}" y="${48-22*s.h}" width="${28*s.h}" height="${22*s.h}" rx="3" fill="${f.c[1]}" stroke="${f.c[0]}" stroke-width="2"/>`}</svg><b>${s.n}</b><small>${s.p}</small><div class="p">${money(s.price)}</div></button>`).join('')}</div>
+  <div class="lab">Diseño</div><div class="pills">${DS.map(d=>`<button class="pill ${S.ds===d.id?'on':''}" onclick="S.ds='${d.id}';renderAll()">${d.n}<small>${d.s}</small></button>`).join('')}</div>
+  ${S.ds!=='casa'?`<div class="two" style="margin-top:12px"><div class="fld"><label>${S.ds==='per'?'Tema o idea':'Mensaje en la torta'}</label><input value="${S.theme}" placeholder="${S.ds==='per'?'Ej. Unicornio, colores pastel':'Ej. Feliz cumple, Sofi'}" oninput="S.theme=this.value;renderSum()"></div>${S.ds==='per'?`<div class="fld"><label>Mensaje en la torta</label><input value="${S.msg}" placeholder="Ej. Feliz 6, Sofi" oninput="S.msg=this.value;renderSum()"></div>`:''}</div>`:''}
+  ${S.ds==='per'?`<label class="dz"><input type="file" accept="image/*" onchange="upl(this)"><b>📷 Sube tu foto de referencia</b><small>De Pinterest, Instagram o tu galería</small></label>
+   <div class="lab" style="margin-top:12px">…o elige una de ejemplo</div><div class="refs">${REFS.map(r=>`<button class="${S.ref===r.id&&!S.refImg?'on':''}" onclick="S.ref='${r.id}';S.refImg=null;renderAll()" title="${r.lbl}">${r.svg}</button>`).join('')}</div>
+   ${S.ref||S.refImg?`<div class="prev"><span class="im">${refThumb()}</span><span><b>Foto de referencia lista ✓</b><small>La pastelera la verá junto a tu pedido y te confirma el diseño por WhatsApp.</small></span></div>`:''}`:''}
+  <div class="nav"><button class="btn ghost" onclick="go(1)">←</button><button class="btn" onclick="go(3)">Continuar →</button></div>`;
+ }
+ if(S.step===3){
+  const minD=S.ds==='per'?3:1;
+  h=`<h2 class="t">¿Para cuándo?</h2><p class="sub">${S.ds==='per'?'Las personalizadas se encargan con al menos 3 días.':'Puedes encargar desde mañana.'} Abrimos todos los días.</p>${cal(minD)}
+  ${S.date?`<div class="lab">Hora de retiro · ${fL(S.date)}</div><div class="pills">${['10:00','12:00','14:00','16:00','18:00'].map(x=>`<button class="pill ${S.slot===x?'on':''}" onclick="S.slot='${x}';renderAll()">${x}</button>`).join('')}</div>
+  <div class="lab">¿Cómo la recibes?</div><div class="pills"><button class="pill ${S.mode==='pick'?'on':''}" onclick="S.mode='pick';renderAll()">🏪 Retiro en el local<small>Sin costo</small></button><button class="pill ${S.mode==='del'?'on':''}" onclick="S.mode='del';renderAll()">🛵 Entrega en Ibarra<small>+$3 (ejemplo)</small></button></div>`:''}
+  <div class="nav"><button class="btn ghost" onclick="go(2)">←</button><button class="btn" ${S.date?'':'disabled'} onclick="go(4)">Continuar →</button></div>`;
+ }
+ if(S.step===4){
+  const q=quote();
+  h=`<h2 class="t">Tus datos y anticipo</h2><p class="sub">Con el 50 % separamos tu fecha y empezamos tu torta. El resto, al retirar.</p>
+  <button class="lnk" onclick="fill()">Rellenar con datos de ejemplo</button>
+  <div class="two"><div class="fld"><label>Tu nombre</label><input value="${S.name}" oninput="S.name=this.value"></div><div class="fld"><label>WhatsApp</label><input inputmode="tel" value="${S.wa}" oninput="S.wa=this.value"></div></div>
+  <div class="pills" style="margin:4px 0 8px"><button class="pill ${S.pay==='tr'?'on':''}" onclick="S.pay='tr';renderBody()">🏦 Transferencia</button><button class="pill ${S.pay==='card'?'on':''}" onclick="S.pay='card';renderBody()">💳 Tarjeta</button></div>
+  ${S.pay==='tr'?`<div class="bank"><b>Banco de ejemplo · Cuenta de ahorros 22•• ••• 481</b>A nombre de Pastelería Chantilly. Sube tu comprobante y listo.</div><label class="dz" style="padding:12px"><input type="file" accept="image/*"><b>📎 Subir comprobante</b><small>En la demo puedes saltarte este paso</small></label>`:`<div class="mock"><small>Tarjeta de ejemplo</small><b>4242 4242 4242 4242</b><small>12/29 · CVC 123</small></div>`}
+  <div class="err" id="err"></div>
+  <button class="btn" style="width:100%;margin-top:6px" id="goB" onclick="submit()">🔒 Enviar pedido con anticipo de ${money(q.dep)}</button>
+  <p class="note center">Pago simulado: no se cobra nada.</p>
+  <div class="nav"><button class="btn ghost" onclick="go(3)">← Atrás</button></div>`;
+ }
+ $('body').innerHTML=h;
+}
+function load(d){return (d.getDate()*7+d.getMonth()*3)%10}
+function cal(minD){
+ const [y,m]=S.mon;const first=new Date(y,m,1);const off=(first.getDay()+6)%7;const n=new Date(y,m+1,0).getDate();
+ const min=new Date(+TODAY+minD*864e5);
+ let d='';for(let i=0;i<off;i++)d+='<span class="day e"></span>';
+ for(let i=1;i<=n;i++){const dt=new Date(y,m,i);const L=load(dt);let c='';
+  if(dt<min||L===9)c='x';if(S.date&&+dt===+S.date)c='on';
+  d+=`<button class="day ${c}" onclick="S.date=new Date(${y},${m},${i});renderAll()">${i}${c!=='x'&&L>=7?'<i>pocos</i>':''}</button>`}
+ const lbl=cap(first.toLocaleDateString('es-EC',{month:'long',year:'numeric'}));
+ return `<div class="cal"><div class="head"><button ${y===2026&&m===10?'disabled':''} onclick="mv(-1)">‹</button><b>${lbl}</b><button ${y===2027&&m===1?'disabled':''} onclick="mv(1)">›</button></div><div class="dow">${['Lu','Ma','Mi','Ju','Vi','Sá','Do'].map(x=>`<span>${x}</span>`).join('')}</div><div class="days">${d}</div><div class="legend"><span><i style="background:#fdf0f3"></i>Hay cupo</span><span><i style="background:#f8f1f3"></i>Agenda llena</span><span style="color:#c08a00;font-weight:700">“pocos” = quedan pocos cupos</span></div></div>`;
+}
+function mv(k){let [y,m]=S.mon;m+=k;if(m<0){m=11;y--}if(m>11){m=0;y++}S.mon=[y,m];renderBody()}
+function upl(inp){const f=inp.files&&inp.files[0];if(!f)return;const r=new FileReader();r.onload=e=>{S.refImg=e.target.result;S.ref='up';renderAll()};r.readAsDataURL(f)}
+function quote(){const s=sz(S.sz),d=ds(S.ds);const L=[[`${fl(S.fl).n} · ${s.n.toLowerCase()}`,s.price]];if(d.add)L.push([d.n,d.add]);if(S.step>=3&&S.mode==='del'&&S.date)L.push(['Entrega en Ibarra',3]);const tot=L.reduce((a,x)=>a+x[1],0);return{L,tot,dep:Math.round(tot*DEP*100)/100}}
+function renderSum(){
+ const f=fl(S.fl),s=sz(S.sz),d=ds(S.ds),q=quote();
+ let h=`<h3>Tu torta</h3><div class="cake"><span class="im">${cakeSVG(f,s.h,S.ds,S.msg||S.theme)}</span><span><b>${f.n}</b><small>${s.n} · ${s.p}</small><small>${d.n}${S.theme?' · '+S.theme:''}</small></span></div>
+ ${S.ds==='per'&&(S.ref||S.refImg)?`<div class="ln"><span>Referencia</span><b>📷 Adjunta</b></div>`:''}
+ <div class="ln"><span>Fecha</span><b>${S.date?fD(S.date)+' · '+S.slot:'Por elegir'}</b></div>
+ <div class="hr"></div>${q.L.map(([a,b])=>`<div class="ln"><span>${a}</span><b>${money(b)}</b></div>`).join('')}
+ <div class="ln big"><span>Total <span class="exl">Ejemplo</span></span><span>${money(q.tot)}</span></div>
+ <div class="dep"><div class="ln"><span>Anticipo hoy (50 %)</span><span>${money(q.dep)}</span></div><div class="ln s"><span>Al retirar</span><span>${money(q.tot-q.dep)}</span></div></div>
+ <p class="note">📲 Te avisamos por WhatsApp cuando se confirme, cuando empecemos a prepararla y cuando esté lista.</p>`;
+ $('sum').innerHTML=h;
+}
+function renderAll(){renderBody();renderSum();renderAdmin()}
+function go(n){S.step=n;renderBody();renderSum();const a=$('arma');if(a.getBoundingClientRect().top<0)a.scrollIntoView({behavior:'smooth'})}
+function fill(){Object.assign(S,{name:'Gabriela Montalvo',wa:'098 765 4321'});renderBody()}
+function submit(){
+ if(!S.name.trim()||!S.wa.trim()){$('err').textContent='Completa tu nombre y WhatsApp.';return}
+ const b=$('goB');b.textContent='Enviando…';b.disabled=true;
+ setTimeout(()=>{const q=quote();S.newO={id:'CH-'+(1043),name:S.name,wa:S.wa,fl:S.fl,sz:S.sz,ds:S.ds,theme:S.theme,msg:S.msg,ref:S.ref,refImg:S.refImg,date:S.date,slot:S.slot,mode:S.mode,tot:q.tot,dep:q.dep,stage:0};S.done=true;S.stage=0;S.tab='g';$('bdg').hidden=false;renderAll();$('arma').scrollIntoView({behavior:'smooth'})},900);
+}
+/* ===== Estados y WhatsApp ===== */
+const ST=[{ic:'✅',n:'Confirmada'},{ic:'🎨',n:'Diseño aprobado'},{ic:'👩‍🍳',n:'En preparación'},{ic:'🎂',n:'Lista'}];
+let TOK=0;
+const fmtW=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/\*(.+?)\*/g,'<b>$1</b>');
+const now=()=>new Date().toLocaleTimeString('es-EC',{hour:'2-digit',minute:'2-digit'});
+const LOC=`<span class="loc"><svg viewBox="0 0 300 70" preserveAspectRatio="xMidYMid slice"><rect width="300" height="70" fill="#f3e8ea"/><path d="M0 44 H300 M110 0 V70 M210 0 V70" stroke="#fff" stroke-width="8"/><path d="M150 12 a10 10 0 0 1 10 10 c0 8 -10 18 -10 18 s-10 -10 -10 -18 a10 10 0 0 1 10 -10z" fill="#d9547a"/><circle cx="150" cy="22" r="4" fill="#fff"/></svg><span>📍 <b>Pastelería Chantilly</b> · Sánchez y Cifuentes y José Miguel Leoro</span></span>`;
+function stageMsgs(O,k){const f=O.name.split(' ')[0];const F=fl(O.fl),Z=sz(O.sz);
+ if(k===0)return [{sep:'Hoy'},{biz:1,img:O.ds==='per'?'ref':null,txt:`¡Hola ${f}! 🎂 Recibimos tu pedido *${O.id}* en *Pastelería Chantilly*.\n\n🍰 ${F.n} · ${Z.n.toLowerCase()} (${Z.p})\n🎨 ${ds(O.ds).n}${O.theme?': '+O.theme:''}${O.msg?'\n✍️ Mensaje: “'+O.msg+'”':''}\n📅 ${fL(O.date)} · ${O.slot}\n${O.mode==='del'?'🛵 Entrega a domicilio':'🏪 Retiro en el local'}\n💳 Anticipo recibido: *${money(O.dep)}* ✅\n💵 Saldo: ${money(O.tot-O.dep)}\n\nTe iremos avisando por aquí en cada paso.`},{usr:1,txt:'¡Gracias! 🥰'}];
+ if(k===1)return [{sep:'Al día siguiente'},{biz:1,img:'sketch',txt:`🎨 ${f}, así quedará tu torta. ¿Te gusta el diseño?\n\nResponde *SÍ* para aprobarlo, o cuéntanos qué cambiar.`},{usr:1,txt:'¡SÍ! Me encanta 😍'},{biz:1,txt:'✅ ¡Diseño aprobado! Tu torta queda en nuestra agenda.'}];
+ if(k===2)return [{sep:'Un día antes'},{biz:1,txt:`👩‍🍳 ${f}, ya estamos preparando tu torta de *${F.n.toLowerCase()}*. Mañana a las *${O.slot}* estará lista.`}];
+ return [{sep:'El día de entrega'},{biz:1,img:'final',txt:`🎂 ¡Tu torta está lista, ${f}! ${O.mode==='del'?'Ya va en camino 🛵':'Puedes retirarla cuando quieras.'}\n\n💵 Saldo por pagar: *${money(O.tot-O.dep)}*`,loc:O.mode!=='del'},{usr:1,txt:'¡Voy para allá! 🙌'}];
+}
+function hostMsgs(O){const F=fl(O.fl),Z=sz(O.sz);return [{sep:'Hoy'},{biz:1,img:O.ds==='per'?'ref':null,act:1,txt:`🔔 *Nuevo pedido ${O.id}*\n\n👤 ${O.name} · ${O.wa}\n🍰 ${F.n} · ${Z.n.toLowerCase()}\n🎨 ${ds(O.ds).n}${O.theme?': '+O.theme:''}${O.msg?'\n✍️ “'+O.msg+'”':''}\n📅 ${fD(O.date)} · ${O.slot} · ${O.mode==='del'?'entrega':'retiro'}\n💳 Anticipo: *${money(O.dep)}* ✅`}]}
+function imgFor(O,kind){if(kind==='ref')return O.refImg?`<img src="${O.refImg}">`:(REFS.find(r=>r.id===O.ref)||REFS[0]).svg;return cakeSVG(fl(O.fl),sz(O.sz).h,O.ds,O.msg||O.theme)}
+function phone(id,title){return `<div class="phone"><div class="wah"><span class="av"><svg viewBox="0 0 38 38" width="28" height="28"><rect x="9" y="20" width="20" height="10" rx="2" fill="#d9547a"/><rect x="12" y="13" width="14" height="8" rx="2" fill="#ef7d9c"/><circle cx="19" cy="10" r="2.6" fill="#f6b821"/></svg></span><span><b>${title}</b><small>Cuenta de empresa · en línea</small></span></div><div class="chat" id="${id}"></div><div class="wafoot">Avisos automáticos ✓✓</div></div>`}
+async function play(id,list,O,append){const tok=++TOK;const box=$(id);if(!box)return;if(!append)box.innerHTML='';
+ for(const m of list){if(tok!==TOK)return;
+  if(m.sep){const d=document.createElement('div');d.className='dsep';d.textContent=m.sep;box.appendChild(d);continue}
+  if(m.biz){const ty=document.createElement('div');ty.className='typing';ty.innerHTML='<i></i><i></i><i></i>';box.appendChild(ty);box.scrollIntoView({block:'nearest'});await new Promise(r=>setTimeout(r,700));if(tok!==TOK)return;ty.remove()}else await new Promise(r=>setTimeout(r,500));
+  if(tok!==TOK)return;const e=document.createElement('div');e.className='msg '+(m.biz?'biz':'usr');
+  e.innerHTML=(m.img?`<span class="ph">${imgFor(O,m.img)}</span>`:'')+fmtW(m.txt)+(m.loc?LOC:'')+(m.act?`<div class="act"><span>✅ Confirmar</span><span>🎨 Enviar boceto</span><span>💬 Escribir</span></div>`:'')+`<span class="tm">${now()}${m.biz?' ✓✓':''}</span>`;box.appendChild(e)}}
+function track(k){return `<div class="track">${ST.map((s,i)=>`<div class="tk ${i===k?'on':i<k?'done':''}"><i>${i<k?'✓':s.ic}</i>${s.n}</div>`).join('')}</div>`}
+function renderDone(){const O=S.newO;
+ $('body').innerHTML=`<div class="center"><h2 class="t">¡Pedido enviado! 🎉</h2><p class="sub" style="margin-bottom:4px">Pedido <b>${O.id}</b>. Así sabe el cliente en qué va su torta, sin tener que preguntar:</p></div>
+ ${track(S.stage)}
+ <div class="tabs"><button class="${S.tab==='g'?'on':''}" onclick="S.tab='g';renderDone()">📱 Cliente</button><button class="${S.tab==='h'?'on':''}" onclick="S.tab='h';renderDone()">🎂 Pastelería</button></div>
+ ${S.tab==='g'&&S.stage<3?`<div class="sim"><span>Simula el paso del tiempo →</span><button class="btn mn" style="padding:10px 14px;font-size:13.5px" onclick="nextStage()">Siguiente aviso: ${ST[S.stage+1].ic} ${ST[S.stage+1].n}</button></div>`:''}
+ ${phone('ch',S.tab==='g'?'Pastelería Chantilly':'Chantilly · Pedidos web')}
+ <div class="nav"><button class="btn ghost" onclick="reset()">Nuevo pedido</button><button class="btn" onclick="view('a')">Ver pedidos →</button></div>`;
+ if(S.tab==='g'){let all=[];for(let k=0;k<=S.stage;k++)all=all.concat(stageMsgs(O,k));play('ch',all,O)}else play('ch',hostMsgs(O),O);
+}
+function nextStage(){if(S.stage>=3)return;S.stage++;S.newO.stage=S.stage;S.tab='g';
+ const O=S.newO;$('body').querySelector('.track').outerHTML=track(S.stage);
+ const sim=$('body').querySelector('.sim');if(sim)sim.outerHTML=S.stage<3?`<div class="sim"><span>Simula el paso del tiempo →</span><button class="btn mn" style="padding:10px 14px;font-size:13.5px" onclick="nextStage()">Siguiente aviso: ${ST[S.stage+1].ic} ${ST[S.stage+1].n}</button></div>`:'';
+ play('ch',stageMsgs(O,S.stage),O,true);renderAdmin()}
+function reset(){Object.assign(S,{step:1,done:false,date:null,theme:'',msg:'',ref:null,refImg:null});TOK++;renderAll();$('arma').scrollIntoView({behavior:'smooth'})}
+
+/* ===== Panel ===== */
+const T1=new Date(+TODAY+864e5),T2=new Date(+TODAY+2*864e5);
+const SAMPLES=[
+ {id:'CH-1038',name:'Verónica A.',fl:'mar',sz:'l',ds:'msg',theme:'Feliz aniversario',date:T1,slot:'12:00',mode:'pick',tot:43,dep:21.5,stage:2},
+ {id:'CH-1039',name:'Luis P.',fl:'cho',sz:'m',ds:'per',theme:'Fútbol · Barcelona',ref:'r2',date:T1,slot:'16:00',mode:'del',tot:43,dep:21.5,stage:2},
+ {id:'CH-1040',name:'Daniela R.',fl:'mar',sz:'s',ds:'casa',date:TODAY,slot:'18:00',mode:'pick',tot:18,dep:9,stage:3},
+ {id:'CH-1041',name:'Familia Benítez',fl:'tre',sz:'xl',ds:'per',theme:'Primera comunión',ref:'r3',date:new Date(+TODAY+4*864e5),slot:'10:00',mode:'pick',tot:77,dep:38.5,stage:1},
+ {id:'CH-1042',name:'Camila T.',fl:'fru',sz:'m',ds:'per',theme:'Unicornio',ref:'r1',date:new Date(+TODAY+5*864e5),slot:'14:00',mode:'pick',tot:40,dep:20,stage:0}
+];
+function allO(){const a=SAMPLES.map(x=>({...x,stage:S.adm[x.id]??x.stage}));if(S.newO)a.unshift({...S.newO,nw:true});return a}
+function renderAdmin(){
+ const A=allO();
+ const dep=A.reduce((s,o)=>s+o.dep,0);const today=A.filter(o=>+o.date===+TODAY).length;
+ $('kpis').innerHTML=`<div class="kpi"><small>Pedidos esta semana</small><b>${A.length+9}</b>${S.newO?'<em>+1 nuevo</em>':''}</div><div class="kpi"><small>Anticipos recibidos</small><b>${money(dep)}</b></div><div class="kpi"><small>Para entregar mañana</small><b>${A.filter(o=>+o.date===+T1).length}</b></div><div class="kpi hl"><small>Avisos enviados solos</small><b>${64+(S.newO?S.newO.stage+1:0)}</b></div>`;
+ $('kan').innerHTML=ST.map((s,k)=>{const L=A.filter(o=>o.stage===k).sort((a,b)=>a.date-b.date);return `<div class="col"><h4>${s.ic} ${s.n}<span>${L.length}</span></h4>${L.map(o=>`<div class="oc ${o.nw?'nw':''}"><span class="im">${o.ds==='per'?imgFor(o,'ref'):cakeSVG(fl(o.fl),sz(o.sz).h,o.ds,o.theme)}</span><span class="m"><b>${o.name}<span class="tag ${o.nw?'nw':'ex'}">${o.nw?'Nuevo':'Ejemplo'}</span></b><small>${fl(o.fl).n} · ${sz(o.sz).n.toLowerCase()}${o.theme?' · '+o.theme:''}</small><span class="due">📅 ${fD(o.date)} · ${o.slot} · ${o.mode==='del'?'🛵':'🏪'}</span>${k<3?`<button class="adv" onclick="adv('${o.id}')">📲 Avisar: ${ST[k+1].n}</button>`:''}</span></div>`).join('')||'<p class="note" style="margin:0">Sin pedidos</p>'}</div>`}).join('');
+ const tm=A.filter(o=>+o.date===+T1);const by={};tm.forEach(o=>{const k=fl(o.fl).n+' · '+sz(o.sz).n.toLowerCase();by[k]=(by[k]||0)+1});
+ $('prod').innerHTML=Object.keys(by).length?Object.entries(by).map(([k,v])=>`<div class="pr">🎂 ${k}<b>${v}</b></div>`).join('')+`<p class="note" style="margin:4px 0 0">${tm.filter(o=>o.ds==='per').length} con diseño personalizado · ${tm.filter(o=>o.mode==='del').length} para entregar a domicilio</p>`:'<p class="note">No hay pedidos para mañana.</p>';
+}
+function adv(id){const isNew=S.newO&&S.newO.id===id;let o,name;
+ if(isNew){if(S.newO.stage>=3)return;S.newO.stage++;S.stage=S.newO.stage;o=S.newO}else{const x=SAMPLES.find(s=>s.id===id);S.adm[id]=(S.adm[id]??x.stage)+1;o={...x,stage:S.adm[id]}}
+ renderAdmin();const st=ST[o.stage];
+ $('toast').innerHTML=`<div class="toast">📲 WhatsApp enviado a ${o.name.split(' ')[0]}: “${st.ic} ${st.n}”</div>`;clearTimeout(window._tt);window._tt=setTimeout(()=>$('toast').innerHTML='',2600)}
+function view(v){S.v=v;$('vC').hidden=v!=='c';$('vA').hidden=v!=='a';$('tC').className=v==='c'?'on':'';$('tA').className=v==='a'?'on':'';if(v==='a'){$('bdg').hidden=true;renderAdmin()}else if(S.done)renderDone();scrollTo({top:0,behavior:'smooth'})}
+renderAll();
+</script>
+</body>
+</html>
