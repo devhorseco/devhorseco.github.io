@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>El Salvador Positive Tours · Tablero de reservas (demo)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#14213d;--muted:#64708a;--line:#e3e8f0;--bg:#f4f7fb;--card:#fff;--blue:#0f47af;--blue2:#2f6fe0;--sky:#e8f0ff;--lava:#ff6b35;--leaf:#1f9d6b;--warn:#e8a317;--danger:#d64545;--r:20px;--sh:0 14px 32px -20px rgba(20,40,90,.38)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.45;padding-bottom:30px;overflow-x:hidden}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+[hidden]{display:none!important}
+.bg{font-family:"Bricolage Grotesque",Inter,sans-serif}
+.demobar{background:#0b1a3a;color:#d6e2ff;font-size:11.5px;padding:7px 14px;text-align:center;display:flex;gap:8px;justify-content:center;align-items:center;line-height:1.35}
+.demobar .dot{width:7px;height:7px;border-radius:50%;background:var(--lava);flex:none;animation:pulse 1.8s infinite}
+@keyframes pulse{50%{opacity:.35}}
+header.top{position:sticky;top:0;z-index:30;background:rgba(244,247,251,.9);backdrop-filter:saturate(1.5) blur(14px);-webkit-backdrop-filter:saturate(1.5) blur(14px);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px;padding:10px 14px}
+.brand{display:flex;align-items:center;gap:10px;margin-right:auto;min-width:0}
+.brand svg{width:38px;height:38px;flex:none}
+.brand b{display:block;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:17px;line-height:1.05}
+.brand small{display:block;font-size:11px;color:var(--muted)}
+.live{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--leaf);background:#e5f6ee;border-radius:999px;padding:6px 10px;white-space:nowrap}
+.live i{width:7px;height:7px;border-radius:50%;background:var(--leaf);animation:pulse 1.4s infinite}
+@media(max-width:420px){.brand small{display:none}.live span{display:none}}
+.wrap{max-width:1180px;margin:0 auto;padding:0 14px}
+/* intro */
+.intro{display:grid;gap:14px;grid-template-columns:minmax(0,1fr);margin-top:16px}
+@media(min-width:900px){.intro{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);align-items:stretch}}
+.intro>*{min-width:0}
+.hero{background:linear-gradient(135deg,#0f47af,#2f6fe0 60%,#4f8cff);color:#fff;border-radius:24px;padding:22px;position:relative;overflow:hidden;box-shadow:var(--sh)}
+.hero svg.vol{position:absolute;right:-20px;bottom:-10px;width:300px;opacity:.28}
+.hero .eb{display:inline-block;font-size:11.5px;font-weight:800;background:rgba(255,255,255,.18);border-radius:999px;padding:5px 10px}
+.hero h1{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:clamp(28px,5.6vw,42px);line-height:1.02;margin:10px 0 8px;max-width:560px;position:relative}
+.hero p{font-size:14.5px;opacity:.95;max-width:520px;position:relative}
+.plats{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;position:relative}
+.pl{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;background:#fff;color:var(--ink);border-radius:999px;padding:5px 10px}
+.pl i{width:9px;height:9px;border-radius:3px;flex:none}
+.sim{background:#fff;border:1px solid var(--line);border-radius:24px;padding:18px;box-shadow:var(--sh)}
+.sim h3{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:19px}
+.sim p{color:var(--muted);font-size:13px;margin:2px 0 12px}
+.simb{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+@media(min-width:520px){.simb{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.sb{display:flex;align-items:center;gap:8px;border:1.5px solid var(--line);border-radius:14px;padding:10px;font-size:13px;font-weight:700;text-align:left;background:#fff;transition:.15s}
+.sb:hover{border-color:var(--blue2);background:var(--sky)}
+.sb i{width:12px;height:12px;border-radius:4px;flex:none}
+.sb small{display:block;font-size:11px;color:var(--muted);font-weight:600}
+.feed{margin-top:12px;display:grid;gap:6px;max-height:150px;overflow:auto}
+.fd{display:flex;gap:8px;align-items:center;font-size:12.5px;background:#f6f8fc;border-radius:10px;padding:7px 9px;animation:in .35s}
+.fd i{width:9px;height:9px;border-radius:3px;flex:none}
+.fd b{font-weight:700}.fd span{margin-left:auto;color:var(--muted);font-size:11px;white-space:nowrap}
+@keyframes in{from{opacity:0;transform:translateY(-6px)}}
+/* kpis */
+.kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:14px 0}
+@media(min-width:760px){.kpis{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:18px;padding:13px 14px;box-shadow:var(--sh)}
+.kpi small{color:var(--muted);font-size:12px;font-weight:600}.kpi b{display:block;font-size:24px;font-weight:800;margin-top:2px}.kpi em{font-style:normal;font-size:11.5px;color:var(--leaf);font-weight:700}
+.kpi .mini{display:flex;height:8px;border-radius:5px;overflow:hidden;margin-top:6px}
+/* board */
+.sh{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:22px 0 10px;flex-wrap:wrap}
+.sh h2{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:clamp(22px,4vw,28px)}
+.sh p{color:var(--muted);font-size:13px;max-width:560px}
+.days{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;scrollbar-width:thin}
+.dy{flex:0 0 auto;min-width:76px;border:1.5px solid var(--line);background:#fff;border-radius:14px;padding:8px 10px;text-align:left;position:relative}
+.dy small{display:block;font-size:10.5px;font-weight:800;color:var(--muted);text-transform:uppercase}
+.dy b{font-size:17px}
+.dy .bar{height:5px;border-radius:4px;background:#edf1f7;margin-top:5px;overflow:hidden}.dy .bar i{display:block;height:100%;background:var(--blue2)}
+.dy.on{border-color:var(--blue);background:var(--blue);color:#fff}.dy.on small{color:#cfe0ff}.dy.on .bar{background:rgba(255,255,255,.25)}.dy.on .bar i{background:#fff}
+.dy .pip{position:absolute;top:6px;right:7px;width:8px;height:8px;border-radius:50%;background:var(--lava);animation:pulse 1.2s infinite}
+.deps{display:grid;gap:10px;margin-top:12px;grid-template-columns:minmax(0,1fr)}
+@media(min-width:900px){.deps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.dep{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;box-shadow:var(--sh);text-align:left;width:100%;transition:.2s;position:relative}
+.dep:hover{border-color:#c9d6ee}
+.dep.star{border:2px solid var(--blue2)}
+.dep.flash{box-shadow:0 0 0 4px #ffd9c9,var(--sh);border-color:var(--lava)}
+.dep .t{display:flex;gap:10px;align-items:flex-start}
+.dep .hr{font-weight:800;font-size:15px;background:var(--sky);color:var(--blue);border-radius:10px;padding:6px 8px;flex:none;text-align:center;line-height:1.1}
+.dep .hr small{display:block;font-size:10px;font-weight:700;color:var(--muted)}
+.dep .nm{flex:1;min-width:0}.dep .nm b{display:block;font-size:14.5px;line-height:1.25}.dep .nm small{color:var(--muted);font-size:12px}
+.real{display:inline-block;font-size:9.5px;font-weight:800;padding:2px 6px;border-radius:6px;background:#e5f6ee;color:var(--leaf);text-transform:uppercase;margin-left:4px;vertical-align:1px}
+.exl{display:inline-block;font-size:9.5px;font-weight:800;padding:2px 6px;border-radius:6px;background:#fff3d6;color:#9a6a00;text-transform:uppercase;margin-left:4px;vertical-align:1px}
+.cap{margin-top:10px}
+.cap .row{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:4px}.cap .row b{color:var(--ink)}
+.stack{display:flex;height:12px;border-radius:7px;overflow:hidden;background:#edf1f7}
+.stack i{display:block;height:100%;transition:width .5s}
+.meta{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.chip{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;background:#f3f6fb;border-radius:999px;padding:4px 9px}
+.chip.w{background:#fff3d6;color:#8a5a00}.chip.d{background:#fde4e4;color:#a12a2a}.chip.ok{background:#e5f6ee;color:var(--leaf)}
+.av{width:20px;height:20px;border-radius:50%;display:inline-grid;place-items:center;font-size:10px;font-weight:800;color:#fff}
+.legend{display:flex;flex-wrap:wrap;gap:10px;font-size:11.5px;color:var(--muted);margin-top:10px}
+.legend span{display:inline-flex;align-items:center;gap:5px}.legend i{width:10px;height:10px;border-radius:3px}
+/* side */
+.two{display:grid;gap:14px;grid-template-columns:minmax(0,1fr);margin-top:18px}
+@media(min-width:900px){.two{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.two>*{min-width:0}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:16px;box-shadow:var(--sh)}
+.card h3{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:18px}
+.card .sub{color:var(--muted);font-size:12.5px;margin:2px 0 10px}
+.gd{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px dashed var(--line);font-size:13px}
+.gd:last-child{border-bottom:0}
+.gd .av{width:32px;height:32px;font-size:12px}
+.gd b{display:block;font-size:13.5px}.gd small{color:var(--muted);font-size:11.5px}
+.gd .st{margin-left:auto;font-size:11px;font-weight:800;border-radius:999px;padding:3px 8px;background:#e5f6ee;color:var(--leaf);white-space:nowrap}
+.gd .st.b{background:#e8f0ff;color:var(--blue)}
+.how{display:grid;gap:8px}
+.how div{display:flex;gap:10px;font-size:13px}
+.how i{font-style:normal;width:26px;height:26px;border-radius:8px;background:var(--sky);color:var(--blue);display:grid;place-items:center;font-weight:800;flex:none;font-size:12.5px}
+/* modal */
+.ov{position:fixed;inset:0;background:rgba(10,20,45,.55);backdrop-filter:blur(4px);z-index:60;display:flex;align-items:flex-end;justify-content:center}
+.sheet{background:var(--bg);width:100%;max-width:620px;max-height:92vh;overflow:auto;border-radius:24px 24px 0 0;padding:16px;animation:up .3s}
+@media(min-width:700px){.ov{align-items:center}.sheet{border-radius:24px}}
+@keyframes up{from{transform:translateY(40px);opacity:0}}
+.sheet .x{float:right;width:34px;height:34px;border-radius:50%;background:#fff;border:1px solid var(--line);font-weight:800}
+.sheet h3{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:21px;line-height:1.15;padding-right:40px}
+.sheet .sub{color:var(--muted);font-size:12.5px;margin:3px 0 12px}
+.asg{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px;margin-bottom:12px}
+.asg div{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px}
+.asg small{display:block;color:var(--muted);font-size:11px;font-weight:700;text-transform:uppercase}
+.asg b{font-size:14px}
+.man{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.mr{display:flex;gap:10px;align-items:center;padding:9px 12px;border-bottom:1px solid var(--line);font-size:13px}
+.mr:last-child{border-bottom:0}
+.mr.nw{background:#fff4ee}
+.mr .tm{width:44px;font-weight:800;font-size:12.5px;color:var(--blue);flex:none}
+.mr .m{flex:1;min-width:0}.mr .m b{display:block;font-size:13.5px}.mr .m small{color:var(--muted);font-size:11.5px}
+.ptag{display:inline-flex;align-items:center;gap:4px;font-size:10.5px;font-weight:800;border-radius:6px;padding:2px 6px;color:#fff;white-space:nowrap;flex:none}
+.lg{font-size:11px;font-weight:800;border:1px solid var(--line);border-radius:6px;padding:1px 5px;color:var(--muted);flex:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,#25d366,#1ebe5b);color:#fff;font-weight:800;padding:12px 16px;border-radius:14px;font-size:14px;width:100%;margin-top:12px}
+.wa{background:#e6ddcf;border-radius:16px;padding:10px;margin-top:10px}
+.wa .b{background:#fff;border-radius:12px;border-top-left-radius:3px;padding:9px 11px;font-size:12.8px;white-space:pre-wrap;max-width:94%;animation:in .3s}
+.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:#14213d;color:#fff;border-radius:14px;padding:11px 14px;font-size:13px;z-index:80;box-shadow:0 16px 30px -10px rgba(0,0,0,.5);max-width:92vw;animation:in .3s;display:flex;gap:8px;align-items:center}
+.foot{text-align:center;font-size:12px;color:var(--muted);padding:22px 14px 8px;max-width:820px;margin:0 auto}
+</style>
+</head>
+<body>
+<div class="demobar"><span class="dot"></span><span>Demo de DevHorse para El Salvador Positive Tours · El tour del Volcán de Santa Ana con datos de su ficha en Civitatis · Reservas, pasajeros, guías y vehículos de ejemplo · Nada se conecta de verdad</span></div>
+<header class="top">
+  <div class="brand">
+    <svg viewBox="0 0 38 38" aria-hidden="true"><rect width="38" height="38" rx="12" fill="#0f47af"/><path d="M6 29 L16 13 L19 17 L22 12 L32 29Z" fill="#fff"/><path d="M19 17 L22 12 L25 16" stroke="#ff6b35" stroke-width="2.2" fill="none"/><path d="M8 31 H30" stroke="#7fb0ff" stroke-width="2" stroke-linecap="round"/></svg>
+    <div><b>Positive Tours</b><small>Tablero de reservas · San Salvador</small></div>
+  </div>
+  <span class="live"><i></i><span>Todas las plataformas</span></span>
+</header>
+
+<div class="wrap">
+  <div class="intro">
+    <div class="hero">
+      <svg class="vol" viewBox="0 0 300 160" aria-hidden="true"><path d="M0 160 L120 30 Q150 10 180 30 L300 160Z" fill="#fff"/><path d="M130 22 q20 -26 40 0" stroke="#fff" stroke-width="6" fill="none"/><ellipse cx="150" cy="26" rx="22" ry="6" fill="#7ad1c7"/></svg>
+      <span class="eb">📅 Un solo tablero</span>
+      <h1>Cada reserva, de cualquier plataforma, en el mismo lugar</h1>
+      <p>Civitatis, Viator, Expedia, WeTravel o su WhatsApp: todas caen aquí. Por fecha ve cuántos van, qué guía y qué vehículo salen, y cuántos cupos quedan.</p>
+      <div class="plats" id="plats"></div>
+    </div>
+    <div class="sim">
+      <h3>Pruébelo: llegue una reserva</h3>
+      <p>Toque una plataforma. La reserva entra al tablero del Volcán de Santa Ana sola, con su guía según el idioma.</p>
+      <div class="simb" id="simb"></div>
+      <div class="feed" id="feed"></div>
+    </div>
+  </div>
+
+  <div class="kpis" id="kpis"></div>
+
+  <div class="sh"><div><h2>Salidas por día</h2><p>Toque un día y luego una salida para ver la lista de pasajeros, las recogidas y enviarla al guía.</p></div></div>
+  <div class="days" id="days"></div>
+  <div class="legend" id="legend"></div>
+  <div class="deps" id="deps"></div>
+
+  <div class="two">
+    <div class="card"><h3>Guías</h3><p class="sub">Idiomas y disponibilidad del día elegido.</p><div id="guides"></div></div>
+    <div class="card"><h3>Vehículos</h3><p class="sub">Capacidad y asignación del día elegido.</p><div id="vehs"></div></div>
+    <div class="card"><h3>Cómo llegan las reservas</h3><p class="sub">En la versión real, sin copiar nada a mano.</p><div class="how">
+      <div><i>1</i><span>Cada plataforma les envía un correo de confirmación; el sistema lo lee y crea la reserva con nombre, fecha, personas e idioma.</span></div>
+      <div><i>2</i><span>Donde la plataforma lo permite, se conecta directo y la reserva entra al instante.</span></div>
+      <div><i>3</i><span>Las de WhatsApp o directas se cargan desde el celular en 10 segundos.</span></div>
+      <div><i>4</i><span>Si una salida se llena, el tablero avisa para cerrar cupos en las demás plataformas.</span></div>
+    </div></div>
+  </div>
+</div>
+<div id="modal"></div><div id="toast"></div>
+<p class="foot">Demo creada por DevHorse como propuesta para El Salvador Positive Tours (El Salvador Experience S.A. de C.V.). Del tour “Trekking al Volcán de Santa Ana + Mirador del Lago de Coatepeque” se usaron los datos de su ficha pública en Civitatis (precio desde US$87,50, 10 horas, recogida en hotel, guía y entradas incluidas, no apto para menores de 12 años, 9,5/10). La salida a las 6:00 viene de una reseña. Los nombres de los otros tours vienen de sus perfiles públicos. Reservas, pasajeros, cupos, guías (salvo Diego, mencionado en una reseña), vehículos y horarios de recogida son de ejemplo.</p>
+
+<script>
+const P={civ:{n:'Civitatis',c:'#e5007e'},via:{n:'Viator',c:'#16856f'},exp:{n:'Expedia',c:'#1e3a8a'},wt:{n:'WeTravel',c:'#3d6ef5'},dir:{n:'Directa / WhatsApp',c:'#25b35a'}};
+const T=[
+ {id:'sa',n:'Trekking al Volcán de Santa Ana + Mirador del Lago de Coatepeque',sh:'Volcán Santa Ana',h:'06:00',dur:'10 h',price:87.5,cap:24,real:true,ic:'🌋'},
+ {id:'iz',n:'Trekking al Volcán de Izalco + Lago de Coatepeque',sh:'Volcán Izalco',h:'06:30',cap:14,ic:'⛰️'},
+ {id:'ct',n:'City tour San Salvador: Centro Histórico + Parque El Boquerón',sh:'City tour',h:'08:30',cap:14,ic:'🏛️'},
+ {id:'tt',n:'Cascadas de Tamanique + Surf City El Tunco',sh:'Tamanique + El Tunco',h:'07:00',cap:14,ic:'🌊'},
+ {id:'mk',n:'Santuario de monos + kayak',sh:'Monos + kayak',h:'07:30',cap:10,ic:'🐒'}
+];
+const G=[{id:'di',n:'Diego',l:['ES','EN'],c:'#0f47af',rev:true},{id:'ma',n:'Marta',l:['ES','FR','EN'],c:'#b8327a'},{id:'os',n:'Óscar',l:['ES','EN'],c:'#1f9d6b'},{id:'ka',n:'Karla',l:['ES','EN'],c:'#e07a1f'},{id:'lu',n:'Luis',l:['ES'],c:'#6b4fd8'}];
+const V=[{id:'b1',n:'Bus 25 pax',p:'P-48•••',cap:25},{id:'m1',n:'Minibús 15 pax',p:'P-63•••',cap:15},{id:'m2',n:'Minibús 15 pax',p:'P-71•••',cap:15},{id:'v1',n:'Van 10 pax',p:'P-22•••',cap:10}];
+const HOT=['Hotel Sheraton Presidente','Hotel Real InterContinental','Hilton Garden Inn','Barceló San Salvador','Hostal Cumbres del Volcán','Casa Verde El Tunco','Hotel Mirador Plaza','Airbnb Col. Escalón','Palo Verde El Tunco','Hotel Holiday Inn'];
+const FN=['Emma','Lucas','Chloé','Mateo','Olivia','Noah','Camille','Diego','Sofía','Liam','Hannah','Julien','Valeria','Ethan','Mia','Thomas','Ana','Leo','Clara','Max'];
+const LN=['Smith','Dubois','Müller','García','Johnson','Martin','López','Brown','Bernard','Rossi','Wilson','Ramírez','Lefèvre','Taylor','Moreau'];
+const START=new Date(2026,10,20);
+const dayN=7;
+let seed=7;const rnd=()=>{seed=(seed*16807)%2147483647;return (seed-1)/2147483646};
+const pick=a=>a[Math.floor(rnd()*a.length)];
+const B=[];
+for(let d=0;d<dayN;d++){for(const t of T){
+ if(t.id!=='sa'&&rnd()<.35)continue;
+ const n=t.id==='sa'?(d===2||d===1?6:3+Math.floor(rnd()*5)):1+Math.floor(rnd()*4);
+ for(let i=0;i<n;i++){const pl=pick(['civ','civ','via','via','exp','wt','dir']);const lang=pick(['EN','EN','EN','ES','ES','FR']);
+  B.push({id:'R'+(1000+B.length),d,t:t.id,pl,pax:1+Math.floor(rnd()*(t.id==='sa'?4:3)),lang,name:pick(FN)+' '+pick(LN),hotel:pick(HOT),ex:true})}}}
+let SEL=2,NEWS=0;const NEWIDS=new Set();
+const $=id=>document.getElementById(id);
+const dt=d=>new Date(+START+d*864e5);
+const fD=d=>{const x=dt(d);return x.toLocaleDateString('es-SV',{weekday:'short'}).replace('.','')};
+const fDL=d=>{const x=dt(d);const s=x.toLocaleDateString('es-SV',{weekday:'long',day:'numeric',month:'long'});return s.charAt(0).toUpperCase()+s.slice(1)};
+const tour=id=>T.find(x=>x.id===id);
+const paxOf=(d,t)=>B.filter(b=>b.d===d&&b.t===t).reduce((s,b)=>s+b.pax,0);
+function deps(d){return T.map(t=>({t,list:B.filter(b=>b.d===d&&b.t===t.id)})).filter(x=>x.list.length)}
+function assign(d){ // guides & vehicles per departure for day d
+ const ds=deps(d).sort((a,b)=>(b.t.id==='sa')-(a.t.id==='sa')||paxSum(b.list)-paxSum(a.list));
+ const freeG=G.slice(),freeV=V.slice().sort((a,b)=>b.cap-a.cap);const out={};
+ for(const x of ds){const pax=paxSum(x.list);const needFR=x.list.some(b=>b.lang==='FR');const needEN=x.list.some(b=>b.lang==='EN');
+  let gi=freeG.findIndex(g=>(!needFR||g.l.includes('FR'))&&(!needEN||g.l.includes('EN')));
+  if(x.t.id==='sa'&&!needFR){const di=freeG.findIndex(g=>g.id==='di');if(di>=0)gi=di}
+  const g=gi>=0?freeG.splice(gi,1)[0]:null;
+  let vi=freeV.findIndex(v=>v.cap>=pax);if(vi<0)vi=0;const v=freeV.length?freeV.splice(vi,1)[0]:null;
+  out[x.t.id]={g,v,pax,needFR,over:v&&pax>v.cap};}
+ return out;
+}
+const paxSum=l=>l.reduce((s,b)=>s+b.pax,0);
+function pickTime(i,t){const base=t.h.split(':').map(Number);let m=base[0]*60+base[1]-45+i*7;return String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60).padStart(2,'0')}
+
+function render(){
+ $('plats').innerHTML=Object.values(P).map(p=>`<span class="pl"><i style="background:${p.c}"></i>${p.n}</span>`).join('');
+ $('simb').innerHTML=Object.entries(P).map(([k,p])=>`<button class="sb" onclick="incoming('${k}')"><i style="background:${p.c}"></i><span>${p.n.split(' /')[0]}<small>Nueva reserva</small></span></button>`).join('');
+ const wk=B;const tot=wk.reduce((s,b)=>s+b.pax,0);const by={};wk.forEach(b=>by[b.pl]=(by[b.pl]||0)+b.pax);
+ const saPax=B.filter(b=>b.t==='sa').reduce((s,b)=>s+b.pax,0);
+ $('kpis').innerHTML=`<div class="kpi"><small>Reservas de la semana</small><b>${wk.length}</b>${NEWS?`<em>+${NEWS} nueva${NEWS>1?'s':''}</em>`:''}</div><div class="kpi"><small>Pasajeros</small><b>${tot}</b><div class="mini">${Object.entries(by).map(([k,v])=>`<i style="width:${v/tot*100}%;background:${P[k].c}"></i>`).join('')}</div></div><div class="kpi"><small>Volcán Santa Ana (semana)</small><b>${saPax} pax</b><em>${(saPax*87.5).toLocaleString('en-US',{style:'currency',currency:'USD'})} en ventas</em></div><div class="kpi" style="background:linear-gradient(135deg,#0f47af,#2f6fe0);color:#fff;border:0"><small style="color:#cfe0ff">Reservas copiadas a mano</small><b>0</b></div>`;
+ $('days').innerHTML=Array.from({length:dayN},(_,d)=>{const p=T.reduce((s,t)=>s+paxOf(d,t.id),0);const c=T.reduce((s,t)=>s+(B.some(b=>b.d===d&&b.t===t.id)?t.cap:0),0)||1;const hasNew=B.some(b=>b.d===d&&NEWIDS.has(b.id));
+  return `<button class="dy ${d===SEL?'on':''}" onclick="SEL=${d};render()">${hasNew?'<span class="pip"></span>':''}<small>${fD(d)}</small><b>${dt(d).getDate()}</b> <small style="display:inline">nov</small><div class="bar"><i style="width:${Math.min(100,p/c*100)}%"></i></div></button>`}).join('');
+ $('legend').innerHTML=Object.values(P).map(p=>`<span><i style="background:${p.c}"></i>${p.n}</span>`).join('')+'<span><i style="background:#edf1f7;border:1px solid #d5ddea"></i>Cupos libres</span>';
+ const A=assign(SEL);
+ $('deps').innerHTML=deps(SEL).sort((a,b)=>(b.t.id==='sa')-(a.t.id==='sa')).map(x=>{const t=x.t,a=A[t.id];const pax=a.pax;const left=t.cap-pax;const byp={};x.list.forEach(b=>byp[b.pl]=(byp[b.pl]||0)+b.pax);
+  const langs=[...new Set(x.list.map(b=>b.lang))].join(' · ');const hasNew=x.list.some(b=>NEWIDS.has(b.id));
+  return `<button class="dep ${t.real?'star':''} ${hasNew?'flash':''}" id="dep-${t.id}" onclick="openDep('${t.id}')"><div class="t"><span class="hr">${t.h}<small>salida</small></span><span class="nm"><b>${t.ic} ${t.n}${t.real?'<span class="real">Datos reales</span>':'<span class="exl">Ejemplo</span>'}</b><small>${x.list.length} reservas · idiomas: ${langs}${t.real?' · 10 h · desde US$87,50':''}</small></span></div>
+  <div class="cap"><div class="row"><span><b>${pax}</b> de ${t.cap} cupos</span><span>${left>0?`Quedan <b>${left}</b>`:'<b style="color:#d64545">Lleno</b>'}</span></div><div class="stack">${Object.entries(byp).map(([k,v])=>`<i style="width:${v/t.cap*100}%;background:${P[k].c}"></i>`).join('')}</div></div>
+  <div class="meta">${a.g?`<span class="chip"><span class="av" style="background:${a.g.c}">${a.g.n[0]}</span>${a.g.n} · ${a.g.l.join('/')}</span>`:`<span class="chip d">⚠️ Falta guía${a.needFR?' con francés':''}</span>`}${a.v?`<span class="chip ${a.over?'w':''}">🚐 ${a.v.n}${a.over?' · no alcanza':''}</span>`:'<span class="chip d">⚠️ Sin vehículo</span>'}${a.needFR?'<span class="chip ok">🇫🇷 Guía en francés</span>':''}${left<=3&&left>0?'<span class="chip w">Pocos cupos: cerrar en plataformas</span>':''}${left<=0?'<span class="chip d">Cerrar en todas las plataformas</span>':''}</div></button>`}).join('');
+ const usedG={},usedV={};Object.entries(A).forEach(([k,a])=>{if(a.g)usedG[a.g.id]=k;if(a.v)usedV[a.v.id]=k});
+ $('guides').innerHTML=G.map(g=>`<div class="gd"><span class="av" style="background:${g.c}">${g.n[0]}</span><span><b>${g.n}${g.rev?' <span class="real" title="Nombre mencionado en una reseña de Civitatis">Reseña</span>':''}</b><small>${g.l.join(' · ')}</small></span><span class="st ${usedG[g.id]?'b':''}">${usedG[g.id]?tour(usedG[g.id]).sh:'Libre'}</span></div>`).join('');
+ $('vehs').innerHTML=V.map(v=>`<div class="gd"><span class="av" style="background:#64708a">🚐</span><span><b>${v.n}</b><small>Placa ${v.p}</small></span><span class="st ${usedV[v.id]?'b':''}">${usedV[v.id]?tour(usedV[v.id]).sh:'Libre'}</span></div>`).join('');
+}
+function incoming(pl){
+ const d=[2,3,1,4][NEWS%4];const lang=pl==='civ'?'FR':pick(['EN','ES','EN']);
+ const b={id:'N'+(NEWS+1),d,t:'sa',pl,pax:2,lang,name:['Camille Laurent','Jake Peterson','Andrea Molina','Sophie Martin','Ryan Clarke'][NEWS%5],hotel:['Hotel Real InterContinental','Casa Verde El Tunco','Barceló San Salvador'][NEWS%3],ex:false};
+ B.push(b);NEWS++;NEWIDS.add(b.id);SEL=d;
+ const a=assign(d)['sa'];
+ $('feed').insertAdjacentHTML('afterbegin',`<div class="fd"><i style="background:${P[pl].c}"></i><span>📩 <b>${P[pl].n.split(' /')[0]}</b>: ${b.name} · ${b.pax} pax · ${b.lang} → ${fD(d)} ${dt(d).getDate()} · guía ${a.g?a.g.n:'—'}</span><span>ahora</span></div>`);
+ render();
+ toast(`<span style="width:10px;height:10px;border-radius:3px;background:${P[pl].c};display:inline-block"></span> Reserva de ${P[pl].n.split(' /')[0]} → Volcán Santa Ana, ${fDL(d).toLowerCase()}${lang==='FR'?' · guía en francés asignada':''}`);
+ setTimeout(()=>{const el=$('dep-sa');if(el)el.scrollIntoView({behavior:'smooth',block:'center'})},250);
+}
+function toast(h){$('toast').innerHTML=`<div class="toast">${h}</div>`;clearTimeout(window._t);window._t=setTimeout(()=>$('toast').innerHTML='',3200)}
+function openDep(tid){const t=tour(tid);const list=B.filter(b=>b.d===SEL&&b.t===tid);const a=assign(SEL)[tid];
+ const rows=list.map((b,i)=>({...b,pt:pickTime(i,t)})).sort((x,y)=>x.pt.localeCompare(y.pt));
+ const msg=`🌋 *${t.sh} · ${fDL(SEL)}*\nSalida ${t.h} · ${a.pax} pasajeros · 🚐 ${a.v?a.v.n:''}\n\n`+rows.map(b=>`${b.pt} · ${b.hotel}\n   ${b.name} (${b.pax}) · ${b.lang} · ${P[b.pl].n.split(' /')[0]}`).join('\n')+`\n\n✅ Recogidas ordenadas por hora. ¡Buen tour!`;
+ $('modal').innerHTML=`<div class="ov" onclick="if(event.target===this)closeM()"><div class="sheet"><button class="x" onclick="closeM()">✕</button><h3>${t.ic} ${t.n}</h3><p class="sub">${fDL(SEL)} · salida ${t.h} · ${a.pax} de ${t.cap} cupos</p>
+ <div class="asg"><div><small>Guía</small><b>${a.g?a.g.n+' · '+a.g.l.join('/'):'Sin asignar'}</b></div><div><small>Vehículo</small><b>${a.v?a.v.n:'Sin asignar'}</b></div></div>
+ <div class="man">${rows.map(b=>`<div class="mr ${NEWIDS.has(b.id)?'nw':''}"><span class="tm">${b.pt}</span><span class="m"><b>${b.name} · ${b.pax} pax${NEWIDS.has(b.id)?' <span class="real" style="background:#ff6b35;color:#fff">Nueva</span>':' <span class="exl">Ejemplo</span>'}</b><small>📍 ${b.hotel}</small></span><span class="lg">${b.lang}</span><span class="ptag" style="background:${P[b.pl].c}">${P[b.pl].n.split(' /')[0]}</span></div>`).join('')}</div>
+ <button class="btn" onclick="sendG(this)">📲 Enviar la lista al guía por WhatsApp</button><div id="wa"></div></div></div>`;
+ window._msg=msg;
+}
+function sendG(el){el.textContent='✓ Enviada a '+(el.closest('.sheet').querySelector('.asg b').textContent.split(' ·')[0]);el.disabled=true;$('wa').innerHTML=`<div class="wa"><div class="b">${window._msg.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/\*(.+?)\*/g,'<b>$1</b>')}</div></div>`;$('wa').scrollIntoView({behavior:'smooth',block:'nearest'})}
+function closeM(){$('modal').innerHTML=''}
+render();
+</script>
+</body>
+</html>
