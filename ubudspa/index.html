@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Ubud Traditional Spa · WhatsApp catalog (demo)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#2a2418;--muted:#7a6f5c;--line:#e8e0cf;--bg:#f7f3ea;--leaf:#4f7a3a;--leaf2:#6c9a4f;--gold:#c79a3a;--clay:#b4643c;--ok:#2e8b57;--sh:0 18px 40px -22px rgba(70,55,20,.45)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.45;overflow-x:hidden}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+input{font:inherit;color:inherit}
+.demobar{background:#2a2418;color:#efe6d0;font-size:11.5px;padding:7px 14px;text-align:center;display:flex;gap:8px;justify-content:center;align-items:center;line-height:1.35}
+.demobar .dot{width:7px;height:7px;border-radius:50%;background:var(--gold);flex:none;animation:pulse 1.8s infinite}
+@keyframes pulse{50%{opacity:.35}}
+header{display:flex;align-items:center;gap:10px;padding:12px 16px;max-width:1080px;margin:0 auto}
+header svg{width:40px;height:40px;flex:none}
+header b{display:block;font-family:"Cormorant Garamond",serif;font-weight:700;font-size:22px;line-height:1}
+header small{color:var(--muted);font-size:12px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px 30px;display:grid;gap:22px;grid-template-columns:minmax(0,1fr);align-items:start}
+@media(min-width:900px){.wrap{grid-template-columns:minmax(0,1fr) 410px;padding-top:10px}.phone{position:sticky;top:14px}}
+.wrap>*{min-width:0}
+.eb{display:inline-block;font-size:12px;font-weight:800;color:var(--leaf);background:#e9f0df;border-radius:999px;padding:5px 11px}
+h1{font-family:"Cormorant Garamond",serif;font-weight:700;font-size:clamp(38px,7vw,58px);line-height:1;margin:12px 0 10px}
+h1 em{font-style:italic;color:var(--leaf)}
+.lead{font-size:15.5px;color:#5a503d;max-width:540px}
+.pts{display:grid;gap:9px;margin:18px 0}
+.pts div{display:flex;gap:11px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:16px;padding:11px 13px;font-size:13.5px}
+.pts i{font-style:normal;font-size:19px;width:34px;height:34px;border-radius:10px;background:#f1ead9;display:grid;place-items:center;flex:none}
+.pts b{display:block;font-size:14px}
+.side{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;box-shadow:var(--sh)}
+.side h3{font-family:"Cormorant Garamond",serif;font-size:24px}
+.side p{color:var(--muted);font-size:12.5px;margin:2px 0 10px}
+.bk{display:flex;gap:10px;align-items:center;padding:9px 8px;border-bottom:1px dashed var(--line);font-size:13px}
+.bk:last-child{border-bottom:0}
+.bk.nw{background:#fff6e6;border-radius:12px;border-bottom-color:transparent;box-shadow:0 0 0 2px #f3d79a}
+.bk .h{width:50px;font-weight:800;color:var(--leaf);flex:none}
+.bk .m{flex:1;min-width:0}.bk .m b{display:block;font-size:13.5px}.bk .m small{color:var(--muted);font-size:11.5px}
+.tag{font-size:9.5px;font-weight:800;padding:2px 6px;border-radius:6px;text-transform:uppercase;background:#f1ead9;color:#857565;margin-left:4px}
+.tag.n{background:var(--clay);color:#fff}
+.tag.s{background:#fff1d6;color:#9a6a00}
+.tag.r{background:#e9f0df;color:var(--leaf)}
+/* phone */
+.phone{background:#e5ddcb;border-radius:32px;padding:10px;box-shadow:0 30px 60px -28px rgba(60,45,20,.55)}
+.scr{background:#efe7dd;border-radius:24px;overflow:hidden;display:flex;flex-direction:column;height:min(720px,calc(100vh - 110px));min-height:580px}
+.wah{background:#075e54;color:#fff;display:flex;gap:10px;align-items:center;padding:10px 12px}
+.wah .av{width:38px;height:38px;border-radius:50%;background:#fff;display:grid;place-items:center;flex:none}
+.wah b{display:block;font-size:14.5px;line-height:1.2}.wah small{font-size:11.5px;opacity:.85}
+.ms{flex:1;overflow-y:auto;padding:12px 10px;display:flex;flex-direction:column;gap:7px;background-image:radial-gradient(rgba(0,0,0,.035) 1px,transparent 1px);background-size:14px 14px}
+.bm{flex:none;max-width:86%;padding:8px 11px 5px;border-radius:12px;font-size:14px;white-space:pre-wrap;line-height:1.45;box-shadow:0 1px 1px rgba(0,0,0,.08);animation:pp .25s;word-wrap:break-word}
+@keyframes pp{from{opacity:0;transform:translateY(6px)}}
+.bm.bot{align-self:flex-start;background:#fff;border-top-left-radius:3px}
+.bm.me{align-self:flex-end;background:#d9fdd3;border-top-right-radius:3px}
+.bm .tm{display:block;text-align:right;font-size:10px;color:#8a979c;margin-top:2px}
+.cat{flex:none;align-self:flex-start;width:92%;display:flex;gap:8px;overflow-x:auto;padding:2px 2px 6px;scroll-snap-type:x mandatory;animation:pp .25s}
+.pc{flex:0 0 78%;scroll-snap-align:start;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.1);text-align:left;display:flex;flex-direction:column}
+.pc .art{height:96px;position:relative}.pc .art svg{display:block;width:100%;height:100%}
+.pc .ph{position:absolute;left:6px;bottom:6px;font-size:9px;font-weight:800;padding:2px 6px;border-radius:999px;background:rgba(255,255,255,.92);color:var(--muted);text-transform:uppercase}
+.pc .bd{padding:9px 10px 10px;display:flex;flex-direction:column;gap:3px;flex:1}
+.pc b{font-size:14px}.pc .st{font-size:12px;color:#5a503d;white-space:normal;flex:1}
+.pc .du{font-size:12px;color:var(--muted)}
+.pc .pr{font-size:13px;font-weight:800;color:var(--leaf)}
+.pc .go{margin-top:6px;font-size:12.5px;font-weight:800;color:#0a7cff;border-top:1px solid #eee;padding-top:7px;text-align:center}
+.typ{align-self:flex-start;background:#fff;border-radius:12px;padding:10px 13px;display:flex;gap:4px}
+.typ i{width:6px;height:6px;border-radius:50%;background:#9aa;animation:ty 1s infinite}.typ i:nth-child(2){animation-delay:.15s}.typ i:nth-child(3){animation-delay:.3s}
+@keyframes ty{50%{transform:translateY(-3px);opacity:.4}}
+.qr{display:flex;flex-wrap:wrap;gap:6px;padding:8px 10px 0}
+.qr button{background:#fff;border-radius:999px;padding:8px 12px;font-size:13.2px;font-weight:700;color:#0a7cff;box-shadow:0 1px 1px rgba(0,0,0,.08);animation:pp .25s}
+.inp{display:flex;gap:8px;padding:8px 10px 10px}
+.inp input{flex:1;min-width:0;border:0;border-radius:999px;padding:11px 14px;background:#fff}
+.inp input:focus{outline:2px solid #bfe9d9}
+.inp button{width:44px;height:44px;border-radius:50%;background:#00a884;color:#fff;font-size:17px;flex:none}
+.card{margin-top:7px;background:#f6efe1;border-radius:10px;padding:9px;font-size:12.8px;white-space:normal}
+.card .r{display:flex;justify-content:space-between;gap:8px;padding:1.5px 0}.card .r span{color:var(--muted)}
+.card .tt{font-weight:800;color:var(--leaf);font-size:11.5px;text-transform:uppercase;letter-spacing:.4px;margin-bottom:4px}
+.bar2{display:flex;justify-content:center;gap:8px;padding:8px 0 0}
+.rp{font-size:12.5px;font-weight:800;color:var(--leaf);background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 12px}
+.foot{text-align:center;font-size:12px;color:var(--muted);padding:6px 16px 26px;max-width:860px;margin:0 auto}
+</style>
+</head>
+<body>
+<div class="demobar"><span class="dot"></span><span>DevHorse demo for Ubud Traditional Spa · Treatments, durations, hours, address and free Ubud pickup from public listings · Prices are samples · Illustrations instead of photos · Simulated messages</span></div>
+<header>
+  <svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="12" fill="#4f7a3a"/><path d="M20 8 C14 16 14 22 20 30 C26 22 26 16 20 8Z" fill="#f3e6c4"/><path d="M8 24 C14 22 18 26 20 30 C14 30 10 28 8 24Z M32 24 C26 22 22 26 20 30 C26 30 30 28 32 24Z" fill="#c79a3a"/></svg>
+  <div><b>Ubud Traditional Spa</b><small>Kedewatan, Ubud · Bali</small></div>
+</header>
+<div class="wrap">
+  <div>
+    <span class="eb">💬 Your massage menu, inside WhatsApp</span>
+    <h1>Every massage tells <em>a story.</em></h1>
+    <p class="lead">Guests open your WhatsApp and see your treatments as cards — the story behind each one, how long it lasts and the price. They pick a time, leave their hotel for the free pickup, and the booking is ready for your team. Try it in the chat.</p>
+    <div class="pts">
+      <div><i>🌾</i><span><b>Your stories, told for you</b>The Rice Farmer Massage and the Ubud Royal Massage explained the way you would.</span></div>
+      <div><i>🕙</i><span><b>Time and hotel in one go</b>Open daily 10:00 – 21:30 · free pickup in the Ubud area.</span></div>
+      <div><i>📋</i><span><b>Your day, organized</b>Every booking lands with the treatment, time and pickup hotel.</span></div>
+    </div>
+    <div class="side"><h3>Today at the spa</h3><p>What your team sees. Rows tagged “Sample” are made up; “New” is the booking you make in the chat.</p><div id="day"></div></div>
+  </div>
+  <div>
+    <div class="phone"><div class="scr">
+      <div class="wah"><span class="av"><svg viewBox="0 0 40 40" width="28" height="28"><path d="M20 8 C14 16 14 22 20 30 C26 22 26 16 20 8Z" fill="#4f7a3a"/><path d="M8 24 C14 22 18 26 20 30 C14 30 10 28 8 24Z M32 24 C26 22 22 26 20 30 C26 30 30 28 32 24Z" fill="#c79a3a"/></svg></span><span><b>Ubud Traditional Spa</b><small>Business account · online</small></span></div>
+      <div class="ms" id="ms"></div>
+      <div class="qr" id="qr"></div>
+      <form class="inp" onsubmit="send(event)"><input id="inp" autocomplete="off" placeholder="Message"><button aria-label="Send">➤</button></form>
+    </div></div>
+    <div class="bar2"><button class="rp" onclick="start()">↺ Start again</button></div>
+  </div>
+</div>
+<p class="foot">Demo created by DevHorse as a proposal for Ubud Traditional Spa. Treatment names and durations, the four-hands Ubud Royal Massage, welcome tea and foot-scrub ritual, opening hours (10:00–21:30), address and free pickup in the Ubud area come from public listings (Klook, Gowabi); the Rice Farmer story is the one the spa shares. Prices in IDR are samples for the spa to replace. Guest names, bookings and times are samples. Illustrations instead of photos.</p>
+<script>
+/* PRICES = SAMPLES (IDR). Durations & names from Klook/Gowabi. */
+const TR=[
+ {id:'rf',n:'Rice Farmer Massage',ic:'🌾',art:0,story:'Inspired by the massage a farmer’s wife gave her husband after a long day in the rice fields — with coconut oil and organic sea salt. A full-body massage, including the stomach.',d:[60,90],p:{60:250000,90:350000}},
+ {id:'ur',n:'Ubud Royal Massage',ic:'👑',art:1,story:'Four hands, two therapists working in harmony. Our most luxurious massage.',d:[60,90],p:{60:450000,90:600000}},
+ {id:'bt',n:'Bali Traditional Massage',ic:'🌺',art:2,story:'Our classic full-body Balinese massage.',d:[60,90],p:{60:220000,90:320000}},
+ {id:'rx',n:'Balinese Reflexology',ic:'🦶',art:3,story:'Pressure on the energy points of your feet to relax the whole body.',d:[30,60],p:{30:120000,60:200000}}
+];
+const SLOTS=['10:00','11:30','13:00','14:30','16:00','17:30','19:00','20:00'];
+const taken=s=>['11:30','16:00'].includes(s);
+const $=id=>document.getElementById(id);
+const idr=n=>'IDR '+n.toLocaleString('en-US');
+const now=()=>new Date().toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'});
+function art(i){const P=[['#d9e8c4','#6c9a4f','#f3e6c4'],['#efe0c2','#c79a3a','#7a2e2a'],['#f3d9d1','#b4643c','#fff'],['#e3ead8','#4f7a3a','#f3e6c4']][i];
+ const F=[`<g fill="${P[1]}">${[30,60,90,120,150,180,210,240].map((x,k)=>`<path d="M${x} 96 q4 -${18+k%3*6} 8 0" stroke="${P[1]}" stroke-width="3" fill="none"/>`).join('')}</g><circle cx="230" cy="26" r="12" fill="#f6d36b"/><path d="M0 70 Q70 58 140 68 T280 62" stroke="#a8c98a" stroke-width="6" fill="none"/>`,
+  `<path d="M140 20 L160 50 L120 50Z" fill="${P[1]}"/><rect x="118" y="50" width="44" height="30" rx="4" fill="${P[2]}"/><circle cx="90" cy="70" r="12" fill="${P[1]}" opacity=".6"/><circle cx="190" cy="70" r="12" fill="${P[1]}" opacity=".6"/>`,
+  `${[60,110,160,210].map((x,k)=>`<g transform="translate(${x} ${40+k%2*14})"><circle r="10" fill="${k%2?P[1]:'#e98a6a'}"/><circle r="4" fill="#f6d36b"/></g>`).join('')}`,
+  `<path d="M120 80 q-10 -40 10 -60 q16 -10 22 10 q6 30 -4 50Z" fill="${P[2]}" stroke="${P[1]}" stroke-width="2"/>${[0,1,2,3,4].map(k=>`<circle cx="${128+k*5}" cy="${24-k%2*3}" r="3" fill="${P[1]}"/>`).join('')}`][i];
+ return `<svg viewBox="0 0 280 100" preserveAspectRatio="xMidYMid slice"><rect width="280" height="100" fill="${P[0]}"/>${F}</svg>`}
+let TOK=0,B=null,NEW=null,step=null;
+function addHTML(cls,html,raw){const d=document.createElement('div');d.className=cls;d.innerHTML=html;$('ms').appendChild(d);$('ms').scrollTop=1e6;return d}
+function me(t){addHTML('bm me',t+`<span class="tm">${now()} ✓✓</span>`)}
+const wait=ms=>new Promise(r=>setTimeout(r,ms));
+async function bot(html,tok,extra){const ty=addHTML('typ','<i></i><i></i><i></i>');await wait(800);if(tok!==TOK)return false;ty.remove();addHTML('bm bot',html+(extra||'')+`<span class="tm">${now()}</span>`);return true}
+function qr(list){setTimeout(()=>$('ms').scrollTop=1e6,30);$('qr').innerHTML=list.map((q,i)=>`<button data-i="${i}">${q}</button>`).join('');$('qr').querySelectorAll('button').forEach(b=>b.onclick=()=>tap(list[+b.dataset.i]))}
+function catalog(){const c=addHTML('cat',TR.map(t=>`<button class="pc" onclick="pickT('${t.id}')"><span class="art">${art(t.art)}<span class="ph">Illustration</span></span><span class="bd"><b>${t.ic} ${t.n}</b><span class="st">${t.story}</span><span class="du">⏱ ${t.d.join(' or ')} min</span><span class="pr">from ${idr(t.p[t.d[0]])} <span class="tag s">sample</span></span><span class="go">Choose this massage</span></span></button>`).join(''));}
+async function start(){const tok=++TOK;B={};NEW=null;step='menu';renderDay();$('ms').innerHTML='';$('qr').innerHTML='';await wait(300);
+ if(!await bot(`Om Swastiastu 🙏 Welcome to *Ubud Traditional Spa*, a small family spa in Kedewatan, Ubud.\n\nWe're open every day from 10:00 to 21:30, and *pickup and drop-off in the Ubud area is free*. 🚗`.replace(/\*(.+?)\*/g,'<b>$1</b>'),tok))return;
+ if(!await bot(`Here's our massage menu — swipe to see them all 👉`,tok))return;
+ catalog();qr(['🌾 Tell me about the Rice Farmer','👑 What is the Royal massage?']);}
+function tap(q){$('qr').innerHTML='';me(q);handle(q)}
+function send(e){e.preventDefault();const v=$('inp').value.trim();if(!v)return;$('inp').value='';$('qr').innerHTML='';me(v.replace(/</g,'&lt;'));handle(v)}
+async function handle(q){const tok=TOK;const n=q.toLowerCase();
+ if(step==='hotel'){B.hotel=q;step='name';await bot('And your name, please?',tok);return}
+ if(step==='name'){B.name=q;step=null;return finish(tok)}
+ if(/book the rice/.test(n))return pickT('rf',true);
+ if(/book the royal/.test(n))return pickT('ur',true);
+ if(/rice|farmer/.test(n)&&!B.t){await bot(`🌾 *Rice Farmer Massage*\n\nAfter a long day in the rice fields, the farmer's wife would massage her husband with coconut oil and organic sea salt to ease his tired body. We kept that tradition: a full-body massage, including the stomach.\n\n⏱ 60 or 90 minutes`.replace(/\*(.+?)\*/g,'<b>$1</b>'),tok);qr(['Book the Rice Farmer 🌾','👑 What is the Royal massage?']);return}
+ if(/royal/.test(n)&&!/book/.test(n)){await bot(`👑 *Ubud Royal Massage*\n\nA four-hands massage: two therapists working in harmony, at the same rhythm. Our most luxurious treatment.\n\n⏱ 60 or 90 minutes`.replace(/\*(.+?)\*/g,'<b>$1</b>'),tok);qr(['Book the Royal 👑','Book the Rice Farmer 🌾']);return}
+ if(/^(\d+) min/.test(n)&&B.t){B.dur=+n.match(/\d+/)[0];await bot('Which day would you like to come?',tok);qr(['Today','Tomorrow']);return}
+ if(/today|tomorrow/.test(n)&&B.dur){B.day=/today/.test(n)?'Today':'Tomorrow';await bot(`Here are the free times for ${B.day.toLowerCase()} 🕙`,tok);qr(SLOTS.filter(s=>!taken(s)).map(s=>s));return}
+ if(/^\d\d:\d\d$/.test(q)&&B.day){B.time=q;step='hotel';await bot(`Lovely. 🚗 Where should we pick you up? Tell us your *hotel or villa* name (pickup is free in the Ubud area).`.replace(/\*(.+?)\*/g,'<b>$1</b>'),tok);qr(['Komaneka at Bisma','Alaya Resort Ubud','Villa near Monkey Forest']);return}
+ await bot(`Happy to help! Swipe the menu above and tap “Choose this massage”, or ask me about any treatment 🌺`,tok);
+}
+async function pickT(id,fromBtn){const tok=TOK;const t=TR.find(x=>x.id===id);B={t:id};if(!fromBtn)me(`${t.ic} ${t.n}`);$('qr').innerHTML='';
+ await bot(`Great choice! ${t.ic} *${t.n}*\nHow long would you like it?`.replace(/\*(.+?)\*/g,'<b>$1</b>'),tok);qr(t.d.map(d=>`${d} min · ${idr(t.p[d])}`));}
+async function finish(tok){const t=TR.find(x=>x.id===B.t);
+ const card=`<div class="card"><div class="tt">Your booking request</div><div class="r"><span>Massage</span><b>${t.n}</b></div><div class="r"><span>Duration</span><b>${B.dur} min</b></div><div class="r"><span>When</span><b>${B.day} · ${B.time}</b></div><div class="r"><span>Pickup</span><b>${B.hotel.replace(/</g,'&lt;')}</b></div><div class="r"><span>Price</span><b>${idr(t.p[B.dur])} <span class="tag s">sample</span></b></div></div>`;
+ await bot(`Thank you, ${B.name.split(' ')[0].replace(/</g,'&lt;')}! 🙏 Our team will confirm your massage and pickup time here in a few minutes.\n\nOn arrival we welcome you with herbal tea and a foot-scrub ritual. 🌿`,tok,card);
+ NEW={...B,t:t};renderDay();qr(['Thank you! 🙏']);step='done';}
+const SAMPLES=[{time:'10:00',name:'Sophie L.',t:'rf',dur:90,hotel:'Villa in Penestanan'},{time:'13:00',name:'Daniel & Mia',t:'ur',dur:60,hotel:'Hotel in Jl. Monkey Forest'},{time:'14:30',name:'Kenji A.',t:'rx',dur:60,hotel:'Homestay in Sayan'},{time:'17:30',name:'Laura P.',t:'bt',dur:90,hotel:'Resort in Kedewatan'}];
+function renderDay(){
+ const L=SAMPLES.map(x=>({...x,tt:TR.find(t=>t.id===x.t)}));if(NEW&&NEW.day==='Today')L.push({time:NEW.time,name:NEW.name,tt:NEW.t,dur:NEW.dur,hotel:NEW.hotel,nw:1});
+ L.sort((a,b)=>a.time.localeCompare(b.time));
+ $('day').innerHTML=L.map(x=>`<div class="bk ${x.nw?'nw':''}"><span class="h">${x.time}</span><span class="m"><b>${x.tt.ic} ${x.tt.n} · ${x.dur} min<span class="tag ${x.nw?'n':''}">${x.nw?'New':'Sample'}</span></b><small>👤 ${String(x.name).replace(/</g,'&lt;')} · 🚗 ${String(x.hotel).replace(/</g,'&lt;')}</small></span></div>`).join('')+(NEW&&NEW.day==='Tomorrow'?`<div class="bk nw"><span class="h">${NEW.time}</span><span class="m"><b>${NEW.t.ic} ${NEW.t.n} · ${NEW.dur} min<span class="tag n">New · tomorrow</span></b><small>👤 ${NEW.name.replace(/</g,'&lt;')} · 🚗 ${NEW.hotel.replace(/</g,'&lt;')}</small></span></div>`:'');
+}
+start();
+</script>
+</body>
+</html>
