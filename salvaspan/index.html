@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>El Salvador Spanish Schools · Santa Ana (demo)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1c2430;--muted:#687385;--line:#e5e2da;--bg:#faf7f0;--card:#fff;--blue:#1d4ea8;--blue2:#3a6fd8;--coffee:#7a4a2b;--leaf:#2f8a57;--sun:#f2b33d;--ok:#2e8b57;--danger:#c0392b;--r:22px;--sh:0 16px 34px -20px rgba(40,50,80,.35)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.45;padding-bottom:30px;overflow-x:hidden}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+input{font:inherit;color:inherit}
+[hidden]{display:none!important}
+.demobar{background:#13213f;color:#d9e3f7;font-size:11.5px;padding:7px 14px;text-align:center;display:flex;gap:8px;justify-content:center;align-items:center;line-height:1.35}
+.demobar .dot{width:7px;height:7px;border-radius:50%;background:var(--sun);flex:none;animation:pulse 1.8s infinite}
+@keyframes pulse{50%{opacity:.35}}
+header.top{position:sticky;top:0;z-index:30;background:rgba(250,247,240,.9);backdrop-filter:saturate(1.5) blur(14px);-webkit-backdrop-filter:saturate(1.5) blur(14px);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px;padding:10px 14px}
+.brand{display:flex;align-items:center;gap:10px;margin-right:auto;min-width:0}
+.brand svg{width:38px;height:38px;flex:none}
+.brand b{display:block;font-family:Fraunces,serif;font-weight:800;font-size:17px;line-height:1.05}
+.brand small{display:block;font-size:11px;color:var(--muted)}
+.seg{display:flex;background:#ece8de;border-radius:999px;padding:3px}
+.seg button{position:relative;padding:8px 12px;border-radius:999px;font-size:13px;font-weight:700;color:var(--muted);white-space:nowrap}
+.seg button.on{background:#fff;color:var(--ink);box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.badge{position:absolute;top:-5px;right:-4px;background:var(--danger);color:#fff;font-style:normal;font-size:10.5px;font-weight:700;min-width:18px;height:18px;border-radius:9px;display:grid;place-items:center;padding:0 5px;animation:pop .4s}
+@keyframes pop{from{transform:scale(0)}}
+.lang{white-space:nowrap;background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 11px;font-size:12px;font-weight:700}
+.lang span{opacity:.4}.lang span.on{opacity:1;color:var(--blue)}
+@media(max-width:520px){.brand small{display:none}.seg button{padding:8px 9px}.lang{padding:7px 8px}}
+@media(max-width:400px){.brand div{display:none}}
+.wrap{max-width:1100px;margin:0 auto;padding:0 14px}
+/* hero */
+.hero{position:relative;margin:14px auto 0;max-width:1100px;border-radius:30px;overflow:hidden;color:#fff;min-height:430px;display:flex;align-items:flex-end;box-shadow:var(--sh);background:#2b5a86}
+@media(max-width:1128px){.hero{margin:14px 14px 0}}
+.heroart{position:absolute;inset:0;width:100%;height:100%}
+@media(max-width:700px){.bld{display:none}}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,20,35,0) 25%,rgba(12,20,35,.85) 100%)}
+.hero .in{position:relative;z-index:2;padding:56px 22px 24px;width:100%}
+.phl{position:absolute;top:14px;right:14px;z-index:3;font-size:10px;font-weight:800;padding:4px 9px;border-radius:999px;background:rgba(255,255,255,.9);color:var(--muted);text-transform:uppercase}
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:#ffd98a}
+.hero h1{font-family:Fraunces,serif;font-weight:800;font-size:clamp(34px,7vw,58px);line-height:1.02;margin:8px 0 10px;max-width:760px}
+.hero p{max-width:580px;font-size:15px;opacity:.95}
+.hero h1,.hero p{text-shadow:0 2px 14px rgba(5,10,20,.5)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}
+.chip{font-size:12.5px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);padding:6px 11px;border-radius:999px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,var(--sun),#f7c868);color:#3a2800;font-weight:800;padding:14px 22px;border-radius:16px;font-size:15px;transition:.2s;text-decoration:none;box-shadow:0 10px 22px -8px rgba(242,179,61,.7)}
+.btn:hover{transform:translateY(-2px)}
+.btn.bl{background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;box-shadow:0 10px 22px -10px rgba(29,78,168,.8)}
+.btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--line);box-shadow:none}
+.btn[disabled]{opacity:.45;pointer-events:none}
+.facts{margin-top:14px;display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr))}
+.facts div{background:#fff;border:1px solid var(--line);border-radius:18px;padding:13px 14px;display:flex;gap:11px;align-items:center;font-size:13px}
+.facts i{font-style:normal;font-size:20px;width:40px;height:40px;border-radius:12px;background:#eef3fc;display:grid;place-items:center;flex:none}
+.facts b{display:block;font-size:14px}.facts small{color:var(--muted)}
+/* flow */
+.sh{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:28px 0 12px;flex-wrap:wrap}
+.sh h2{font-family:Fraunces,serif;font-weight:800;font-size:clamp(26px,4.4vw,34px);line-height:1.05}
+.sh p{color:var(--muted);font-size:13.5px;max-width:520px}
+.grid{display:grid;gap:16px;grid-template-columns:minmax(0,1fr)}
+.grid>*,.two>*{min-width:0}
+@media(min-width:920px){.grid{grid-template-columns:minmax(0,1fr) 340px;align-items:start}.sticky{position:sticky;top:76px}}
+.card{background:var(--card);border-radius:var(--r);box-shadow:var(--sh);border:1px solid var(--line);padding:20px}
+.stepper{display:flex;gap:5px;margin-bottom:18px}
+.stp{flex:1;display:flex;flex-direction:column;gap:6px;font-size:11px;font-weight:700;color:var(--muted)}
+.stp .bar{height:5px;border-radius:5px;background:#eee9df;overflow:hidden}
+.stp .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--sun));transition:.4s}
+.stp.on{color:var(--ink)}.stp.on .bar i,.stp.done .bar i{width:100%}.stp.done{color:var(--blue)}
+h2.t{font-family:Fraunces,serif;font-weight:800;font-size:25px;line-height:1.1;margin-bottom:4px}
+p.sub{color:var(--muted);font-size:13.5px;margin-bottom:14px}
+.qhead{display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:800;color:var(--muted);margin-bottom:8px}
+.qbar{height:6px;border-radius:5px;background:#eee9df;overflow:hidden;margin-bottom:14px}.qbar i{display:block;height:100%;background:var(--blue2);transition:.3s}
+.q{font-size:19px;font-weight:700;margin-bottom:4px;line-height:1.35}
+.q em{font-style:normal;background:#fff1cc;border-radius:6px;padding:0 6px}
+.qh{font-size:12.5px;color:var(--muted);margin-bottom:12px}
+.ans{display:grid;gap:8px}
+.an{display:flex;gap:10px;align-items:center;border:2px solid var(--line);border-radius:14px;padding:12px 13px;background:#fff;text-align:left;font-size:15px;font-weight:600;transition:.15s;width:100%}
+.an:hover{border-color:#c7d4ee}
+.an i{font-style:normal;width:26px;height:26px;border-radius:8px;background:#f2efe7;display:grid;place-items:center;font-size:12px;font-weight:800;flex:none}
+.an.ok{border-color:var(--ok);background:#effaf3}.an.ok i{background:var(--ok);color:#fff}
+.an.no{border-color:var(--danger);background:#fdf0ee}.an.no i{background:var(--danger);color:#fff}
+.skip{font-size:12.5px;font-weight:700;color:var(--blue);text-decoration:underline;margin-top:12px}
+.lvl{display:flex;gap:16px;align-items:center;background:linear-gradient(135deg,#eef3fc,#fff8e6);border-radius:18px;padding:16px;margin:4px 0 12px}
+.ring{width:96px;height:96px;flex:none;position:relative}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring b{position:absolute;inset:0;display:grid;place-items:center;font-family:Fraunces,serif;font-size:28px;color:var(--blue)}
+.lvl h3{font-family:Fraunces,serif;font-size:22px;line-height:1.1}
+.lvl p{font-size:13px;color:var(--muted);margin-top:3px}
+.scale{display:flex;gap:4px;margin-top:8px}
+.scale span{flex:1;text-align:center;font-size:11px;font-weight:800;padding:4px 0;border-radius:6px;background:#eee9df;color:var(--muted)}
+.scale span.on{background:var(--blue);color:#fff}
+.lab{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.4px;color:var(--muted);margin:16px 0 8px}
+.opts{display:grid;gap:9px;grid-template-columns:minmax(0,1fr)}
+@media(min-width:560px){.opts.two2{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.op{display:flex;flex-direction:column;gap:3px;border:2px solid var(--line);border-radius:16px;padding:13px;background:#fff;text-align:left;width:100%}
+.op.on{border-color:var(--blue);background:#f3f7ff}
+.op b{font-size:15px}.op small{color:var(--muted);font-size:12.5px}
+.op .pr{font-weight:800;color:var(--blue);font-size:14px;margin-top:4px}
+.mons{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+@media(min-width:560px){.mons{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.mo{border:2px solid var(--line);background:#fff;border-radius:14px;padding:9px 6px;text-align:center;line-height:1.15}
+.mo small{display:block;font-size:10.5px;font-weight:800;color:var(--muted);text-transform:uppercase}
+.mo b{font-size:15px}
+.mo i{display:block;font-style:normal;font-size:10px;font-weight:700;color:var(--leaf);margin-top:2px}
+.mo.on{border-color:var(--blue);background:var(--blue);color:#fff}.mo.on small,.mo.on i{color:#dfe8fb}
+.mo.x{opacity:.4;pointer-events:none}
+.cnt{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 0}
+.cnt b{display:block;font-size:14.5px}.cnt small{color:var(--muted);font-size:12px}
+.stepr{display:flex;align-items:center;gap:10px}
+.stepr button{width:36px;height:36px;border-radius:50%;border:1.5px solid var(--line);font-size:18px;font-weight:700;background:#fff}
+.stepr button[disabled]{opacity:.3}
+.stepr span{min-width:22px;text-align:center;font-weight:800;font-size:16px}
+.pills{display:flex;flex-wrap:wrap;gap:7px}
+.pill{border:2px solid var(--line);background:#fff;border-radius:14px;padding:9px 13px;font-size:13.5px;font-weight:700;text-align:left}
+.pill small{display:block;font-size:11.5px;color:var(--muted);font-weight:600}
+.pill.on{border-color:var(--blue);background:#f3f7ff;color:var(--blue)}.pill.on small{color:var(--blue)}
+.sw{display:flex;align-items:center;gap:12px;padding:11px 0;text-align:left;width:100%}
+.sw .tg{width:44px;height:26px;border-radius:999px;background:#d8d3c8;position:relative;flex:none;transition:.2s}
+.sw .tg:after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:.2s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.sw.on .tg{background:var(--leaf)}.sw.on .tg:after{left:21px}
+.sw b{display:block;font-size:14px}.sw small{color:var(--muted);font-size:12px}
+.hs{display:flex;gap:12px;align-items:center;background:#f7f3ea;border-radius:16px;padding:12px;margin-top:8px}
+.hs svg{width:70px;height:56px;flex:none;border-radius:10px}
+.hs b{display:block;font-size:14px}.hs small{color:var(--muted);font-size:12.5px}
+.fld{display:flex;flex-direction:column;gap:5px;margin-bottom:11px}
+.fld label{font-size:12px;font-weight:700;color:var(--muted)}
+.fld input{border:1.5px solid var(--line);border-radius:12px;padding:12px;background:#fff;width:100%}
+.fld input:focus{outline:none;border-color:var(--blue2)}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+@media(max-width:480px){.two{grid-template-columns:minmax(0,1fr)}}
+.lnk{font-size:12.5px;font-weight:700;color:var(--blue);text-decoration:underline;margin-bottom:10px}
+.mock{border-radius:16px;padding:14px;color:#fff;background:linear-gradient(135deg,#13213f,var(--blue2));margin:6px 0}
+.mock small{opacity:.8;font-size:11px;letter-spacing:1px;text-transform:uppercase}.mock b{display:block;font-size:16px;letter-spacing:1.5px;margin-top:6px}
+.err{color:var(--danger);font-size:12.5px;font-weight:600;min-height:16px;margin-top:4px}
+.nav{display:flex;gap:10px;margin-top:18px}.nav .btn{flex:1}.nav .btn.ghost{flex:0 0 auto}
+.note{font-size:12px;color:var(--muted);margin-top:10px}
+.center{text-align:center}
+/* summary */
+.sum h3{font-family:Fraunces,serif;font-weight:800;font-size:22px;margin-bottom:8px}
+.ln{display:flex;justify-content:space-between;gap:10px;font-size:13.5px;padding:5px 0;color:var(--muted)}.ln b{color:var(--ink);text-align:right}
+.hr{border-top:1px dashed var(--line);margin:8px 0}
+.ln.big{font-size:16px;color:var(--ink);font-weight:800}
+.dep{background:#eef3fc;border-radius:14px;padding:11px 12px;margin-top:8px}.dep .ln{color:var(--blue);font-weight:800}.dep .ln.s{color:var(--muted);font-weight:600}
+.ref{display:inline-block;font-size:9.5px;font-weight:800;padding:2px 6px;border-radius:6px;background:#e5f4ea;color:var(--leaf);text-transform:uppercase;margin-left:4px;vertical-align:1px}
+.exl{display:inline-block;font-size:9.5px;font-weight:800;padding:2px 6px;border-radius:6px;background:#fff1d6;color:#9a6a00;text-transform:uppercase;margin-left:4px;vertical-align:1px}
+/* chat */
+.tabs{display:flex;gap:6px;margin:12px 0;flex-wrap:wrap;justify-content:center}
+.tabs button{padding:9px 13px;border-radius:999px;background:#ece8de;font-size:12.5px;font-weight:700;color:var(--muted)}
+.tabs button.on{background:var(--blue);color:#fff}
+.phone{background:#e6ddcf;border-radius:22px;overflow:hidden;border:1px solid var(--line);max-width:430px;margin:0 auto;box-shadow:var(--sh)}
+.wah{background:#075e54;color:#fff;display:flex;gap:10px;align-items:center;padding:10px 14px}
+.wah .av{width:38px;height:38px;border-radius:50%;background:#fff;display:grid;place-items:center;flex:none}
+.wah b{font-size:14.5px;display:block}.wah small{opacity:.8;font-size:11.5px}
+.chat{padding:12px;min-height:280px;display:flex;flex-direction:column;gap:7px;background-image:radial-gradient(rgba(0,0,0,.035) 1px,transparent 1px);background-size:14px 14px}
+.dsep{align-self:center;background:rgba(255,255,255,.88);color:#667;font-size:11px;font-weight:700;padding:4px 10px;border-radius:8px;margin:4px 0;text-transform:uppercase}
+.msg{max-width:88%;padding:8px 11px 6px;border-radius:14px;font-size:13.4px;line-height:1.42;box-shadow:0 1px 1px rgba(0,0,0,.1);animation:in .35s;white-space:pre-wrap;word-wrap:break-word}
+.msg.biz{background:#fff;border-top-left-radius:4px;align-self:flex-start}
+.msg.usr{background:#d9fdd3;border-top-right-radius:4px;align-self:flex-end}
+.msg .tm{display:block;text-align:right;font-size:10.5px;color:#7a8a8f;margin-top:2px}
+.msg .act{display:flex;gap:6px;margin-top:7px;flex-wrap:wrap;white-space:normal}
+.msg .act span{font-size:12px;font-weight:700;color:#0a7cff;background:#f2f7ff;border-radius:8px;padding:5px 9px}
+.typing{align-self:flex-start;background:#fff;border-radius:14px;padding:10px 13px;display:flex;gap:4px}
+.typing i{width:6px;height:6px;border-radius:50%;background:#9aa;animation:bl 1s infinite}.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes bl{50%{transform:translateY(-4px);opacity:.5}}@keyframes in{from{opacity:0;transform:translateY(8px) scale(.97)}}
+.wafoot{background:#f0f0f0;padding:9px 12px;color:#8a979c;font-size:12.5px}
+/* admin */
+.kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:14px 0}
+@media(min-width:760px){.kpis{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;box-shadow:var(--sh)}
+.kpi small{color:var(--muted);font-size:12px;font-weight:600}.kpi b{display:block;font-size:25px;font-weight:800;margin-top:3px}.kpi em{font-style:normal;font-size:11.5px;color:var(--ok);font-weight:700}
+.kpi.hl{background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;border:0}.kpi.hl small{color:#dfe8fb}
+.ad2{display:grid;gap:16px;grid-template-columns:minmax(0,1fr)}@media(min-width:920px){.ad2{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);align-items:start}}
+.card h3.s{font-family:Fraunces,serif;font-weight:800;font-size:20px}
+.card .s2{color:var(--muted);font-size:12.5px;margin:2px 0 10px}
+.st{display:flex;gap:12px;align-items:center;border:1px solid var(--line);border-radius:16px;padding:11px 12px;margin-bottom:8px;background:#fff;width:100%;text-align:left}
+.st.nw{background:#fff8e6;border-color:#f2d389;box-shadow:0 0 0 3px #fcedc6}
+.st .lv{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font-weight:800;color:#fff;flex:none;font-size:15px}
+.st .m{flex:1;min-width:0}.st .m b{font-size:14px}.st .m small{display:block;color:var(--muted);font-size:12px}
+.tag{font-size:9.5px;font-weight:800;padding:2px 6px;border-radius:6px;text-transform:uppercase;margin-left:5px;vertical-align:1px;background:#efebe2;color:#7d776a}
+.tag.n{background:var(--sun);color:#3a2800}
+.fam{display:flex;gap:10px;align-items:center;padding:9px 0;border-bottom:1px dashed var(--line);font-size:13px}
+.fam:last-child{border-bottom:0}
+.fam b{display:block;font-size:13.5px}.fam small{color:var(--muted);font-size:11.5px}
+.fam .bd{margin-left:auto;display:flex;gap:3px}
+.fam .bd i{width:14px;height:14px;border-radius:4px;background:#e8e3d8}.fam .bd i.f{background:var(--leaf)}.fam .bd i.n{background:var(--sun)}
+.lvbars{display:grid;gap:8px;margin-top:4px}
+.lb{display:grid;grid-template-columns:96px minmax(0,1fr) 26px;gap:8px;align-items:center;font-size:12.5px}
+.lb .tr{height:10px;border-radius:6px;background:#eee9df;overflow:hidden}.lb .tr i{display:block;height:100%;border-radius:6px}
+.lb b{text-align:right}
+.ov{position:fixed;inset:0;background:rgba(12,20,35,.55);backdrop-filter:blur(4px);z-index:60;display:flex;align-items:flex-end;justify-content:center}
+.sheet{background:var(--bg);width:100%;max-width:520px;max-height:92vh;overflow:auto;border-radius:24px 24px 0 0;padding:16px;animation:up .3s}
+@media(min-width:700px){.ov{align-items:center}.sheet{border-radius:24px}}
+@keyframes up{from{transform:translateY(40px);opacity:0}}
+.sheet .x{float:right;width:34px;height:34px;border-radius:50%;background:#fff;border:1px solid var(--line);font-weight:800}
+.foot{text-align:center;font-size:12px;color:var(--muted);padding:22px 14px 8px;max-width:800px;margin:0 auto}
+</style>
+</head>
+<body>
+<div class="demobar"><span class="dot"></span><span data-t="demobar"></span></div>
+<header class="top">
+  <div class="brand">
+    <svg viewBox="0 0 38 38" aria-hidden="true"><rect width="38" height="38" rx="12" fill="#1d4ea8"/><path d="M6 28 L15 15 L19 20 L24 12 L32 28Z" fill="#7fb0ff"/><circle cx="27" cy="10" r="3" fill="#f2b33d"/><path d="M9 31 H29" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/><text x="19" y="27" text-anchor="middle" font-family="Fraunces,serif" font-weight="800" font-size="9" fill="#fff">ñ</text></svg>
+    <div><b>El Salvador Spanish Schools</b><small data-t="brandsub"></small></div>
+  </div>
+  <div class="seg"><button id="tC" class="on" onclick="view('c')" data-t="tabC"></button><button id="tA" onclick="view('a')"><span data-t="tabA"></span><i class="badge" id="bdg" hidden>1</i></button></div>
+  <button class="lang" onclick="toggleLang()"><span id="lEn" class="on">EN</span> · <span id="lEs">ES</span></button>
+</header>
+
+<div id="vC">
+  <section class="hero">
+    <svg class="heroart" viewBox="0 0 1200 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs><linearGradient id="sk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6fa8d6"/><stop offset=".7" stop-color="#cfe2ec"/><stop offset="1" stop-color="#f2e3c4"/></linearGradient></defs>
+      <rect width="1200" height="500" fill="url(#sk)"/>
+      <path d="M640 300 L820 120 Q850 100 880 120 L1060 300Z" fill="#6c7c8a"/>
+      <path d="M800 140 L820 120 Q850 100 880 120 L900 140 Q880 150 860 140 Q840 152 820 140Z" fill="#9aa8b4"/>
+      <path d="M0 290 Q200 240 420 280 T820 270 T1200 260 V500 H0Z" fill="#5e8f5a"/>
+      
+      <path d="M0 340 Q300 300 600 335 T1200 330 V500 H0Z" fill="#4a7a4c"/>
+      <g class="bld" fill="#7a4a2b" opacity=".9">
+        <g transform="translate(180 250)"><rect x="0" y="40" width="140" height="80" fill="#f2e8d5"/><path d="M-10 44 L70 0 L150 44Z" fill="#b8573a"/><rect x="58" y="70" width="24" height="50" fill="#7a4a2b"/></g>
+        <g transform="translate(360 210)"><rect x="0" y="60" width="200" height="110" fill="#f6f0e2"/><rect x="70" y="-10" width="60" height="80" fill="#f6f0e2"/><path d="M60 -10 L100 -50 L140 -10Z" fill="#b8573a"/><circle cx="100" cy="20" r="12" fill="#1d4ea8"/><path d="M-12 64 L100 30 L212 64Z" fill="#c9764f"/><rect x="88" y="110" width="24" height="60" fill="#7a4a2b"/></g>
+      </g>
+      <g fill="#2f5d34"><circle cx="90" cy="380" r="30"/><circle cx="140" cy="390" r="22"/><circle cx="1000" cy="380" r="34"/><circle cx="1060" cy="392" r="24"/><circle cx="620" cy="400" r="26"/></g>
+      <g fill="#c0392b"><circle cx="88" cy="372" r="3"/><circle cx="98" cy="384" r="3"/><circle cx="1005" cy="376" r="3"/><circle cx="1012" cy="388" r="3"/><circle cx="626" cy="396" r="3"/></g>
+    </svg>
+    <span class="phl" data-t="phL"></span>
+    <div class="in">
+      <div class="eyebrow" data-t="eyebrow"></div>
+      <h1 data-t="h1"></h1>
+      <p data-t="heroP"></p>
+      <div class="chips"><span class="chip" data-t="c1"></span><span class="chip" data-t="c2"></span><span class="chip" data-t="c3"></span></div>
+      <a class="btn" href="#test" data-t="cta"></a>
+    </div>
+  </section>
+  <div class="wrap">
+    <div class="facts" id="facts"></div>
+    <div class="sh" id="test"><h2 data-t="fT"></h2><p data-t="fS"></p></div>
+    <div class="grid">
+      <section class="card"><div class="stepper" id="stepper"></div><div id="body"></div></section>
+      <aside class="card sum sticky" id="sum"></aside>
+    </div>
+  </div>
+</div>
+
+<div id="vA" hidden>
+  <div class="wrap" style="padding-top:18px">
+    <h2 class="t" data-t="aT"></h2><p class="sub" data-t="aS"></p>
+    <div class="kpis" id="kpis"></div>
+    <div class="ad2">
+      <section class="card"><h3 class="s" data-t="sT"></h3><p class="s2" data-t="sS"></p><div id="studs"></div></section>
+      <div style="display:grid;gap:16px">
+        <section class="card"><h3 class="s" data-t="lvT"></h3><p class="s2" data-t="lvS"></p><div class="lvbars" id="lvb"></div></section>
+        <section class="card"><h3 class="s" data-t="hfT"></h3><p class="s2" data-t="hfS"></p><div id="fams"></div></section>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="modal"></div>
+<p class="foot" data-t="foot"></p>
+
+<script>
+/* Datos públicos (fichas de GoOverseas y 123TeachMe; pueden estar desactualizados): sede en Santa Ana (Escuela Sihuatehuacan); director Nelson Evelio Pacheco Martínez;
+   20 h por semana (4 h diarias); clases individuales o grupos de hasta 8; inicio cualquier lunes; examen de ubicación (en la demo, en línea);
+   homestay con habitación privada y baño compartido, 0–3 comidas, opción vegetariana. Referencia: US$150/semana (20 h) y US$25 de inscripción.
+   Precio de homestay, 1:1 y anticipo: DE EJEMPLO. */
+const Q=[
+ {q:'Hola, ¿cómo te ___?',o:['llamas','llamo','llama'],a:0,l:1},
+ {q:'Nosotros ___ de Estados Unidos.',o:['es','somos','están'],a:1,l:1},
+ {q:'Ayer yo ___ pupusas en el mercado.',o:['como','comí','comeré'],a:1,l:2},
+ {q:'Mi casa ___ cerca de la catedral de Santa Ana.',o:['es','está','hay'],a:1,l:2},
+ {q:'Cuando era niño, ___ al fútbol todos los días.',o:['jugué','jugaba','juego'],a:1,l:3},
+ {q:'Espero que tú ___ a la clase mañana.',o:['vienes','vengas','vendrás'],a:1,l:3},
+ {q:'Si ___ más tiempo, viajaría a todo Centroamérica.',o:['tengo','tuviera','tendría'],a:1,l:4},
+ {q:'Para cuando llegues, ya ___ la cena.',o:['habremos preparado','preparamos','hubimos preparado'],a:0,l:4}
+];
+const LV=[{id:'A1',c:'#7fb0ff'},{id:'A2',c:'#3a6fd8'},{id:'B1',c:'#2f8a57'},{id:'B2',c:'#c98a1e'},{id:'C1',c:'#7a4a2b'}];
+const PR={grp:150,one:190,hs:110,meal:{0:0,1:15,2:30,3:45},fee:25};
+const TODAY=new Date(2026,10,20);
+const T={
+en:{demobar:"Demo de DevHorse para El Salvador Spanish Schools · Solo el programa de Santa Ana · Formato, inicio y homestay según fichas públicas (pueden estar desactualizadas) · Precios de referencia o de ejemplo · Pagos y mensajes simulados",
+brandsub:"Santa Ana · Learn Spanish in El Salvador",tabC:"Student",tabA:"School",phL:"Illustration: your photo goes here",
+eyebrow:"Santa Ana · coffee country",h1:"Find your level. Book your weeks in Santa Ana.",heroP:"Take a 2-minute placement test, see the level we'd start you at, and book your Spanish classes and homestay with a local family — all in one go.",
+c1:"🗣️ 20 hours a week",c2:"👤 One-on-one or groups up to 8",c3:"🏡 Homestay with a Salvadoran family",cta:"Take the placement test",
+facts:[["📅","Start any Monday","Pick your weeks"],["⏱️","4 hours a day","20 hours per week"],["🏡","Private room","Shared bath · 0–3 meals"],["🌱","Vegetarian?","Just tell us"]],
+fT:"Placement test & booking",fS:"Eight quick questions. No pressure: it just tells us where to start.",
+st1:"Test",st2:"Level",st3:"Program",st4:"Homestay",st5:"Book",
+qn:"Question {i} of {n}",qh:"Choose the word that fits.",skip:"I'm a complete beginner — skip the test",
+resT:"Your level: {l}",res:{A1:["Beginner","We'll start from the basics: greetings, numbers, everyday phrases."],A2:["Elementary","You can handle simple conversations. Next: past tenses and travel Spanish."],B1:["Intermediate","You get by. We'll polish past tenses and start the subjunctive."],B2:["Upper intermediate","You talk with confidence. Time for nuance, idioms and real debates."],C1:["Advanced","Impressive! We'll focus on fluency, culture and professional Spanish."]},
+score:"{s} of {n} correct",reco:"We recommend {w} weeks to move up one level.",retake:"Retake",
+next:"Continue",back:"Back",
+pT:"Your classes",pS:"20 hours a week, Monday to Friday, 4 hours a day.",grp:"Small group",grpS:"Up to 8 students at your level",one:"One-on-one",oneS:"Just you and your teacher",pw:"/ week",
+startL:"Start date (Mondays)",weeksL:"How many weeks?",seats:"{n} left",
+hT:"Stay with a family",hS:"Live with a Salvadoran family in Santa Ana. The fastest way to speak every day.",hsOn:"Homestay with a local family",hsOnS:"Private room · shared bath",mealsL:"Meals per day",mealsS:["None","Breakfast","2 meals","3 meals"],veg:"Vegetarian meals",vegS:"We'll let your family know",
+fam:"Your family is assigned before you arrive",famS:"We send you their names, photos and address by WhatsApp a week before.",
+yT:"Book your spot",yS:"Pay the registration fee and your first week's deposit. The rest, on your first day.",name:"Full name",email:"Email",phone:"WhatsApp",country:"Country",autofill:"Fill with sample data",errF:"Please add your name and WhatsApp.",pay:"Pay {a} and book",processing:"Booking…",sim:"Simulated payment: nothing is charged.",cardL:"Sample card",
+sumT:"Your program",sLvl:"Level",sStart:"Start",sWeeks:"Weeks",sType:"Classes",sHs:"Homestay",none:"—",yes:"Yes",no:"No",
+lnCl:"Classes · {w} wk × {p}",lnHs:"Homestay · {w} wk × {p}",lnFee:"Registration fee",total:"Total",dep:"Due today",bal:"On your first day",refL:"Reference",exL:"Sample",
+done:"You're booked! 🎉",doneS:"Here's what you get on WhatsApp — and what the school gets:",tg:"Student",th:"School",d0:"Today",d1:"A week before",d2:"Your first day",
+w0:"¡Hola {first}! 🇸🇻 Welcome to *El Salvador Spanish Schools* in Santa Ana.\n\n📈 Level: *{lvl}* ({lname})\n📅 Start: Monday {start}\n🗓️ {weeks} · {type}\n🏡 {hs}\n💳 Paid today: *{dep}*\n\nSee you in Santa Ana! Any questions, just reply here.",
+u0:"Thank you!! Can't wait 😊",
+w1:"🏡 {first}, meet your host family: *the {fam}*! They live 10 minutes' walk from the school.\n\nYour first class is Monday at *8:00*. Bring a notebook and comfortable shoes — Santa Ana is beautiful on foot.",
+w1n:"📍 {first}, your first class is Monday at *8:00* at the school in Santa Ana. Bring a notebook — we'll start with a short chat to confirm your level.",
+w2:"¡Buenos días, {first}! ☀️ Hoy empiezas. Tu profesora te espera a las 8:00. ¡Vamos a hablar mucho español!",
+wh:"🎓 *New student*\n\n👤 {name} · {country}\n📈 Test: *{lvl}* ({score})\n📅 Starts Mon {start} · {weeks}\n👥 {type}\n🏡 {hs}\n💳 Paid: *{dep}* ✅",
+actA:"Assign teacher",actB:"Assign family",actC:"Message",
+aT:"School dashboard",aS:"What Nelson's team sees. Items tagged “Sample” are made up; “New” is the booking you just made.",
+kS:"Students starting (4 weeks)",kH:"Homestays booked",kD:"Deposits received",kT:"Tests taken this month",kNew:"+{n} new",
+sT:"Upcoming students",sS:"With their test level, so teachers can prepare before Monday.",
+lvT:"Levels",lvS:"From the online placement test.",hfT:"Host families",hfS:"Rooms booked over the next 4 weeks.",
+ex:"Sample",nw:"New",
+foot:"Demo created by DevHorse as a proposal for El Salvador Spanish Schools (SalvaSpan). Santa Ana program only. Class format, Monday starts, homestay details and the reference price (US$150/week, US$25 registration) come from public listings that may be out of date. One-on-one price, homestay and meal prices, test questions, students, families and dates are samples. Illustrations instead of photos.",
+pl:{wk:["week","weeks"]},wa:"Business account · online"},
+es:{demobar:"Demo de DevHorse para El Salvador Spanish Schools · Solo el programa de Santa Ana · Formato, inicio y homestay según fichas públicas (pueden estar desactualizadas) · Precios de referencia o de ejemplo · Pagos y mensajes simulados",
+brandsub:"Santa Ana · Aprende español en El Salvador",tabC:"Estudiante",tabA:"Escuela",phL:"Ilustración: aquí va su foto",
+eyebrow:"Santa Ana · tierra de café",h1:"Descubre tu nivel. Reserva tus semanas en Santa Ana.",heroP:"Haz una prueba de nivel de 2 minutos, mira en qué nivel empezarías y reserva tus clases y tu homestay con una familia local, todo de una vez.",
+c1:"🗣️ 20 horas por semana",c2:"👤 Individual o grupos de hasta 8",c3:"🏡 Homestay con familia salvadoreña",cta:"Hacer la prueba de nivel",
+facts:[["📅","Empieza cualquier lunes","Elige tus semanas"],["⏱️","4 horas al día","20 horas por semana"],["🏡","Habitación privada","Baño compartido · 0–3 comidas"],["🌱","¿Vegetariano?","Solo avísanos"]],
+fT:"Prueba de nivel y reserva",fS:"Ocho preguntas rápidas. Sin presión: solo nos dice por dónde empezar.",
+st1:"Prueba",st2:"Nivel",st3:"Programa",st4:"Homestay",st5:"Reserva",
+qn:"Pregunta {i} de {n}",qh:"Elige la palabra que va.",skip:"Soy principiante total: saltar la prueba",
+resT:"Tu nivel: {l}",res:{A1:["Principiante","Empezamos por lo básico: saludos, números y frases del día a día."],A2:["Básico","Te defiendes en conversaciones simples. Ahora: pasados y español para viajar."],B1:["Intermedio","Te comunicas. Pulimos los pasados y empezamos el subjuntivo."],B2:["Intermedio alto","Hablas con seguridad. Toca matices, modismos y debates reales."],C1:["Avanzado","¡Impresionante! Nos enfocamos en fluidez, cultura y español profesional."]},
+score:"{s} de {n} correctas",reco:"Recomendamos {w} semanas para subir un nivel.",retake:"Repetir",
+next:"Continuar",back:"Atrás",
+pT:"Tus clases",pS:"20 horas por semana, de lunes a viernes, 4 horas al día.",grp:"Grupo pequeño",grpS:"Hasta 8 estudiantes de tu nivel",one:"Individual",oneS:"Solo tú y tu profesor",pw:"/ semana",
+startL:"Fecha de inicio (lunes)",weeksL:"¿Cuántas semanas?",seats:"Quedan {n}",
+hT:"Vive con una familia",hS:"Vive con una familia salvadoreña en Santa Ana. La forma más rápida de hablar todos los días.",hsOn:"Homestay con familia local",hsOnS:"Habitación privada · baño compartido",mealsL:"Comidas al día",mealsS:["Ninguna","Desayuno","2 comidas","3 comidas"],veg:"Comida vegetariana",vegS:"Le avisamos a tu familia",
+fam:"Tu familia se asigna antes de que llegues",famS:"Te enviamos sus nombres, fotos y dirección por WhatsApp una semana antes.",
+yT:"Separa tu cupo",yS:"Paga la inscripción y el anticipo de tu primera semana. El resto, el primer día.",name:"Nombre completo",email:"Correo",phone:"WhatsApp",country:"País",autofill:"Rellenar con datos de ejemplo",errF:"Completa tu nombre y WhatsApp.",pay:"Pagar {a} y reservar",processing:"Reservando…",sim:"Pago simulado: no se cobra nada.",cardL:"Tarjeta de ejemplo",
+sumT:"Tu programa",sLvl:"Nivel",sStart:"Inicio",sWeeks:"Semanas",sType:"Clases",sHs:"Homestay",none:"—",yes:"Sí",no:"No",
+lnCl:"Clases · {w} sem × {p}",lnHs:"Homestay · {w} sem × {p}",lnFee:"Inscripción",total:"Total",dep:"Hoy",bal:"El primer día",refL:"Referencia",exL:"Ejemplo",
+done:"¡Reserva lista! 🎉",doneS:"Así le llega al estudiante por WhatsApp, y así le llega a la escuela:",tg:"Estudiante",th:"Escuela",d0:"Hoy",d1:"Una semana antes",d2:"El primer día",
+w0:"¡Hola {first}! 🇸🇻 Bienvenido a *El Salvador Spanish Schools* en Santa Ana.\n\n📈 Nivel: *{lvl}* ({lname})\n📅 Inicio: lunes {start}\n🗓️ {weeks} · {type}\n🏡 {hs}\n💳 Pagado hoy: *{dep}*\n\n¡Nos vemos en Santa Ana! Cualquier duda, escríbenos aquí.",
+u0:"¡¡Gracias!! Qué emoción 😊",
+w1:"🏡 {first}, te presentamos a tu familia: *la {fam}*. Viven a 10 minutos a pie de la escuela.\n\nTu primera clase es el lunes a las *8:00*. Trae un cuaderno y zapatos cómodos: Santa Ana se disfruta caminando.",
+w1n:"📍 {first}, tu primera clase es el lunes a las *8:00* en la escuela de Santa Ana. Trae un cuaderno: empezamos con una charla corta para confirmar tu nivel.",
+w2:"¡Buenos días, {first}! ☀️ Hoy empiezas. Tu profesora te espera a las 8:00. ¡Vamos a hablar mucho español!",
+wh:"🎓 *Nuevo estudiante*\n\n👤 {name} · {country}\n📈 Prueba: *{lvl}* ({score})\n📅 Empieza lun {start} · {weeks}\n👥 {type}\n🏡 {hs}\n💳 Pagado: *{dep}* ✅",
+actA:"Asignar profesor",actB:"Asignar familia",actC:"Escribir",
+aT:"Panel de la escuela",aS:"Lo que ve el equipo de Nelson. Lo marcado “Ejemplo” es inventado; lo “Nuevo” es la reserva que acabas de hacer.",
+kS:"Estudiantes que empiezan (4 semanas)",kH:"Homestays reservados",kD:"Anticipos recibidos",kT:"Pruebas hechas este mes",kNew:"+{n} nuevo(s)",
+sT:"Próximos estudiantes",sS:"Con su nivel de la prueba, para que los profesores preparen antes del lunes.",
+lvT:"Niveles",lvS:"Según la prueba de nivel en línea.",hfT:"Familias anfitrionas",hfS:"Habitaciones reservadas las próximas 4 semanas.",
+ex:"Ejemplo",nw:"Nuevo",
+foot:"Demo creada por DevHorse como propuesta para El Salvador Spanish Schools (SalvaSpan). Solo el programa de Santa Ana. El formato de clases, el inicio los lunes, los datos del homestay y el precio de referencia (US$150/semana, US$25 de inscripción) vienen de fichas públicas que pueden estar desactualizadas. El precio individual, el homestay, las comidas, las preguntas de la prueba, los estudiantes, las familias y las fechas son de ejemplo. Ilustraciones en lugar de fotos.",
+pl:{wk:["semana","semanas"]},wa:"Cuenta de empresa · en línea"}};
+let lang='en';
+const S={v:'c',step:1,qi:0,ans:[],picked:null,lvl:null,type:'grp',start:null,weeks:2,hs:true,meals:2,veg:false,name:'',email:'',wa:'',country:'',done:false,tab:'g',newS:null};
+const t=(k,v)=>{let s=T[lang][k];if(s===undefined)return k;if(v&&typeof s==='string')for(const x in v)s=s.split('{'+x+'}').join(v[x]);return s};
+const $=id=>document.getElementById(id);
+const money=n=>'$'+(Math.round(n*100)/100).toLocaleString('en-US',{minimumFractionDigits:n%1?2:0,maximumFractionDigits:2});
+const loc=()=>lang==='es'?'es-SV':'en-US';
+const fD=d=>d.toLocaleDateString(loc(),{month:'short',day:'numeric'}).replace('.','');
+const fL=d=>d.toLocaleDateString(loc(),{month:'long',day:'numeric'});
+const pl=(n,k)=>n+' '+T[lang].pl[k][n===1?0:1];
+const mondays=()=>{const a=[];let d=new Date(TODAY);d.setDate(d.getDate()+((8-d.getDay())%7||7));for(let i=0;i<8;i++){a.push(new Date(+d+i*7*864e5))}return a};
+const seatsLeft=d=>[5,3,6,2,7,4,8,1][Math.floor((d-TODAY)/(7*864e5))%8];
+function levelFrom(){const ok=S.ans.filter(Boolean).length;return ok<=1?0:ok<=3?1:ok<=5?2:ok<=6?3:4}
+
+function renderStatic(){
+ document.documentElement.lang=lang;
+ document.querySelectorAll('[data-t]').forEach(e=>{const v=t(e.dataset.t);if(typeof v==='string')e.textContent=v});
+ $('lEn').className=lang==='en'?'on':'';$('lEs').className=lang==='es'?'on':'';
+ $('facts').innerHTML=t('facts').map(([i,a,b])=>`<div><i>${i}</i><span><b>${a}</b><small>${b}</small></span></div>`).join('');
+}
+function stepper(){$('stepper').innerHTML=['st1','st2','st3','st4','st5'].map((k,i)=>`<div class="stp ${S.step===i+1?'on':S.step>i+1?'done':''}"><div class="bar"><i></i></div>${i+1}. ${t(k)}</div>`).join('')}
+function renderBody(){
+ stepper();if(S.done){renderDone();return}
+ let h='';
+ if(S.step===1){const q=Q[S.qi];
+  h=`<div class="qhead"><span>${t('qn',{i:S.qi+1,n:Q.length})}</span><span>${'★'.repeat(q.l)}${'☆'.repeat(4-q.l)}</span></div><div class="qbar"><i style="width:${S.qi/Q.length*100}%"></i></div>
+  <div class="q">${q.q.replace('___','<em>___</em>')}</div><div class="qh">${t('qh')}</div>
+  <div class="ans">${q.o.map((o,i)=>`<button class="an ${S.picked!==null?(i===q.a?'ok':(i===S.picked?'no':'')):''}" onclick="answer(${i})" ${S.picked!==null?'disabled':''}><i>${'ABC'[i]}</i>${o}</button>`).join('')}</div>
+  ${S.qi===0&&S.picked===null?`<button class="skip" onclick="skipTest()">${t('skip')}</button>`:''}`;
+ }
+ if(S.step===2){const L=LV[S.lvl];const r=T[lang].res[L.id];const ok=S.ans.filter(Boolean).length;const pct=ok/Q.length;
+  h=`<div class="lvl"><div class="ring"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" fill="none" stroke="#e8e3d8" stroke-width="10"/><circle cx="50" cy="50" r="42" fill="none" stroke="${L.c}" stroke-width="10" stroke-linecap="round" stroke-dasharray="${264*Math.max(.08,(S.lvl+1)/5)} 264"/></svg><b>${L.id}</b></div><div><h3>${t('resT',{l:r[0]})}</h3><p>${r[1]}</p><p>${S.ans.length?t('score',{s:ok,n:Q.length})+' · ':''}${t('reco',{w:S.lvl<2?'2–4':'3–4'})}</p></div></div>
+  <div class="scale">${LV.map((x,i)=>`<span class="${i===S.lvl?'on':''}">${x.id}</span>`).join('')}</div>
+  <div class="nav"><button class="btn ghost" onclick="retake()">↺ ${t('retake')}</button><button class="btn bl" onclick="go(3)">${t('next')} →</button></div>`;
+ }
+ if(S.step===3){
+  h=`<h2 class="t">${t('pT')}</h2><p class="sub">${t('pS')}</p>
+  <div class="opts two2"><button class="op ${S.type==='grp'?'on':''}" onclick="S.type='grp';renderAll()"><b>👥 ${t('grp')}</b><small>${t('grpS')}</small><span class="pr">${money(PR.grp)} ${t('pw')} <span class="ref">${t('refL')}</span></span></button><button class="op ${S.type==='one'?'on':''}" onclick="S.type='one';renderAll()"><b>👤 ${t('one')}</b><small>${t('oneS')}</small><span class="pr">${money(PR.one)} ${t('pw')} <span class="exl">${t('exL')}</span></span></button></div>
+  <div class="lab">${t('startL')}</div><div class="mons">${mondays().map(d=>{const s=seatsLeft(d);return `<button class="mo ${S.start&&+S.start===+d?'on':''}" onclick="S.start=new Date(${+d});renderAll()"><small>${d.toLocaleDateString(loc(),{weekday:'short'}).replace('.','')}</small><b>${fD(d)}</b>${S.type==='grp'?`<i>${t('seats',{n:s})}</i>`:''}</button>`}).join('')}</div>
+  <div class="cnt"><span><b>${t('weeksL')}</b><small>${t('reco',{w:S.lvl<2?'2–4':'3–4'})}</small></span><span class="stepr"><button ${S.weeks<=1?'disabled':''} onclick="S.weeks--;renderAll()">−</button><span>${S.weeks}</span><button ${S.weeks>=12?'disabled':''} onclick="S.weeks++;renderAll()">+</button></span></div>
+  <div class="nav"><button class="btn ghost" onclick="go(2)">←</button><button class="btn bl" ${S.start?'':'disabled'} onclick="go(4)">${t('next')} →</button></div>`;
+ }
+ if(S.step===4){
+  h=`<h2 class="t">${t('hT')}</h2><p class="sub">${t('hS')}</p>
+  <button class="sw ${S.hs?'on':''}" onclick="S.hs=!S.hs;renderAll()"><span class="tg"></span><span><b>${t('hsOn')}</b><small>${t('hsOnS')} · ${money(PR.hs)} ${t('pw')} <span class="exl">${t('exL')}</span></small></span></button>
+  ${S.hs?`<div class="lab">${t('mealsL')}</div><div class="pills">${[0,1,2,3].map(m=>`<button class="pill ${S.meals===m?'on':''}" onclick="S.meals=${m};renderAll()">${T[lang].mealsS[m]}<small>${m?'+'+money(PR.meal[m])+' '+t('pw'):'—'}</small></button>`).join('')}</div>
+  <button class="sw ${S.veg?'on':''}" onclick="S.veg=!S.veg;renderAll()"><span class="tg"></span><span><b>🌱 ${t('veg')}</b><small>${t('vegS')}</small></span></button>
+  <div class="hs"><svg viewBox="0 0 70 56"><rect width="70" height="56" fill="#f2e3c4"/><rect x="12" y="24" width="46" height="28" fill="#fff"/><path d="M8 26 L35 8 L62 26Z" fill="#b8573a"/><rect x="31" y="36" width="9" height="16" fill="#7a4a2b"/><rect x="17" y="30" width="9" height="8" fill="#9cc3e6"/><rect x="45" y="30" width="9" height="8" fill="#9cc3e6"/></svg><span><b>${t('fam')}</b><small>${t('famS')}</small></span></div>`:''}
+  <div class="nav"><button class="btn ghost" onclick="go(3)">←</button><button class="btn bl" onclick="go(5)">${t('next')} →</button></div>`;
+ }
+ if(S.step===5){const q=quote();
+  h=`<h2 class="t">${t('yT')}</h2><p class="sub">${t('yS')}</p><button class="lnk" onclick="fill()">${t('autofill')}</button>
+  <div class="two"><div class="fld"><label>${t('name')}</label><input value="${S.name}" oninput="S.name=this.value"></div><div class="fld"><label>${t('country')}</label><input value="${S.country}" oninput="S.country=this.value"></div></div>
+  <div class="two"><div class="fld"><label>${t('phone')}</label><input inputmode="tel" value="${S.wa}" oninput="S.wa=this.value"></div><div class="fld"><label>${t('email')}</label><input value="${S.email}" oninput="S.email=this.value"></div></div>
+  <div class="mock"><small>${t('cardL')}</small><b>4242 4242 4242 4242</b><small>12/29 · CVC 123</small></div>
+  <div class="err" id="err"></div>
+  <button class="btn bl" style="width:100%" id="payB" onclick="submit()">🔒 ${t('pay',{a:money(q.dep)})}</button>
+  <p class="note center">${t('sim')}</p><div class="nav"><button class="btn ghost" onclick="go(4)">← ${t('back')}</button></div>`;
+ }
+ $('body').innerHTML=h;
+}
+function answer(i){if(S.picked!==null)return;S.picked=i;S.ans[S.qi]=i===Q[S.qi].a;renderBody();
+ setTimeout(()=>{S.picked=null;if(S.qi<Q.length-1){S.qi++}else{S.lvl=levelFrom();S.step=2}renderAll()},650)}
+function skipTest(){S.ans=[];S.lvl=0;S.step=2;renderAll()}
+function retake(){Object.assign(S,{qi:0,ans:[],picked:null,lvl:null,step:1});renderAll()}
+function quote(){const w=S.weeks;const cp=S.type==='grp'?PR.grp:PR.one;const L=[[t('lnCl',{w,p:money(cp)}),cp*w]];
+ if(S.hs){const hp=PR.hs+PR.meal[S.meals];L.push([t('lnHs',{w,p:money(hp)}),hp*w])}
+ L.push([t('lnFee'),PR.fee]);const tot=L.reduce((a,x)=>a+x[1],0);
+ const dep=PR.fee+cp+(S.hs?PR.hs+PR.meal[S.meals]:0);return{L,tot,dep}}
+function renderSum(){
+ let h=`<h3>${t('sumT')}</h3>
+ <div class="ln"><span>${t('sLvl')}</span><b>${S.lvl!==null?LV[S.lvl].id+' · '+T[lang].res[LV[S.lvl].id][0]:t('none')}</b></div>
+ <div class="ln"><span>${t('sType')}</span><b>${S.step>=3?(S.type==='grp'?t('grp'):t('one')):t('none')}</b></div>
+ <div class="ln"><span>${t('sStart')}</span><b>${S.start?fL(S.start):t('none')}</b></div>
+ <div class="ln"><span>${t('sWeeks')}</span><b>${S.step>=3?S.weeks:t('none')}</b></div>
+ <div class="ln"><span>${t('sHs')}</span><b>${S.step>=4?(S.hs?t('yes')+(S.meals?' · '+T[lang].mealsS[S.meals].toLowerCase():'')+(S.veg?' · 🌱':''):t('no')):t('none')}</b></div>`;
+ if(S.step>=3){const q=quote();h+=`<div class="hr"></div>`+q.L.map(([a,b])=>`<div class="ln"><span>${a}</span><b>${money(b)}</b></div>`).join('')+`<div class="ln big"><span>${t('total')}</span><span>${money(q.tot)}</span></div><div class="dep"><div class="ln"><span>${t('dep')}</span><span>${money(q.dep)}</span></div><div class="ln s"><span>${t('bal')}</span><span>${money(q.tot-q.dep)}</span></div></div>`}
+ $('sum').innerHTML=h;
+}
+function renderAll(){renderStatic();renderBody();renderSum();renderAdmin()}
+function go(n){S.step=n;renderBody();renderSum();const b=$('test');if(b.getBoundingClientRect().top<0)b.scrollIntoView({behavior:'smooth'})}
+function fill(){Object.assign(S,{name:'Megan Walsh',country:lang==='es'?'Estados Unidos':'United States',wa:'+1 512 555 0142',email:'megan.w@example.com'});renderBody()}
+function submit(){if(!S.name.trim()||!S.wa.trim()){$('err').textContent=t('errF');return}
+ const b=$('payB');b.textContent=t('processing');b.disabled=true;
+ setTimeout(()=>{const q=quote();S.newS={name:S.name,country:S.country||'—',lvl:S.lvl,score:S.ans.length?S.ans.filter(Boolean).length+'/'+Q.length:'—',start:S.start,weeks:S.weeks,type:S.type,hs:S.hs,meals:S.meals,veg:S.veg,dep:q.dep,tot:q.tot,fam:'Familia Martínez Rivas'};S.done=true;S.tab='g';$('bdg').hidden=false;renderAll();$('test').scrollIntoView({behavior:'smooth'})},900)}
+/* chat */
+let TOK=0;
+const fmtW=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/\*(.+?)\*/g,'<b>$1</b>');
+const now=()=>new Date().toLocaleTimeString(loc(),{hour:'2-digit',minute:'2-digit'});
+function hsTxt(n){return n.hs?(lang==='es'?'Homestay':'Homestay')+(n.meals?' · '+T[lang].mealsS[n.meals].toLowerCase():'')+(n.veg?' · 🌱':''):(lang==='es'?'Sin homestay':'No homestay')}
+function gMsgs(n){const f=n.name.split(' ')[0];const L=[{sep:t('d0')},{biz:1,txt:t('w0',{first:f,lvl:LV[n.lvl].id,lname:T[lang].res[LV[n.lvl].id][0],start:fL(n.start),weeks:pl(n.weeks,'wk'),type:n.type==='grp'?t('grp'):t('one'),hs:hsTxt(n),dep:money(n.dep)})},{usr:1,txt:t('u0')},{sep:t('d1')},{biz:1,txt:n.hs?t('w1',{first:f,fam:lang==='es'?'familia Martínez Rivas':'Martínez Rivas family'}):t('w1n',{first:f})},{sep:t('d2')},{biz:1,txt:t('w2',{first:f})}];return L}
+function hMsgs(n){return [{sep:t('d0')},{biz:1,act:1,txt:t('wh',{name:n.name,country:n.country,lvl:LV[n.lvl].id,score:n.score,start:fL(n.start),weeks:pl(n.weeks,'wk'),type:n.type==='grp'?t('grp'):t('one'),hs:hsTxt(n),dep:money(n.dep)})}]}
+function phone(id,title){return `<div class="phone"><div class="wah"><span class="av"><svg viewBox="0 0 38 38" width="28" height="28"><path d="M6 28 L15 15 L19 20 L24 12 L32 28Z" fill="#1d4ea8"/><circle cx="27" cy="10" r="3" fill="#f2b33d"/></svg></span><span><b>${title}</b><small>${t('wa')}</small></span></div><div class="chat" id="${id}"></div><div class="wafoot">✓✓</div></div>`}
+async function play(id,list){const tok=++TOK;const box=$(id);if(!box)return;box.innerHTML='';
+ for(const m of list){if(tok!==TOK)return;
+  if(m.sep){const d=document.createElement('div');d.className='dsep';d.textContent=m.sep;box.appendChild(d);continue}
+  if(m.biz){const ty=document.createElement('div');ty.className='typing';ty.innerHTML='<i></i><i></i><i></i>';box.appendChild(ty);await new Promise(r=>setTimeout(r,700));if(tok!==TOK)return;ty.remove()}else await new Promise(r=>setTimeout(r,500));
+  if(tok!==TOK)return;const e=document.createElement('div');e.className='msg '+(m.biz?'biz':'usr');e.innerHTML=fmtW(m.txt)+(m.act?`<div class="act"><span>👩‍🏫 ${t('actA')}</span><span>🏡 ${t('actB')}</span><span>💬 ${t('actC')}</span></div>`:'')+`<span class="tm">${now()}${m.biz?' ✓✓':''}</span>`;box.appendChild(e)}}
+function renderDone(){const n=S.newS;
+ $('body').innerHTML=`<div class="center"><h2 class="t">${t('done')}</h2><p class="sub">${t('doneS')}</p></div><div class="tabs"><button class="${S.tab==='g'?'on':''}" onclick="S.tab='g';renderDone()">📱 ${t('tg')}</button><button class="${S.tab==='h'?'on':''}" onclick="S.tab='h';renderDone()">🏫 ${t('th')}</button></div>${phone('ch',S.tab==='g'?'El Salvador Spanish Schools':'SalvaSpan · Web')}`;
+ play('ch',S.tab==='g'?gMsgs(n):hMsgs(n))}
+/* admin */
+const M=mondays();
+const SAMPLES=[
+ {name:'Jake & Olivia T.',country:'USA',lvl:1,score:'3/8',start:M[0],weeks:3,type:'grp',hs:true,meals:2,dep:310,fam:'Familia Rivas'},
+ {name:'Sarah K.',country:'Canada',lvl:2,score:'5/8',start:M[0],weeks:2,type:'one',hs:true,meals:3,dep:370,fam:'Familia Martínez Rivas'},
+ {name:'Daniel M.',country:'USA',lvl:0,score:'—',start:M[1],weeks:4,type:'grp',hs:false,meals:0,dep:175},
+ {name:'Emily R.',country:'USA',lvl:3,score:'7/8',start:M[2],weeks:2,type:'one',hs:true,meals:1,dep:340,fam:'Familia Guevara'},
+ {name:'Thomas B.',country:'Germany',lvl:1,score:'2/8',start:M[3],weeks:6,type:'grp',hs:true,meals:2,dep:315,fam:'Familia Rivas'}
+];
+function renderAdmin(){
+ const A=SAMPLES.slice();if(S.newS)A.unshift({...S.newS,nw:true});
+ $('kpis').innerHTML=`<div class="kpi"><small>${t('kS')}</small><b>${A.length}</b>${S.newS?`<em>${t('kNew',{n:1})}</em>`:''}</div><div class="kpi"><small>${t('kH')}</small><b>${A.filter(x=>x.hs).length}</b></div><div class="kpi"><small>${t('kD')}</small><b>${money(A.reduce((s,x)=>s+x.dep,0))}</b></div><div class="kpi hl"><small>${t('kT')}</small><b>${23+(S.newS?1:0)}</b></div>`;
+ $('studs').innerHTML=A.sort((a,b)=>(b.nw?1:0)-(a.nw?1:0)||a.start-b.start).map(x=>`<div class="st ${x.nw?'nw':''}"><span class="lv" style="background:${LV[x.lvl].c}">${LV[x.lvl].id}</span><span class="m"><b>${x.name}</b><span class="tag ${x.nw?'n':''}">${x.nw?t('nw'):t('ex')}</span><small>${lang==='es'?'Lun':'Mon'} ${fD(x.start)} · ${pl(x.weeks,'wk')} · ${x.type==='grp'?'👥 '+t('grp'):'👤 '+t('one')}</small><small>${x.hs?'🏡 '+(x.fam||''):'—'} · ${lang==='es'?'prueba':'test'} ${x.score} · ${x.country}</small></span></div>`).join('');
+ const cnt=[0,0,0,0,0];A.forEach(x=>cnt[x.lvl]++);const base=[3,6,5,2,1];const tot=cnt.map((c,i)=>c+base[i]);const mx=Math.max(...tot);
+ $('lvb').innerHTML=LV.map((L,i)=>`<div class="lb"><span>${L.id} · ${T[lang].res[L.id][0]}</span><span class="tr"><i style="width:${tot[i]/mx*100}%;background:${L.c}"></i></span><b>${tot[i]}</b></div>`).join('');
+ const F=[['Familia Rivas',2],['Familia Martínez Rivas',2],['Familia Guevara',1],['Familia Pacas',2]];
+ $('fams').innerHTML=F.map(([n,r])=>{const used=A.filter(x=>x.hs&&x.fam===n&&!x.nw).length;const nw=S.newS&&S.newS.hs&&S.newS.fam===n?1:0;return `<div class="fam"><span>🏡</span><span><b>${n} <span class="tag">${t('ex')}</span></b><small>${r} ${lang==='es'?(r>1?'habitaciones':'habitación'):(r>1?'rooms':'room')}</small></span><span class="bd">${Array.from({length:r},(_,i)=>`<i class="${i<used?'f':i<used+nw?'n':''}"></i>`).join('')}</span></div>`}).join('');
+}
+function view(v){$('vC').hidden=v!=='c';$('vA').hidden=v!=='a';$('tC').className=v==='c'?'on':'';$('tA').className=v==='a'?'on':'';if(v==='a'){$('bdg').hidden=true;renderAdmin()}scrollTo({top:0,behavior:'smooth'})}
+function toggleLang(){lang=lang==='en'?'es':'en';renderAll()}
+renderAll();
+</script>
+</body>
+</html>
