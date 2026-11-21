@@ -240,7 +240,7 @@ p.sub{color:var(--muted);font-size:13.5px;margin-bottom:14px}
 
 <script>
 /* Habitaciones (nombres, camas, tamaño, capacidad), desayuno 7–9, check-out 10:00, ubicación: fichas públicas (Expedia, Trip.com).
-   "Desde $87" para 2 adultos: precio mínimo visto en Trip.com (referencia). Demás precios: EJEMPLO. Tours: sin precio (los arma la pareja dueña). */
+   "Desde $87" para 2 adultos: precio mínimo visto en Trip.com (referencia). Demás precios: EJEMPLO. */
 const R=[
  {id:'bb',price:87,ref:true,cap:3,bed:'q',art:0},
  {id:'dp',price:92,cap:3,bed:'q',art:1},
@@ -253,12 +253,12 @@ const R=[
 const TOURS=[{id:'kr',ic:'🦈'},{id:'il',ic:'🦭'},{id:'hl',ic:'🐢'},{id:'360',ic:'⛵'},{id:'tj',ic:'🥾'}];
 const DEP=.3,TODAY=new Date(2026,10,21);
 const T={
-es:{demobar:"Demo de DevHorse para Royal Galápagos Inn · Habitaciones, desayuno y ubicación de sus fichas públicas · Precio “desde” de referencia; los demás, de ejemplo · Tours sin precio · Ilustraciones en lugar de fotos · Pagos y mensajes simulados",
+es:{demobar:"Demo de DevHorse para Royal Galápagos Inn · Habitaciones, desayuno y ubicación de sus fichas públicas · Precio “desde” de referencia; los demás, de ejemplo · Ilustraciones en lugar de fotos · Pagos y mensajes simulados",
 brandsub:"Playa de Oro · San Cristóbal, Galápagos",tabC:"Huésped",tabA:"Hotel",phL:"Ilustración: aquí va su foto",
-eyebrow:"Frente al mar · a minutos del aeropuerto",h1:"Atardeceres, lobos marinos y el mar en tu balcón",heroP:"Hotel familiar frente a Playa de Oro, en Puerto Baquerizo Moreno. Terraza con vista al mar, habitaciones con balcón y desayuno incluido. Reserva tu habitación y suma tus tours en el mismo paso.",
+eyebrow:"Frente al mar · a minutos del aeropuerto",h1:"Atardeceres, lobos marinos y el mar en tu balcón",heroP:"Hotel familiar frente a Playa de Oro, en Puerto Baquerizo Moreno. Terraza con vista al mar, habitaciones con balcón y desayuno incluido. Reserva directo con el hotel, sin intermediarios.",
 c1:"🌅 Terraza con vista al mar",c2:"🍳 Desayuno de 7:00 a 9:00",c3:"🦭 Lobos marinos en la orilla",cta:"Reservar",
-perks:[["🦭","Lobos marinos a pasos","Malecón y Playa de Oro a 1–2 min"],["🧭","Tus tours armados por los dueños","Kicker Rock, Isla Lobos y más"],["🍳","Desayuno incluido","Y temprano si tu tour sale a las 7"],["💬","Todo por WhatsApp","Confirmación al instante"]],
-bT:"Reserva directa",bS:"Fechas, habitación y tours en un solo lugar. Tarifas por noche con desayuno.",
+perks:[["🦭","Lobos marinos a pasos","Malecón y Playa de Oro a 1–2 min"],["🌅","Terraza en la azotea","Con vista al mar"],["🍳","Desayuno incluido","De 7:00 a 9:00"],["💬","Todo por WhatsApp","Confirmación al instante"]],
+bT:"Reserva directa",bS:"Fechas, habitación y anticipo en un solo lugar. Tarifas por noche con desayuno.",
 st1:"Fechas",st2:"Habitación",st3:"Tours",st4:"Anticipo",
 dT:"¿Cuándo llegas?",dS:"Toca el día de llegada y luego el de salida. Disponibilidad de ejemplo.",arr:"Llegada",dep:"Salida",nights:"{n} noche(s)",tapOut:"Ahora toca el día de salida",gL:"Huéspedes",gS:"Adultos y niños",
 rT:"Elige tu habitación",rS:"Para {g} · {n}.",n_bb:"Habitación básica con balcón",n_dp:"Doble con baño privado",n_dv:"Doble con vista al mar",n_et:"Triple económica",n_tv:"Triple con vista al mar",n_qb:"Cuádruple con balcón",n_su:"Suite en terraza con vista al mar",
@@ -272,20 +272,20 @@ done:"¡Reserva confirmada!",doneS:"Así le llega al huésped por WhatsApp, y as
 w0:"¡Hola {first}! 🌅 Tu reserva en *Royal Galápagos Inn* está confirmada.\n\n🛏️ {room}\n📅 {in} → {out} ({n})\n👥 {g}\n💳 Anticipo recibido: *{dep}*\n💵 Saldo al llegar: *{bal}*{tours}",
 w0t:"\n\n🧭 Tours que te interesan: {list}\nEduardo te escribe para confirmarte fechas y precios.",
 u0:"¡Gracias! Qué emoción 🦭",
-w1:"¡Hola {first}! Mañana te esperamos frente a Playa de Oro 🌊\n\nEstamos a pocos minutos del aeropuerto. El desayuno es de 7:00 a 9:00 y, si tu tour sale temprano, te lo dejamos listo antes. ¡Buen viaje!",
+w1:"¡Hola {first}! Mañana te esperamos frente a Playa de Oro 🌊\n\nEstamos a pocos minutos del aeropuerto. El desayuno es de 7:00 a 9:00. ¡Buen viaje!",
 wh:"🔔 *Nueva reserva directa*\n\n👤 {name} · {country}\n🛏️ {room}\n📅 {in} → {out} ({n})\n👥 {g}\n💳 Anticipo: *{dep}* ✅{tours}",whT:"\n🧭 Tours a cotizar: {list}",
-actA:"Confirmar",actB:"Enviar precio de tours",actC:"Escribir",
+actA:"Confirmar",actB:"Enviar ubicación",actC:"Escribir",
 aT:"Panel del hotel",aS:"Lo que ven los dueños. Lo marcado “Ejemplo” es inventado; lo “Nuevo” es la reserva que acabas de hacer.",
-kR:"Reservas directas (mes)",kT:"Tours por cotizar",kD:"Anticipos recibidos",kO:"Ocupación 10 días",kNew:"+{n} nueva(s)",
-oT:"Ocupación",oS:"Próximos 10 días por habitación.",lgB:"Ocupada (ejemplo)",lgN:"Tu reserva",bkT:"Reservas",bkS:"Con los tours que pidió cada huésped.",ex:"Ejemplo",nw:"Nueva",tours:"tours",tour1:"tour",
-foot:"Demo creada por DevHorse como propuesta para Royal Galápagos Inn. Tipos de habitación, camas, tamaños, desayuno (7:00–9:00), check-out a las 10:00, terraza con vista al mar y ubicación tomados de sus fichas públicas (Expedia, Trip.com). El precio “desde” es el mínimo visto en esas plataformas (referencia); los demás precios, la disponibilidad, los huéspedes y las reservas son de ejemplo. Los tours no tienen precio: los confirma el hotel. Ilustraciones en lugar de fotos.",
+kR:"Reservas directas (mes)",kT:"Noches reservadas",kD:"Anticipos recibidos",kO:"Ocupación 10 días",kNew:"+{n} nueva(s)",
+oT:"Ocupación",oS:"Próximos 10 días por habitación.",lgB:"Ocupada (ejemplo)",lgN:"Tu reserva",bkT:"Reservas",bkS:"Próximas llegadas.",ex:"Ejemplo",nw:"Nueva",tours:"tours",tour1:"tour",
+foot:"Demo creada por DevHorse como propuesta para Royal Galápagos Inn. Tipos de habitación, camas, tamaños, desayuno (7:00–9:00), check-out a las 10:00, terraza con vista al mar y ubicación tomados de sus fichas públicas (Expedia, Trip.com). El precio “desde” es el mínimo visto en esas plataformas (referencia); los demás precios, la disponibilidad, los huéspedes y las reservas son de ejemplo. Ilustraciones en lugar de fotos.",
 pW:["huésped","huéspedes"],wa:"Cuenta de empresa · en línea"},
-en:{demobar:"DevHorse demo for Royal Galápagos Inn · Rooms, breakfast and location from their public listings · “From” price is a reference; others are samples · Tours without prices · Illustrations instead of photos · Simulated payments & messages",
+en:{demobar:"DevHorse demo for Royal Galápagos Inn · Rooms, breakfast and location from their public listings · “From” price is a reference; others are samples · Illustrations instead of photos · Simulated payments & messages",
 brandsub:"Playa de Oro · San Cristóbal, Galápagos",tabC:"Guest",tabA:"Hotel",phL:"Illustration: your photo goes here",
-eyebrow:"Oceanfront · minutes from the airport",h1:"Sunsets, sea lions and the ocean from your balcony",heroP:"A family-run hotel facing Playa de Oro in Puerto Baquerizo Moreno. Ocean-view rooftop, rooms with balconies and breakfast included. Book your room and add your tours in the same step.",
+eyebrow:"Oceanfront · minutes from the airport",h1:"Sunsets, sea lions and the ocean from your balcony",heroP:"A family-run hotel facing Playa de Oro in Puerto Baquerizo Moreno. Ocean-view rooftop, rooms with balconies and breakfast included. Book directly with the hotel, no middlemen.",
 c1:"🌅 Ocean-view rooftop",c2:"🍳 Breakfast 7:00–9:00",c3:"🦭 Sea lions on the shore",cta:"Book now",
-perks:[["🦭","Sea lions steps away","Malecón and Playa de Oro 1–2 min"],["🧭","Tours arranged by the owners","Kicker Rock, Isla Lobos and more"],["🍳","Breakfast included","Early, if your tour leaves at 7"],["💬","All on WhatsApp","Instant confirmation"]],
-bT:"Book direct",bS:"Dates, room and tours in one place. Nightly rates with breakfast.",
+perks:[["🦭","Sea lions steps away","Malecón and Playa de Oro 1–2 min"],["🌅","Rooftop terrace","With ocean views"],["🍳","Breakfast included","7:00 to 9:00"],["💬","All on WhatsApp","Instant confirmation"]],
+bT:"Book direct",bS:"Dates, room and deposit in one place. Nightly rates with breakfast.",
 st1:"Dates",st2:"Room",st3:"Tours",st4:"Deposit",
 dT:"When are you arriving?",dS:"Tap your arrival day, then your departure day. Sample availability.",arr:"Arrival",dep:"Departure",nights:"{n} night(s)",tapOut:"Now tap your departure day",gL:"Guests",gS:"Adults and children",
 rT:"Choose your room",rS:"For {g} · {n}.",n_bb:"Basic room with balcony",n_dp:"Double with private bathroom",n_dv:"Double with ocean view",n_et:"Economy triple",n_tv:"Triple with ocean view",n_qb:"Quadruple with balcony",n_su:"Terrace suite with ocean view",
@@ -299,13 +299,13 @@ done:"Booking confirmed!",doneS:"This is what the guest gets on WhatsApp, and wh
 w0:"Hi {first}! 🌅 Your stay at *Royal Galápagos Inn* is confirmed.\n\n🛏️ {room}\n📅 {in} → {out} ({n})\n👥 {g}\n💳 Deposit received: *{dep}*\n💵 Balance on arrival: *{bal}*{tours}",
 w0t:"\n\n🧭 Tours you're interested in: {list}\nEduardo will message you to confirm dates and prices.",
 u0:"Thank you! So excited 🦭",
-w1:"Hi {first}! We'll see you tomorrow, right on Playa de Oro 🌊\n\nWe're just minutes from the airport. Breakfast is 7:00–9:00 and, if your tour leaves early, we'll have it ready before. Safe travels!",
+w1:"Hi {first}! We'll see you tomorrow, right on Playa de Oro 🌊\n\nWe're just minutes from the airport. Breakfast is 7:00–9:00. Safe travels!",
 wh:"🔔 *New direct booking*\n\n👤 {name} · {country}\n🛏️ {room}\n📅 {in} → {out} ({n})\n👥 {g}\n💳 Deposit: *{dep}* ✅{tours}",whT:"\n🧭 Tours to quote: {list}",
-actA:"Confirm",actB:"Send tour prices",actC:"Message",
+actA:"Confirm",actB:"Send location",actC:"Message",
 aT:"Hotel dashboard",aS:"What the owners see. Items tagged “Sample” are made up; “New” is the booking you just made.",
-kR:"Direct bookings (month)",kT:"Tours to quote",kD:"Deposits received",kO:"Occupancy 10 days",kNew:"+{n} new",
-oT:"Occupancy",oS:"Next 10 days by room.",lgB:"Booked (sample)",lgN:"Your booking",bkT:"Bookings",bkS:"With the tours each guest asked for.",ex:"Sample",nw:"New",tours:"tours",tour1:"tour",
-foot:"Demo created by DevHorse as a proposal for Royal Galápagos Inn. Room types, beds, sizes, breakfast (7:00–9:00), 10:00 check-out, ocean-view rooftop and location from their public listings (Expedia, Trip.com). The “from” price is the lowest seen on those platforms (reference); other prices, availability, guests and bookings are samples. Tours have no prices: the hotel confirms them. Illustrations instead of photos.",
+kR:"Direct bookings (month)",kT:"Nights booked",kD:"Deposits received",kO:"Occupancy 10 days",kNew:"+{n} new",
+oT:"Occupancy",oS:"Next 10 days by room.",lgB:"Booked (sample)",lgN:"Your booking",bkT:"Bookings",bkS:"Upcoming arrivals.",ex:"Sample",nw:"New",tours:"tours",tour1:"tour",
+foot:"Demo created by DevHorse as a proposal for Royal Galápagos Inn. Room types, beds, sizes, breakfast (7:00–9:00), 10:00 check-out, ocean-view rooftop and location from their public listings (Expedia, Trip.com). The “from” price is the lowest seen on those platforms (reference); other prices, availability, guests and bookings are samples. Illustrations instead of photos.",
 pW:["guest","guests"],wa:"Business account · online"}};
 let lang='es';
 const S={step:1,cin:null,cout:null,g:2,room:null,tours:[],name:'',wa:'',email:'',country:'',pay:'card',done:false,tab:'g',mon:[2026,10],newB:null};
@@ -326,7 +326,7 @@ function renderStatic(){
  $('lEs').className=lang==='es'?'on':'';$('lEn').className=lang==='en'?'on':'';
  $('perks').innerHTML=t('perks').map(([i,a,b])=>`<div><i>${i}</i><span><b>${a}</b><small>${b}</small></span></div>`).join('');
 }
-function stepper(){$('stepper').innerHTML=['st1','st2','st3','st4'].map((k,i)=>`<div class="stp ${S.step===i+1?'on':S.step>i+1?'done':''}"><div class="bar"><i></i></div>${i+1}. ${t(k)}</div>`).join('')}
+function stepper(){$('stepper').innerHTML=['st1','st2','st4'].map((k,i)=>`<div class="stp ${S.step===i+1?'on':S.step>i+1?'done':''}"><div class="bar"><i></i></div>${i+1}. ${t(k)}</div>`).join('')}
 function renderBody(){stepper();if(S.done){renderDone();return}let h='';
  if(S.step===1){h=`<h2 class="t">${t('dT')}</h2><p class="sub">${t('dS')}</p>${calendar()}
   <div class="range"><span><small>${t('arr')}</small><b>${S.cin?fD(S.cin):'—'}</b></span><span>→</span><span><small>${t('dep')}</small><b>${S.cout?fD(S.cout):'—'}</b></span><span class="n">${nights()?t('nights',{n:nights()}):''}</span></div>
@@ -335,15 +335,13 @@ function renderBody(){stepper();if(S.done){renderDone();return}let h='';
   <div class="nav"><button class="btn sea" ${nights()?'':'disabled'} onclick="go(2)">${t('next')} →</button></div>`}
  if(S.step===2){h=`<h2 class="t">${t('rT')}</h2><p class="sub">${t('rS',{g:pl(S.g,T[lang].pW),n:t('nights',{n:nights()})})}</p><div class="rooms">`+R.map(r=>{const ok=r.cap>=S.g;return `<button class="rm ${S.room===r.id?'on':''} ${ok?'':'dis'}" onclick="S.room='${r.id}';renderAll()"><span class="art">${art(r.art)}</span><span class="mid"><b>${t('n_'+r.id)}${r.star?' ✦':''}</b><small>${t('b_'+r.bed)} · ${t('upTo',{n:r.cap})}${r.m2?' · '+r.m2+' m²':''}</small>${ok?'':`<small class="why">${t('small')}</small>`}</span><span class="pr"><b>${money(r.price)}</b><small>${t('pn')}</small><span class="tag ${r.ref?'r':''}">${r.ref?t('refL'):t('exL')}</span></span></button>`}).join('')+`</div>
   <div class="nav"><button class="btn ghost" onclick="go(1)">←</button><button class="btn sea" ${S.room?'':'disabled'} onclick="go(3)">${t('next')} →</button></div>`}
- if(S.step===3){h=`<h2 class="t">${t('xT')}</h2><p class="sub">${t('xS')}</p><div class="tours">`+TOURS.map(x=>{const on=S.tours.includes(x.id);return `<button class="to ${on?'on':''}" onclick="togT('${x.id}')"><span class="ic">${x.ic}</span><span><b>${t('t_'+x.id)}</b><small>${t('t_'+x.id+'s')}</small><small style="color:#9a6a00;font-weight:700">${t('tbc')}</small></span><span class="ck">${on?'✓':''}</span></button>`}).join('')+`</div><div class="tip">${t('early')}</div>
-  <div class="nav"><button class="btn ghost" onclick="go(2)">←</button><button class="btn sea" onclick="go(4)">${S.tours.length?t('next')+' →':t('skip')}</button></div>`}
- if(S.step===4){const q=quote();h=`<h2 class="t">${t('yT')}</h2><p class="sub">${t('yS')}</p><button class="lnk" onclick="fill()">${t('autofill')}</button>
+ if(S.step===3){const q=quote();h=`<h2 class="t">${t('yT')}</h2><p class="sub">${t('yS')}</p><button class="lnk" onclick="fill()">${t('autofill')}</button>
   <div class="two"><div class="fld"><label>${t('name')}</label><input value="${S.name}" oninput="S.name=this.value"></div><div class="fld"><label>${t('country')}</label><input value="${S.country}" oninput="S.country=this.value"></div></div>
   <div class="two"><div class="fld"><label>${t('phone')}</label><input inputmode="tel" value="${S.wa}" oninput="S.wa=this.value"></div><div class="fld"><label>${t('email')}</label><input value="${S.email}" oninput="S.email=this.value"></div></div>
   <div class="pills" style="margin:4px 0 8px"><button class="pill ${S.pay==='card'?'on':''}" onclick="S.pay='card';renderBody()">💳 ${t('card')}</button><button class="pill ${S.pay==='transfer'?'on':''}" onclick="S.pay='transfer';renderBody()">🏦 ${t('transfer')}</button></div>
   ${S.pay==='card'?`<div class="mock"><small>${t('cardL')}</small><b>4242 4242 4242 4242</b><small>12/29 · CVC 123</small></div>`:''}
   <div class="err" id="err"></div><button class="btn" style="width:100%" id="payB" onclick="submit()">🔒 ${t('pay',{a:money(q.dep)})}</button><p class="note center">${t('sim')}</p>
-  <div class="nav"><button class="btn ghost" onclick="go(3)">← ${t('back')}</button></div>`}
+  <div class="nav"><button class="btn ghost" onclick="go(2)">← ${t('back')}</button></div>`}
  $('body').innerHTML=h}
 function togT(id){const k=S.tours.indexOf(id);if(k>=0)S.tours.splice(k,1);else S.tours.push(id);renderAll()}
 function calendar(){const [y,m]=S.mon;const first=new Date(y,m,1);const off=(first.getDay()+6)%7;const n=new Date(y,m+1,0).getDate();
@@ -357,7 +355,7 @@ function tap(y,m,i){const d=new Date(y,m,i);if(!S.cin||S.cout||d<=S.cin){S.cin=d
 function mv(k){let [y,m]=S.mon;m+=k;if(m<0){m=11;y--}if(m>11){m=0;y++}S.mon=[y,m];renderBody()}
 function quote(){const r=S.room?room(S.room):null;const n=nights();const tot=r&&n?r.price*n:0;return{tot,dep:Math.round(tot*DEP*100)/100}}
 function renderSum(){const r=S.room?room(S.room):null;const q=quote();
- let h=`<h3>${t('sumT')}</h3><div class="ln"><span>${t('sDates')}</span><b>${S.cin?fD(S.cin):t('none')}${S.cout?' → '+fD(S.cout):''}</b></div><div class="ln"><span>${t('sG')}</span><b>${pl(S.g,T[lang].pW)}</b></div><div class="ln"><span>${t('sRoom')}</span><b>${r?t('n_'+r.id):t('none')}</b></div><div class="ln"><span>${t('sTours')}</span><b>${S.tours.length?S.tours.map(x=>TOURS.find(y=>y.id===x).ic).join(' '):'—'}</b></div>`;
+ let h=`<h3>${t('sumT')}</h3><div class="ln"><span>${t('sDates')}</span><b>${S.cin?fD(S.cin):t('none')}${S.cout?' → '+fD(S.cout):''}</b></div><div class="ln"><span>${t('sG')}</span><b>${pl(S.g,T[lang].pW)}</b></div><div class="ln"><span>${t('sRoom')}</span><b>${r?t('n_'+r.id):t('none')}</b></div>`;
  if(q.tot)h+=`<div class="hr"></div><div class="ln"><span>${t('lnR',{n:nights(),p:money(r.price)})}</span><b>${money(q.tot)}</b></div>${S.tours.length?`<div class="ln"><span>${t('lnT')}</span><b>—</b></div>`:''}<div class="ln big"><span>${t('total')}</span><span>${money(q.tot)}</span></div><div class="dep"><div class="ln"><span>${t('deposit')}</span><span>${money(q.dep)}</span></div><div class="ln s"><span>${t('balance')}</span><span>${money(q.tot-q.dep)}</span></div></div><p class="note">${t('inc')}</p>`;
  $('sum').innerHTML=h}
 function renderAll(){renderStatic();renderBody();renderSum();renderAdmin()}
@@ -375,12 +373,12 @@ function phone(id,title){return `<div class="phone"><div class="wah"><span class
 async function play(id,list){const tok=++TOK;const box=$(id);if(!box)return;box.innerHTML='';
  for(const m of list){if(tok!==TOK)return;if(m.sep){const d=document.createElement('div');d.className='dsep';d.textContent=m.sep;box.appendChild(d);continue}
   if(m.biz){const ty=document.createElement('div');ty.className='typing';ty.innerHTML='<i></i><i></i><i></i>';box.appendChild(ty);await new Promise(r=>setTimeout(r,700));if(tok!==TOK)return;ty.remove()}else await new Promise(r=>setTimeout(r,500));
-  if(tok!==TOK)return;const e=document.createElement('div');e.className='msg '+(m.biz?'biz':'usr');e.innerHTML=fmtW(m.txt)+(m.act?`<div class="act"><span>✅ ${t('actA')}</span><span>🧭 ${t('actB')}</span><span>💬 ${t('actC')}</span></div>`:'')+`<span class="tm">${now()}${m.biz?' ✓✓':''}</span>`;box.appendChild(e)}}
+  if(tok!==TOK)return;const e=document.createElement('div');e.className='msg '+(m.biz?'biz':'usr');e.innerHTML=fmtW(m.txt)+(m.act?`<div class="act"><span>✅ ${t('actA')}</span><span>📍 ${t('actB')}</span><span>💬 ${t('actC')}</span></div>`:'')+`<span class="tm">${now()}${m.biz?' ✓✓':''}</span>`;box.appendChild(e)}}
 function renderDone(){$('body').innerHTML=`<div class="center"><h2 class="t">${t('done')}</h2><p class="sub">${t('doneS')}</p></div><div class="tabs"><button class="${S.tab==='g'?'on':''}" onclick="S.tab='g';renderDone()">📱 ${t('tg')}</button><button class="${S.tab==='h'?'on':''}" onclick="S.tab='h';renderDone()">🏨 ${t('th')}</button></div>${phone('ch',S.tab==='g'?'Royal Galápagos Inn':'Royal Galápagos Inn · Web')}`;play('ch',S.tab==='g'?gM(S.newB):hM(S.newB))}
 const D=k=>new Date(+TODAY+k*864e5);
-const SAMPLES=[{name:'Mark & Anna B.',country:'Alemania|Germany',room:'su',cin:D(1),cout:D(4),g:2,tours:['kr','il'],dep:153},{name:'Familia Torres',country:'Ecuador|Ecuador',room:'qb',cin:D(2),cout:D(5),g:5,tours:['hl'],dep:144},{name:'Chloé R.',country:'Francia|France',room:'dv',cin:D(3),cout:D(6),g:2,tours:[],dep:94.5},{name:'James W.',country:'Reino Unido|United Kingdom',room:'bb',cin:D(5),cout:D(8),g:1,tours:['kr','360'],dep:78.3}];
+const SAMPLES=[{name:'Mark & Anna B.',country:'Alemania|Germany',room:'su',cin:D(1),cout:D(4),g:2,tours:[],dep:153},{name:'Familia Torres',country:'Ecuador|Ecuador',room:'qb',cin:D(2),cout:D(5),g:5,tours:[],dep:144},{name:'Chloé R.',country:'Francia|France',room:'dv',cin:D(3),cout:D(6),g:2,tours:[],dep:94.5},{name:'James W.',country:'Reino Unido|United Kingdom',room:'bb',cin:D(5),cout:D(8),g:1,tours:[],dep:78.3}];
 function renderAdmin(){const A=SAMPLES.map(x=>({...x,country:x.country.split('|')[lang==='es'?0:1]}));if(S.newB)A.unshift({...S.newB,nw:true});
- const tq=A.reduce((s,b)=>s+b.tours.length,0);const dep=A.reduce((s,b)=>s+b.dep,0);
+ const tq=A.reduce((s,b)=>s+Math.round((b.cout-b.cin)/864e5),0);const dep=A.reduce((s,b)=>s+b.dep,0);
  let cells=0,used=0;
  let og=`<span></span>${Array.from({length:10},(_,k)=>`<span class="h">${D(k+1).getDate()}</span>`).join('')}`;
  R.forEach(r=>{og+=`<span class="rn">${t('n_'+r.id)}</span>`;for(let k=1;k<=10;k++){const d=D(k);cells++;const b=A.find(x=>x.room===r.id&&d>=x.cin&&d<x.cout);const fake=!b&&((k*3+r.price)%7===0);if(b||fake)used++;og+=`<i class="${b?(b.nw?'n':'b'):fake?'b':''}"></i>`}});
