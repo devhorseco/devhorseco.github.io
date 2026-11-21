@@ -269,7 +269,7 @@ p.sub{color:var(--muted);font-size:13.5px;margin-bottom:14px}
    Precio de homestay, 1:1 y anticipo: DE EJEMPLO. */
 const Q=[
  {q:'Hola, ¿cómo te ___?',o:['llamas','llamo','llama'],a:0,l:1},
- {q:'Nosotros ___ de Estados Unidos.',o:['es','somos','están'],a:1,l:1},
+ {q:'Nosotros ___ estudiantes de español.',o:['es','somos','están'],a:1,l:1},
  {q:'Ayer yo ___ pupusas en el mercado.',o:['como','comí','comeré'],a:1,l:2},
  {q:'Mi casa ___ cerca de la catedral de Santa Ana.',o:['es','está','hay'],a:1,l:2},
  {q:'Cuando era niño, ___ al fútbol todos los días.',o:['jugué','jugaba','juego'],a:1,l:3},
@@ -427,7 +427,7 @@ function renderSum(){
 }
 function renderAll(){renderStatic();renderBody();renderSum();renderAdmin()}
 function go(n){S.step=n;renderBody();renderSum();const b=$('test');if(b.getBoundingClientRect().top<0)b.scrollIntoView({behavior:'smooth'})}
-function fill(){Object.assign(S,{name:'Megan Walsh',country:lang==='es'?'Estados Unidos':'United States',wa:'+1 512 555 0142',email:'megan.w@example.com'});renderBody()}
+function fill(){Object.assign(S,{name:'Lena Hoffmann',country:lang==='es'?'Alemania':'Germany',wa:'+49 151 2345 6789',email:'lena.h@example.com'});renderBody()}
 function submit(){if(!S.name.trim()||!S.wa.trim()){$('err').textContent=t('errF');return}
  const b=$('payB');b.textContent=t('processing');b.disabled=true;
  setTimeout(()=>{const q=quote();S.newS={name:S.name,country:S.country||'—',lvl:S.lvl,score:S.ans.length?S.ans.filter(Boolean).length+'/'+Q.length:'—',start:S.start,weeks:S.weeks,type:S.type,hs:S.hs,meals:S.meals,veg:S.veg,dep:q.dep,tot:q.tot,fam:'Familia Martínez Rivas'};S.done=true;S.tab='g';$('bdg').hidden=false;renderAll();$('test').scrollIntoView({behavior:'smooth'})},900)}
@@ -450,14 +450,14 @@ function renderDone(){const n=S.newS;
 /* admin */
 const M=mondays();
 const SAMPLES=[
- {name:'Jake & Olivia T.',country:'USA',lvl:1,score:'3/8',start:M[0],weeks:3,type:'grp',hs:true,meals:2,dep:310,fam:'Familia Rivas'},
- {name:'Sarah K.',country:'Canada',lvl:2,score:'5/8',start:M[0],weeks:2,type:'one',hs:true,meals:3,dep:370,fam:'Familia Martínez Rivas'},
- {name:'Daniel M.',country:'USA',lvl:0,score:'—',start:M[1],weeks:4,type:'grp',hs:false,meals:0,dep:175},
- {name:'Emily R.',country:'USA',lvl:3,score:'7/8',start:M[2],weeks:2,type:'one',hs:true,meals:1,dep:340,fam:'Familia Guevara'},
- {name:'Thomas B.',country:'Germany',lvl:1,score:'2/8',start:M[3],weeks:6,type:'grp',hs:true,meals:2,dep:315,fam:'Familia Rivas'}
+ {name:'Claire & Hugo M.',country:'Francia|France',lvl:1,score:'3/8',start:M[0],weeks:3,type:'grp',hs:true,meals:2,dep:310,fam:'Familia Rivas'},
+ {name:'Sarah K.',country:'Canadá|Canada',lvl:2,score:'5/8',start:M[0],weeks:2,type:'one',hs:true,meals:3,dep:370,fam:'Familia Martínez Rivas'},
+ {name:'Kenji T.',country:'Japón|Japan',lvl:0,score:'—',start:M[1],weeks:4,type:'grp',hs:false,meals:0,dep:175},
+ {name:'Emily R.',country:'Reino Unido|United Kingdom',lvl:3,score:'7/8',start:M[2],weeks:2,type:'one',hs:true,meals:1,dep:340,fam:'Familia Guevara'},
+ {name:'Thomas B.',country:'Alemania|Germany',lvl:1,score:'2/8',start:M[3],weeks:6,type:'grp',hs:true,meals:2,dep:315,fam:'Familia Rivas'}
 ];
 function renderAdmin(){
- const A=SAMPLES.slice();if(S.newS)A.unshift({...S.newS,nw:true});
+ const A=SAMPLES.map(x=>({...x,country:x.country.split('|')[lang==='es'?0:1]}));if(S.newS)A.unshift({...S.newS,nw:true});
  $('kpis').innerHTML=`<div class="kpi"><small>${t('kS')}</small><b>${A.length}</b>${S.newS?`<em>${t('kNew',{n:1})}</em>`:''}</div><div class="kpi"><small>${t('kH')}</small><b>${A.filter(x=>x.hs).length}</b></div><div class="kpi"><small>${t('kD')}</small><b>${money(A.reduce((s,x)=>s+x.dep,0))}</b></div><div class="kpi hl"><small>${t('kT')}</small><b>${23+(S.newS?1:0)}</b></div>`;
  $('studs').innerHTML=A.sort((a,b)=>(b.nw?1:0)-(a.nw?1:0)||a.start-b.start).map(x=>`<div class="st ${x.nw?'nw':''}"><span class="lv" style="background:${LV[x.lvl].c}">${LV[x.lvl].id}</span><span class="m"><b>${x.name}</b><span class="tag ${x.nw?'n':''}">${x.nw?t('nw'):t('ex')}</span><small>${lang==='es'?'Lun':'Mon'} ${fD(x.start)} · ${pl(x.weeks,'wk')} · ${x.type==='grp'?'👥 '+t('grp'):'👤 '+t('one')}</small><small>${x.hs?'🏡 '+(x.fam||''):'—'} · ${lang==='es'?'prueba':'test'} ${x.score} · ${x.country}</small></span></div>`).join('');
  const cnt=[0,0,0,0,0];A.forEach(x=>cnt[x.lvl]++);const base=[3,6,5,2,1];const tot=cnt.map((c,i)=>c+base[i]);const mx=Math.max(...tot);
