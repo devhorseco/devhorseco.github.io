@@ -79,13 +79,13 @@ h1 em{font-style:normal;color:var(--sea)}
   <div>
     <span class="eb">💬 Automatic WhatsApp · the day before</span>
     <h1>Every diver ready <em>before</em> they board.</h1>
-    <p class="lead">The evening before each Nusa Penida trip, every diver gets a short, friendly WhatsApp: meeting time, a quick lunch check and what to bring. Tap the answers in the chat to try it.</p>
+    <p class="lead">The evening before each Nusa Penida trip, every diver gets a short, friendly WhatsApp: meeting time, a quick allergy check for lunch and what to bring. Tap the answers in the chat to try it.</p>
     <div class="pts">
       <div><i>⏰</i><span><b>Meeting time confirmed</b>They reply ✅, so you know who's coming.</span></div>
-      <div><i>🍚</i><span><b>Lunch sorted in one tap</b>Local dish, or a dietary note for you to confirm.</span></div>
+      <div><i>🍚</i><span><b>Allergies flagged in one tap</b>One menu, rice &amp; veggies: divers just tell you about any allergy.</span></div>
       <div><i>🎒</i><span><b>Short packing list</b>No more forgotten cards or towels.</span></div>
     </div>
-    <div class="tally"><h3>What you see for tomorrow's boat</h3><p>Lunch answers add up on their own. Rows tagged “Sample” are made up.</p><div id="tally"></div></div>
+    <div class="tally"><h3>What you see for tomorrow's boat</h3><p>Lunch count and allergies add up on their own. Rows tagged “Sample” are made up.</p><div id="tally"></div></div>
   </div>
   <div>
     <div class="phone"><div class="scr">
@@ -96,7 +96,7 @@ h1 em{font-style:normal;color:var(--sea)}
     <div class="bar2"><button class="rp" onclick="start()">↺ Replay</button></div>
   </div>
 </div>
-<p class="foot">Demo created by DevHorse as a proposal for Tamarind Divers. It only uses what Tamarind shared: half-day trips to Nusa Penida, a simple local dish with rice and vegetables on board (no restaurant or menu), PADI courses up to Divemaster and the Mola Mola Awareness specialty. The meeting time is a blank for Tamarind to fill in, dietary adjustments are marked “to confirm”, the packing list is a suggestion Tamarind can edit, and the diver name and lunch tally are samples.</p>
+<p class="foot">Demo created by DevHorse as a proposal for Tamarind Divers. It only uses what Tamarind shared: half-day trips to Nusa Penida, one lunch on board: rice and vegetables (no restaurant, one menu), PADI courses up to Divemaster and the Mola Mola Awareness specialty. The meeting time is a blank for Tamarind to fill in, divers can only flag allergies (no meal choice), the packing list is a suggestion Tamarind can edit, and the diver name, the allergy and the lunch tally are samples.</p>
 <script>
 const $=id=>document.getElementById(id);
 const BOAT=`<span class="boat"><svg viewBox="0 0 300 110" preserveAspectRatio="xMidYMid slice"><rect width="300" height="110" fill="#8fd3dc"/><rect y="62" width="300" height="48" fill="#1593a3"/><path d="M0 62 q25 -6 50 0 t50 0 t50 0 t50 0 t50 0 t50 0" stroke="#bfeaef" stroke-width="3" fill="none"/><path d="M200 40 L240 20 L300 30 V62 H180Z" fill="#3e8f5c"/><g transform="translate(70 40)"><path d="M0 18 H110 L96 34 H14Z" fill="#fff"/><rect x="30" y="2" width="44" height="16" rx="3" fill="#f6e7c8"/><path d="M52 2 V-14" stroke="#0f2a33" stroke-width="2"/><path d="M52 -14 L68 -8 L52 -4Z" fill="#ff7b5c"/></g><circle cx="40" cy="22" r="10" fill="#fff4c8"/></svg></span>`;
@@ -115,17 +115,19 @@ async function start(){const tok=++TOK;lunch=null;renderTally();$('ms').innerHTM
  // 3
  add('me','✅ Yes, I’ll be there!');await wait(300);
  // 4
- if(!await bot(`🍚 <b>Lunch on board</b> is a simple local dish with rice and vegetables. Does that work for you?`,tok))return;
- const L=[['🍚 Local dish is perfect',''],['🌱 Vegetarian / vegan adjustment','To be confirmed by the team'],['⚠️ Allergy or other diet','To be confirmed by the team']];
+ if(!await bot(`🍚 <b>Lunch on board:</b> rice &amp; veggies.\n\nDo you have any <b>food allergy</b> we should know about?`,tok))return;
+ const L=[['👍 No allergies, all good!',''],['⚠️ Yes, I’m allergic to peanuts','Example: the diver types their own']];
  const k=await ask(L,tok);if(tok!==TOK)return;lunch=k;renderTally();
  // 5
- add('me',L[k][0]+(k?'  <span class="tbc">to confirm</span>':''));await wait(300);
+ add('me',L[k][0]);await wait(300);
  // 6
- await bot(`${k?'Thanks for letting us know — the team will confirm your lunch adjustment. 🙏\n\n':'Great, noted! 🙌\n\n'}🎒 <b>What to bring</b>\n• Swimsuit and towel\n• Reef-safe sunscreen 🐠\n• Hat and sunglasses\n• Your certification card\n\nSee you tomorrow! 🤿\n\nP.S. Curious about the <b>Mola Mola Awareness</b> specialty? Just ask us! 🐟`,tok);
+ await bot(`${k?'Thanks for telling us! We’ve noted your <b>peanut allergy</b> and the crew will know. 🙏\n\n':'Great, noted! 🙌\n\n'}🎒 <b>What to bring</b>\n• Swimsuit and towel\n• Reef-safe sunscreen 🐠\n• Hat and sunglasses\n• Your certification card\n\nSee you tomorrow! 🤿\n\nP.S. Curious about the <b>Mola Mola Awareness</b> specialty? Just ask us! 🐟`,tok);
 }
 function renderTally(){
- const base=[['🍚 Local dish',5],['🌱 Vegetarian / vegan',1],['⚠️ Allergy or other',0]];
- $('tally').innerHTML=base.map(([n,v],i)=>{const add=lunch===i?1:0;return `<div class="row ${add?'nw':''}">${n}${i?'<span class="tag c">to confirm</span>':''}<span class="tag ${add?'n':''}">${add?'New':'Sample'}</span><b>${v+add}</b></div>`}).join('')+`<div class="row">✅ Confirmed meeting time<span class="tag ${lunch!==null?'n':''}">${lunch!==null?'New':'Sample'}</span><b>${6+(lunch!==null?1:0)} / 8</b></div>`;
+ const nw=lunch!==null,al=lunch===1;
+ $('tally').innerHTML=`<div class="row ${nw?'nw':''}">🍚 Lunches (rice &amp; veggies)<span class="tag ${nw?'n':''}">${nw?'New':'Sample'}</span><b>${6+(nw?1:0)}</b></div>`
+  +`<div class="row">⚠️ Tom: gluten<span class="tag">Sample</span><b>1</b></div>`
+  +(al?`<div class="row nw">⚠️ Maya: peanuts<span class="tag n">New</span><b>1</b></div>`:'')+`<div class="row">✅ Confirmed meeting time<span class="tag ${lunch!==null?'n':''}">${lunch!==null?'New':'Sample'}</span><b>${6+(lunch!==null?1:0)} / 8</b></div>`;
 }
 start();
 </script>
