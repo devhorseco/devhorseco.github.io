@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Derawan Dive Lodge · Build your dive trip (demo)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0d2a33;--muted:#5d7580;--line:#dfe9ec;--bg:#f3f8f8;--card:#fff;--deep:#063a4a;--sea:#0c7c8c;--sea2:#19a7b0;--sand:#f3e7cf;--coral:#ff7a59;--ok:#1f9d6b;--sh:0 18px 40px -24px rgba(6,58,74,.45)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.45;overflow-x:hidden;padding-bottom:24px}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+input,select{font:inherit;color:inherit}
+[hidden]{display:none!important}
+.demobar{background:#041f28;color:#cfe9ee;font-size:11.5px;padding:7px 14px;text-align:center;line-height:1.35}
+header.top{position:sticky;top:0;z-index:30;background:rgba(243,248,248,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px;padding:10px 16px}
+.brand{display:flex;align-items:center;gap:10px;margin-right:auto;min-width:0}
+.brand svg{width:38px;height:38px;flex:none}
+.brand b{font-family:"DM Serif Display",serif;font-weight:400;font-size:20px;display:block;line-height:1}
+.brand small{display:block;font-size:11px;color:var(--muted)}
+@media(max-width:420px){.brand small{display:none}}
+.seg{display:flex;background:#e2ecee;border-radius:999px;padding:3px}
+.seg button{position:relative;padding:8px 13px;border-radius:999px;font-size:13px;font-weight:700;color:var(--muted);white-space:nowrap}
+.seg button.on{background:#fff;color:var(--ink);box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.badge{position:absolute;top:-5px;right:-4px;background:var(--coral);color:#fff;font-style:normal;font-size:10.5px;font-weight:800;min-width:18px;height:18px;border-radius:9px;display:grid;place-items:center;padding:0 5px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+.hero{position:relative;max-width:1100px;margin:14px auto 0;border-radius:30px;overflow:hidden;color:#fff;min-height:430px;display:flex;align-items:flex-end;background:var(--deep);box-shadow:var(--sh)}
+@media(max-width:1132px){.hero{margin:14px 16px 0}}
+.hero>svg{position:absolute;inset:0;width:100%;height:100%}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,20,28,0) 30%,rgba(2,20,28,.8))}
+.hero .in{position:relative;z-index:2;padding:50px 22px 24px}
+.phl{position:absolute;top:14px;right:14px;z-index:3;font-size:10px;font-weight:800;padding:4px 9px;border-radius:999px;background:rgba(255,255,255,.9);color:var(--muted);text-transform:uppercase}
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:#9ff0f0}
+.hero h1{font-family:"DM Serif Display",serif;font-weight:400;font-size:clamp(36px,7vw,60px);line-height:1.02;margin:8px 0 10px;max-width:720px;text-shadow:0 2px 14px rgba(0,0,0,.4)}
+.hero p{max-width:560px;font-size:15px;opacity:.95;text-shadow:0 2px 10px rgba(0,0,0,.4)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}
+.chip{font-size:12.5px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);padding:6px 11px;border-radius:999px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,var(--coral),#ffa06b);color:#fff;font-weight:800;padding:14px 22px;border-radius:16px;font-size:15px;text-decoration:none;box-shadow:0 10px 22px -10px rgba(255,122,89,.8)}
+.btn.sea{background:linear-gradient(135deg,var(--sea),var(--sea2));box-shadow:0 10px 22px -12px rgba(12,124,140,.9)}
+.btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--line);box-shadow:none}
+.btn[disabled]{opacity:.45;pointer-events:none}
+.fish{animation:sw 10s ease-in-out infinite alternate}@keyframes sw{to{transform:translateX(90px)}}
+.perks{margin-top:14px;display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))}
+.perks div{background:#fff;border:1px solid var(--line);border-radius:18px;padding:13px 14px;display:flex;gap:11px;align-items:center;font-size:13px}
+.perks i{font-style:normal;font-size:20px;width:40px;height:40px;border-radius:12px;background:#e3f3f4;display:grid;place-items:center;flex:none}
+.perks b{display:block;font-size:14px}.perks small{color:var(--muted)}
+.sh{margin:28px 0 12px}.sh h2{font-family:"DM Serif Display",serif;font-weight:400;font-size:clamp(28px,4.4vw,36px);line-height:1.05}.sh p{color:var(--muted);font-size:13.5px;max-width:600px}
+.grid{display:grid;gap:16px;grid-template-columns:minmax(0,1fr)}.grid>*{min-width:0}
+@media(min-width:920px){.grid{grid-template-columns:minmax(0,1fr) 340px;align-items:start}.sticky{position:sticky;top:76px}}
+.card{background:var(--card);border-radius:22px;box-shadow:var(--sh);border:1px solid var(--line);padding:20px}
+.stepper{display:flex;gap:5px;margin-bottom:18px}
+.stp{flex:1;display:flex;flex-direction:column;gap:6px;font-size:11px;font-weight:700;color:var(--muted)}
+.stp .bar{height:5px;border-radius:5px;background:#e3ecee;overflow:hidden}.stp .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--sea),var(--coral));transition:.4s}
+.stp.on{color:var(--ink)}.stp.on .bar i,.stp.done .bar i{width:100%}.stp.done{color:var(--sea)}
+h2.t{font-family:"DM Serif Display",serif;font-weight:400;font-size:27px;line-height:1.1;margin-bottom:4px}
+p.sub{color:var(--muted);font-size:13.5px;margin-bottom:14px}
+.row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 0;border-bottom:1px dashed var(--line)}
+.row:last-child{border-bottom:0}
+.row b{display:block;font-size:14.5px}.row small{color:var(--muted);font-size:12px}
+.stepr{display:flex;align-items:center;gap:10px;flex:none}
+.stepr button{width:36px;height:36px;border-radius:50%;border:1.5px solid var(--line);font-size:18px;font-weight:700;background:#fff}
+.stepr button[disabled]{opacity:.3}.stepr span{min-width:22px;text-align:center;font-weight:800;font-size:16px}
+.fld{display:flex;flex-direction:column;gap:5px;margin-bottom:11px}
+.fld label{font-size:12px;font-weight:700;color:var(--muted)}
+.fld input,.fld select{border:1.5px solid var(--line);border-radius:12px;padding:11px 12px;background:#fff;width:100%}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+@media(max-width:480px){.two{grid-template-columns:minmax(0,1fr)}}
+.opts{display:grid;gap:9px}
+.op{display:flex;gap:12px;align-items:center;text-align:left;border:2px solid var(--line);border-radius:18px;padding:11px;background:#fff;width:100%}
+.op.on{border-color:var(--sea);background:#eef8f9}
+.op .ic{font-size:22px;width:46px;height:46px;border-radius:13px;background:#e3f3f4;display:grid;place-items:center;flex:none}
+.op .m{flex:1;min-width:0}.op b{display:block;font-size:14.5px}.op small{display:block;color:var(--muted);font-size:12.3px}
+.op .pr{text-align:right;flex:none;font-size:12px;color:var(--muted)}.op .pr b{font-size:16px;color:var(--ink)}
+.ck{width:26px;height:26px;border-radius:8px;border:2px solid var(--line);display:grid;place-items:center;flex:none;font-weight:800;color:#fff}
+.op.on .ck{background:var(--sea);border-color:var(--sea)}
+.tag{display:inline-block;font-size:9.5px;font-weight:800;padding:2px 6px;border-radius:6px;text-transform:uppercase;margin-top:3px;background:#fff1d6;color:#9a6a00}
+.tag.r{background:#dff3ea;color:var(--ok)}
+.pills{display:flex;flex-wrap:wrap;gap:6px}
+.pill{border:2px solid var(--line);background:#fff;border-radius:12px;padding:7px 11px;font-size:12.5px;font-weight:700}
+.pill.on{border-color:var(--sea);background:#eef8f9;color:var(--sea)}
+.diver{border:1px solid var(--line);border-radius:16px;padding:11px 12px;margin-bottom:8px}
+.diver b{font-size:13.5px}
+.tip{display:flex;gap:9px;align-items:flex-start;background:#eaf6f7;border-radius:14px;padding:10px 12px;font-size:12.8px;color:#0b5560;margin-top:12px}
+.tip.w{background:#fff4e3;color:#7a4f06}
+.nav{display:flex;gap:10px;margin-top:18px}.nav .btn{flex:1}.nav .btn.ghost{flex:0 0 auto}
+.note{font-size:12px;color:var(--muted);margin-top:10px}.center{text-align:center}
+.lnk{font-size:12.5px;font-weight:700;color:var(--sea);text-decoration:underline;margin-bottom:10px}
+.err{color:#c0392b;font-size:12.5px;font-weight:600;min-height:16px}
+.sum h3{font-family:"DM Serif Display",serif;font-weight:400;font-size:24px;margin-bottom:8px}
+.ln{display:flex;justify-content:space-between;gap:10px;font-size:13.5px;padding:5px 0;color:var(--muted)}.ln b{color:var(--ink);text-align:right}
+.hr{border-top:1px dashed var(--line);margin:8px 0}
+.box{background:#eaf6f7;border-radius:14px;padding:11px 12px;margin-top:8px;font-size:12.8px;color:#0b5560}
+/* email */
+.tabs{display:flex;gap:6px;margin:12px 0;flex-wrap:wrap;justify-content:center}
+.tabs button{padding:9px 13px;border-radius:999px;background:#e2ecee;font-size:12.5px;font-weight:700;color:var(--muted)}
+.tabs button.on{background:var(--sea);color:#fff}
+.mail{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff;box-shadow:var(--sh);animation:in .4s}
+@keyframes in{from{opacity:0;transform:translateY(8px)}}
+.mh{background:#f6f9fa;border-bottom:1px solid var(--line);padding:12px 14px;font-size:12.5px;color:var(--muted)}
+.mh b{color:var(--ink)}
+.mh .subj{font-size:15px;color:var(--ink);font-weight:800;margin-top:6px}
+.mb{padding:14px;font-size:13.5px}
+.mb table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13px}
+.mb td{padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+.mb td:first-child{color:var(--muted);width:38%;font-weight:600}
+.mb .acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.mb .acts span{font-size:12.5px;font-weight:800;padding:8px 12px;border-radius:10px;background:var(--sea);color:#fff}
+.mb .acts span.g{background:#e2ecee;color:var(--ink)}
+/* admin */
+.kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:14px 0}
+@media(min-width:760px){.kpis{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;box-shadow:var(--sh)}
+.kpi small{color:var(--muted);font-size:12px;font-weight:600}.kpi b{display:block;font-size:25px;font-weight:800;margin-top:3px}
+.kpi.hl{background:linear-gradient(135deg,var(--sea),var(--sea2));color:#fff;border:0}.kpi.hl small{color:#d3f2f4}
+.ad2{display:grid;gap:16px;grid-template-columns:minmax(0,1fr)}@media(min-width:920px){.ad2{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);align-items:start}}
+.card h3.s{font-family:"DM Serif Display",serif;font-weight:400;font-size:22px}.card .s2{color:var(--muted);font-size:12.5px;margin:2px 0 10px}
+.rq{display:flex;gap:12px;padding:11px 12px;border:1px solid var(--line);border-radius:16px;margin-bottom:8px;background:#fff}
+.rq.nw{background:#fff5f1;border-color:#ffc2ae;box-shadow:0 0 0 3px #ffe3d9}
+.rq .d{width:46px;height:46px;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;background:linear-gradient(135deg,var(--sea),var(--sea2));line-height:1;flex:none}
+.rq .d b{font-size:16px}.rq .d small{font-size:9px;text-transform:uppercase;margin-top:2px;color:#d3f2f4}
+.rq .m{flex:1;min-width:0}.rq .m b{font-size:14px}.rq .m small{display:block;color:var(--muted);font-size:12px}
+.tg2{font-size:9.5px;font-weight:800;padding:2px 6px;border-radius:6px;text-transform:uppercase;margin-left:5px;vertical-align:1px;background:#e9eef0;color:#6c7c86}
+.tg2.n{background:var(--coral);color:#fff}
+.lv{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}.lv span{font-size:10.5px;font-weight:800;padding:2px 7px;border-radius:999px;background:#e3f3f4;color:var(--sea)}
+.boat{display:grid;grid-template-columns:78px minmax(0,1fr) 96px;gap:8px;align-items:center;font-size:12.5px;padding:7px 0;border-bottom:1px dashed var(--line)}
+.boat .bar{height:14px;border-radius:7px;background:#e8f0f2;overflow:hidden;display:flex}
+.boat .bar i{display:block;height:100%;background:#8fd0d6}.boat .bar i.n{background:var(--coral)}
+.boat em{font-style:normal;font-weight:800;text-align:right}
+.foot{text-align:center;font-size:12px;color:var(--muted);padding:24px 16px 0;max-width:820px;margin:0 auto}
+</style>
+</head>
+<body>
+<div class="demobar">DevHorse demo for Derawan Dive Lodge · Rooms, dive package, courses and transfer from their public listings · Prices are a reference or samples · Illustrations instead of photos · Emails are simulated</div>
+<header class="top">
+  <div class="brand"><svg viewBox="0 0 38 38" aria-hidden="true"><rect width="38" height="38" rx="12" fill="#063a4a"/><path d="M6 15 q6 -5 13 0 t13 0" stroke="#9ff0f0" stroke-width="2.2" fill="none" stroke-linecap="round"/><ellipse cx="19" cy="25" rx="9" ry="5" fill="#ff7a59"/><path d="M28 25 l5 -4 v8z" fill="#ff7a59"/><circle cx="14" cy="24" r="1.3" fill="#063a4a"/></svg><div><b>Derawan Dive Lodge</b><small>with Tasik Divers · Derawan Island, East Kalimantan</small></div></div>
+  <div class="seg"><button id="tC" class="on" onclick="view('c')">Guest</button><button id="tA" onclick="view('a')">Lodge<i class="badge" id="bdg" hidden>1</i></button></div>
+</header>
+
+<div id="vC">
+<section class="hero">
+  <svg viewBox="0 0 1200 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs><linearGradient id="w" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2bb8c4"/><stop offset=".35" stop-color="#0c7c8c"/><stop offset="1" stop-color="#03202b"/></linearGradient></defs>
+    <rect width="1200" height="500" fill="url(#w)"/>
+    <rect width="1200" height="70" fill="#8fe3ea" opacity=".35"/>
+    <g opacity=".25" fill="#fff"><path d="M100 0 L160 0 L60 500 L20 500Z"/><path d="M500 0 L540 0 L470 500 L420 500Z"/><path d="M900 0 L950 0 L880 500 L830 500Z"/></g>
+    <g class="fish"><g transform="translate(240 190)"><ellipse cx="60" cy="40" rx="70" ry="30" fill="#164a57"/><path d="M-6 40 L-40 14 L-34 40 L-40 66Z" fill="#164a57"/><path d="M40 12 q20 -24 46 -10 q-16 6 -18 18Z M40 68 q20 24 46 10 q-16 -6 -18 -18Z" fill="#1f5a69"/><circle cx="104" cy="34" r="4" fill="#fff"/></g></g>
+    <g transform="translate(760 140)"><path d="M0 60 Q90 -10 180 60 Q90 30 0 60Z" fill="#0b4d5c"/><path d="M70 50 L90 110 L110 50" fill="#0b4d5c"/></g>
+    <g fill="#ff7a59"><circle cx="980" cy="420" r="18"/><circle cx="1010" cy="400" r="14"/><circle cx="1040" cy="430" r="20"/></g>
+    <g fill="#f2b45c"><path d="M120 500 q10 -80 30 -110 q10 40 0 110Z"/><path d="M170 500 q20 -60 40 -80 q0 50 -15 80Z"/></g>
+    <g fill="#c9f1f3" opacity=".6"><circle cx="660" cy="300" r="5"/><circle cx="672" cy="270" r="3.5"/><circle cx="664" cy="245" r="2.5"/></g>
+    <path d="M560 330 q40 -20 80 0 l-6 14 q-34 -14 -68 0Z" fill="#0d2a33"/><circle cx="650" cy="320" r="9" fill="#0d2a33"/><path d="M560 336 l-36 -10 l4 14 Z" fill="#ffd166"/>
+  </svg>
+  <span class="phl">Illustration: your photo goes here</span>
+  <div class="in">
+    <div class="eyebrow">PADI 5 Star · Tasik Divers</div>
+    <h1>Build your Derawan dive trip</h1>
+    <p>Ten rooms steps from a private white-sand beach, two dive boats at our own jetty and never more than 4 divers per guide. Tell us your dates, dives and certification, and we'll send you your package.</p>
+    <div class="chips"><span class="chip">🐢 Turtles every day</span><span class="chip">🪼 Stingless jellyfish lake nearby</span><span class="chip">🤿 Max 4 divers per guide</span></div>
+    <a class="btn" href="#build">Build my package</a>
+  </div>
+</section>
+<div class="wrap">
+  <div class="perks">
+    <div><i>🏝️</i><span><b>Private beach</b><small>10 rooms, steps from the sand</small></span></div>
+    <div><i>🚤</i><span><b>2 boats, own jetty</b><small>Up to 3 guided boat dives a day</small></span></div>
+    <div><i>🎓</i><span><b>PADI courses</b><small>From Discover Scuba to Divemaster</small></span></div>
+    <div><i>🍽️</i><span><b>Full board when diving</b><small>Lunch served on board</small></span></div>
+  </div>
+  <div class="sh" id="build"><h2>Your dive package, in 4 steps</h2><p>No forms back and forth: your request lands in our inbox with everything we need to quote it.</p></div>
+  <div class="grid">
+    <section class="card"><div class="stepper" id="stepper"></div><div id="body"></div></section>
+    <aside class="card sum sticky" id="sum"></aside>
+  </div>
+</div>
+</div>
+
+<div id="vA" hidden>
+  <div class="wrap" style="padding-top:18px">
+    <h2 class="t">Lodge inbox</h2><p class="sub">What Daniel and the team see. Items tagged “Sample” are made up; “New” is the request you just sent.</p>
+    <div class="kpis" id="kpis"></div>
+    <div class="ad2">
+      <section class="card"><h3 class="s">Package requests</h3><p class="s2">Every request arrives sorted: dates, room, divers and their level.</p><div id="rqs"></div></section>
+      <section class="card"><h3 class="s">Guides needed</h3><p class="s2">Divers per day across requests, at max 4 divers per guide.</p><div id="boats"></div></section>
+    </div>
+  </div>
+</div>
+<p class="foot">Demo created by DevHorse as a proposal for Derawan Dive Lodge. Room types (Beach Chalet, Ocean View Cottage, Family Duplex), the dive package (from 4 nights, up to 3 guided boat dives a day, tanks and weights, full board), PADI courses, nitrox, max 4 divers per guide and the car + boat transfer from Kalimarau airport (about 2.5 h) come from public listings (PADI Travel, Ocean Earth Travels). “From $195/night” is an agency listing price (reference). Other prices, dates, guests and requests are samples. Illustrations instead of photos.</p>
+
+<script>
+/* Fuentes: PADI Travel (habitaciones, cursos, nitrox, máx. 4 por guía, traslado 2.5 h), Ocean Earth Travels (2 cottages, 6 chalets, 2 duplex; paquete desde 4 noches, 3 inmersiones/día, pensión completa; desde $195/noche). */
+const ROOMS=[{id:'ch',n:'Beach Chalet',d:'6 rooms · steps from the beach',p:195,ref:1,ic:'🏖️'},{id:'oc',n:'Ocean View Cottage',d:'2 cottages · sea view',p:225,ic:'🌅'},{id:'fd',n:'Family Duplex',d:'2 rooms · for families or groups',p:290,ic:'👨‍👩‍👧'}];
+const LV=[['none','Not certified'],['ow','Open Water'],['aow','Advanced'],['res','Rescue'],['dm','Divemaster +']];
+const COURSE={none:['dsd','Discover Scuba Diving'],none2:['ow','PADI Open Water'],ow:['aow','PADI Advanced Open Water'],aow:['res','PADI Rescue Diver'],res:['dm','PADI Divemaster']};
+const XTRA=[['tr','🚐','Transfer from Kalimarau airport','Car + boat, about 2.5 h · price to confirm'],['nx','🫧','Nitrox','Price to confirm'],['gr','🧰','Rental gear','Wetsuit, BCD, regulator, computer · price to confirm'],['jl','🪼','Jellyfish lake trip','Price to confirm']];
+const TODAY=new Date(2026,10,26);
+const S={step:1,cin:null,nights:5,room:'ch',divers:2,non:0,lv:['ow','aow'],course:[null,null],dpd:3,days:4,x:['tr'],name:'',email:'',country:'',wa:'',done:false,tab:'l',newR:null};
+const $=id=>document.getElementById(id);
+const fD=d=>d.toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short'});
+const add=(d,n)=>new Date(+d+n*864e5);
+const lvN=k=>LV.find(x=>x[0]===k)[1];
+function stepper(){$('stepper').innerHTML=['Stay','Divers','Diving','Send'].map((k,i)=>`<div class="stp ${S.step===i+1?'on':S.step>i+1?'done':''}"><div class="bar"><i></i></div>${i+1}. ${k}</div>`).join('')}
+function stp(v,min,max,fn){return `<span class="stepr"><button ${v<=min?'disabled':''} onclick="${fn}(-1)">−</button><span>${v}</span><button ${v>=max?'disabled':''} onclick="${fn}(1)">+</button></span>`}
+function dateOpts(){let o='';for(let k=7;k<=120;k+=1){const d=add(TODAY,k);if(d.getDay()===6||k%11===0)continue;if(o.split('<option').length>40)break;o+=`<option value="${+d}" ${S.cin&&+S.cin===+d?'selected':''}>${fD(d)}</option>`}return o}
+function body(){stepper();if(S.done)return done();let h='';
+ if(S.step===1){if(!S.cin)S.cin=add(TODAY,14);
+  h=`<h2 class="t">Your stay</h2><p class="sub">The dive package starts at 4 nights (3 days of diving).</p>
+  <div class="fld"><label>Arrival</label><select onchange="S.cin=new Date(+this.value);sumR()">${dateOpts()}</select></div>
+  <div class="row"><span><b>Nights</b><small>${fD(S.cin)} → ${fD(add(S.cin,S.nights))}</small></span>${stp(S.nights,4,14,'chN')}</div>
+  <h3 style="font-size:14px;margin:12px 0 8px">Room</h3><div class="opts">${ROOMS.map(r=>`<button class="op ${S.room===r.id?'on':''}" onclick="S.room='${r.id}';body();sumR()"><span class="ic">${r.ic}</span><span class="m"><b>${r.n}</b><small>${r.d}</small></span><span class="pr">${r.ref?'from ':''}<b>$${r.p}</b><br>/ night<br><span class="tag ${r.ref?'r':''}">${r.ref?'Reference':'Sample'}</span></span></button>`).join('')}</div>
+  <div class="nav"><button class="btn sea" onclick="go(2)">Continue →</button></div>`}
+ if(S.step===2){h=`<h2 class="t">Who's coming?</h2><p class="sub">Tell us each diver's certification so we can plan boats and guides.</p>
+  <div class="row"><span><b>Divers</b><small>Certified or want to learn</small></span>${stp(S.divers,1,8,'chD')}</div>
+  <div class="row"><span><b>Non-divers</b><small>Snorkel, beach and relax</small></span>${stp(S.non,0,6,'chNo')}</div>
+  <div style="margin-top:10px">${Array.from({length:S.divers},(_,i)=>{const l=S.lv[i]||'ow';const c=courseFor(l);return `<div class="diver"><b>Diver ${i+1}</b><div class="pills" style="margin-top:7px">${LV.map(([k,n])=>`<button class="pill ${l===k?'on':''}" onclick="setLv(${i},'${k}')">${n}</button>`).join('')}</div>${c?`<label style="display:flex;gap:8px;align-items:center;margin-top:8px;font-size:12.8px;cursor:pointer"><input type="checkbox" ${S.course[i]?'checked':''} onchange="S.course[${i}]=this.checked?'${c[0]}':null;sumR()"> ${l==='none'?'Wants to try or learn: ':'Add a course: '}<b>${c[1]}</b> <span class="tag">price to confirm</span></label>`:''}</div>`}).join('')}</div>
+  ${S.lv.slice(0,S.divers).includes('none')?`<div class="tip w">🎓 Not certified yet? You can start with Discover Scuba Diving or the full Open Water course during your stay.</div>`:''}
+  <div class="nav"><button class="btn ghost" onclick="go(1)">←</button><button class="btn sea" onclick="go(3)">Continue →</button></div>`}
+ if(S.step===3){h=`<h2 class="t">Your diving</h2><p class="sub">Up to 3 guided boat dives a day, tanks and weights included in the package.</p>
+  <div class="row"><span><b>Dive days</b><small>Usually your nights minus one</small></span>${stp(S.days,1,S.nights,'chDays')}</div>
+  <div class="row"><span><b>Dives per day</b><small>Guided boat dives</small></span>${stp(S.dpd,1,3,'chDpd')}</div>
+  <div class="box">🤿 That's <b>${S.days*S.dpd} dives</b> per certified diver.</div>
+  <h3 style="font-size:14px;margin:14px 0 8px">Extras</h3><div class="opts">${XTRA.map(([k,ic,n,d])=>`<button class="op ${S.x.includes(k)?'on':''}" onclick="togX('${k}')"><span class="ic">${ic}</span><span class="m"><b>${n}</b><small>${d}</small></span><span class="ck">${S.x.includes(k)?'✓':''}</span></button>`).join('')}</div>
+  <div class="nav"><button class="btn ghost" onclick="go(2)">←</button><button class="btn sea" onclick="go(4)">Continue →</button></div>`}
+ if(S.step===4){h=`<h2 class="t">Send your request</h2><p class="sub">No payment now. We reply by email with your full quote.</p><button class="lnk" onclick="fill()">Fill with sample data</button>
+  <div class="two"><div class="fld"><label>Full name</label><input value="${S.name}" oninput="S.name=this.value"></div><div class="fld"><label>Email</label><input value="${S.email}" oninput="S.email=this.value"></div></div>
+  <div class="two"><div class="fld"><label>Country</label><input value="${S.country}" oninput="S.country=this.value"></div><div class="fld"><label>WhatsApp (optional)</label><input value="${S.wa}" oninput="S.wa=this.value"></div></div>
+  <div class="err" id="err"></div><button class="btn" style="width:100%" id="sendB" onclick="send()">✉️ Send my package request</button>
+  <div class="tip">📝 Remember: all visitors must fill in the Derawan Islands entry form online before arrival. We'll send you the link.</div>
+  <div class="nav"><button class="btn ghost" onclick="go(3)">← Back</button></div>`}
+ $('body').innerHTML=h}
+function courseFor(l){return l==='none'?COURSE.none:COURSE[l]||null}
+function setLv(i,k){S.lv[i]=k;S.course[i]=null;body();sumR()}
+function chN(d){S.nights+=d;S.days=S.nights-1;body();sumR()}
+function chD(d){S.divers+=d;while(S.lv.length<S.divers){S.lv.push('ow');S.course.push(null)}body();sumR()}
+function chNo(d){S.non+=d;body();sumR()}
+function chDays(d){S.days+=d;body();sumR()}
+function chDpd(d){S.dpd+=d;body();sumR()}
+function togX(k){const i=S.x.indexOf(k);i>=0?S.x.splice(i,1):S.x.push(k);body();sumR()}
+function go(n){S.step=n;body();sumR();const b=$('build');if(b.getBoundingClientRect().top<0)b.scrollIntoView({behavior:'smooth'})}
+function fill(){Object.assign(S,{name:'Sophie Laurent',email:'sophie.l@example.com',country:'Belgium',wa:'+32 470 12 34 56'});body()}
+function levels(lv,n){const c={};lv.slice(0,n).forEach(k=>c[k]=(c[k]||0)+1);return Object.entries(c).map(([k,v])=>`${v}× ${lvN(k)}`)}
+function sumR(){const r=ROOMS.find(x=>x.id===S.room);const certified=S.lv.slice(0,S.divers).filter(k=>k!=='none').length;
+ $('sum').innerHTML=`<h3>Your package</h3>
+ <div class="ln"><span>Dates</span><b>${S.cin?fD(S.cin)+' → '+fD(add(S.cin,S.nights)):'—'}</b></div>
+ <div class="ln"><span>Nights</span><b>${S.nights}</b></div>
+ <div class="ln"><span>Room</span><b>${r.n}</b></div>
+ <div class="ln"><span>Guests</span><b>${S.divers} diver${S.divers>1?'s':''}${S.non?` + ${S.non} non-diver${S.non>1?'s':''}`:''}</b></div>
+ <div class="ln"><span>Levels</span><b>${levels(S.lv,S.divers).join(', ')}</b></div>
+ <div class="ln"><span>Diving</span><b>${S.days} days × ${S.dpd} dives</b></div>
+ ${S.course.slice(0,S.divers).some(Boolean)?`<div class="ln"><span>Courses</span><b>${S.course.slice(0,S.divers).filter(Boolean).length}</b></div>`:''}
+ <div class="ln"><span>Extras</span><b>${S.x.length?S.x.map(k=>XTRA.find(x=>x[0]===k)[1]).join(' '):'—'}</b></div>
+ <div class="hr"></div>
+ <div class="box">✓ Full board on dive days · tanks & weights included · max 4 divers per guide<br><br>💬 Final price comes in your quote: Daniel and the team confirm availability and send it by email.</div>`}
+function send(){if(!S.name.trim()||!S.email.trim()){$('err').textContent='Please add your name and email.';return}const b=$('sendB');b.textContent='Sending…';b.disabled=true;
+ setTimeout(()=>{S.newR={name:S.name,email:S.email,country:S.country||'—',wa:S.wa,cin:S.cin,nights:S.nights,room:S.room,divers:S.divers,non:S.non,lv:S.lv.slice(0,S.divers),course:S.course.slice(0,S.divers),days:S.days,dpd:S.dpd,x:S.x.slice(),nw:1};S.done=true;$('bdg').hidden=false;body();admin();$('build').scrollIntoView({behavior:'smooth'})},900)}
+function rows(R){const r=ROOMS.find(x=>x.id===R.room);const cs=R.course.map((c,i)=>c?`Diver ${i+1}: ${[...Object.values(COURSE)].find(x=>x[0]===c)[1]}`:null).filter(Boolean);
+ return [['Guest',`${R.name} · ${R.country}`],['Email / WhatsApp',`${R.email}${R.wa?' · '+R.wa:''}`],['Dates',`${fD(R.cin)} → ${fD(add(R.cin,R.nights))} (${R.nights} nights)`],['Room',r.n],['Guests',`${R.divers} divers${R.non?' + '+R.non+' non-divers':''}`],['Certification',levels(R.lv,R.divers).join(', ')],['Diving',`${R.days} days × ${R.dpd} boat dives = ${R.days*R.dpd} dives per certified diver`],['Courses',cs.length?cs.join('<br>'):'—'],['Extras',R.x.length?R.x.map(k=>XTRA.find(x=>x[0]===k)[2]).join(', '):'—'],['Guides needed',`${Math.ceil(R.lv.filter(k=>k!=='none').length/4)||1} (max 4 divers per guide)`]].map(([a,b])=>`<tr><td>${a}</td><td>${b}</td></tr>`).join('')}
+function done(){const R=S.newR;const lodge=S.tab==='l';
+ $('body').innerHTML=`<div class="center"><h2 class="t">Request sent!</h2><p class="sub">This is what lands in the lodge inbox, and what the guest gets back:</p></div>
+ <div class="tabs"><button class="${lodge?'on':''}" onclick="S.tab='l';done()">📥 Lodge inbox</button><button class="${!lodge?'on':''}" onclick="S.tab='g';done()">📧 Guest</button></div>
+ ${lodge?`<div class="mail"><div class="mh"><b>From:</b> Package builder · derawandivelodge.com<br><b>To:</b> info@derawandivelodge.com<div class="subj">🤿 New package request · ${R.name} · ${fD(R.cin)} · ${R.divers} divers</div></div><div class="mb">Everything you need to quote it:<table>${rows(R)}</table><div class="acts"><span>Reply with quote</span><span class="g">Ask a question</span><span class="g">Add to calendar</span></div></div></div>`
+ :`<div class="mail"><div class="mh"><b>From:</b> Derawan Dive Lodge &lt;info@derawandivelodge.com&gt;<br><b>To:</b> ${R.email}<div class="subj">We've got your dive trip request 🐢</div></div><div class="mb">Hi ${R.name.split(' ')[0]},<br><br>Thanks for planning your trip with us! We've received your request for <b>${R.nights} nights</b> from <b>${fD(R.cin)}</b>, with <b>${R.days*R.dpd} dives</b> per certified diver.<br><br>We'll check availability and send you your full quote by email.<br><br>Before you travel, remember the Derawan Islands entry form: we'll send you the link with your quote.<br><br>See you underwater,<br>Derawan Dive Lodge & Tasik Divers</div></div>`}`}
+const SAMPLES=[{name:'Lukas & Mia K.',country:'Germany',cin:add(TODAY,9),nights:6,room:'oc',divers:2,non:0,lv:['aow','aow'],course:[null,null],days:5,dpd:3,x:['tr','nx']},{name:'Tan family',country:'Singapore',cin:add(TODAY,11),nights:4,room:'fd',divers:3,non:2,lv:['ow','none','none'],course:[null,'dsd','dsd'],days:3,dpd:2,x:['tr','jl']},{name:'Ryo S.',country:'Japan',cin:add(TODAY,12),nights:5,room:'ch',divers:1,non:0,lv:['dm'],course:[null],days:4,dpd:3,x:[]}];
+function admin(){const A=[...(S.newR?[S.newR]:[]),...SAMPLES];
+ $('kpis').innerHTML=`<div class="kpi"><small>Requests this month</small><b>${A.length+9}</b></div><div class="kpi"><small>Divers requested</small><b>${A.reduce((s,r)=>s+r.divers,0)}</b></div><div class="kpi"><small>Courses requested</small><b>${A.reduce((s,r)=>s+r.course.filter(Boolean).length,0)}</b></div><div class="kpi hl"><small>Waiting for a quote</small><b>${A.length}</b></div>`;
+ $('rqs').innerHTML=A.map(r=>`<div class="rq ${r.nw?'nw':''}"><span class="d"><b>${r.cin.getDate()}</b><small>${r.cin.toLocaleDateString('en-GB',{month:'short'})}</small></span><span class="m"><b>${r.name}<span class="tg2 ${r.nw?'n':''}">${r.nw?'New':'Sample'}</span></b><small>${ROOMS.find(x=>x.id===r.room).n} · ${r.nights} nights · ${r.country}</small><small>🤿 ${r.days}×${r.dpd} dives${r.non?' · '+r.non+' non-divers':''}${r.x.length?' · '+r.x.map(k=>XTRA.find(x=>x[0]===k)[1]).join(''):''}</small><div class="lv">${levels(r.lv,r.divers).map(x=>`<span>${x}</span>`).join('')}${r.course.filter(Boolean).length?`<span style="background:#fff1d6;color:#9a6a00">🎓 ${r.course.filter(Boolean).length} course${r.course.filter(Boolean).length>1?'s':''}</span>`:''}</div></span></div>`).join('');
+ let bh='';for(let k=7;k<=20;k++){const d=add(TODAY,k);let base=0,nw=0;A.forEach(r=>{if(d>=add(r.cin,1)&&d<=add(r.cin,r.days)){const n=r.lv.length;r.nw?nw+=n:base+=n}});const tot=base+nw;if(!tot)continue;bh+=`<div class="boat"><span>${fD(d)}</span><span class="bar"><i style="width:${base/12*100}%"></i><i class="n" style="width:${nw/12*100}%"></i></span><em>${tot} → ${Math.ceil(tot/4)} guide${Math.ceil(tot/4)>1?'s':''}</em></div>`}
+ $('boats').innerHTML=bh||'<p class="s2">No dives yet.</p>'}
+function view(v){$('vC').hidden=v!=='c';$('vA').hidden=v!=='a';$('tC').className=v==='c'?'on':'';$('tA').className=v==='a'?'on':'';if(v==='a'){$('bdg').hidden=true;admin()}scrollTo({top:0,behavior:'smooth'})}
+body();sumR();admin();
+</script>
+</body>
+</html>
