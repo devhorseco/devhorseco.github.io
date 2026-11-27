@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Semilla Verde · Arma tu paquete (demo)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1e2a1c;--muted:#66705f;--line:#e3e8dc;--bg:#f6f7f1;--card:#fff;--sea:#2f5d3a;--sea2:#5f8f4e;--sun:#d9913a;--sun2:#ebb56a;--sand:#f4e6cc;--ok:#2e8b57;--danger:#c0392b;--r:22px;--sh:0 16px 36px -20px rgba(10,60,90,.38)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.45;padding-bottom:30px;overflow-x:hidden}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+input{font:inherit;color:inherit}
+[hidden]{display:none!important}
+.demobar{background:#0b2233;color:#d4e8f0;font-size:11.5px;padding:7px 14px;text-align:center;display:flex;gap:8px;justify-content:center;align-items:center;line-height:1.35}
+.demobar .dot{width:7px;height:7px;border-radius:50%;background:var(--sun);flex:none;animation:pulse 1.8s infinite}
+@keyframes pulse{50%{opacity:.35}}
+header.top{position:sticky;top:0;z-index:30;background:rgba(245,248,249,.9);backdrop-filter:saturate(1.5) blur(14px);-webkit-backdrop-filter:saturate(1.5) blur(14px);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px;padding:10px 14px}
+.brand{display:flex;align-items:center;gap:10px;margin-right:auto;min-width:0}
+.brand svg{width:38px;height:38px;flex:none}
+.brand b{display:block;font-family:"Playfair Display",serif;font-weight:700;font-size:19px;line-height:1}
+.brand small{display:block;font-size:11px;color:var(--muted)}
+.seg{display:flex;background:#e4ebee;border-radius:999px;padding:3px}
+.seg button{position:relative;padding:8px 13px;border-radius:999px;font-size:13px;font-weight:700;color:var(--muted);white-space:nowrap}
+.seg button.on{background:#fff;color:var(--ink);box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.badge{position:absolute;top:-5px;right:-4px;background:var(--danger);color:#fff;font-style:normal;font-size:10.5px;font-weight:700;min-width:18px;height:18px;border-radius:9px;display:grid;place-items:center;padding:0 5px;animation:pop .4s}
+@keyframes pop{from{transform:scale(0)}}
+.lang{white-space:nowrap;background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 11px;font-size:12px;font-weight:700}
+.lang span{opacity:.4}.lang span.on{opacity:1;color:var(--sea)}
+@media(max-width:520px){.brand small{display:none}.seg button{padding:8px 9px}.lang{padding:7px 8px}}
+@media(max-width:400px){.brand div{display:none}}
+.wrap{max-width:1100px;margin:0 auto;padding:0 14px}
+.hero{position:relative;margin:14px auto 0;max-width:1100px;border-radius:30px;overflow:hidden;color:#fff;min-height:440px;display:flex;align-items:flex-end;box-shadow:var(--sh);background:#2f5d3a}
+@media(max-width:1128px){.hero{margin:14px 14px 0}}
+.heroart{position:absolute;inset:0;width:100%;height:100%}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,20,35,0) 25%,rgba(5,20,35,.82) 100%)}
+.hero .in{position:relative;z-index:2;padding:56px 22px 24px;width:100%}
+.phl{position:absolute;top:14px;right:14px;z-index:3;font-size:10px;font-weight:800;padding:4px 9px;border-radius:999px;background:rgba(255,255,255,.9);color:var(--muted);text-transform:uppercase}
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:#ffd79a}
+.hero h1{font-family:"Playfair Display",serif;font-weight:700;font-size:clamp(36px,7.4vw,62px);line-height:1.02;margin:8px 0 10px;max-width:760px}
+.hero p{max-width:560px;font-size:15px;opacity:.95}
+.hero h1,.hero p{text-shadow:0 2px 14px rgba(5,10,20,.5)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}
+.chip{font-size:12.5px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);padding:6px 11px;border-radius:999px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,var(--sun),var(--sun2));color:#3a2200;font-weight:800;padding:14px 22px;border-radius:16px;font-size:15px;transition:.2s;text-decoration:none;box-shadow:0 10px 22px -8px rgba(245,158,59,.7)}
+.btn:hover{transform:translateY(-2px)}
+.btn.sea{background:linear-gradient(135deg,var(--sea),var(--sea2));color:#fff;box-shadow:0 10px 22px -10px rgba(10,110,143,.8)}
+.btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--line);box-shadow:none}
+.btn[disabled]{opacity:.45;pointer-events:none}
+@media(max-width:700px){.bld{display:none}}
+.swim{animation:sw 9s ease-in-out infinite alternate}@keyframes sw{to{transform:translateX(70px)}}
+.perks{margin-top:14px;display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr))}
+.perks div{background:#fff;border:1px solid var(--line);border-radius:18px;padding:13px 14px;display:flex;gap:11px;align-items:center;font-size:13px}
+.perks i{font-style:normal;font-size:20px;width:40px;height:40px;border-radius:12px;background:#e9f1e2;display:grid;place-items:center;flex:none}
+.perks b{display:block;font-size:14px}.perks small{color:var(--muted)}
+.sh{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:28px 0 12px;flex-wrap:wrap}
+.sh h2{font-family:"Playfair Display",serif;font-weight:700;font-size:clamp(26px,4.4vw,34px);line-height:1.05}
+.sh p{color:var(--muted);font-size:13.5px;max-width:520px}
+.grid{display:grid;gap:16px;grid-template-columns:minmax(0,1fr)}
+.grid>*,.two>*{min-width:0}
+@media(min-width:920px){.grid{grid-template-columns:minmax(0,1fr) 340px;align-items:start}.sticky{position:sticky;top:76px}}
+.card{background:var(--card);border-radius:var(--r);box-shadow:var(--sh);border:1px solid var(--line);padding:20px}
+.stepper{display:flex;gap:5px;margin-bottom:18px}
+.stp{flex:1;display:flex;flex-direction:column;gap:6px;font-size:11px;font-weight:700;color:var(--muted)}
+.stp .bar{height:5px;border-radius:5px;background:#e6edf0;overflow:hidden}
+.stp .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--sea),var(--sun));transition:.4s}
+.stp.on{color:var(--ink)}.stp.on .bar i,.stp.done .bar i{width:100%}.stp.done{color:var(--sea)}
+h2.t{font-family:"Playfair Display",serif;font-weight:700;font-size:26px;line-height:1.1;margin-bottom:4px}
+p.sub{color:var(--muted);font-size:13.5px;margin-bottom:14px}
+.cal .head{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.cal .head b{font-size:15px}
+.cal .head button{width:34px;height:34px;border-radius:10px;border:1px solid var(--line);background:#fff;font-weight:800}
+.cal .head button[disabled]{opacity:.3}
+.dow,.days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
+.dow span{font-size:11px;text-align:center;color:var(--muted);font-weight:700;padding:4px 0}
+.day{aspect-ratio:1;border-radius:11px;font-size:13.5px;font-weight:700;background:#e9f1e2;color:var(--sea);display:grid;place-items:center}
+.day.x{color:#b5c0c6;text-decoration:line-through;background:#f0f3f4;pointer-events:none}
+.day.e{background:none;pointer-events:none}
+.day.in{background:#fde7cc;color:#a85d0a;border-radius:6px}
+.day.s,.day.f{background:linear-gradient(135deg,var(--sea),var(--sea2));color:#fff}
+.range{display:flex;align-items:center;gap:10px;background:#eef2e8;border-radius:16px;padding:12px 14px;font-size:13px;margin-top:12px}
+.range b{display:block;font-size:14px}.range small{color:var(--muted);font-size:10.5px;text-transform:uppercase;letter-spacing:.6px}
+.range .n{margin-left:auto;font-weight:800}
+.cnt{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 0}
+.cnt b{display:block;font-size:14.5px}.cnt small{color:var(--muted);font-size:12px}
+.stepr{display:flex;align-items:center;gap:10px}
+.stepr button{width:36px;height:36px;border-radius:50%;border:1.5px solid var(--line);font-size:18px;font-weight:700;background:#fff}
+.stepr button[disabled]{opacity:.3}
+.stepr span{min-width:22px;text-align:center;font-weight:800;font-size:16px}
+.rooms{display:grid;gap:9px}
+.rm{display:flex;gap:12px;align-items:center;text-align:left;border:2px solid var(--line);border-radius:18px;padding:10px;background:#fff;width:100%}
+.rm.on{border-color:var(--sea);background:#f1f6ec}
+.rm.dis{opacity:.45;pointer-events:none}
+.rm .art{width:84px;height:68px;border-radius:12px;overflow:hidden;flex:none}
+.rm .art svg{width:100%;height:100%;display:block}
+.rm .mid{flex:1;min-width:0}
+.rm b{display:block;font-size:14.5px;line-height:1.2}
+.rm small{display:block;color:var(--muted);font-size:12px;margin-top:2px}
+.rm .pr{text-align:right;flex:none}.rm .pr b{font-size:17px}.rm .pr small{font-size:11px}
+.rm .why{color:var(--danger);font-weight:700}
+.tag{display:inline-block;font-size:9.5px;font-weight:800;padding:2px 6px;border-radius:6px;text-transform:uppercase;margin-top:3px;background:#fff1d6;color:#9a6a00}
+.tag.r{background:#e3f3e9;color:var(--ok)}
+.tours{display:grid;gap:9px}
+.to{display:flex;gap:12px;align-items:center;text-align:left;border:2px solid var(--line);border-radius:18px;padding:11px;background:#fff;width:100%}
+.to.on{border-color:var(--sun);background:#fff8ee}
+.to .ic{font-size:22px;width:44px;height:44px;border-radius:13px;background:#e9f1e2;display:grid;place-items:center;flex:none}
+.to b{display:block;font-size:14.5px}.to small{display:block;color:var(--muted);font-size:12.3px}
+.to .ck{margin-left:auto;width:26px;height:26px;border-radius:8px;border:2px solid var(--line);display:grid;place-items:center;flex:none;font-weight:800;color:#fff}
+.to.on .ck{background:var(--sun);border-color:var(--sun)}
+.tip{display:flex;gap:9px;align-items:flex-start;background:#fff6e6;border-radius:14px;padding:10px 12px;font-size:12.8px;color:#7a4f06;margin-top:12px}
+.fld{display:flex;flex-direction:column;gap:5px;margin-bottom:11px}
+.fld label{font-size:12px;font-weight:700;color:var(--muted)}
+.fld input{border:1.5px solid var(--line);border-radius:12px;padding:12px;background:#fff;width:100%}
+.fld input:focus{outline:none;border-color:var(--sea2)}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+@media(max-width:480px){.two{grid-template-columns:minmax(0,1fr)}}
+.lnk{font-size:12.5px;font-weight:700;color:var(--sea);text-decoration:underline;margin-bottom:10px}
+.pills{display:flex;flex-wrap:wrap;gap:7px}
+.pill{border:2px solid var(--line);background:#fff;border-radius:14px;padding:9px 13px;font-size:13.5px;font-weight:700}
+.pill.on{border-color:var(--sea);background:#f1f6ec;color:var(--sea)}
+.mock{border-radius:16px;padding:14px;color:#fff;background:linear-gradient(135deg,#0b2233,var(--sea2));margin:6px 0}
+.mock small{opacity:.8;font-size:11px;letter-spacing:1px;text-transform:uppercase}.mock b{display:block;font-size:16px;letter-spacing:1.5px;margin-top:6px}
+.err{color:var(--danger);font-size:12.5px;font-weight:600;min-height:16px;margin-top:4px}
+.nav{display:flex;gap:10px;margin-top:18px}.nav .btn{flex:1}.nav .btn.ghost{flex:0 0 auto}
+.note{font-size:12px;color:var(--muted);margin-top:10px}
+.center{text-align:center}
+.sum h3{font-family:"Playfair Display",serif;font-weight:700;font-size:23px;margin-bottom:8px}
+.ln{display:flex;justify-content:space-between;gap:10px;font-size:13.5px;padding:5px 0;color:var(--muted)}.ln b{color:var(--ink);text-align:right}
+.hr{border-top:1px dashed var(--line);margin:8px 0}
+.ln.big{font-size:16px;color:var(--ink);font-weight:800}
+.dep{background:#e9f1e2;border-radius:14px;padding:11px 12px;margin-top:8px}.dep .ln{color:var(--sea);font-weight:800}.dep .ln.s{color:var(--muted);font-weight:600}
+.tabs{display:flex;gap:6px;margin:12px 0;flex-wrap:wrap;justify-content:center}
+.tabs button{padding:9px 13px;border-radius:999px;background:#e4ebee;font-size:12.5px;font-weight:700;color:var(--muted)}
+.tabs button.on{background:var(--sea);color:#fff}
+.phone{background:#e6ddcf;border-radius:22px;overflow:hidden;border:1px solid var(--line);max-width:430px;margin:0 auto;box-shadow:var(--sh)}
+.wah{background:#075e54;color:#fff;display:flex;gap:10px;align-items:center;padding:10px 14px}
+.wah .av{width:38px;height:38px;border-radius:50%;background:#fff;display:grid;place-items:center;flex:none}
+.wah b{font-size:14.5px;display:block}.wah small{opacity:.8;font-size:11.5px}
+.chat{padding:12px;min-height:280px;display:flex;flex-direction:column;gap:7px;background-image:radial-gradient(rgba(0,0,0,.035) 1px,transparent 1px);background-size:14px 14px}
+.dsep{align-self:center;background:rgba(255,255,255,.88);color:#667;font-size:11px;font-weight:700;padding:4px 10px;border-radius:8px;margin:4px 0;text-transform:uppercase}
+.msg{max-width:88%;padding:8px 11px 6px;border-radius:14px;font-size:13.4px;line-height:1.42;box-shadow:0 1px 1px rgba(0,0,0,.1);animation:in .35s;white-space:pre-wrap;word-wrap:break-word}
+.msg.biz{background:#fff;border-top-left-radius:4px;align-self:flex-start}
+.msg.usr{background:#d9fdd3;border-top-right-radius:4px;align-self:flex-end}
+.msg .tm{display:block;text-align:right;font-size:10.5px;color:#7a8a8f;margin-top:2px}
+.msg .act{display:flex;gap:6px;margin-top:7px;flex-wrap:wrap;white-space:normal}
+.msg .act span{font-size:12px;font-weight:700;color:#0a7cff;background:#f2f7ff;border-radius:8px;padding:5px 9px}
+.typing{align-self:flex-start;background:#fff;border-radius:14px;padding:10px 13px;display:flex;gap:4px}
+.typing i{width:6px;height:6px;border-radius:50%;background:#9aa;animation:bl 1s infinite}.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes bl{50%{transform:translateY(-4px);opacity:.5}}@keyframes in{from{opacity:0;transform:translateY(8px) scale(.97)}}
+.wafoot{background:#f0f0f0;padding:9px 12px;color:#8a979c;font-size:12.5px}
+.kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:14px 0}
+@media(min-width:760px){.kpis{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;box-shadow:var(--sh)}
+.kpi small{color:var(--muted);font-size:12px;font-weight:600}.kpi b{display:block;font-size:25px;font-weight:800;margin-top:3px}.kpi em{font-style:normal;font-size:11.5px;color:var(--ok);font-weight:700}
+.kpi.hl{background:linear-gradient(135deg,var(--sea),var(--sea2));color:#fff;border:0}.kpi.hl small{color:#d4eef7}
+.ad2{display:grid;gap:16px;grid-template-columns:minmax(0,1fr)}@media(min-width:920px){.ad2{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);align-items:start}}
+.card h3.s{font-family:"Playfair Display",serif;font-weight:700;font-size:21px}
+.card .s2{color:var(--muted);font-size:12.5px;margin:2px 0 10px}
+.occ{overflow-x:auto}
+.og{display:grid;grid-template-columns:120px repeat(10,minmax(26px,1fr));gap:3px;min-width:430px;font-size:11px}
+.og .h{font-weight:800;color:var(--muted);text-align:center}
+.og .rn{font-weight:700;font-size:11.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.og i{height:22px;border-radius:5px;background:#eef3f5}
+.og i.b{background:#9cc9da}.og i.n{background:var(--sun)}
+.lg2{display:flex;gap:12px;font-size:11.5px;color:var(--muted);margin-top:8px}.lg2 i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:4px;vertical-align:-1px}
+.bk{display:flex;gap:12px;align-items:center;padding:11px 12px;border-radius:16px;border:1px solid var(--line);margin-bottom:8px;background:#fff}
+.bk.nw{background:#fff8ee;border-color:var(--sun2);box-shadow:0 0 0 3px #fde7cc}
+.bk .d{width:46px;height:46px;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;background:linear-gradient(135deg,var(--sea),var(--sea2));line-height:1;flex:none}
+.bk .d b{font-size:16px}.bk .d small{font-size:9px;text-transform:uppercase;color:#d4eef7;margin-top:2px}
+.bk .m{flex:1;min-width:0}.bk .m b{font-size:14px}.bk .m small{display:block;color:var(--muted);font-size:12px}
+.tg2{font-size:9.5px;font-weight:800;padding:2px 6px;border-radius:6px;text-transform:uppercase;margin-left:5px;vertical-align:1px;background:#e9eef0;color:#6c7c86}
+.tg2.n{background:var(--sun);color:#3a2200}
+.tg2.t{background:#e9f1e2;color:var(--sea)}
+.foot{text-align:center;font-size:12px;color:var(--muted);padding:22px 14px 8px;max-width:800px;margin:0 auto}
+</style>
+</head>
+<body>
+<div class="demobar"><span class="dot"></span><span data-t="demobar"></span></div>
+<header class="top">
+  <div class="brand">
+    <svg viewBox="0 0 38 38" aria-hidden="true"><rect width="38" height="38" rx="12" fill="#2f5d3a"/><path d="M19 30 C10 24 10 12 19 7 C28 12 28 24 19 30Z" fill="#9cc97a"/><path d="M19 29 V12" stroke="#2f5d3a" stroke-width="2"/></svg>
+    <div><b>Semilla Verde</b><small data-t="brandsub"></small></div>
+  </div>
+  <div class="seg"><button id="tC" class="on" onclick="view('c')" data-t="tabC"></button><button id="tA" onclick="view('a')"><span data-t="tabA"></span><i class="badge" id="bdg" hidden>1</i></button></div>
+  <button class="lang" onclick="toggleLang()"><span id="lEs" class="on">ES</span> · <span id="lEn">EN</span></button>
+</header>
+
+<div id="vC">
+  <section class="hero">
+    <svg class="heroart" viewBox="0 0 1200 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs><linearGradient id="sk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a9cfd8"/><stop offset="1" stop-color="#e8efe0"/></linearGradient></defs>
+      <rect width="1200" height="500" fill="url(#sk)"/>
+      <path d="M0 230 Q300 170 600 210 T1200 190 V500 H0Z" fill="#7fa86a"/>
+      <path d="M0 290 Q400 240 800 280 T1200 260 V500 H0Z" fill="#5f8f4e"/>
+      <g fill="#3f6f3a"><circle cx="120" cy="200" r="60"/><circle cx="200" cy="180" r="70"/><circle cx="1000" cy="190" r="70"/><circle cx="1090" cy="210" r="60"/><circle cx="880" cy="215" r="50"/></g>
+      <g stroke="#6b4f35" stroke-width="10"><path d="M200 240 V320"/><path d="M1000 250 V320"/></g>
+      <g fill="#2f5d3a"><circle cx="420" cy="330" r="18"/><circle cx="460" cy="320" r="20"/><circle cx="500" cy="332" r="17"/><circle cx="720" cy="328" r="18"/><circle cx="760" cy="318" r="20"/></g>
+      <g fill="#c0392b"><circle cx="455" cy="316" r="4"/><circle cx="470" cy="326" r="4"/><circle cx="765" cy="312" r="4"/></g>
+      <rect y="380" width="1200" height="120" fill="#6e8f4a"/>
+      <g class="swim"><g transform="translate(470 360)"><ellipse cx="80" cy="40" rx="80" ry="46" fill="#6b5a43"/><path d="M20 40 Q80 -10 140 40" stroke="#4e4232" stroke-width="5" fill="none"/><path d="M40 20 L60 60 M80 0 L80 80 M120 20 L100 60" stroke="#4e4232" stroke-width="4"/><path d="M150 40 Q190 20 200 48 Q196 64 170 60Z" fill="#7d6a52"/><circle cx="188" cy="44" r="3" fill="#222"/><path d="M30 76 v22 M120 76 v22" stroke="#7d6a52" stroke-width="16" stroke-linecap="round"/></g></g>
+    </svg>
+    <span class="phl" data-t="phL"></span>
+    <div class="in">
+      <div class="eyebrow" data-t="eyebrow"></div>
+      <h1 data-t="h1"></h1>
+      <p data-t="heroP"></p>
+      <div class="chips"><span class="chip" data-t="c1"></span><span class="chip" data-t="c2"></span><span class="chip" data-t="c3"></span></div>
+      <a class="btn" href="#book" data-t="cta"></a>
+    </div>
+  </section>
+  <div class="wrap">
+    <div class="perks" id="perks"></div>
+    <div class="sh" id="book"><h2 data-t="bT"></h2><p data-t="bS"></p></div>
+    <div class="grid">
+      <section class="card"><div class="stepper" id="stepper"></div><div id="body"></div></section>
+      <aside class="card sum sticky" id="sum"></aside>
+    </div>
+  </div>
+</div>
+
+<div id="vA" hidden>
+  <div class="wrap" style="padding-top:18px">
+    <h2 class="t" data-t="aT"></h2><p class="sub" data-t="aS"></p>
+    <div class="kpis" id="kpis"></div>
+    <div class="ad2">
+      <section class="card"><h3 class="s" data-t="oT"></h3><p class="s2" data-t="oS"></p><div class="occ"><div class="og" id="og"></div></div><div class="lg2"><span><i style="background:#9cc9da"></i><span data-t="lgB"></span></span><span><i style="background:#f59e3b"></i><span data-t="lgN"></span></span></div></section>
+      <section class="card"><h3 class="s" data-t="bkT"></h3><p class="s2" data-t="bkS"></p><div id="bks"></div></section>
+    </div>
+  </div>
+</div>
+<p class="foot" data-t="foot"></p>
+
+<script>
+/* Hotels.com: 9 habitaciones; Exclusive (vista al mar, hasta 4), Deluxe y Superior (hasta 3), Economy (2); desde $163/noche (1-dic, referencia).
+   Excursiones según Adventure Life (sin precios). Demás precios: EJEMPLO. */
+const R=[{id:'ec',price:163,ref:true,cap:2,bed:'ec',art:0},{id:'su',price:185,cap:3,bed:'su',art:1},{id:'de',price:205,cap:3,bed:'de',art:1},{id:'ex',price:260,cap:4,bed:'ex',art:2,star:true}];
+const TOURS=[{id:'bt',ic:'⛵'},{id:'ns',ic:'🐦'},{id:'sf',ic:'🦎'},{id:'cd',ic:'🐢'},{id:'tb',ic:'🏖️'},{id:'sp',ic:'💆'},{id:'tx',ic:'🚕'}];
+const UNITS=[['1','ex'],['2','ex'],['3','de'],['4','de'],['5','su'],['6','su'],['7','ec'],['8','ec'],['9','ec']];
+const DEP=.3,TODAY=new Date(2026,10,24);
+const T={
+es:{demobar:"Demo de DevHorse para Semilla Verde Boutique Hotel · Habitaciones, desayuno, finca y actividades de sus fichas públicas · Precio “desde” de referencia; los demás, de ejemplo · Paquetes y tours por confirmar · Ilustraciones en lugar de fotos · Pagos y mensajes simulados",
+brandsub:"Parte alta de Santa Cruz · Galápagos",tabC:"Huésped",tabA:"Hotel",phL:"Ilustración: aquí va su foto",
+eyebrow:"Paquetes solo aquí · reserva directa",h1:"Tortugas gigantes en el jardín. Café de la finca en tu taza.",heroP:"Un hotel boutique en la parte alta de Santa Cruz, entre bosque de scalesia, una finca de café y tortugas gigantes que pasean libres. Arma tu paquete: habitación, excursiones y spa, en un solo lugar.",
+c1:"🐢 Tortugas gigantes en el terreno",c2:"☕ Café de nuestra finca",c3:"🍳 Desayuno a la carta, 7:00–9:30",cta:"Arma tu paquete",
+perks:[["🐢","Tortugas en libertad","Pasean por la finca y los senderos"],["☕","Finca de café","Café propio, sin límite"],["🧭","Paquetes solo directo","Habitación + excursiones, solo con nosotros"],["💬","Todo por WhatsApp","Confirmación al instante"]],
+bT:"Arma tu paquete",bS:"Los paquetes con excursiones solo se reservan directo con el hotel. En las plataformas solo está la habitación.",
+st1:"Fechas",st2:"Habitación",st3:"Excursiones",st4:"Anticipo",
+dT:"¿Cuándo llegas?",dS:"Toca el día de llegada y luego el de salida. Disponibilidad de ejemplo.",arr:"Llegada",dep:"Salida",nights:"{n} noche(s)",tapOut:"Ahora toca el día de salida",gL:"Huéspedes",gS:"Adultos y niños",
+rT:"Elige tu habitación",rS:"Para {g} · {n}.",n_ex:"Exclusive con vista al mar",n_de:"Deluxe Doble",n_su:"Superior Doble",n_ec:"Economy Doble o Twin",
+b_ex:"1 king + 1 individual + futón",b_de:"1 queen + 1 individual",b_su:"1 queen + 1 individual",b_ec:"1 queen o 2 individuales",upTo:"hasta {n}",pn:"/ noche",refL:"Desde (referencia)",exL:"Ejemplo",rc:"× {n} habitaciones",bal2:"Balcón · aire acondicionado",
+xT:"Suma tus excursiones",xS:"Arma tu paquete. Te confirmamos fechas, detalles y precio por WhatsApp.",
+t_bt:"Isla Bartolomé",t_bts:"Día completo en bote con guía naturalista, snorkel y almuerzo",t_ns:"North Seymour o Plazas Sur",t_nss:"Día completo en bote con guía, snorkel y almuerzo",t_sf:"Isla Santa Fe",t_sfs:"Día completo en bote con guía, snorkel y almuerzo",t_cd:"Estación Darwin y parte alta",t_cds:"Visita guiada en Santa Cruz",t_tb:"Tortuga Bay",t_tbs:"Excursión a la playa más famosa de la isla",t_sp:"Spa",t_sps:"Masajes y tratamientos en el hotel",t_tx:"Traslado al llegar",t_txs:"Taxi desde el canal de Itabaca",
+p_bt:"A cotizar",p_ns:"A cotizar",p_sf:"A cotizar",p_cd:"A cotizar",p_tb:"A cotizar",p_sp:"Precio por confirmar",p_tx:"Precio por confirmar",
+early:"🍳 ¿Tu excursión sale temprano? Avísanos y vemos cómo dejarte el desayuno listo.",skip:"Solo la habitación",
+yT:"Tus datos y anticipo",yS:"Pagas el 30 % de la habitación para asegurarla; las excursiones se confirman y se pagan aparte.",name:"Nombre completo",phone:"WhatsApp",email:"Correo",country:"País",autofill:"Rellenar con datos de ejemplo",errF:"Completa nombre y WhatsApp.",card:"Tarjeta",transfer:"Transferencia",cardL:"Tarjeta de ejemplo",pay:"Pagar anticipo {a}",processing:"Confirmando…",sim:"Pago simulado: no se cobra nada.",
+next:"Continuar",back:"Atrás",sumT:"Tu paquete",sDates:"Fechas",sG:"Huéspedes",sRoom:"Habitación",sTours:"Excursiones",none:"Por elegir",lnR:"{n} noche(s) × {p}",lnT:"Excursiones (se cotizan por WhatsApp)",total:"Total habitación",deposit:"Anticipo hoy (30 %)",balance:"Al llegar",inc:"✓ Desayuno a la carta incluido · check-in desde las 11:00 · check-out hasta las 9:00",
+done:"¡Reserva confirmada!",doneS:"Así le llega al huésped por WhatsApp, y así le llega al hotel:",tg:"Huésped",th:"Hotel",d0:"Hoy",d1:"El día antes",
+w0:"¡Hola {first}! 🌿 Tu estadía en *Semilla Verde* está confirmada.\n\n🛏️ {room}\n📅 {in} → {out} ({n})\n👥 {g}\n💳 Anticipo recibido: *{dep}*\n💵 Saldo al llegar: *{bal}*{tours}",
+w0t:"\n\n🧭 Tu paquete incluye: {list}\nCattya te escribe para confirmar fechas y precios.",
+u0:"¡Gracias! Ya quiero ver las tortugas 🐢",
+w1:"¡Hola {first}! Mañana te esperamos en la parte alta de Santa Cruz 🌿\n\nTu habitación está lista desde las 11:00. Dinos a qué hora llegas al canal de Itabaca y te coordinamos el taxi. ¡Las tortugas ya te esperan!",
+wh:"🔔 *Nueva reserva directa*\n\n👤 {name} · {country}\n🛏️ {room}\n📅 {in} → {out} ({n})\n👥 {g}\n💳 Anticipo: *{dep}* ✅{tours}",whT:"\n🧭 Excursiones a cotizar: {list}",
+actA:"Confirmar",actB:"Enviar ubicación",actC:"Escribir",
+aT:"Panel del hotel",aS:"Lo que ve el hotel. Lo marcado “Ejemplo” es inventado; lo “Nuevo” es la reserva que acabas de hacer.",
+kR:"Reservas directas (mes)",kT:"Excursiones por cotizar",kD:"Anticipos recibidos",kO:"Ocupación 10 días",kNew:"+{n} nueva(s)",
+oT:"Ocupación",oS:"Próximos 10 días por habitación (números de ejemplo).",lgB:"Ocupada (ejemplo)",lgN:"Tu reserva",bkT:"Reservas",bkS:"Con las excursiones de cada paquete.",ex:"Ejemplo",nw:"Nueva",tours:"excursiones",tour1:"excursión",hab:"Hab.",
+foot:"Demo creada por DevHorse como propuesta para Semilla Verde Boutique Hotel. Tipos de habitación y camas, desayuno (7:00–9:30), check-in 11:00 y check-out 9:00 (Hotels.com); tortugas, finca de café, spa y excursiones (fichas públicas, Adventure Life). El precio “desde” es el mínimo que mostró Hotels.com (referencia; varía). Los demás precios, la disponibilidad, los paquetes, los huéspedes y las reservas son de ejemplo. Ilustraciones en lugar de fotos.",
+pW:["huésped","huéspedes"],wa:"Cuenta de empresa · en línea"},
+en:{demobar:"DevHorse demo for Semilla Verde Boutique Hotel · Rooms, breakfast, farm and activities from public listings · “From” price is a reference; others are samples · Packages and tours to be confirmed · Illustrations instead of photos · Simulated payments & messages",
+brandsub:"Santa Cruz highlands · Galápagos",tabC:"Guest",tabA:"Hotel",phL:"Illustration: your photo goes here",
+eyebrow:"Packages only here · book direct",h1:"Giant tortoises in the garden. Farm coffee in your cup.",heroP:"A boutique hotel in the Santa Cruz highlands, among scalesia forest, a coffee farm and giant tortoises roaming free. Build your package: room, excursions and spa, all in one place.",
+c1:"🐢 Giant tortoises on the grounds",c2:"☕ Coffee from our farm",c3:"🍳 Breakfast to order, 7:00–9:30",cta:"Build your package",
+perks:[["🐢","Tortoises roaming free","Across the farm and trails"],["☕","Coffee farm","Our own coffee, unlimited"],["🧭","Packages only direct","Room + excursions, only with us"],["💬","All on WhatsApp","Instant confirmation"]],
+bT:"Build your package",bS:"Packages with excursions can only be booked directly with the hotel. Booking sites only sell the room.",
+st1:"Dates",st2:"Room",st3:"Excursions",st4:"Deposit",
+dT:"When are you arriving?",dS:"Tap your arrival day, then your departure day. Sample availability.",arr:"Arrival",dep:"Departure",nights:"{n} night(s)",tapOut:"Now tap your departure day",gL:"Guests",gS:"Adults and children",
+rT:"Choose your room",rS:"For {g} · {n}.",n_ex:"Exclusive with ocean view",n_de:"Deluxe Double",n_su:"Superior Double",n_ec:"Economy Double or Twin",
+b_ex:"1 king + 1 twin + futon",b_de:"1 queen + 1 twin",b_su:"1 queen + 1 twin",b_ec:"1 queen or 2 twins",upTo:"up to {n}",pn:"/ night",refL:"From (reference)",exL:"Sample",rc:"× {n} rooms",bal2:"Balcony · air conditioning",
+xT:"Add your excursions",xS:"Build your package. We'll confirm dates, details and price on WhatsApp.",
+t_bt:"Bartolomé Island",t_bts:"Full-day boat trip with a naturalist guide, snorkelling and lunch",t_ns:"North Seymour or South Plazas",t_nss:"Full-day boat trip with a guide, snorkelling and lunch",t_sf:"Santa Fe Island",t_sfs:"Full-day boat trip with a guide, snorkelling and lunch",t_cd:"Darwin Station & highlands",t_cds:"Guided visit on Santa Cruz",t_tb:"Tortuga Bay",t_tbs:"Trip to the island's most famous beach",t_sp:"Spa",t_sps:"Massages and treatments at the hotel",t_tx:"Arrival transfer",t_txs:"Taxi from the Itabaca channel",
+p_bt:"To quote",p_ns:"To quote",p_sf:"To quote",p_cd:"To quote",p_tb:"To quote",p_sp:"Price to be confirmed",p_tx:"Price to be confirmed",
+early:"🍳 Early excursion? Let us know and we'll see how to have breakfast ready.",skip:"Room only",
+yT:"Your details & deposit",yS:"Pay 30 % of the room to secure it; excursions are confirmed and paid separately.",name:"Full name",phone:"WhatsApp",email:"Email",country:"Country",autofill:"Fill with sample data",errF:"Please add your name and WhatsApp.",card:"Card",transfer:"Bank transfer",cardL:"Sample card",pay:"Pay deposit {a}",processing:"Confirming…",sim:"Simulated payment: nothing is charged.",
+next:"Continue",back:"Back",sumT:"Your package",sDates:"Dates",sG:"Guests",sRoom:"Room",sTours:"Excursions",none:"To choose",lnR:"{n} night(s) × {p}",lnT:"Excursions (quoted on WhatsApp)",total:"Room total",deposit:"Deposit today (30 %)",balance:"On arrival",inc:"✓ Breakfast to order included · check-in from 11:00 · check-out by 9:00",
+done:"Booking confirmed!",doneS:"This is what the guest gets on WhatsApp, and what the hotel gets:",tg:"Guest",th:"Hotel",d0:"Today",d1:"Day before",
+w0:"Hi {first}! 🌿 Your stay at *Semilla Verde* is confirmed.\n\n🛏️ {room}\n📅 {in} → {out} ({n})\n👥 {g}\n💳 Deposit received: *{dep}*\n💵 Balance on arrival: *{bal}*{tours}",
+w0t:"\n\n🧭 Your package includes: {list}\nCattya will message you to confirm dates and prices.",
+u0:"Thank you! Can't wait to meet the tortoises 🐢",
+w1:"Hi {first}! We'll see you tomorrow in the Santa Cruz highlands 🌿\n\nYour room is ready from 11:00. Tell us what time you reach the Itabaca channel and we'll arrange your taxi. The tortoises are waiting!",
+wh:"🔔 *New direct booking*\n\n👤 {name} · {country}\n🛏️ {room}\n📅 {in} → {out} ({n})\n👥 {g}\n💳 Deposit: *{dep}* ✅{tours}",whT:"\n🧭 Excursions to quote: {list}",
+actA:"Confirm",actB:"Send location",actC:"Message",
+aT:"Hotel dashboard",aS:"What the hotel sees. Items tagged “Sample” are made up; “New” is the booking you just made.",
+kR:"Direct bookings (month)",kT:"Excursions to quote",kD:"Deposits received",kO:"Occupancy 10 days",kNew:"+{n} new",
+oT:"Occupancy",oS:"Next 10 days by room (sample numbers).",lgB:"Booked (sample)",lgN:"Your booking",bkT:"Bookings",bkS:"With the excursions in each package.",ex:"Sample",nw:"New",tours:"excursions",tour1:"excursion",hab:"Rm",
+foot:"Demo created by DevHorse as a proposal for Semilla Verde Boutique Hotel. Room types and beds, breakfast (7:00–9:30), 11:00 check-in and 9:00 check-out (Hotels.com); tortoises, coffee farm, spa and excursions (public listings, Adventure Life). The “from” price is the lowest Hotels.com showed (reference; it varies). Other prices, availability, packages, guests and bookings are samples. Illustrations instead of photos.",
+pW:["guest","guests"],wa:"Business account · online"}};
+let lang='es';
+const S={step:1,cin:null,cout:null,g:2,room:null,tours:[],name:'',wa:'',email:'',country:'',pay:'card',done:false,tab:'g',mon:[2026,10],newB:null};
+const t=(k,v)=>{let s=T[lang][k];if(s===undefined)return k;if(v&&typeof s==='string')for(const x in v)s=s.split('{'+x+'}').join(v[x]);return s};
+const $=id=>document.getElementById(id);
+const money=n=>'$'+(Math.round(n*100)/100).toLocaleString('en-US',{minimumFractionDigits:n%1?2:0,maximumFractionDigits:2});
+const loc=()=>lang==='es'?'es-EC':'en-US';
+const cap=s=>s.charAt(0).toUpperCase()+s.slice(1);
+const fD=d=>cap(d.toLocaleDateString(loc(),{weekday:'short',day:'numeric',month:'short'})).replace('.','');
+const nights=()=>S.cin&&S.cout?Math.round((S.cout-S.cin)/864e5):0;
+const pl=(n,a)=>n+' '+a[n===1?0:1];
+const room=id=>R.find(r=>r.id===id);
+function full(d){const k=(d.getDate()*5+d.getMonth()*7)%13;return k===3||k===10}
+function art(i){return `<svg viewBox="0 0 120 90" preserveAspectRatio="xMidYMid slice"><rect width="120" height="90" fill="#eef2e6"/><rect x="66" y="8" width="44" height="40" fill="${i===2?'#9fd8ea':'#b9d8a8'}"/>${i===2?'<rect x="66" y="30" width="44" height="18" fill="#3d8fb0"/>':'<circle cx="80" cy="28" r="9" fill="#5f8f4e"/><circle cx="96" cy="24" r="11" fill="#4d7f3f"/>'}<path d="M66 48 H110" stroke="#6b4f35" stroke-width="3"/><rect x="10" y="52" width="100" height="38" rx="4" fill="#fff"/><rect x="14" y="62" width="${i?60:92}" height="18" rx="4" fill="#d9d2c0"/>${i?'<rect x="78" y="62" width="28" height="18" rx="4" fill="#d9d2c0"/>':''}<rect x="20" y="57" width="34" height="8" rx="3" fill="#fff" stroke="#e3e3e3"/></svg>`}
+function renderStatic(){
+ document.documentElement.lang=lang;
+ document.querySelectorAll('[data-t]').forEach(e=>{const v=t(e.dataset.t);if(typeof v==='string')e.textContent=v});
+ $('lEs').className=lang==='es'?'on':'';$('lEn').className=lang==='en'?'on':'';
+ $('perks').innerHTML=t('perks').map(([i,a,b])=>`<div><i>${i}</i><span><b>${a}</b><small>${b}</small></span></div>`).join('');
+}
+function stepper(){$('stepper').innerHTML=['st1','st2','st3','st4'].map((k,i)=>`<div class="stp ${S.step===i+1?'on':S.step>i+1?'done':''}"><div class="bar"><i></i></div>${i+1}. ${t(k)}</div>`).join('')}
+function renderBody(){stepper();if(S.done){renderDone();return}let h='';
+ if(S.step===1){h=`<h2 class="t">${t('dT')}</h2><p class="sub">${t('dS')}</p>${calendar()}
+  <div class="range"><span><small>${t('arr')}</small><b>${S.cin?fD(S.cin):'—'}</b></span><span>→</span><span><small>${t('dep')}</small><b>${S.cout?fD(S.cout):'—'}</b></span><span class="n">${nights()?t('nights',{n:nights()}):''}</span></div>
+  ${S.cin&&!S.cout?`<p class="note">👆 ${t('tapOut')}</p>`:''}
+  <div class="cnt"><span><b>${t('gL')}</b><small>${t('gS')}</small></span><span class="stepr"><button ${S.g<=1?'disabled':''} onclick="S.g--;renderAll()">−</button><span>${S.g}</span><button ${S.g>=6?'disabled':''} onclick="S.g++;renderAll()">+</button></span></div>
+  <div class="nav"><button class="btn sea" ${nights()?'':'disabled'} onclick="go(2)">${t('next')} →</button></div>`}
+ if(S.step===2){h=`<h2 class="t">${t('rT')}</h2><p class="sub">${t('rS',{g:pl(S.g,T[lang].pW),n:t('nights',{n:nights()})})}</p><div class="rooms">`+R.map(r=>{const ok=true,rc=Math.ceil(S.g/r.cap);return `<button class="rm ${S.room===r.id?'on':''} ${ok?'':'dis'}" onclick="S.room='${r.id}';renderAll()"><span class="art">${art(r.art)}</span><span class="mid"><b>${t('n_'+r.id)}${r.star?' ✦':''}</b><small>${t('b_'+r.bed)} · ${t('upTo',{n:r.cap})}</small><small>${t('bal2')}</small>${rc>1?`<small style="color:#2f5d3a;font-weight:800">${t('rc',{n:rc})}</small>`:''}${ok?'':`<small class="why">${t('small')}</small>`}</span><span class="pr"><b>${money(r.price)}</b><small>${t('pn')}</small><span class="tag ${r.ref?'r':''}">${r.ref?t('refL'):t('exL')}</span></span></button>`}).join('')+`</div>
+  <div class="nav"><button class="btn ghost" onclick="go(1)">←</button><button class="btn sea" ${S.room?'':'disabled'} onclick="go(3)">${t('next')} →</button></div>`}
+ if(S.step===3){h=`<h2 class="t">${t('xT')}</h2><p class="sub">${t('xS')}</p><div class="tours">`+TOURS.map(x=>{const on=S.tours.includes(x.id);return `<button class="to ${on?'on':''}" onclick="togT('${x.id}')"><span class="ic">${x.ic}</span><span><b>${t('t_'+x.id)}</b><small>${t('t_'+x.id+'s')}</small><small style="color:#9a6a00;font-weight:700">${t('p_'+x.id)}</small></span><span class="ck">${on?'✓':''}</span></button>`}).join('')+`</div><div class="tip">${t('early')}</div>
+  <div class="nav"><button class="btn ghost" onclick="go(2)">←</button><button class="btn sea" onclick="go(4)">${S.tours.length?t('next')+' →':t('skip')}</button></div>`}
+ if(S.step===4){const q=quote();h=`<h2 class="t">${t('yT')}</h2><p class="sub">${t('yS')}</p><button class="lnk" onclick="fill()">${t('autofill')}</button>
+  <div class="two"><div class="fld"><label>${t('name')}</label><input value="${S.name}" oninput="S.name=this.value"></div><div class="fld"><label>${t('country')}</label><input value="${S.country}" oninput="S.country=this.value"></div></div>
+  <div class="two"><div class="fld"><label>${t('phone')}</label><input inputmode="tel" value="${S.wa}" oninput="S.wa=this.value"></div><div class="fld"><label>${t('email')}</label><input value="${S.email}" oninput="S.email=this.value"></div></div>
+  <div class="pills" style="margin:4px 0 8px"><button class="pill ${S.pay==='card'?'on':''}" onclick="S.pay='card';renderBody()">💳 ${t('card')}</button><button class="pill ${S.pay==='transfer'?'on':''}" onclick="S.pay='transfer';renderBody()">🏦 ${t('transfer')}</button></div>
+  ${S.pay==='card'?`<div class="mock"><small>${t('cardL')}</small><b>4242 4242 4242 4242</b><small>12/29 · CVC 123</small></div>`:''}
+  <div class="err" id="err"></div><button class="btn" style="width:100%" id="payB" onclick="submit()">🔒 ${t('pay',{a:money(q.dep)})}</button><p class="note center">${t('sim')}</p>
+  <div class="nav"><button class="btn ghost" onclick="go(3)">← ${t('back')}</button></div>`}
+ $('body').innerHTML=h}
+function togT(id){const k=S.tours.indexOf(id);if(k>=0)S.tours.splice(k,1);else S.tours.push(id);renderAll()}
+function calendar(){const [y,m]=S.mon;const first=new Date(y,m,1);const off=(first.getDay()+6)%7;const n=new Date(y,m+1,0).getDate();
+ const dow=lang==='es'?['Lu','Ma','Mi','Ju','Vi','Sá','Do']:['Mo','Tu','We','Th','Fr','Sa','Su'];
+ let d='';for(let i=0;i<off;i++)d+='<span class="day e"></span>';
+ for(let i=1;i<=n;i++){const dt=new Date(y,m,i);let c='';if(dt<=TODAY||full(dt))c='x';if(S.cin&&+dt===+S.cin)c='s';else if(S.cout&&+dt===+S.cout)c='f';else if(S.cin&&S.cout&&dt>S.cin&&dt<S.cout)c='in';
+  d+=`<button class="day ${c}" onclick="tap(${y},${m},${i})">${i}</button>`}
+ return `<div class="cal"><div class="head"><button ${y===2026&&m===10?'disabled':''} onclick="mv(-1)">‹</button><b>${cap(first.toLocaleDateString(loc(),{month:'long',year:'numeric'}))}</b><button ${y===2027&&m===5?'disabled':''} onclick="mv(1)">›</button></div><div class="dow">${dow.map(x=>`<span>${x}</span>`).join('')}</div><div class="days">${d}</div></div>`}
+function freeR(a,b){for(let d=new Date(+a+864e5);d<b;d=new Date(+d+864e5))if(full(d))return false;return true}
+function tap(y,m,i){const d=new Date(y,m,i);if(!S.cin||S.cout||d<=S.cin){S.cin=d;S.cout=null}else if(freeR(S.cin,d))S.cout=d;else{S.cin=d;S.cout=null}renderAll()}
+function mv(k){let [y,m]=S.mon;m+=k;if(m<0){m=11;y--}if(m>11){m=0;y++}S.mon=[y,m];renderBody()}
+const rcount=()=>S.room?Math.ceil(S.g/room(S.room).cap):1;
+const rname=(id,g)=>{const n=Math.ceil(g/room(id).cap);return t('n_'+id)+(n>1?' '+t('rc',{n}):'')};
+function quote(){const r=S.room?room(S.room):null;const n=nights();const tot=r&&n?r.price*n*rcount():0;return{tot,dep:Math.round(tot*DEP*100)/100}}
+function renderSum(){const r=S.room?room(S.room):null;const q=quote();
+ let h=`<h3>${t('sumT')}</h3><div class="ln"><span>${t('sDates')}</span><b>${S.cin?fD(S.cin):t('none')}${S.cout?' → '+fD(S.cout):''}</b></div><div class="ln"><span>${t('sG')}</span><b>${pl(S.g,T[lang].pW)}</b></div><div class="ln"><span>${t('sRoom')}</span><b>${r?rname(r.id,S.g):t('none')}</b></div><div class="ln"><span>${t('sTours')}</span><b>${S.tours.length?S.tours.map(x=>TOURS.find(y=>y.id===x).ic).join(' '):'—'}</b></div>`;
+ if(q.tot)h+=`<div class="hr"></div><div class="ln"><span>${t('lnR',{n:nights(),p:money(r.price)})}${rcount()>1?' × '+rcount():''}</span><b>${money(q.tot)}</b></div>${S.tours.length?`<div class="ln"><span>${t('lnT')}</span><b>—</b></div>`:''}<div class="ln big"><span>${t('total')}</span><span>${money(q.tot)}</span></div><div class="dep"><div class="ln"><span>${t('deposit')}</span><span>${money(q.dep)}</span></div><div class="ln s"><span>${t('balance')}</span><span>${money(q.tot-q.dep)}</span></div></div><p class="note">${t('inc')}</p>`;
+ $('sum').innerHTML=h}
+function renderAll(){renderStatic();renderBody();renderSum();renderAdmin()}
+function go(n){S.step=n;renderBody();renderSum();const b=$('book');if(b.getBoundingClientRect().top<0)b.scrollIntoView({behavior:'smooth'})}
+function fill(){Object.assign(S,{name:'Lucía Fernández',country:lang==='es'?'España':'Spain',wa:'+34 612 345 678',email:'lucia.f@example.com'});renderBody()}
+function submit(){if(!S.name.trim()||!S.wa.trim()){$('err').textContent=t('errF');return}const b=$('payB');b.textContent=t('processing');b.disabled=true;
+ setTimeout(()=>{const q=quote();S.newB={name:S.name,country:S.country||'—',room:S.room,cin:S.cin,cout:S.cout,g:S.g,tours:S.tours.slice(),tot:q.tot,dep:q.dep};S.done=true;S.tab='g';$('bdg').hidden=false;renderAll();$('book').scrollIntoView({behavior:'smooth'})},900)}
+let TOK=0;
+const fmtW=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/\*(.+?)\*/g,'<b>$1</b>');
+const now=()=>new Date().toLocaleTimeString(loc(),{hour:'2-digit',minute:'2-digit'});
+const tl=B=>B.tours.map(x=>t('t_'+x)).join(', ');
+function gM(B){const f=B.name.split(' ')[0];const n=t('nights',{n:Math.round((B.cout-B.cin)/864e5)});return [{sep:t('d0')},{biz:1,txt:t('w0',{first:f,room:rname(B.room,B.g),in:fD(B.cin),out:fD(B.cout),n,g:pl(B.g,T[lang].pW),dep:money(B.dep),bal:money(B.tot-B.dep),tours:B.tours.length?t('w0t',{list:tl(B)}):''})},{usr:1,txt:t('u0')},{sep:t('d1')},{biz:1,txt:t('w1',{first:f})}]}
+function hM(B){const n=t('nights',{n:Math.round((B.cout-B.cin)/864e5)});return [{sep:t('d0')},{biz:1,act:1,txt:t('wh',{name:B.name,country:B.country,room:rname(B.room,B.g),in:fD(B.cin),out:fD(B.cout),n,g:pl(B.g,T[lang].pW),dep:money(B.dep),tours:B.tours.length?t('whT',{list:tl(B)}):''})}]}
+function phone(id,title){return `<div class="phone"><div class="wah"><span class="av"><svg viewBox="0 0 38 38" width="28" height="28"><path d="M19 33 C9 26 9 12 19 6 C29 12 29 26 19 33Z" fill="#5f8f4e"/></svg></span><span><b>${title}</b><small>${t('wa')}</small></span></div><div class="chat" id="${id}"></div><div class="wafoot">✓✓</div></div>`}
+async function play(id,list){const tok=++TOK;const box=$(id);if(!box)return;box.innerHTML='';
+ for(const m of list){if(tok!==TOK)return;if(m.sep){const d=document.createElement('div');d.className='dsep';d.textContent=m.sep;box.appendChild(d);continue}
+  if(m.biz){const ty=document.createElement('div');ty.className='typing';ty.innerHTML='<i></i><i></i><i></i>';box.appendChild(ty);await new Promise(r=>setTimeout(r,700));if(tok!==TOK)return;ty.remove()}else await new Promise(r=>setTimeout(r,500));
+  if(tok!==TOK)return;const e=document.createElement('div');e.className='msg '+(m.biz?'biz':'usr');e.innerHTML=fmtW(m.txt)+(m.act?`<div class="act"><span>✅ ${t('actA')}</span><span>📍 ${t('actB')}</span><span>💬 ${t('actC')}</span></div>`:'')+`<span class="tm">${now()}${m.biz?' ✓✓':''}</span>`;box.appendChild(e)}}
+function renderDone(){$('body').innerHTML=`<div class="center"><h2 class="t">${t('done')}</h2><p class="sub">${t('doneS')}</p></div><div class="tabs"><button class="${S.tab==='g'?'on':''}" onclick="S.tab='g';renderDone()">📱 ${t('tg')}</button><button class="${S.tab==='h'?'on':''}" onclick="S.tab='h';renderDone()">🏨 ${t('th')}</button></div>${phone('ch',S.tab==='g'?'Semilla Verde':'Semilla Verde · Web')}`;play('ch',S.tab==='g'?gM(S.newB):hM(S.newB))}
+const D=k=>new Date(+TODAY+k*864e5);
+const SAMPLES=[{name:'Mark & Anna B.',country:'Alemania|Germany',room:'ex',u:'1',cin:D(1),cout:D(5),g:2,tours:['bt','cd'],dep:312},{name:'Familia Andrade',country:'Ecuador|Ecuador',room:'de',u:'3',cin:D(2),cout:D(5),g:3,tours:['tb'],dep:185},{name:'Chloé R.',country:'Francia|France',room:'su',u:'5',cin:D(3),cout:D(6),g:2,tours:['sp'],dep:167},{name:'James W.',country:'Reino Unido|United Kingdom',room:'ec',u:'7',cin:D(4),cout:D(8),g:1,tours:['ns','sf','tx'],dep:196}];
+function renderAdmin(){const A=SAMPLES.map(x=>({...x,country:x.country.split('|')[lang==='es'?0:1]}));if(S.newB)A.unshift({...S.newB,nw:true});
+ const tq=A.reduce((s,b)=>s+b.tours.length,0);const dep=A.reduce((s,b)=>s+b.dep,0);
+ let cells=0,used=0;
+ let og=`<span></span>${Array.from({length:10},(_,k)=>`<span class="h">${D(k+1).getDate()}</span>`).join('')}`;
+ if(S.newB&&!S.newB.u){const fr=UNITS.find(([u,ty])=>ty===S.newB.room&&!SAMPLES.some(x=>x.u===u&&x.cin<S.newB.cout&&S.newB.cin<x.cout));S.newB.u=fr?fr[0]:UNITS.find(x=>x[1]===S.newB.room)[0];A[0].u=S.newB.u}
+ UNITS.forEach(([u,ty],ui)=>{og+=`<span class="rn">${t('hab')} ${u} · ${{ex:'Exclusive',de:'Deluxe',su:'Superior',ec:'Economy'}[ty]}</span>`;for(let k=1;k<=10;k++){const d=D(k);cells++;const b=A.find(x=>x.u===u&&d>=x.cin&&d<x.cout);const fake=!b&&((k*3+ui*5)%7===0);if(b||fake)used++;og+=`<i class="${b?(b.nw?'n':'b'):fake?'b':''}"></i>`}});
+ $('og').innerHTML=og;
+ $('kpis').innerHTML=`<div class="kpi"><small>${t('kR')}</small><b>${A.length+6}</b>${S.newB?`<em>${t('kNew',{n:1})}</em>`:''}</div><div class="kpi"><small>${t('kT')}</small><b>${tq}</b></div><div class="kpi"><small>${t('kD')}</small><b>${money(dep)}</b></div><div class="kpi hl"><small>${t('kO')}</small><b>${Math.round(used/cells*100)} %</b></div>`;
+ $('bks').innerHTML=A.map(b=>`<div class="bk ${b.nw?'nw':''}"><span class="d"><b>${b.cin.getDate()}</b><small>${b.cin.toLocaleDateString(loc(),{month:'short'}).replace('.','')}</small></span><span class="m"><b>${b.name}<span class="tg2 ${b.nw?'n':''}">${b.nw?t('nw'):t('ex')}</span>${b.tours.length?`<span class="tg2 t">➕ ${b.tours.length} ${b.tours.length===1?t('tour1'):t('tours')}</span>`:''}</b><small>${rname(b.room,b.g)} · ${t('nights',{n:Math.round((b.cout-b.cin)/864e5)})} · ${b.country}</small>${b.tours.length?`<small>${b.tours.map(x=>TOURS.find(y=>y.id===x).ic+' '+t('t_'+x)).join(' · ')}</small>`:''}</span></div>`).join('')}
+function view(v){$('vC').hidden=v!=='c';$('vA').hidden=v!=='a';$('tC').className=v==='c'?'on':'';$('tA').className=v==='a'?'on':'';if(v==='a'){$('bdg').hidden=true;renderAdmin()}scrollTo({top:0,behavior:'smooth'})}
+function toggleLang(){lang=lang==='es'?'en':'es';renderAll()}
+renderAll();
+</script>
+</body>
+</html>
